@@ -1,0 +1,67 @@
+{
+    "data": [
+      {
+        "id": 1,
+        "item_attribute":"وزن",
+        "qr_code":"30",
+        "x_ray": "34",
+        "dog_behavair": "--",
+        "user_observations": "34",
+        "description":"مغایرت در وزن بار",
+        "result":1
+      },
+      {
+        "id": 2,
+        "item_attribute":"نوع‌ماشین",
+        "qr_code":"اسکانیا",
+        "x_ray": "اسکانیا",
+        "dog_behavair": "--",
+        "user_observations": "اسکانیا",
+        "description": "--",
+        "result":0
+      },
+      {
+        "id": 3,
+        "item_attribute":"همگنی بار",
+        "qr_code":"ندارد",
+        "x_ray": "دارد",
+        "dog_behavair": "--",
+        "user_observations": "ندارد",
+        "description": "کشف اسلحه در بار",
+        "result":1
+    },
+      {
+        "id": 4,
+        "item_attribute":"سوخت",
+        "qr_code":"--",
+        "x_ray": "--",
+        "dog_behavair": "--",
+        "user_observations": "--",
+        "description": "--",
+        "result":0
+
+      },
+      {
+        "id": 5,
+        "item_attribute":"حجم‌باک",
+        "qr_code":"20cc",
+        "x_ray": "20cc",
+        "dog_behavair": "--",
+        "user_observations": "20cc",
+        "description": "--",
+        "result":0
+
+      },
+      {
+        "id": 6,
+        "item_attribute":"موادمخدر",
+        "qr_code":"ندارد",
+        "x_ray": "ندارد",
+        "dog_behavair":"ندارد",
+        "user_observations": "ندارد",
+        "description": "--",
+        "result":0
+
+      }
+    ]
+}

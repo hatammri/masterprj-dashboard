@@ -1,0 +1,41 @@
+{
+    "data": [
+      {
+        "id": 1,
+        "shomarebar":"BR2345",
+        "Scanning_device":"صاپا1",
+        "operator_avatar": "18.png",
+        "operator_name": "مهدی اکبری",
+        "operator_post": "اپراتور اسکنر",
+        "driver_name": "علی نادری",
+        "driver_code": "zpx3452",
+        "date": "1401/09/01",
+        "description": "ناهمگنی بار مشاهده شده است."
+      },
+      {
+        "id":2,
+        "shomarebar":"BR3658",
+        "Scanning_device":"صاپا1",
+        "operator_avatar": "13.png",
+        "operator_name": "جلال صادقی",
+        "operator_post": "اپراتور اسکنر",
+        "driver_name": "تونی استارک",
+        "driver_code": "zpx3587",
+        "date": "1401/09/01",
+        "description": "وزن بار مغایرت دارد."
+      },
+      {
+        "id": 3,
+        "shomarebar":"BR4785",
+        "Scanning_device":"صاپا1",
+        "operator_avatar": "13.png",
+        "operator_name": "جلال صادقی",
+        "operator_post": "اپراتور اسکنر",
+        "driver_name": "محسن زمانی",
+        "driver_code": "zpx3452",
+        "date": "1401/09/01",
+        "description": "ناهمگنی بار مشاهده شده است."
+      }
+
+    ]
+}

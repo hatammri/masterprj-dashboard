@@ -1,0 +1,33 @@
+{
+    "data": [
+      {
+        "id": 1,
+        "avatar": "10.png",
+        "name": "میرجاوه",
+        "managername": "حسین حق‌ طلب",
+        "Number_of_operators":"42",
+        "city": "سیستان و بلوچستان",
+        "status": 1
+      },
+      {
+        "id": 2,
+        "avatar": "10.png",
+        "name": "بازرگان",
+        "managername": "سعید یار دوستی",
+        "Number_of_operators":"31",
+        "city": "آذربایجان غربی",
+        "status": 1
+      },
+
+      {
+        "id": 3,
+        "avatar": "10.png",
+        "name": "لطف آباد",
+        "managername": "مصطفی رنجبر",
+        "Number_of_operators":"40",
+        "city": "خراسان رضوی",
+        "status": 1
+      }
+
+    ]
+}
