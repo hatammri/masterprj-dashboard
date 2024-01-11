@@ -112,7 +112,7 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
-            <a href="{{ route('reports.list_scan_period') }}" class="menu-link ">
+            <a href="{{ route('company.create') }}" class="menu-link ">
               <div >اضافه کردن شرکت جدید</div>
             </a>
           </li>
@@ -306,7 +306,18 @@
           <div >انبارداری</div>
         </a>
       </li>
-
+      <li class="menu-item">
+        <a href="#" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-detail"></i>
+          <div >حسابداری و مالی</div>
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="#" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-detail"></i>
+          <div >تامین کنندگان</div>
+        </a>
+      </li>
       <li class="menu-header small text-uppercase"><span class="menu-header-text">متفرقه</span></li>
       <li class="menu-item">
         <a href="#" target="_blank" class="menu-link">

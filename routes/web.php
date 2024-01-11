@@ -3,10 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Admin\CompanyController;
 
 
 //require __DIR__ . '/auth.php';
 Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
+    Route::prefix('company')->name('company.')->group(function () {
+        Route::get('/create', [CompanyController::class, 'create'])->name('create');
+
+    });
+
     Route::get('', function () {
         return view('dashboard.index');
     })->name('dashboard');
@@ -72,7 +78,6 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::get('/accesslevel/appuserview', function () {
         return view('accesslevel.appuserview');
     })->name('accesslevel.appuserview');
-
 });
 
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
