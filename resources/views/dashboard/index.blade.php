@@ -13,12 +13,12 @@
                 <div class="card-body">
                   <div class="d-flex align-items-start justify-content-between">
                     <div class="content-left">
-                      <span class="secondary-font fw-medium">تعداد رانندگان متخلف</span>
+                      <span class="secondary-font fw-medium">تعداد درخواست‌کار</span>
                       <div class="d-flex align-items-baseline mt-2">
-                        <h4 class="mb-0 me-2">26</h4>
+                        <h4 class="mb-0 me-2">16</h4>
                         <small class="text-success">(+29%)</small>
                       </div>
-                      <small>مجموع رانندگان</small>
+                      <small>مجموع درخواست‌کار</small>
                     </div>
                     <span class="badge bg-label-primary rounded p-2">
                       <i class="bx bx-user bx-sm"></i>
@@ -32,9 +32,9 @@
                 <div class="card-body">
                   <div class="d-flex align-items-start justify-content-between">
                     <div class="content-left">
-                      <span class="secondary-font fw-medium">خودروهای فعال </span>
+                      <span class="secondary-font fw-medium">تعداد درخواست‌کار فعال </span>
                       <div class="d-flex align-items-baseline mt-2">
-                        <h4 class="mb-0 me-2">83</h4>
+                        <h4 class="mb-0 me-2">10</h4>
                         <small class="text-success">(+18%)</small>
                       </div>
                       <small>تحلیل امروز</small>
@@ -51,12 +51,12 @@
                 <div class="card-body">
                   <div class="d-flex align-items-start justify-content-between">
                     <div class="content-left">
-                      <span class="secondary-font fw-medium">تعداد خودروهای فعال</span>
+                      <span class="secondary-font fw-medium">تعداد فازهای فعال</span>
                       <div class="d-flex align-items-baseline mt-2">
-                        <h4 class="mb-0 me-2">506</h4>
+                        <h4 class="mb-0 me-2">100</h4>
                         <small class="text-danger">(-14%)</small>
                       </div>
-                      <small>تحلیل هفته اخیر</small>
+                      <small>تحلیل امروز</small>
                     </div>
                     <span class="badge bg-label-success rounded p-2">
                       <i class="bx bx-group bx-sm"></i>
@@ -91,7 +91,7 @@
         <div class="col-lg-6 col-md-12 mb-4">
           <div class="card h-100">
             <div class="card-header d-flex justify-content-between align-items-center">
-              <h5 class="card-title mb-0">مغایرت ‌های بار در ماه های اخیر </h5>
+              <h5 class="card-title mb-0">تعداد درخواست‌کار ‌ها در ماه های اخیر </h5>
               <div class="dropdown primary-font">
                 <button class="btn p-0" type="button" id="analyticsOptions" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="bx bx-dots-vertical-rounded"></i>
@@ -106,7 +106,7 @@
               <div class="d-flex justify-content-around align-items-center flex-wrap mb-4">
                 <div class="user-analytics text-center me-2">
                   <i class="bx bx-trending-down me-1"></i>
-                  <span>سیستان و بلوچستان</span>
+                  <span>فولاد صبا</span>
                   <div class="d-flex align-items-center mt-2">
                     <div class="chart-report" data-color="success" data-series="35"></div>
                     <h3 class="mb-0">10.1%</h3>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="sessions-analytics text-center me-2">
                   <i class="bx bx-trending-up me-1"></i>
-                  <span>مرز آذربایجان</span>
+                  <span>فولاد مبارکه</span>
                   <div class="d-flex align-items-center mt-2">
                     <div class="chart-report" data-color="warning" data-series="76"></div>
                     <h3 class="mb-0">3.9%</h3>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="bounce-rate-analytics text-center">
                   <i class="bx bx-trending-up me-1"></i>
-                  <span>مرز کردستان</span>
+                  <span>فولاد هرمزگان</span>
                   <div class="d-flex align-items-center mt-2">
                     <div class="chart-report" data-color="danger" data-series="65"></div>
                     <h3 class="mb-0">32.6%</h3>

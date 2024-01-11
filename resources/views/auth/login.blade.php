@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-    <title>ورود| داشبورد مدیریت شرکت صنایع الکترونیک ایران</title>
+    <title>ورود| داشبورد مدیریت صنعتی  </title>
 
     <meta name="description" content="">
 
@@ -59,11 +59,11 @@
                     <img width="35px" height="35px" viewbox="0 0 30 30" version="1.1" src="{{ asset('/assets/img/logo/sapa.png')}}">
 
                   </span>
-                  <span class="app-brand-text demo h3 mb-0 fw-bold">صاپا</span>
+                  <span class="app-brand-text demo h3 mb-0 fw-bold">مدیر صنعت</span>
                 </a>
               </div>
               <!-- /Logo -->
-              <h5 class="mb-3 secondary-font">به داشبورد مدیریتی صاایران خوش آمدید!</h5>
+              <h5 class="mb-3 secondary-font">به داشبورد مدیریتی صنعتی خوش آمدید!</h5>
               <p class="mb-4">لطفا وارد حساب خود شوید</p>
 
               <form action="{{ route('login') }}" id="formAuthentication" class="mb-3" action="index.html" method="POST">

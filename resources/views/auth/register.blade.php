@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-    <title>ثبت نام | داشبورد مدیریت شرکت صنایع الکترونیک ایران</title>
+    <title>ثبت نام| داشبورد مدیریت صنعتی  </title>
 
     <meta name="description" content="">
 
@@ -58,7 +58,7 @@
                     <img width="35px" height="35px" viewbox="0 0 30 30" version="1.1" src="{{ asset('/assets/img/logo/sapa.png')}}">
 
                   </span>
-                  <span class="app-brand-text demo h3 mb-0 fw-bold">صاپا</span>
+                  <span class="app-brand-text demo h3 mb-0 fw-bold">مدیرصنعت</span>
                 </a>
               </div>
               <!-- /Logo -->

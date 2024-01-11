@@ -76,6 +76,64 @@
           </li>
         </ul>
       </li>
+      <li class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bxs-report"></i>
+          <div>درخواست‌کار</div>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
+            <a href="{{ route('reports.list_scan_period') }}" class="menu-link ">
+              <div >صدور درخواست‌کار </div>
+            </a>
+          </li>
+          {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
+            <a href="{{ route('reports.testtable') }}" class="menu-link">
+              <div >تست جدول</div>
+            </a>
+          </li> --}}
+           <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}" >
+            <a href="{{ route('reports.listContradictions.listcontradictions')}}" class="menu-link">
+              <div >لیست درخواست‌کار</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div >ویرایش درخواست‌کار</div>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+      <li class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bxs-report"></i>
+          <div>شرکت و کارگاه</div>
+        </a>
+        <ul class="menu-sub">
+          <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
+            <a href="{{ route('reports.list_scan_period') }}" class="menu-link ">
+              <div >اضافه کردن شرکت جدید</div>
+            </a>
+          </li>
+          {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
+            <a href="{{ route('reports.testtable') }}" class="menu-link">
+              <div >تست جدول</div>
+            </a>
+          </li> --}}
+           <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}" >
+            <a href="{{ route('reports.listContradictions.listcontradictions')}}" class="menu-link">
+              <div >لیست شرکت‌ها</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div >ویرایش شرکت ها</div>
+            </a>
+          </li>
+
+        </ul>
+      </li>
       <li class="menu-item">
         <a href="#" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-universal-access"></i>
@@ -124,6 +182,60 @@
 
         </ul>
       </li>
+      <li class="menu-item">
+        <a href="#" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-group"></i>
+          <div >تجهیز</div>
+        </a>
+        <ul class="menu-sub">
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                  <div >لیست رانندگان</div>
+                </a>
+              </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div >اضافه کردن رانندگان</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div >ویرایش کردن اطلاعات رانندگان</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div >بارکدخوان</div>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+      <li class="menu-item">
+        <a href="#" class="menu-link menu-toggle">
+          <i class="menu-icon tf-icons bx bx-group"></i>
+          <div >مشتری</div>
+        </a>
+        <ul class="menu-sub">
+            <li class="menu-item">
+                <a href="#" class="menu-link">
+                  <div >لیست مشتری</div>
+                </a>
+              </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div >اضافه کردن مشتری</div>
+            </a>
+          </li>
+          <li class="menu-item">
+            <a href="#" class="menu-link">
+              <div >ویرایش کردن اطلاعات مشتری</div>
+            </a>
+          </li>
+
+
+        </ul>
+      </li>
       <li class="menu-item" >
         <a href="#" class="menu-link">
           <i class="menu-icon tf-icons bx bx-cog"></i>
@@ -140,12 +252,6 @@
         <a href="#" class="menu-link">
           <i class="menu-icon tf-icons bx bx-cog"></i>
           <div >امنیت و سطوح دسترسی</div>
-        </a>
-      </li>
-      <li class="menu-item" >
-        <a href="#" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-cog"></i>
-          <div >کاربران</div>
         </a>
       </li>
       <li class="menu-item" >
