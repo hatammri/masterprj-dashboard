@@ -10,6 +10,9 @@ use App\Http\Controllers\Admin\CompanyController;
 Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::prefix('company')->name('company.')->group(function () {
         Route::get('/create', [CompanyController::class, 'create'])->name('create');
+        Route::post('/store',[CompanyController::class,'store'])->name('store');
+        Route::get('/index',[CompanyController::class,'index'])->name('index');
+        Route::get('/datatable',[CompanyController::class,'datatable'])->name('datatable');
 
     });
 

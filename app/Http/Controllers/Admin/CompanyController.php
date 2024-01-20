@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Company;
 
 class CompanyController extends Controller
 {
@@ -12,7 +13,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        return view('company.index');
     }
 
     /**
@@ -21,7 +22,6 @@ class CompanyController extends Controller
     public function create()
     {
         return view('company.create');
-
     }
 
     /**
@@ -29,7 +29,28 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'company_name' => 'required',
+            'email' => 'required',
+            'phonenumber' => 'required',
+            'description' => 'required',
+            'address' => 'required',
+            'state' => 'required',
+            'city' => 'required'
+        ]);
+
+        Company::create([
+            'company_name' => $request->company_name,
+            'email' => $request->email,
+            'phonenumber' => $request->phonenumber,
+            'description' => $request->description,
+            'address' => $request->address,
+            'state' => $request->state,
+            'city' => $request->city,
+        ]);
+
+        alert()->success('شرکت مورد نظر ایجاد شد', 'باتشکر');
+        // return redirect()->route('company.');
     }
 
     /**
@@ -37,7 +58,6 @@ class CompanyController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -62,5 +82,16 @@ class CompanyController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function datatable()
+    {
+        $data_companies = Company::paginate();
+        $code = 200;
+        return response()->json(
+            $data_companies,
+            $code,
+            ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
+            JSON_UNESCAPED_UNICODE
+        );
     }
 }

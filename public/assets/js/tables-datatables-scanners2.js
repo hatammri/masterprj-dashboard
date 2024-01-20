@@ -202,16 +202,22 @@ $(function () {
             }
         });
 
+
+
         var dt_filter = dt_filter_table.DataTable({
-            ajax: assetsPath + "json/database/scaners.json",
+            ajax: {
+                url: "http://localhost:8000/company/datatable",
+                type: 'GET',
+            },
+            //ajax:"http://localhost:8000/company/datatable",
             columns: [
-                { data: "name" },
-                { data: "Scanning_device" },
-                { data: "start_date" },
-                { data: "date" },
-                { data: "Numberـofـscans" },
-                { data: "Contradiction" },
-                { data: "status" },
+                { data: "company_name" },
+                { data: "email" },
+                { data: "phonenumber" },
+                { data: "description" },
+                { data: "address" },
+                { data: "state" },
+                { data: "city" },
                 { data: "" },
             ],
             columnDefs: [

@@ -45,16 +45,17 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ثبت شرکت جدید</h5>
-                <form class="card-body">
+                <form action="{{ route('company.store') }}" method="POST" class="card-body">
+                    @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-company">شرکت</label>
+                            <label class="form-label" for="basic-icon-default-company">نام‌شرکت</label>
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-buildings"></i></span>
-                                <input type="text" id="basic-icon-default-company" class="form-control"
-                                    placeholder="مایکروسافت" aria-label="ACME Inc."
+                                <input name="company_name" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال:فولاد‌مبارکه" aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
@@ -64,7 +65,7 @@
                                 <span class="input-group-text"><i class="bx bx-envelope"></i></span>
                                 <span id="basic-icon-default-email2" class="input-group-text"
                                     dir="ltr">@gmail.com</span>
-                                <input type="text" id="basic-icon-default-email" class="form-control text-start"
+                                <input name="email" type="text" id="basic-icon-default-email" class="form-control text-start"
                                     placeholder="john.doe" aria-label="john.doe"
                                     aria-describedby="basic-icon-default-email2" dir="ltr">
                             </div>
@@ -75,7 +76,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-phone2" class="input-group-text"><i
                                         class="bx bx-phone"></i></span>
-                                <input type="text" id="basic-icon-default-phone"
+                                <input name="phonenumber"  type="text" id="basic-icon-default-phone"
                                     class="form-control phone-mask text-start" placeholder="658 799 8941"
                                     aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" dir="ltr">
                             </div>
@@ -85,28 +86,19 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
-                                <textarea id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
+                                <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
                                     aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
                             </div>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="collapsible-address">آدرس</label>
-                            <textarea name="collapsible-address" class="form-control" id="collapsible-address" rows="2"
+                            <textarea name="address" class="form-control" id="collapsible-address" rows="2"
                                 placeholder="بلوار نیایش"></textarea>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-landmark">نشان اختصاصی</label>
-                            <input type="text" id="collapsible-landmark" class="form-control"
-                                placeholder="ساختمان بنفشه">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-city">شهر</label>
-                            <input type="text" id="collapsible-city" class="form-control"
-                                placeholder="تبریز">
-                        </div>
+
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-state">استان</label>
-                            <select id="collapsible-state" class="select2 form-select"
+                            <select name="state" id="collapsible-state" class="select2 form-select"
                                 data-allow-clear="true">
                                 <option value="">انتخاب</option>
                                 <option value="AL">آذربایجان شرقی</option>
@@ -163,7 +155,72 @@
                             </select>
                         </div>
 
-                        <label class="form-check-label">نوع آدرس</label>
+                        <div class="col-md-6">
+                            <label class="form-label" for="collapsible-state">شهر</label>
+                            <select name="city" id="collapsible-state" class="select2 form-select"
+                                data-allow-clear="true">
+                                <option value="">انتخاب</option>
+                                <option value="AL">آذربایجان شرقی</option>
+                                <option value="AK">آذربایجان غربی</option>
+                                <option value="AZ">اردبیل</option>
+                                <option value="AR">اصفهان </option>
+                                <option value="CA">البرز </option>
+                                <option value="CO">ایلام </option>
+                                <option value="CT">بوشهر </option>
+                                <option value="DE">تهران </option>
+                                <option value="DC">چهارمحال و بختیاری</option>
+                                <option value="FL">خراسان جنوبی</option>
+                                <option value="GA">خراسان رضوی</option>
+                                <option value="HI">خراسان شمالی</option>
+                                <option value="ID">خوزستان </option>
+                                <option value="IL">زنجان </option>
+                                <option value="IN">سمنان </option>
+                                <option value="IA">سیستان و بلوچستان</option>
+                                <option value="KS">فارس </option>
+                                <option value="KY">قزوین </option>
+                                <option value="LA">قم </option>
+                                <option value="ME">کردستان </option>
+                                <option value="MD">کرمان </option>
+                                <option value="MA">کرمانشاه </option>
+                                <option value="MI">کهگیلویه و بویراحمد</option>
+                                <option value="MN">گلستان </option>
+                                <option value="MS">گیلان </option>
+                                <option value="MO">لرستان</option>
+                                <option value="MT">مازندران </option>
+                                <option value="NE">مرکزی </option>
+                                <option value="NV">هرمزگان </option>
+                                <option value="NH">همدان </option>
+                                <option value="NJ">یزد</option>
+                                <option value="NM">کرج</option>
+                                <option value="NY">تبریز</option>
+                                <option value="NC">لورم ایپسوم متن</option>
+                                <option value="ND">قم</option>
+                                <option value="OH">لورم</option>
+                                <option value="OK">لورم ایپسوم</option>
+                                <option value="OR">اصفهان</option>
+                                <option value="PA">لورم ایپسوم متن</option>
+                                <option value="RI">لورم ایپسوم متن</option>
+                                <option value="SC">لورم ایپسوم متن</option>
+                                <option value="SD">لورم ایپسوم متن</option>
+                                <option value="TN">لورم ایپسوم</option>
+                                <option value="TX">تبریز</option>
+                                <option value="UT">بندرعباس</option>
+                                <option value="VT">لورم ایپسوم</option>
+                                <option value="VA">لورم ایپسوم</option>
+                                <option value="WA">رشت</option>
+                                <option value="WV">لورم ایپسوم متن</option>
+                                <option value="WI">لورم ایپسوم</option>
+                                <option value="WY">کرمان</option>
+                            </select>
+                        </div>
+
+                        {{-- <div class="col-md-6">
+                            <label class="form-label" for="collapsible-city">شهر</label>
+                            <input type="text" id="collapsible-city" class="form-control"
+                                placeholder="تبریز">
+                        </div> --}}
+
+                        {{-- <label class="form-check-label">نوع آدرس</label>
                         <div class="col mt-2">
                             <div class="form-check form-check-inline">
                                 <input name="collapsible-address-type" class="form-check-input"
@@ -179,7 +236,7 @@
                                     دفتر (تحویل بین 10 صبح - 5 عصر)
                                 </label>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="pt-4">
@@ -189,7 +246,7 @@
                 </form>
             </div>
 
-            <!-- Collapsible Section -->
+            {{-- <!-- Collapsible Section -->
             <div class="row my-4">
                 <div class="col">
                     <h6 class="secondary-font mt-4">بخش قابل جمع شدن</h6>
@@ -350,7 +407,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
 
 

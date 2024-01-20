@@ -1,0 +1,14 @@
+{
+    "data": [
+      {
+        "id": 1,
+        "company_name":"company_name",
+        "email":"email",
+        "phonenumber": "phonenumber",
+        "description": "-description-",
+        "address": "address",
+        "state":"state",
+        "city":"city"
+      }
+    ]
+}

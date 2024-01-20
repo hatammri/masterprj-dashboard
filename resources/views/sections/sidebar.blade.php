@@ -122,7 +122,7 @@
             </a>
           </li> --}}
            <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}" >
-            <a href="{{ route('reports.listContradictions.listcontradictions')}}" class="menu-link">
+            <a href="{{ route('company.index')}}" class="menu-link">
               <div >لیست شرکت‌ها</div>
             </a>
           </li>
