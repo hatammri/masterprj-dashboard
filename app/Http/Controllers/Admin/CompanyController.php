@@ -50,7 +50,7 @@ class CompanyController extends Controller
         ]);
 
         alert()->success('شرکت مورد نظر ایجاد شد', 'باتشکر');
-        // return redirect()->route('company.');
+        return redirect()->route('company.index');
     }
 
     /**
@@ -58,6 +58,7 @@ class CompanyController extends Controller
      */
     public function show(string $id)
     {
+        dd("$id");
     }
 
     /**

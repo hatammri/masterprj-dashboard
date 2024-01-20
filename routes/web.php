@@ -13,6 +13,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::post('/store',[CompanyController::class,'store'])->name('store');
         Route::get('/index',[CompanyController::class,'index'])->name('index');
         Route::get('/datatable',[CompanyController::class,'datatable'])->name('datatable');
+        Route::get('/show/{id}',[CompanyController::class,'show'])->name('show');
 
     });
 
