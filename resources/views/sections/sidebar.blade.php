@@ -126,11 +126,6 @@
               <div >لیست شرکت‌ها</div>
             </a>
           </li>
-          <li class="menu-item">
-            <a href="#" class="menu-link">
-              <div >ویرایش شرکت ها</div>
-            </a>
-          </li>
 
         </ul>
       </li>

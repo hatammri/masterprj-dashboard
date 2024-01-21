@@ -56,9 +56,10 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $data)
     {
-        dd("$id");
+      dd($data);
+
     }
 
     /**
@@ -74,7 +75,9 @@ class CompanyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $company = Company::where('id',$id)->get();
+        return view('company.update', compact('company' ));
+
     }
 
     /**
