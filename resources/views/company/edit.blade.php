@@ -38,11 +38,11 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">شرکت /</span> ثبت شرکت جدید
+                <span class="text-muted fw-light">شرکت /</span> ویرایش شرکت
             </h4>
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
-                <h5 class="card-header heading-color">ثبت شرکت جدید</h5>
+                <h5 class="card-header heading-color">ویرایش اطلاعات شرکت</h5>
                 <form action="{{ route('company.store') }}" method="POST" class="card-body">
                     @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
@@ -54,7 +54,8 @@
                                         class="bx bx-buildings"></i></span>
                                 <input name="company_name" type="text" id="basic-icon-default-company" class="form-control"
                                     placeholder="مثال:فولاد‌مبارکه" aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-company2" value="{{$company->company_name}}">
+                                    aria-describedby="basic-icon-default-company2" value="{{ $company->company_name }}">
+
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -78,6 +79,7 @@
                                         class="bx bx-phone"></i></span>
                                 <input name="phonenumber"  type="text" id="basic-icon-default-phone"
                                     class="form-control phone-mask text-start" placeholder="658 799 8941"
+                                    value="{{$company->phonenumber}}"
                                     aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" dir="ltr">
                             </div>
                         </div>
@@ -86,14 +88,16 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
-                                <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
-                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+                                <textarea name="description" id="basic-icon-default-message"  class="form-control"   placeholder="توضیحات را اینجا بنویسید"
+                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{$company->description}}</textarea>
                             </div>
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="collapsible-address">آدرس</label>
                             <textarea name="address" class="form-control" id="collapsible-address" rows="2"
-                                placeholder="بلوار نیایش"></textarea>
+                               >
+                                {{$company->address}}
+                            </textarea>
                         </div>
 
                         <div class="col-md-6">

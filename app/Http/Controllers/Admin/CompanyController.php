@@ -67,7 +67,9 @@ class CompanyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $company = Company::where('id',$id)->get()->first();;
+      //dd($company);
+        return view('company.edit', compact('company' ));
     }
 
     /**
@@ -75,8 +77,7 @@ class CompanyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $company = Company::where('id',$id)->get();
-        return view('company.update', compact('company' ));
+
 
     }
 

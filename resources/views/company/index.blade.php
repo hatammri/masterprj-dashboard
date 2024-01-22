@@ -11,12 +11,12 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">جدول‌داده /</span> دوره‌های اسکن شده
+                <span class="text-muted fw-light">جدول‌داده /</span> لیست شرکت ها
             </h4>
 
             <!-- Column Search -->
             <div class="card">
-                <h5 class="card-header heading-color">لیست دوره های اسکن شده</h5>
+                <h5 class="card-header heading-color">لیست شرکت ها</h5>
                 <div class="card-datatable text-nowrap">
                     <table class="dt-column-search table table-bordered">
 
@@ -68,5 +68,5 @@
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../../assets/js/tables-datatables-scanners2.js"></script>
+    <script src="../../assets/js/tables-datatables-company.js"></script>
 @endsection
