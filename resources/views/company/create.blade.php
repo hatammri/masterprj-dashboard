@@ -54,8 +54,8 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-buildings"></i></span>
-                                <input name="company_name" type="text" id="basic-icon-default-company" class="form-control"
-                                    placeholder="مثال:فولاد‌مبارکه" aria-label="ACME Inc."
+                                <input name="company_name" type="text" id="basic-icon-default-company"
+                                    class="form-control" placeholder="مثال:فولاد‌مبارکه" aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
@@ -65,8 +65,8 @@
                                 <span class="input-group-text"><i class="bx bx-envelope"></i></span>
                                 <span id="basic-icon-default-email2" class="input-group-text"
                                     dir="ltr">@gmail.com</span>
-                                <input name="email" type="text" id="basic-icon-default-email" class="form-control text-start"
-                                    placeholder="john.doe" aria-label="john.doe"
+                                <input name="email" type="text" id="basic-icon-default-email"
+                                    class="form-control text-start" placeholder="john.doe" aria-label="john.doe"
                                     aria-describedby="basic-icon-default-email2" dir="ltr">
                             </div>
                             <div class="form-text">می‌توانید از حروف، اعداد و نقطه استفاده کنید</div>
@@ -76,7 +76,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-phone2" class="input-group-text"><i
                                         class="bx bx-phone"></i></span>
-                                <input name="phonenumber"  type="text" id="basic-icon-default-phone"
+                                <input name="phonenumber" type="text" id="basic-icon-default-phone"
                                     class="form-control phone-mask text-start" placeholder="658 799 8941"
                                     aria-label="658 799 8941" aria-describedby="basic-icon-default-phone2" dir="ltr">
                             </div>
@@ -92,125 +92,28 @@
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="collapsible-address">آدرس</label>
-                            <textarea name="address" class="form-control" id="collapsible-address" rows="2"
-                                placeholder="بلوار نیایش"></textarea>
+                            <textarea name="address" class="form-control" id="collapsible-address" rows="2" placeholder="بلوار نیایش"></textarea>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-state">استان</label>
-                            <select name="state" id="collapsible-state" class="select2 form-select"
+                            <label class="form-label" for="collapsible-ostan">استان</label>
+                            <select name="state" id="collapsible-ostan" class="select2 form-select"
                                 data-allow-clear="true">
-                                <option value="">انتخاب</option>
-                                <option value="AL">آذربایجان شرقی</option>
-                                <option value="AK">آذربایجان غربی</option>
-                                <option value="AZ">اردبیل</option>
-                                <option value="AR">اصفهان </option>
-                                <option value="CA">البرز </option>
-                                <option value="CO">ایلام </option>
-                                <option value="CT">بوشهر </option>
-                                <option value="DE">تهران </option>
-                                <option value="DC">چهارمحال و بختیاری</option>
-                                <option value="FL">خراسان جنوبی</option>
-                                <option value="GA">خراسان رضوی</option>
-                                <option value="HI">خراسان شمالی</option>
-                                <option value="ID">خوزستان </option>
-                                <option value="IL">زنجان </option>
-                                <option value="IN">سمنان </option>
-                                <option value="IA">سیستان و بلوچستان</option>
-                                <option value="KS">فارس </option>
-                                <option value="KY">قزوین </option>
-                                <option value="LA">قم </option>
-                                <option value="ME">کردستان </option>
-                                <option value="MD">کرمان </option>
-                                <option value="MA">کرمانشاه </option>
-                                <option value="MI">کهگیلویه و بویراحمد</option>
-                                <option value="MN">گلستان </option>
-                                <option value="MS">گیلان </option>
-                                <option value="MO">لرستان</option>
-                                <option value="MT">مازندران </option>
-                                <option value="NE">مرکزی </option>
-                                <option value="NV">هرمزگان </option>
-                                <option value="NH">همدان </option>
-                                <option value="NJ">یزد</option>
-                                <option value="NM">کرج</option>
-                                <option value="NY">تبریز</option>
-                                <option value="NC">لورم ایپسوم متن</option>
-                                <option value="ND">قم</option>
-                                <option value="OH">لورم</option>
-                                <option value="OK">لورم ایپسوم</option>
-                                <option value="OR">اصفهان</option>
-                                <option value="PA">لورم ایپسوم متن</option>
-                                <option value="RI">لورم ایپسوم متن</option>
-                                <option value="SC">لورم ایپسوم متن</option>
-                                <option value="SD">لورم ایپسوم متن</option>
-                                <option value="TN">لورم ایپسوم</option>
-                                <option value="TX">تبریز</option>
-                                <option value="UT">بندرعباس</option>
-                                <option value="VT">لورم ایپسوم</option>
-                                <option value="VA">لورم ایپسوم</option>
-                                <option value="WA">رشت</option>
-                                <option value="WV">لورم ایپسوم متن</option>
-                                <option value="WI">لورم ایپسوم</option>
-                                <option value="WY">کرمان</option>
+                                @foreach ($ostan as $itemostan)
+                                    <option value="{{ $itemostan->id }}" {{ $itemostan->id == 4 ? 'selected' : '' }}>
+                                        {{ $itemostan->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-state">شهر</label>
-                            <select name="city" id="collapsible-state" class="select2 form-select"
+                            <label class="form-label" for="collapsible-shahrestan">شهرستان</label>
+                            <select name="city" id="collapsible-shahrestan" class="select2 form-select"
                                 data-allow-clear="true">
-                                <option value="">انتخاب</option>
-                                <option value="AL">آذربایجان شرقی</option>
-                                <option value="AK">آذربایجان غربی</option>
-                                <option value="AZ">اردبیل</option>
-                                <option value="AR">اصفهان </option>
-                                <option value="CA">البرز </option>
-                                <option value="CO">ایلام </option>
-                                <option value="CT">بوشهر </option>
-                                <option value="DE">تهران </option>
-                                <option value="DC">چهارمحال و بختیاری</option>
-                                <option value="FL">خراسان جنوبی</option>
-                                <option value="GA">خراسان رضوی</option>
-                                <option value="HI">خراسان شمالی</option>
-                                <option value="ID">خوزستان </option>
-                                <option value="IL">زنجان </option>
-                                <option value="IN">سمنان </option>
-                                <option value="IA">سیستان و بلوچستان</option>
-                                <option value="KS">فارس </option>
-                                <option value="KY">قزوین </option>
-                                <option value="LA">قم </option>
-                                <option value="ME">کردستان </option>
-                                <option value="MD">کرمان </option>
-                                <option value="MA">کرمانشاه </option>
-                                <option value="MI">کهگیلویه و بویراحمد</option>
-                                <option value="MN">گلستان </option>
-                                <option value="MS">گیلان </option>
-                                <option value="MO">لرستان</option>
-                                <option value="MT">مازندران </option>
-                                <option value="NE">مرکزی </option>
-                                <option value="NV">هرمزگان </option>
-                                <option value="NH">همدان </option>
-                                <option value="NJ">یزد</option>
-                                <option value="NM">کرج</option>
-                                <option value="NY">تبریز</option>
-                                <option value="NC">لورم ایپسوم متن</option>
-                                <option value="ND">قم</option>
-                                <option value="OH">لورم</option>
-                                <option value="OK">لورم ایپسوم</option>
-                                <option value="OR">اصفهان</option>
-                                <option value="PA">لورم ایپسوم متن</option>
-                                <option value="RI">لورم ایپسوم متن</option>
-                                <option value="SC">لورم ایپسوم متن</option>
-                                <option value="SD">لورم ایپسوم متن</option>
-                                <option value="TN">لورم ایپسوم</option>
-                                <option value="TX">تبریز</option>
-                                <option value="UT">بندرعباس</option>
-                                <option value="VT">لورم ایپسوم</option>
-                                <option value="VA">لورم ایپسوم</option>
-                                <option value="WA">رشت</option>
-                                <option value="WV">لورم ایپسوم متن</option>
-                                <option value="WI">لورم ایپسوم</option>
-                                <option value="WY">کرمان</option>
+                                @foreach ($shahrestan as $shahrestanitem)
+                                    <option value="{{ $shahrestanitem->id }}" selected>{{ $shahrestanitem->name }}</option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -449,4 +352,50 @@
 
     <!-- Page JS -->
     <script src="../../assets/js/form-layouts.js"></script>
+
+    <script>
+        $('#collapsible-ostan').on('select', function() {
+            let ostanSelected = $(this).val();
+            let shahrestan = @json($shahrestan);
+            console.log(shahrestan);
+            let shahrestanForFilter = [];
+            shahrestan.map((shahrestan) => {
+                $.each(ostanSelected, function(i, element) {
+                    if (shahrestan.ostan == element) {
+                        collapsible - shahrestan.push(shahrestan);
+                    }
+                });
+            });
+
+            $("#collapsible-shahrestan").find("option").remove();
+
+            collapsible - shahrestan.forEach((element) => {
+                let attributeFilterOption = $("<option/>", {
+                    value: element.id,
+                    text: element.name
+                });
+
+                let variationOption = $("<option/>", {
+                    value: element.id,
+                    text: element.name
+                });
+
+                $("#collapsible-shahrestan").append(attributeFilterOption);
+                $("#collapsible-shahrestan").selectpicker('refresh');
+
+                // $("#variationSelect").append(variationOption);
+                // $("#variationSelect").selectpicker('refresh');
+            });
+
+
+        });
+
+        // $("#attributeIsFilterSelect").selectpicker({
+        //     'title': 'انتخاب ویژگی'
+        // });
+
+        // $("#variationSelect").selectpicker({
+        //     'title': 'انتخاب متغیر'
+        // });
+    </script>
 @endsection

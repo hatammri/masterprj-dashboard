@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Company;
+use App\Models\Ostan;
+use App\Models\Shahrestan;
 
 class CompanyController extends Controller
 {
@@ -21,7 +23,10 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        return view('company.create');
+        $ostan = Ostan::all();
+        $shahrestan = Shahrestan::all();
+
+        return view('company.create', compact('ostan','shahrestan'));
     }
 
     /**
@@ -67,8 +72,8 @@ class CompanyController extends Controller
      */
     public function edit(string $id)
     {
-        $company = Company::where('id',$id)->get()->first();;
-      //dd($company);
+        $company = Company::where('id',$id)->get()->first();
+
         return view('company.edit', compact('company' ));
     }
 

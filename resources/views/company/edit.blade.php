@@ -94,10 +94,8 @@
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="collapsible-address">آدرس</label>
-                            <textarea name="address" class="form-control" id="collapsible-address" rows="2"
-                               >
-                                {{$company->address}}
-                            </textarea>
+                            <textarea name="description" id="basic-icon-default-message"  class="form-control"   placeholder="توضیحات را اینجا بنویسید"
+                            aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{$company->address}}</textarea>
                         </div>
 
                         <div class="col-md-6">
