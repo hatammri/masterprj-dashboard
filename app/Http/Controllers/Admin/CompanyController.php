@@ -104,4 +104,10 @@ class CompanyController extends Controller
             JSON_UNESCAPED_UNICODE
         );
     }
+
+    public function getShahrestanList(Request $request)
+    {
+        $shahrestan=Shahrestan::where('ostan',$request->ostan)->get();
+        return $shahrestan;
+    }
 }

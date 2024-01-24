@@ -84,6 +84,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     })->name('accesslevel.appuserview');
 });
 Route::get('company/datatable',[CompanyController::class,'datatable'])->name('company.datatable');
+Route::get('/getListShahrestan',[CompanyController::class,'getShahrestanList'])->name('getListShahrestan');
 
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 Route::post('/resend_otp', [AuthController::class, 'resendOtp'])->middleware('guest')->name('resendOtp');

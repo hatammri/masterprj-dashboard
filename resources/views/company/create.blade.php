@@ -111,9 +111,6 @@
                             <label class="form-label" for="collapsible-shahrestan">شهرستان</label>
                             <select name="city" id="collapsible-shahrestan" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($shahrestan as $shahrestanitem)
-                                    <option value="{{ $shahrestanitem->id }}" selected>{{ $shahrestanitem->name }}</option>
-                                @endforeach
                             </select>
                         </div>
 
@@ -354,48 +351,40 @@
     <script src="../../assets/js/form-layouts.js"></script>
 
     <script>
-        $('#collapsible-ostan').on('select', function() {
-            let ostanSelected = $(this).val();
-            let shahrestan = @json($shahrestan);
-            console.log(shahrestan);
-            let shahrestanForFilter = [];
-            shahrestan.map((shahrestan) => {
-                $.each(ostanSelected, function(i, element) {
-                    if (shahrestan.ostan == element) {
-                        collapsible - shahrestan.push(shahrestan);
+        console.log('script');
+
+        $('#collapsible-ostan').change(function() {
+            console.log('change');
+            let ostanSelectedid = $(this).val();
+            console.log(ostanSelectedid);
+
+            if (ostanSelectedid) {
+                $.ajax({
+                    type: "Get",
+                    url: "{{ url('/getListShahrestan') }}?ostan=" + ostanSelectedid,
+                    success: function(res) {
+                        if (res) {
+                            $('#collapsible-shahrestan').empty();
+                            console.log(res);
+                            $.each(res, function(key, shahrestan) {
+                                console.log(key, shahrestan);
+                                console.log("*******");
+
+                                $("#collapsible-shahrestan").append('<option value="' +
+                                    shahrestan.id + '">' + shahrestan.name + '</option>');
+
+                            });
+                        }
+                        else{
+                            $('#collapsible-shahrestan').empty();
+                        }
                     }
-                });
-            });
+                })
 
-            $("#collapsible-shahrestan").find("option").remove();
-
-            collapsible - shahrestan.forEach((element) => {
-                let attributeFilterOption = $("<option/>", {
-                    value: element.id,
-                    text: element.name
-                });
-
-                let variationOption = $("<option/>", {
-                    value: element.id,
-                    text: element.name
-                });
-
-                $("#collapsible-shahrestan").append(attributeFilterOption);
-                $("#collapsible-shahrestan").selectpicker('refresh');
-
-                // $("#variationSelect").append(variationOption);
-                // $("#variationSelect").selectpicker('refresh');
-            });
-
+            } else {
+                $('#collapsible-shahrestan').empty();
+            }
 
         });
-
-        // $("#attributeIsFilterSelect").selectpicker({
-        //     'title': 'انتخاب ویژگی'
-        // });
-
-        // $("#variationSelect").selectpicker({
-        //     'title': 'انتخاب متغیر'
-        // });
     </script>
 @endsection
