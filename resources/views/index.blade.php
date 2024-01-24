@@ -43,6 +43,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <!-- Layout wrapper -->
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Ostan;
 use App\Models\Shahrestan;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CompanyController extends Controller
 {
@@ -26,7 +27,7 @@ class CompanyController extends Controller
         $ostan = Ostan::all();
         $shahrestan = Shahrestan::all();
 
-        return view('company.create', compact('ostan','shahrestan'));
+        return view('company.create', compact('ostan', 'shahrestan'));
     }
 
     /**
@@ -38,24 +39,37 @@ class CompanyController extends Controller
             'company_name' => 'required',
             'email' => 'required',
             'phonenumber' => 'required',
-            'description' => 'required',
             'address' => 'required',
             'state' => 'required',
             'city' => 'required'
+        ],$messages = [
+            'company_name.required' => 'نام شرکت نباید خالی باشد',
+            'email.required' => 'ایمیل نباید خالی باشد',
+            'phonenumber.required' => 'شماره همراه نباید خالی باشد',
+            'address' => 'آدرس نباید خالی باشد',
+            'state' =>  'استان نباید خالی باشد',
+            'city' =>  'شهرستان نباید خالی باشد',
+
         ]);
 
-        Company::create([
-            'company_name' => $request->company_name,
-            'email' => $request->email,
-            'phonenumber' => $request->phonenumber,
-            'description' => $request->description,
-            'address' => $request->address,
-            'state' => $request->state,
-            'city' => $request->city,
-        ]);
+        try {
+            Company::create([
+                'company_name' => $request->company_name,
+                'email' => $request->email,
+                'phonenumber' => $request->phonenumber,
+                'description' => $request->description,
+                'address' => $request->address,
+                'state' => $request->state,
+                'city' => $request->city,
+            ]);
+            Alert::success('شرکت مورد نظر ایجاد شد', 'باتشکر');
+            return redirect()->route('company.index');
+        } catch (Exception $exception) {
+            Alert::error('امکان اطلاعات', 'خطا');
 
-        alert()->success('شرکت مورد نظر ایجاد شد', 'باتشکر');
-        return redirect()->route('company.index');
+           // return back()->withInput()
+             //   ->withErrors(['unexpected_error' => trans('assets.unexpected_error')]);
+        }
     }
 
     /**
@@ -63,8 +77,7 @@ class CompanyController extends Controller
      */
     public function show(string $data)
     {
-      dd($data);
-
+        dd($data);
     }
 
     /**
@@ -72,9 +85,8 @@ class CompanyController extends Controller
      */
     public function edit(string $id)
     {
-        $company = Company::where('id',$id)->get()->first();
-
-        return view('company.edit', compact('company' ));
+        $company = Company::where('id', $id)->get()->first();
+        return view('company.edit', compact('company'));
     }
 
     /**
@@ -82,8 +94,6 @@ class CompanyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
-
     }
 
     /**
@@ -107,7 +117,7 @@ class CompanyController extends Controller
 
     public function getShahrestanList(Request $request)
     {
-        $shahrestan=Shahrestan::where('ostan',$request->ostan)->get();
+        $shahrestan = Shahrestan::where('ostan', $request->ostan)->get();
         return $shahrestan;
     }
 }

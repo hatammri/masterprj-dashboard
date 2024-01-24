@@ -59,6 +59,7 @@
                                     aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <label class="form-label" for="basic-icon-default-email">ایمیل</label>
                             <div class="input-group input-group-merge">
@@ -111,6 +112,11 @@
                             <label class="form-label" for="collapsible-shahrestan">شهرستان</label>
                             <select name="city" id="collapsible-shahrestan" class="select2 form-select"
                                 data-allow-clear="true">
+                                @foreach ($shahrestan as $itemshahrestan)
+                                    <option value="{{ $itemshahrestan->id }}" {{ $itemshahrestan->id == 37 ? 'selected' : '' }}>
+                                        {{ $itemshahrestan->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -145,6 +151,8 @@
                     </div>
                 </form>
             </div>
+
+
 
             {{-- <!-- Collapsible Section -->
             <div class="row my-4">
@@ -356,7 +364,6 @@
         $('#collapsible-ostan').change(function() {
             console.log('change');
             let ostanSelectedid = $(this).val();
-            console.log(ostanSelectedid);
 
             if (ostanSelectedid) {
                 $.ajax({
@@ -365,17 +372,13 @@
                     success: function(res) {
                         if (res) {
                             $('#collapsible-shahrestan').empty();
-                            console.log(res);
                             $.each(res, function(key, shahrestan) {
-                                console.log(key, shahrestan);
-                                console.log("*******");
 
                                 $("#collapsible-shahrestan").append('<option value="' +
                                     shahrestan.id + '">' + shahrestan.name + '</option>');
 
                             });
-                        }
-                        else{
+                        } else {
                             $('#collapsible-shahrestan').empty();
                         }
                     }
