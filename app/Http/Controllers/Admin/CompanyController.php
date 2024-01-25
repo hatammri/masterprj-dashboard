@@ -42,7 +42,7 @@ class CompanyController extends Controller
             'address' => 'required',
             'state' => 'required',
             'city' => 'required'
-        ],$messages = [
+        ], $messages = [
             'company_name.required' => 'نام شرکت نباید خالی باشد',
             'email.required' => 'ایمیل نباید خالی باشد',
             'phonenumber.required' => 'شماره همراه نباید خالی باشد',
@@ -51,8 +51,9 @@ class CompanyController extends Controller
             'city' =>  'شهرستان نباید خالی باشد',
 
         ]);
-
         try {
+            // Your query here
+
             Company::create([
                 'company_name' => $request->company_name,
                 'email' => $request->email,
@@ -64,11 +65,17 @@ class CompanyController extends Controller
             ]);
             Alert::success('شرکت مورد نظر ایجاد شد', 'باتشکر');
             return redirect()->route('company.index');
-        } catch (Exception $exception) {
-            Alert::error('امکان اطلاعات', 'خطا');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // You need to handle the error here.
+            // Either send the user back to the screen or redirect them somewhere else
+            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            return back();
 
-           // return back()->withInput()
-             //   ->withErrors(['unexpected_error' => trans('assets.unexpected_error')]);
+            // Just some example
+            //dd($e->getMessage(), $e->errorInfo);
+        } catch (\Exception $e) {
+            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            return back();
         }
     }
 
