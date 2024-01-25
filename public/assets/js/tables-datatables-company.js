@@ -202,12 +202,10 @@ $(function () {
             }
         });
 
-
-
         var dt_filter = dt_filter_table.DataTable({
             ajax: {
                 url: "http://localhost:8000/company/datatable",
-                type: 'GET',
+                type: "GET",
             }, //ajax:"http://localhost:8000/company/datatable",
             columns: [
                 { data: "company_name" },
@@ -264,22 +262,44 @@ $(function () {
                         // console.log(meta);
                         console.log(full.id);
 
-
                         return (
                             '<div class="d-inline-block">' +
                             '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></a>' +
                             '<div class="dropdown-menu dropdown-menu-end m-0">' +
-                            '<a href="/company/edit/'+full.id+'"'+'class="dropdown-item">ویرایش اطلاعات شرکت</a>' +
+                            '<a href="/company/edit/' +
+                            full.id +
+                            '"' +
+                            'class="dropdown-item">ویرایش اطلاعات شرکت</a>' +
                             "</div>" +
                             "</div>" +
-                            '<a  href="/company/edit/'+full.id+'"'+'class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>'
+                            '<a  href="/company/edit/' +
+                            full.id +
+                            '"' +
+                            'class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>'
                         );
-
                     },
                 },
             ],
             orderCellsTop: true,
-            dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+            dom:
+                '<"row mx-2"' +
+                '<"col-12 col-md-6 d-flex align-items-center justify-content-center justify-content-md-start gap-3"l<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start mt-md-0 mt-3"B>>' +
+                '<"col-12 col-md-6 d-flex  justify-content-center justify-content-md-end"f><"invoice_status mb-3 mb-md-0">>' +
+                '<"table-responsive"t>' +
+                '<"row mx-2"' +
+                '<"col-sm-12 col-md-6"i>' +
+                '<"col-sm-12 col-md-6"p>' +
+                ">",
+
+            buttons: [
+                {
+                    text: '<i class="bx bx-plus me-md-2"></i><span class="d-md-inline-block d-none">ایجاد شرکت</span>',
+                    className: "btn btn-primary",
+                    action: function (e, dt, button, config) {
+                        window.location = "app-invoice-add.html";
+                    },
+                },
+            ],
         });
     }
 
