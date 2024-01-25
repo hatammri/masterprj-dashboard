@@ -105,102 +105,6 @@ $(function () {
     // --------------------------------------------------------------------
 
     if (dt_filter_table.length) {
-        // Setup - add a text input to each footer cell
-        $(".dt-column-search thead tr")
-            .clone(true)
-            .appendTo(".dt-column-search thead");
-        $(".dt-column-search thead tr:eq(1) th").each(function (i) {
-            if (i != 7) {
-                if (i == 0) {
-                    var title = $(this).text();
-                    $(this).html(
-                        '<select type="text" class="select2 selecttable form-select dt-input dt-name"><option value="">همه موارد</option><option value="میرجاوه">میرجاوه</option><option value="جلفا">جلفا</option><option value="لطف آباد">لطف آباد</option><option value="بازرگان">بازرگان</option><option value="پرویزخان">پرویزخان</option></select>'
-                    );
-
-                    $("select", this).on("keyup change", function () {
-                        if (dt_filter.column(i).search() !== this.value) {
-                            dt_filter.column(i).search(this.value).draw();
-                        }
-                    });
-                }
-                if (i == 1) {
-                    var title = $(this).text();
-                    $(this).html(
-                        '<select type="text" selecttable class="select2 selecttable form-select dt-input dt-Scanning_device"><option value="">همه موارد</option><option value="صاپا1">صاپا1</option><option value="صاپا2">صاپا2</option><option value="ناک تک1 ">ناک تک1 </option><option value="ناک تک2">ناک تک2</option><option value="ناک تک3">ناک تک3</option></select>'
-                    );
-
-                    $("select", this).on("keyup change", function () {
-                        if (dt_filter.column(i).search() !== this.value) {
-                            dt_filter.column(i).search(this.value).draw();
-                        }
-                    });
-                }
-                if (i == 2) {
-                    var title = $(this).text();
-                    $(this).html(
-                        '<div class="mb-0"><input  type="text" class="form-control selecttable dt-date flatpickr-range dt-input" data-column="5" placeholder="تاریخ شروع تا پایان" data-column-index="4" name="dt_date"><input type="hidden" class="form-control dt-date start_date dt-input" data-column="5" data-column-index="4" name="value_from_start_date"><input type="hidden" class="form-control dt-date end_date dt-input" name="value_from_end_date" ></div>'
-                    );
-
-                    $("input", this).on("keyup change", function () {
-                        if (dt_filter.column(i).search() !== this.value) {
-                            dt_filter.column(i).search(this.value).draw();
-                        }
-                    });
-                }
-                if (i == 3) {
-                    var title = $(this).text();
-                    $(this).html(
-                        '<div class="mb-0"><input  type="text" class="form-control selecttable  dt-date flatpickr-range dt-input" data-column="5" placeholder="تاریخ شروع تا پایان" data-column-index="4" name="dt_date"><input type="hidden" class="form-control dt-date start_date dt-input" data-column="5" data-column-index="4" name="value_from_start_date"><input type="hidden" class="form-control dt-date end_date dt-input" name="value_from_end_date" ></div>'
-                    );
-
-                    $("input", this).on("keyup change", function () {
-                        if (dt_filter.column(i).search() !== this.value) {
-                            dt_filter.column(i).search(this.value).draw();
-                        }
-                    });
-                }
-                if (i == 4) {
-                    var title = $(this).text();
-                    $(this).html(
-                        '<input type="text" class="form-control selecttable" placeholder="تعداد ' +
-                            title +
-                            '" />'
-                    );
-
-                    $("input", this).on("keyup change", function () {
-                        if (dt_filter.column(i).search() !== this.value) {
-                            dt_filter.column(i).search(this.value).draw();
-                        }
-                    });
-                }
-                if (i == 5) {
-                    var title = $(this).text();
-                    $(this).html(
-                        '<input type="text" class="form-control selecttable" placeholder="تعداد ' +
-                            title +
-                            '" />'
-                    );
-
-                    $("input", this).on("keyup change", function () {
-                        if (dt_filter.column(i).search() !== this.value) {
-                            dt_filter.column(i).search(this.value).draw();
-                        }
-                    });
-                }
-                if (i == 6) {
-                    var title = $(this).text();
-                    $(this).html(
-                        '<select type="text" class="select2 selecttable form-select dt-input dt-Scanning_device">option value="">همه موارد</option><option value="فعال">فعال</option><option value="غیرفعال">غیرفعال</option><option value="خراب">خراب</option><option value="درحال‌تعمیر">درحال تعمیر</option><option value="نامشخص">نامشخص</option></select>'
-                    );
-
-                    $("select", this).on("keyup change", function () {
-                        if (dt_filter.column(i).search() !== this.value) {
-                            dt_filter.column(i).search(this.value).draw();
-                        }
-                    });
-                }
-            }
-        });
 
         var dt_filter = dt_filter_table.DataTable({
             ajax: {
@@ -296,7 +200,7 @@ $(function () {
                     text: '<i class="bx bx-plus me-md-2"></i><span class="d-md-inline-block d-none">ایجاد شرکت</span>',
                     className: "btn btn-primary",
                     action: function (e, dt, button, config) {
-                        window.location = "app-invoice-add.html";
+                        window.location = "create";
                     },
                 },
             ],

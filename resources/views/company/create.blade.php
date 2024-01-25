@@ -113,7 +113,8 @@
                             <select name="city" id="collapsible-shahrestan" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($shahrestan as $itemshahrestan)
-                                    <option value="{{ $itemshahrestan->id }}" {{ $itemshahrestan->id == 37 ? 'selected' : '' }}>
+                                    <option value="{{ $itemshahrestan->id }}"
+                                        {{ $itemshahrestan->id == 37 ? 'selected' : '' }}>
                                         {{ $itemshahrestan->name }}
                                     </option>
                                 @endforeach

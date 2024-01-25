@@ -53,15 +53,16 @@ class CompanyController extends Controller
         ]);
         try {
             // Your query here
-
+            $ostan_name = Ostan::where('id',$request->state)->value('name');
+            $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
             Company::create([
                 'company_name' => $request->company_name,
                 'email' => $request->email,
                 'phonenumber' => $request->phonenumber,
                 'description' => $request->description,
                 'address' => $request->address,
-                'state' => $request->state,
-                'city' => $request->city,
+                'state' => $ostan_name,
+                'city' => $Shahrestan_name,
             ]);
             Alert::success('شرکت مورد نظر ایجاد شد', 'باتشکر');
             return redirect()->route('company.index');
@@ -75,7 +76,7 @@ class CompanyController extends Controller
             //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
             Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
-            return back();
+            return redirect()->back();
         }
     }
 
