@@ -53,7 +53,7 @@ class CompanyController extends Controller
         ]);
         try {
             // Your query here
-            $ostan_name = Ostan::where('id',$request->state)->value('name');
+            $ostan_name = Ostan::where('id', $request->state)->value('name');
             $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
             Company::create([
                 'company_name' => $request->company_name,
@@ -94,14 +94,59 @@ class CompanyController extends Controller
     public function edit(string $id)
     {
         $company = Company::where('id', $id)->get()->first();
-        return view('company.edit', compact('company'));
+        $ostan_select = Ostan::where('name', $company->state)->get()->first();
+        $shahrestan_select = shahrestan::where('name', $company->city)->get()->first();
+        $ostan = Ostan::all();
+        $shahrestan = Shahrestan::all();
+        return view('company.edit', compact('company', 'ostan_select', 'shahrestan_select', 'ostan', 'shahrestan'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
+    public function update(Request $request, Company $company)
+    {//dd($request,$company);
+        $request->validate([
+            'company_name' => 'required',
+            'email' => 'required',
+            'phonenumber' => 'required',
+            'address' => 'required',
+            'state' => 'required',
+            'city' => 'required'
+        ], $messages = [
+            'company_name.required' => 'نام شرکت نباید خالی باشد',
+            'email.required' => 'ایمیل نباید خالی باشد',
+            'phonenumber.required' => 'شماره همراه نباید خالی باشد',
+            'address' => 'آدرس نباید خالی باشد',
+            'state' =>  'استان نباید خالی باشد',
+            'city' =>  'شهرستان نباید خالی باشد',
+
+        ]);
+       // try {
+        $ostan_name = Ostan::where('id', $request->state)->value('name');
+        $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
+            $company->update([
+                'company_name' => $request->company_name,
+                'email' => $request->email,
+                'phonenumber' => $request->phonenumber,
+                'address' => $request->address,
+                'state' => $ostan_name,
+                'city' => $Shahrestan_name,
+            ]);
+            Alert::success('شرکت مورد نظر ویرایش شد', 'باتشکر');
+            return redirect()->route('company.index');
+        // } catch (\Illuminate\Database\QueryException $e) {
+        //     // You need to handle the error here.
+        //     // Either send the user back to the screen or redirect them somewhere else
+        //     Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+        //     return back();
+
+        //     // Just some example
+        //     //dd($e->getMessage(), $e->errorInfo);
+        // } catch (\Exception $e) {
+        //     Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+        //     return redirect()->back();
+        // }
     }
 
     /**

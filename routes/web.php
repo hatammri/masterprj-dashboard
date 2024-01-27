@@ -12,9 +12,9 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/create', [CompanyController::class, 'create'])->name('create');
         Route::post('/store',[CompanyController::class,'store'])->name('store');
         Route::get('/index',[CompanyController::class,'index'])->name('index');
-      //  Route::get('/datatable',[CompanyController::class,'datatable'])->name('datatable');
         Route::get('/edit/{id}',[CompanyController::class,'edit'])->name('edit');
         Route::get('/show/{data}',[CompanyController::class,'show'])->name('show');
+        Route::put('/update/{company}',[CompanyController::class,'update'])->name('update');
 
     });
     Route::get('', function () {
