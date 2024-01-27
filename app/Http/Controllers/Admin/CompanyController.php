@@ -105,7 +105,7 @@ class CompanyController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Company $company)
-    {//dd($request,$company);
+    { //dd($request,$company);
         $request->validate([
             'company_name' => 'required',
             'email' => 'required',
@@ -122,9 +122,9 @@ class CompanyController extends Controller
             'city' =>  'شهرستان نباید خالی باشد',
 
         ]);
-       // try {
-        $ostan_name = Ostan::where('id', $request->state)->value('name');
-        $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
+        try {
+            $ostan_name = Ostan::where('id', $request->state)->value('name');
+            $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
             $company->update([
                 'company_name' => $request->company_name,
                 'email' => $request->email,
@@ -135,18 +135,16 @@ class CompanyController extends Controller
             ]);
             Alert::success('شرکت مورد نظر ویرایش شد', 'باتشکر');
             return redirect()->route('company.index');
-        // } catch (\Illuminate\Database\QueryException $e) {
-        //     // You need to handle the error here.
-        //     // Either send the user back to the screen or redirect them somewhere else
-        //     Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
-        //     return back();
-
-        //     // Just some example
-        //     //dd($e->getMessage(), $e->errorInfo);
-        // } catch (\Exception $e) {
-        //     Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
-        //     return redirect()->back();
-        // }
+        } catch (\Illuminate\Database\QueryException $e) {
+            //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
+            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            return back();
+            //     // Just some example
+            //     //dd($e->getMessage(), $e->errorInfo);
+        } catch (\Exception $e) {
+            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            return redirect()->back();
+        }
     }
 
     /**

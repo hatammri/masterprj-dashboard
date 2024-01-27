@@ -107,7 +107,7 @@
       </li>
       <li class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
-          <i class="menu-icon tf-icons bx bxs-report"></i>
+          <i class="menu-icon tf-icons bx bxs-buildings"></i>
           <div>شرکت و کارگاه</div>
         </a>
         <ul class="menu-sub">
