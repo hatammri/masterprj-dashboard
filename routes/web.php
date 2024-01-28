@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\CustomerController;
 
 
 //require __DIR__ . '/auth.php';
@@ -15,8 +16,20 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/edit/{id}',[CompanyController::class,'edit'])->name('edit');
         Route::get('/show/{data}',[CompanyController::class,'show'])->name('show');
         Route::put('/update/{company}',[CompanyController::class,'update'])->name('update');
+        Route::get('/delete/{id}',[CompanyController::class,'delete'])->name('delete');
 
     });
+    Route::prefix('customer')->name('customer.')->group(function () {
+        Route::get('/create', [CustomerController::class, 'create'])->name('create');
+        Route::post('/store',[CustomerController::class,'store'])->name('store');
+        Route::get('/index',[CustomerController::class,'index'])->name('index');
+        Route::get('/edit/{id}',[CustomerController::class,'edit'])->name('edit');
+        Route::get('/show/{data}',[CustomerController::class,'show'])->name('show');
+        Route::put('/update/{customer}',[CustomerController::class,'update'])->name('update');
+
+    });
+
+
     Route::get('', function () {
         return view('dashboard.index');
     })->name('dashboard');
