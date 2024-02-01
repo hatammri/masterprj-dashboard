@@ -25,6 +25,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/create', [CustomerController::class, 'create'])->name('create');
         Route::post('/store', [CustomerController::class, 'store'])->name('store');
         Route::get('/index', [CustomerController::class, 'index'])->name('index');
+        Route::get('/datatable',[CustomerController::class,'datatable'])->name('datatable');
         Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [CustomerController::class, 'show'])->name('show');
         Route::put('/update/{customer}', [CustomerController::class, 'update'])->name('update');

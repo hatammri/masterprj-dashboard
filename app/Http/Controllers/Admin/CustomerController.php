@@ -38,14 +38,14 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'customer_name' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'phonenumber' => 'required',
             'description' => 'required',
             'company' => 'required',
             'rule' => 'required'
         ], $messages = [
-            'customer_name.required' => 'نام مشتری نباید خالی باشد',
+            'name.required' => 'نام مشتری نباید خالی باشد',
             'email.required' => 'ایمیل نباید خالی باشد',
             'phonenumber.required' => 'شماره همراه نباید خالی باشد',
             'description.required' => 'توضیحات نباید خالی باشد',
@@ -54,7 +54,7 @@ class CustomerController extends Controller
         ]);
       //  try {
             Customer::create([
-                'customer_name' => $request->customer_name,
+                'name' => $request->name,
                 'email' => $request->email,
                 'phonenumber' => $request->phonenumber,
                 'description' => $request->description,
@@ -104,14 +104,14 @@ class CustomerController extends Controller
     public function update(Request $request, Customer $customer)
     { //dd($request,$customer);
         $request->validate([
-            'customer_name' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'phonenumber' => 'required',
             'address' => 'required',
             'state' => 'required',
             'city' => 'required'
         ], $messages = [
-            'customer_name.required' => 'نام مشتری نباید خالی باشد',
+            'name.required' => 'نام مشتری نباید خالی باشد',
             'email.required' => 'ایمیل نباید خالی باشد',
             'phonenumber.required' => 'شماره همراه نباید خالی باشد',
             'address' => 'آدرس نباید خالی باشد',
@@ -123,7 +123,7 @@ class CustomerController extends Controller
             $ostan_name = Ostan::where('id', $request->state)->value('name');
             $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
             $customer->update([
-                'customer_name' => $request->customer_name,
+                'name' => $request->name,
                 'email' => $request->email,
                 'phonenumber' => $request->phonenumber,
                 'address' => $request->address,
