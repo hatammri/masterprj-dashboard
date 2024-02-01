@@ -112,12 +112,12 @@
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-buildings"></i>
-                <div>شرکت و کارگاه</div>
+                <div>برندها</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
                     <a href="{{ route('company.create') }}" class="menu-link ">
-                        <div>اضافه کردن شرکت جدید</div>
+                        <div>اضافه کردن برند جدید</div>
                     </a>
                 </li>
                 {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
@@ -127,12 +127,37 @@
           </li> --}}
                 <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
                     <a href="{{ route('company.index') }}" class="menu-link">
-                        <div>لیست شرکت‌ها</div>
+                        <div>لیست برندها</div>
                     </a>
                 </li>
 
             </ul>
         </li>
+        <li
+        class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bxs-buildings"></i>
+            <div>شرکت و کارگاه</div>
+        </a>
+        <ul class="menu-sub">
+            <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
+                <a href="{{ route('company.create') }}" class="menu-link ">
+                    <div>اضافه کردن شرکت جدید</div>
+                </a>
+            </li>
+            {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
+        <a href="{{ route('reports.testtable') }}" class="menu-link">
+          <div >تست جدول</div>
+        </a>
+      </li> --}}
+            <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
+                <a href="{{ route('company.index') }}" class="menu-link">
+                    <div>لیست شرکت‌ها</div>
+                </a>
+            </li>
+
+        </ul>
+    </li>
         <li class="menu-item">
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-universal-access"></i>
@@ -182,18 +207,18 @@
             </ul>
         </li>
         <li class="menu-item">
-            <a href="#" class="menu-link menu-toggle">
+            <a href="{{ route('accesslevel.accesspermission') }}" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-group"></i>
                 <div>نقش‌ها</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('rule.index') }}" class="menu-link">
                         <div>لیست نقش‌ها</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('rule.create') }}" class="menu-link">
                         <div>اضافه کردن نقش</div>
                     </a>
                 </li>

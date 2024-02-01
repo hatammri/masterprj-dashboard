@@ -108,82 +108,76 @@ $(function () {
 
         var dt_filter = dt_filter_table.DataTable({
             ajax: {
-                url: "http://localhost:8000/company/datatable",
+                url: "http://localhost:8000/rule/datatable",
                 type: "GET",
-            }, //ajax:"http://localhost:8000/company/datatable",
+            },
             columns: [
                 { data: "name" },
-                { data: "email" },
-                { data: "phonenumber" },
-                { data: "description" },
-                { data: "address" },
-                { data: "state" },
-                { data: "city" },
                 { data: "" },
             ],
-            columnDefs: [
-                {
-                    // Label
-                    targets: -2,
-                    render: function (data, type, full, meta) {
-                        var $status_number = full["status"];
-                        var $status = {
-                            1: { title: "فعال", class: "bg-label-success" },
-                            2: {
-                                title: "غیرفعال",
-                                class: " bg-label-warning",
-                            },
-                            3: { title: "خراب", class: " bg-label-danger" },
-                            4: {
-                                title: "درحال‌تعمیر",
-                                class: " bg-label-primary",
-                            },
-                            5: {
-                                title: "نامشخص",
-                                class: " bg-label-secondary",
-                            },
-                        };
-                        if (typeof $status[$status_number] === "undefined") {
-                            return data;
-                        }
-                        return (
-                            '<span class="badge rounded-pill ' +
-                            $status[$status_number].class +
-                            '">' +
-                            $status[$status_number].title +
-                            "</span>"
-                        );
-                    },
-                },
-                {
-                    // Actions
-                    targets: -1,
-                    title: "نمایش جزئیات",
-                    orderable: false,
-                    searchable: false,
-                    render: function (data, type, full, meta) {
-                        // console.log(meta.row);
-                        // console.log(meta);
-                        console.log(full.id);
+            //  columnDefs: [
+            //     {
+            //         // Label
+            //         targets: -2,
+            //         render: function (data, type, full, meta) {
+            //             var $status_number = full["status"];
+            //             var $status = {
+            //                 1: { title: "فعال", class: "bg-label-success" },
+            //                 2: {
+            //                     title: "غیرفعال",
+            //                     class: " bg-label-warning",
+            //                 },
+            //                 3: { title: "خراب", class: " bg-label-danger" },
+            //                 4: {
+            //                     title: "درحال‌تعمیر",
+            //                     class: " bg-label-primary",
+            //                 },
+            //                 5: {
+            //                     title: "نامشخص",
+            //                     class: " bg-label-secondary",
+            //                 },
+            //             };
+            //             if (typeof $status[$status_number] === "undefined") {
+            //                 return data;
+            //             }
+            //             return (
+            //                 '<span class="badge rounded-pill ' +
+            //                 $status[$status_number].class +
+            //                 '">' +
+            //                 $status[$status_number].title +
+            //                 "</span>"
+            //             );
+            //         },
+            //     },
+            //     {
+            //         // Actions
+            //         targets: -1,
+            //         title: "نمایش جزئیات",
+            //         orderable: false,
+            //         searchable: false,
+            //         render: function (data, type, full, meta) {
+            //             // console.log(meta.row);
+            //             // console.log(meta);
+            //             console.log(full.id);
 
-                        return (
-                            '<div class="d-inline-block">' +
-                            '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></a>' +
-                            '<div class="dropdown-menu dropdown-menu-end m-0">' +
-                            '<a href="/company/edit/' +
-                            full.id +
-                            '"' +
-                            'class="dropdown-item">ویرایش اطلاعات شرکت</a>' +
-                            "</div>" +
-                            "</div>" +
-                            '<a  href="/company/edit/' +
-                            full.id +
-                            '"' +
-                            'class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>'
-                        );
-                    },
-                },
-            ],
+            //             return (
+            //                 '<div class="d-inline-block">' +
+            //                 '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></a>' +
+            //                 '<div class="dropdown-menu dropdown-menu-end m-0">' +
+            //                 '<a href="/company/edit/' +
+            //                 full.id +
+            //                 '"' +
+            //                 'class="dropdown-item">ویرایش اطلاعات شرکت</a>' +
+            //                 "</div>" +
+            //                 "</div>" +
+            //                 '<a  href="/company/edit/' +
+            //                 full.id +
+            //                 '"' +
+            //                 'class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>'
+            //             );
+            //         },
+            //     },
+            // ],
             orderCellsTop: true,
             dom:
                 '<"row mx-2"' +
@@ -197,7 +191,7 @@ $(function () {
 
             buttons: [
                 {
-                    text: '<i class="bx bx-plus me-md-2"></i><span class="d-md-inline-block d-none">ایجاد شرکت</span>',
+                    text: '<i class="bx bx-plus me-md-2"></i><span class="d-md-inline-block d-none">ایجاد نقش</span>',
                     className: "btn btn-primary",
                     action: function (e, dt, button, config) {
                         window.location = "create";

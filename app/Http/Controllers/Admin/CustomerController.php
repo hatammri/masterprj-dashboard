@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Ostan;
 use App\Models\Company;
+use App\Models\Rule;
 use App\Models\Shahrestan;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -26,9 +27,9 @@ class CustomerController extends Controller
     public function create()
     {
         $company = Company::all();
-        $shahrestan = Shahrestan::all();
+        $rule = Rule::all();
 
-        return view('customer.create', compact('company'));
+        return view('customer.create', compact('company','rule'));
     }
 
     /**
@@ -40,45 +41,40 @@ class CustomerController extends Controller
             'customer_name' => 'required',
             'email' => 'required',
             'phonenumber' => 'required',
-            'address' => 'required',
-            'state' => 'required',
-            'city' => 'required'
+            'description' => 'required',
+            'company' => 'required',
+            'rule' => 'required'
         ], $messages = [
-            'customer_name.required' => 'نام شرکت نباید خالی باشد',
+            'customer_name.required' => 'نام مشتری نباید خالی باشد',
             'email.required' => 'ایمیل نباید خالی باشد',
             'phonenumber.required' => 'شماره همراه نباید خالی باشد',
-            'address' => 'آدرس نباید خالی باشد',
-            'state' =>  'استان نباید خالی باشد',
-            'city' =>  'شهرستان نباید خالی باشد',
-
+            'description.required' => 'توضیحات نباید خالی باشد',
+            'company.required' =>  'شرکت نباید خالی باشد',
+            'rule.required' =>  'نقش نباید خالی باشد',
         ]);
-        try {
-            // Your query here
-            $ostan_name = Ostan::where('id', $request->state)->value('name');
-            $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
+      //  try {
             Customer::create([
                 'customer_name' => $request->customer_name,
                 'email' => $request->email,
                 'phonenumber' => $request->phonenumber,
                 'description' => $request->description,
-                'address' => $request->address,
-                'state' => $ostan_name,
-                'city' => $Shahrestan_name,
+                'company' =>  $request->company,
+                'rule' => $request->rule,
             ]);
             Alert::success('شرکت مورد نظر ایجاد شد', 'باتشکر');
             return redirect()->route('customer.index');
-        } catch (\Illuminate\Database\QueryException $e) {
+      //  } catch (\Illuminate\Database\QueryException $e) {
             // You need to handle the error here.
             // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
-            return back();
+            // Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            // return back();
 
             // Just some example
             //dd($e->getMessage(), $e->errorInfo);
-        } catch (\Exception $e) {
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
-            return redirect()->back();
-        }
+        // } catch (\Exception $e) {
+        //     Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+        //     return redirect()->back();
+        // }
     }
 
     /**

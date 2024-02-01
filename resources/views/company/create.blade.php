@@ -54,7 +54,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-buildings"></i></span>
-                                <input name="company_name" type="text" id="basic-icon-default-company"
+                                <input name="name" type="text" id="basic-icon-default-company"
                                     class="form-control" placeholder="مثال:فولاد‌مبارکه" aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                             </div>

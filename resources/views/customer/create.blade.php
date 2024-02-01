@@ -43,7 +43,7 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ثبت مشتری جدید</h5>
-                <form action="{{ route('company.store') }}" method="POST" class="card-body">
+                <form action="{{ route('customer.store') }}" method="POST" class="card-body">
                     @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
@@ -52,7 +52,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-buildings"></i></span>
-                                <input name="company_name" type="text" id="basic-icon-default-company"
+                                <input name="customer_name" type="text" id="basic-icon-default-company"
                                     class="form-control" placeholder="مثال:سجاد رضایی" aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                             </div>
@@ -91,29 +91,28 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-ostan">نام شرکت</label>
-                            <select name="state" id="collapsible-ostan" class="select2 form-select"
+                            <label class="form-label" for="collapsible-company">نام شرکت</label>
+                            <select name="company" id="collapsible-company" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($company as $itemcompany)
                                     <option value="{{ $itemcompany->id }}">
-                                        {{ $itemcompany->company_name }}
+                                        {{ $itemcompany->name }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
 
-                        {{-- <div class="col-md-6">
-                            <label class="form-label" for="collapsible-shahrestan">سمت مشتری در شرکت</label>
-                            <select name="city" id="collapsible-shahrestan" class="select2 form-select"
+                        <div class="col-md-6">
+                            <label class="form-label" for="collapsible-rule">سمت مشتری در شرکت</label>
+                            <select name="rule" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($shahrestan as $itemshahrestan)
-                                    <option value="{{ $itemshahrestan->id }}"
-                                        {{ $itemshahrestan->id == 37 ? 'selected' : '' }}>
-                                        {{ $itemshahrestan->name }}
+                                @foreach ($rule as $itemrule)
+                                    <option value="{{ $itemrule->id }}">
+                                        {{ $itemrule->name }}
                                     </option>
                                 @endforeach
                             </select>
-                        </div> --}}
+                        </div>
 
                         {{-- <div class="col-md-6">
                             <label class="form-label" for="collapsible-city">شهر</label>

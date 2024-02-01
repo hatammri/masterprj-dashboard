@@ -36,14 +36,14 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'company_name' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'phonenumber' => 'required',
             'address' => 'required',
             'state' => 'required',
             'city' => 'required'
         ], $messages = [
-            'company_name.required' => 'نام شرکت نباید خالی باشد',
+            'name.required' => 'نام شرکت نباید خالی باشد',
             'email.required' => 'ایمیل نباید خالی باشد',
             'phonenumber.required' => 'شماره همراه نباید خالی باشد',
             'address' => 'آدرس نباید خالی باشد',
@@ -56,7 +56,7 @@ class CompanyController extends Controller
             $ostan_name = Ostan::where('id', $request->state)->value('name');
             $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
             Company::create([
-                'company_name' => $request->company_name,
+                'name' => $request->name,
                 'email' => $request->email,
                 'phonenumber' => $request->phonenumber,
                 'description' => $request->description,
@@ -107,14 +107,14 @@ class CompanyController extends Controller
     public function update(Request $request, Company $company)
     { //dd($request,$company);
         $request->validate([
-            'company_name' => 'required',
+            'name' => 'required',
             'email' => 'required',
             'phonenumber' => 'required',
             'address' => 'required',
             'state' => 'required',
             'city' => 'required'
         ], $messages = [
-            'company_name.required' => 'نام شرکت نباید خالی باشد',
+            'name.required' => 'نام شرکت نباید خالی باشد',
             'email.required' => 'ایمیل نباید خالی باشد',
             'phonenumber.required' => 'شماره همراه نباید خالی باشد',
             'address' => 'آدرس نباید خالی باشد',
@@ -126,7 +126,7 @@ class CompanyController extends Controller
             $ostan_name = Ostan::where('id', $request->state)->value('name');
             $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
             $company->update([
-                'company_name' => $request->company_name,
+                'name' => $request->name,
                 'email' => $request->email,
                 'phonenumber' => $request->phonenumber,
                 'address' => $request->address,

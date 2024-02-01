@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreign('company')->references('id')->on('company');
             $table->foreignId('rule');
             $table->foreign('rule')->references('id')->on('rule');
+            $table->timestamps();
         });
     }
 
