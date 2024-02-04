@@ -36,27 +36,27 @@
                 <div>کار پوشه</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
+                {{-- <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
                     <a href="{{ route('reports.list_scan_period') }}" class="menu-link ">
                         <div>لیست دوره‌های اسکن شده </div>
                     </a>
-                </li>
+                </li> --}}
                 {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
             <a href="{{ route('reports.testtable') }}" class="menu-link">
               <div >تست جدول</div>
             </a>
           </li> --}}
-                <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
+                {{-- <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
                     <a href="{{ route('reports.listContradictions.listcontradictions') }}" class="menu-link">
                         <div>لیست مغایرت‌های بارنامه</div>
                     </a>
-                </li>
-                <li class="menu-item">
+                </li> --}}
+                {{-- <li class="menu-item">
                     <a href="#" class="menu-link">
                         <div>گزارش مغایرت های بارنامه در مبدا و مقصد</div>
                     </a>
-                </li>
-                <li class="menu-item">
+                </li> --}}
+                {{-- <li class="menu-item">
                     <a href="#" class="menu-link">
                         <div>گزارش عملکرد سگ های موادیاب</div>
                     </a>
@@ -75,7 +75,7 @@
                     <a href="#" class="menu-link">
                         <div>لیست گزارشات پرسنل</div>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </li>
         <li
@@ -100,11 +100,11 @@
                         <div>لیست درخواست‌کار</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                {{-- <li class="menu-item">
                     <a href="#" class="menu-link">
                         <div>ویرایش درخواست‌کار</div>
                     </a>
-                </li>
+                </li> --}}
 
             </ul>
         </li>
@@ -134,30 +134,30 @@
             </ul>
         </li>
         <li
-        class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-        <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bxs-buildings"></i>
-            <div>شرکت و کارگاه</div>
-        </a>
-        <ul class="menu-sub">
-            <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
-                <a href="{{ route('company.create') }}" class="menu-link ">
-                    <div>اضافه کردن شرکت جدید</div>
-                </a>
-            </li>
-            {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
+            class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bxs-buildings"></i>
+                <div>شرکت و کارگاه</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
+                    <a href="{{ route('company.create') }}" class="menu-link ">
+                        <div>اضافه کردن شرکت جدید</div>
+                    </a>
+                </li>
+                {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
         <a href="{{ route('reports.testtable') }}" class="menu-link">
           <div >تست جدول</div>
         </a>
       </li> --}}
-            <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
-                <a href="{{ route('company.index') }}" class="menu-link">
-                    <div>لیست شرکت‌ها</div>
-                </a>
-            </li>
+                <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
+                    <a href="{{ route('company.index') }}" class="menu-link">
+                        <div>لیست شرکت‌ها</div>
+                    </a>
+                </li>
 
-        </ul>
-    </li>
+            </ul>
+        </li>
         <li class="menu-item">
             <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-universal-access"></i>

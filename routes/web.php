@@ -15,7 +15,6 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/create', [CompanyController::class, 'create'])->name('create');
         Route::post('/store', [CompanyController::class, 'store'])->name('store');
         Route::get('/index', [CompanyController::class, 'index'])->name('index');
-        Route::get('/datatable',[CompanyController::class,'datatable'])->name('datatable');
         Route::get('/edit/{id}', [CompanyController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [CompanyController::class, 'show'])->name('show');
         Route::put('/update/{company}', [CompanyController::class, 'update'])->name('update');
@@ -25,7 +24,6 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/create', [CustomerController::class, 'create'])->name('create');
         Route::post('/store', [CustomerController::class, 'store'])->name('store');
         Route::get('/index', [CustomerController::class, 'index'])->name('index');
-        Route::get('/datatable',[CustomerController::class,'datatable'])->name('datatable');
         Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [CustomerController::class, 'show'])->name('show');
         Route::put('/update/{customer}', [CustomerController::class, 'update'])->name('update');
@@ -34,7 +32,6 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/create', [BrandController::class, 'create'])->name('create');
         Route::post('/store', [BrandController::class, 'store'])->name('store');
         Route::get('/index', [BrandController::class, 'index'])->name('index');
-        Route::get('/datatable',[BrandController::class,'datatable'])->name('datatable');
         Route::get('/edit/{id}', [BrandController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [BrandController::class, 'show'])->name('show');
         Route::put('/update/{customer}', [BrandController::class, 'update'])->name('update');
@@ -43,7 +40,6 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/create', [RuleController::class, 'create'])->name('create');
         Route::post('/store', [RuleController::class, 'store'])->name('store');
         Route::get('/index', [RuleController::class, 'index'])->name('index');
-        Route::get('/datatable',[RuleController::class,'datatable'])->name('datatable');
         Route::get('/edit/{id}', [RuleController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [RuleController::class, 'show'])->name('show');
         Route::put('/update/{customer}', [RuleController::class, 'update'])->name('update');
@@ -116,6 +112,8 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     })->name('accesslevel.appuserview');
 });
 Route::get('company/datatable', [CompanyController::class, 'datatable'])->name('company.datatable');
+Route::get('customer/datatable', [CustomerController::class, 'datatable'])->name('customer.datatable');
+
 Route::get('/getListShahrestan', [CompanyController::class, 'getShahrestanList'])->name('getListShahrestan');
 
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
