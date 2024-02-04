@@ -42,18 +42,19 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ویرایش مشتری جدید</h5>
-                <form action="{{ route('customer.store') }}" method="POST" class="card-body">
+                <form action="{{ route('customer.update' , ['customer' => $customer->id]) }}"  method="POST" class="card-body">
                     @csrf
+                    @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-company">نام مشتری</label>
+                            <label class="form-label" for="basic-icon-default-customer">نام مشتری</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                <span id="basic-icon-default-customer2" class="input-group-text"><i
                                         class="bx bx-buildings"></i></span>
-                                <input name="name" type="text" id="basic-icon-default-company"
+                                <input name="name" type="text" id="basic-icon-default-customer"
                                     value="{{ $customer->name }}" class="form-control" placeholder="مثال:سجاد رضایی"
-                                    aria-label="ACME Inc." aria-describedby="basic-icon-default-company2">
+                                    aria-label="ACME Inc." aria-describedby="basic-icon-default-customer2">
                             </div>
                         </div>
 

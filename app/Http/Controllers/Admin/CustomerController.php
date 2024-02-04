@@ -61,18 +61,18 @@ class CustomerController extends Controller
                 'company' =>  $request->company,
                 'rule' => $request->rule,
             ]);
-            Alert::success('شرکت مورد نظر ایجاد شد', 'باتشکر');
+            Alert::success('مشتری مورد نظر ایجاد شد', 'باتشکر');
             return redirect()->route('customer.index');
       //  } catch (\Illuminate\Database\QueryException $e) {
             // You need to handle the error here.
             // Either send the user back to the screen or redirect them somewhere else
-            // Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            // Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
             // return back();
 
             // Just some example
             //dd($e->getMessage(), $e->errorInfo);
         // } catch (\Exception $e) {
-        //     Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+        //     Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
         //     return redirect()->back();
         // }
     }
@@ -103,43 +103,42 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     { //dd($request,$customer);
+
         $request->validate([
             'name' => 'required',
             'email' => 'required',
             'phonenumber' => 'required',
-            'address' => 'required',
-            'state' => 'required',
-            'city' => 'required'
+            'description' => 'required',
+            'company' => 'required',
+            'rule' => 'required'
         ], $messages = [
             'name.required' => 'نام مشتری نباید خالی باشد',
             'email.required' => 'ایمیل نباید خالی باشد',
             'phonenumber.required' => 'شماره همراه نباید خالی باشد',
-            'address' => 'آدرس نباید خالی باشد',
-            'state' =>  'استان نباید خالی باشد',
-            'city' =>  'شهرستان نباید خالی باشد',
-
+            'description.required' => 'توضیحات نباید خالی باشد',
+            'company.required' =>  'شرکت نباید خالی باشد',
+            'rule.required' =>  'نقش نباید خالی باشد',
         ]);
+
         try {
-            $ostan_name = Ostan::where('id', $request->state)->value('name');
-            $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
             $customer->update([
                 'name' => $request->name,
                 'email' => $request->email,
                 'phonenumber' => $request->phonenumber,
-                'address' => $request->address,
-                'state' => $ostan_name,
-                'city' => $Shahrestan_name,
+                'description' => $request->description,
+                'company' =>  $request->company,
+                'rule' => $request->rule,
             ]);
-            Alert::success('شرکت مورد نظر ویرایش شد', 'باتشکر');
+            Alert::success('مشتری مورد نظر ویرایش شد', 'باتشکر');
             return redirect()->route('customer.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
             return back();
             //     // Just some example
             //     //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }
