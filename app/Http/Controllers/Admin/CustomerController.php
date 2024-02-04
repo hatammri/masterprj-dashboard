@@ -91,11 +91,11 @@ class CustomerController extends Controller
     public function edit(string $id)
     {
         $customer = Customer::where('id', $id)->get()->first();
-        $ostan_select = Ostan::where('name', $customer->state)->get()->first();
-        $shahrestan_select = shahrestan::where('name', $customer->city)->get()->first();
-        $ostan = Ostan::all();
-        $shahrestan = Shahrestan::all();
-        return view('customer.edit', compact('customer', 'ostan_select', 'shahrestan_select', 'ostan', 'shahrestan'));
+        $company= Company::where('id',$customer->company)->get()->first();
+        $rule=Rule::where('id',$customer->rule)->get()->first();
+        $companyall = Company::all();
+        $ruleall = Rule::all();
+        return view('customer.edit', compact('customer', 'company', 'rule', 'companyall', 'ruleall'));
     }
 
     /**
