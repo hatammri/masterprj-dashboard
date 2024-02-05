@@ -76,11 +76,8 @@ class RuleController extends Controller
     public function edit(string $id)
     {
         $rule = Rule::where('id', $id)->get()->first();
-        $ostan_select = Ostan::where('name', $rule->state)->get()->first();
-        $shahrestan_select = shahrestan::where('name', $rule->city)->get()->first();
-        $ostan = Ostan::all();
-        $shahrestan = Shahrestan::all();
-        return view('rule.edit', compact('rule', 'ostan_select', 'shahrestan_select', 'ostan', 'shahrestan'));
+
+        return view('rule.edit', compact('rule'));
     }
 
     /**
@@ -89,42 +86,25 @@ class RuleController extends Controller
     public function update(Request $request, Rule $rule)
     { //dd($request,$rule);
         $request->validate([
-            'rule_name' => 'required',
-            'email' => 'required',
-            'phonenumber' => 'required',
-            'address' => 'required',
-            'state' => 'required',
-            'city' => 'required'
-        ], $messages = [
-            'rule_name.required' => 'نام شرکت نباید خالی باشد',
-            'email.required' => 'ایمیل نباید خالی باشد',
-            'phonenumber.required' => 'شماره همراه نباید خالی باشد',
-            'address' => 'آدرس نباید خالی باشد',
-            'state' =>  'استان نباید خالی باشد',
-            'city' =>  'شهرستان نباید خالی باشد',
+            'name' => 'required',
 
+        ], $messages = [
+            'name.required' => 'نام نقش نباید خالی باشد'
         ]);
         try {
-            $ostan_name = Ostan::where('id', $request->state)->value('name');
-            $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
             $rule->update([
-                'rule_name' => $request->rule_name,
-                'email' => $request->email,
-                'phonenumber' => $request->phonenumber,
-                'address' => $request->address,
-                'state' => $ostan_name,
-                'city' => $Shahrestan_name,
+                'name' => $request->name,
             ]);
-            Alert::success('شرکت مورد نظر ویرایش شد', 'باتشکر');
+            Alert::success('نقش مورد نظر ویرایش شد', 'باتشکر');
             return redirect()->route('rule.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
             return back();
             //     // Just some example
             //     //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }
@@ -148,9 +128,5 @@ class RuleController extends Controller
         );
     }
 
-    public function getShahrestanList(Request $request)
-    {
-        $shahrestan = Shahrestan::where('ostan', $request->ostan)->get();
-        return $shahrestan;
-    }
+   
 }

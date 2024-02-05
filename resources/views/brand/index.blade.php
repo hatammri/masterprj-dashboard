@@ -11,37 +11,25 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">جدول‌داده /</span> لیست مشتری ها
+                <span class="text-muted fw-light">جدول‌داده /</span> لیست برند ها
             </h4>
 
             <!-- Column Search -->
             <div class="card">
-                <h5 class="card-header heading-color">لیست مشتری ها</h5>
+                <h5 class="card-header heading-color">لیست برند ها</h5>
                 <div class="card-datatable text-nowrap">
                     <table class="dt-column-search table table-bordered">
 
                         <thead>
 
                             <tr>
-                                <th>نام شرکت</th>
-                                <th>ایمیل</th>
-                                <th>شماره تلفن</th>
-                                <th>توضیحات</th>
-                                <th>آدرس</th>
-                                <th>استان</th>
-                                <th>شهر</th>
+                                <th>نام برند</th>
                                 <th>نمایش جزئیات</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>نام شرکت</th>
-                                <th>ایمیل</th>
-                                <th>شماره تلفن</th>
-                                <th>توضیحات</th>
-                                <th>آدرس</th>
-                                <th>استان</th>
-                                <th>شهر</th>
+                                <th>نام برند</th>
                                 <th>نمایش جزئیات</th>
                             </tr>
                         </tfoot>
@@ -68,5 +56,5 @@
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../../assets/js/tables-datatables-customer.js"></script>
+    <script src="../../assets/js/tables-datatables-brand.js"></script>
 @endsection

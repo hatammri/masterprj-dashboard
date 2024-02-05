@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\RuleController;
-
+use App\Models\Rule;
 
 //require __DIR__ . '/auth.php';
 Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
@@ -34,7 +34,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/index', [BrandController::class, 'index'])->name('index');
         Route::get('/edit/{id}', [BrandController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [BrandController::class, 'show'])->name('show');
-        Route::put('/update/{customer}', [BrandController::class, 'update'])->name('update');
+        Route::put('/update/{brand}', [BrandController::class, 'update'])->name('update');
     });
     Route::prefix('rule')->name('rule.')->group(function () {
         Route::get('/create', [RuleController::class, 'create'])->name('create');
@@ -42,7 +42,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/index', [RuleController::class, 'index'])->name('index');
         Route::get('/edit/{id}', [RuleController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [RuleController::class, 'show'])->name('show');
-        Route::put('/update/{customer}', [RuleController::class, 'update'])->name('update');
+        Route::put('/update/{rule}', [RuleController::class, 'update'])->name('update');
     });
 
     Route::get('', function () {
@@ -113,8 +113,10 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
 });
 Route::get('company/datatable', [CompanyController::class, 'datatable'])->name('company.datatable');
 Route::get('customer/datatable', [CustomerController::class, 'datatable'])->name('customer.datatable');
-
 Route::get('/getListShahrestan', [CompanyController::class, 'getShahrestanList'])->name('getListShahrestan');
+Route::get('rule/datatable', [RuleController::class, 'datatable'])->name('rule.datatable');
+Route::get('brand/datatable', [BrandController::class, 'datatable'])->name('brand.datatable');
+
 
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 Route::post('/resend_otp', [AuthController::class, 'resendOtp'])->middleware('guest')->name('resendOtp');

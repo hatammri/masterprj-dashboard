@@ -151,20 +151,22 @@ class CustomerController extends Controller
         //
     }
     public function datatable()
-    {
-        $data_companies = Customer::paginate();
-        $code = 200;
-        return response()->json(
-            $data_companies,
-            $code,
-            ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
-            JSON_UNESCAPED_UNICODE
-        );
+    { $customers = Customer::all();
+       // $customers = Customer::with('company:id,name')->get();
+         foreach ($customers as $customer) {
+             echo($customer->company());
+         }
+     // $data= $customer->company()->get();
+    //   dd($data);
+        //$data_companies = Customer::paginate();
+       // $code = 200;
+        // return response()->json(
+        //     $data_companies,
+        //     $code,
+        //     ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
+        //     JSON_UNESCAPED_UNICODE
+        // );
     }
 
-    public function getShahrestanList(Request $request)
-    {
-        $shahrestan = Shahrestan::where('ostan', $request->ostan)->get();
-        return $shahrestan;
-    }
+
 }

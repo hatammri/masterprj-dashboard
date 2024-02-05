@@ -1,7 +1,6 @@
 @extends('index')
 @section('csslink')
-
-   <!-- Favicon -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico">
 
     <!-- Icons -->
@@ -36,108 +35,28 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">مشتری /</span> ثبت مشتری جدید
+                <span class="text-muted fw-light">برند /</span> ثبت برند جدید
             </h4>
 
 
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
-                <h5 class="card-header heading-color">ثبت مشتری جدید</h5>
-                <form action="{{ route('company.store') }}" method="POST" class="card-body">
+                <h5 class="card-header heading-color">ثبت برند جدید</h5>
+                <form action="{{ route('rule.store') }}" method="POST" class="card-body">
                     @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-company">نام مشتری</label>
+                            <label class="form-label" for="basic-icon-default-rule">نام برند</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-company2" class="input-group-text"><i
-                                        class="bx bx-buildings"></i></span>
-                                <input name="company_name" type="text" id="basic-icon-default-company"
-                                    class="form-control" placeholder="مثال:سجاد رضایی" aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-company2">
+                                <span id="basic-icon-default-rule2" class="input-group-text"><i
+                                        class="bx bx-award"></i></span>
+                                <input name="name" type="text" id="basic-icon-default-rule"
+                                    class="form-control" placeholder="مثال:گیربکس فلندر Flender " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-rule2">
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-email">ایمیل</label>
-                            <div class="input-group input-group-merge">
-                                <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                                <span id="basic-icon-default-email2" class="input-group-text"
-                                    dir="ltr">@gmail.com</span>
-                                <input name="email" type="text" id="basic-icon-default-email"
-                                    class="form-control text-start" placeholder="john.doe" aria-label="john.doe"
-                                    aria-describedby="basic-icon-default-email2" dir="ltr">
-                            </div>
-                            <div class="form-text">می‌توانید از حروف، اعداد و نقطه استفاده کنید</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-phone">شماره همراه</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-phone2" class="input-group-text"><i
-                                        class="bx bx-phone"></i></span>
-                                <input name="phonenumber" type="text" id="basic-icon-default-phone"
-                                    class="form-control phone-mask text-start" placeholder="09122156584"
-                                    aria-label="09122156584" aria-describedby="basic-icon-default-phone2" dir="ltr">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-message">توضیحات</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-message2" class="input-group-text"><i
-                                        class="bx bx-comment"></i></span>
-                                <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
-                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-ostan">نام شرکت</label>
-                            <select name="state" id="collapsible-ostan" class="select2 form-select"
-                                data-allow-clear="true">
-                                @foreach ($company as $itemcompany)
-                                    <option value="{{ $itemcompany->id }}">
-                                        {{ $itemcompany->company_name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        {{-- <div class="col-md-6">
-                            <label class="form-label" for="collapsible-shahrestan">سمت مشتری در شرکت</label>
-                            <select name="city" id="collapsible-shahrestan" class="select2 form-select"
-                                data-allow-clear="true">
-                                @foreach ($shahrestan as $itemshahrestan)
-                                    <option value="{{ $itemshahrestan->id }}"
-                                        {{ $itemshahrestan->id == 37 ? 'selected' : '' }}>
-                                        {{ $itemshahrestan->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div> --}}
-
-                        {{-- <div class="col-md-6">
-                            <label class="form-label" for="collapsible-city">شهر</label>
-                            <input type="text" id="collapsible-city" class="form-control"
-                                placeholder="تبریز">
-                        </div> --}}
-
-                        {{-- <label class="form-check-label">نوع آدرس</label>
-                        <div class="col mt-2">
-                            <div class="form-check form-check-inline">
-                                <input name="collapsible-address-type" class="form-check-input"
-                                    type="radio" value="" id="collapsible-address-type-home"
-                                    checked>
-                                <label class="form-check-label" for="collapsible-address-type-home">منزل
-                                    (تحویل کل روز)</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input name="collapsible-address-type" class="form-check-input"
-                                    type="radio" value="" id="collapsible-address-type-office">
-                                <label class="form-check-label" for="collapsible-address-type-office">
-                                    دفتر (تحویل بین 10 صبح - 5 عصر)
-                                </label>
-                            </div>
-                        </div> --}}
                     </div>
 
                     <div class="pt-4">

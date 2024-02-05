@@ -116,7 +116,7 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
-                    <a href="{{ route('company.create') }}" class="menu-link ">
+                    <a href="{{ route('brand.create') }}" class="menu-link ">
                         <div>اضافه کردن برند جدید</div>
                     </a>
                 </li>
@@ -126,7 +126,7 @@
             </a>
           </li> --}}
                 <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
-                    <a href="{{ route('company.index') }}" class="menu-link">
+                    <a href="{{ route('brand.index') }}" class="menu-link">
                         <div>لیست برندها</div>
                     </a>
                 </li>
