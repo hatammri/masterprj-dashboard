@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\RuleController;
+use App\Http\Controllers\Admin\EquipmentController;
 use App\Models\Rule;
 
 //require __DIR__ . '/auth.php';
@@ -44,7 +45,14 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/show/{data}', [RuleController::class, 'show'])->name('show');
         Route::put('/update/{rule}', [RuleController::class, 'update'])->name('update');
     });
-
+    Route::prefix('equipment')->name('equipment.')->group(function () {
+        Route::get('/create', [EquipmentController::class, 'create'])->name('create');
+        Route::post('/store', [EquipmentController::class, 'store'])->name('store');
+        Route::get('/index', [EquipmentController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [EquipmentController::class, 'edit'])->name('edit');
+        Route::get('/show/{data}', [EquipmentController::class, 'show'])->name('show');
+        Route::put('/update/{equipment}', [EquipmentController::class, 'update'])->name('update');
+    });
     Route::get('', function () {
         return view('dashboard.index');
     })->name('dashboard');

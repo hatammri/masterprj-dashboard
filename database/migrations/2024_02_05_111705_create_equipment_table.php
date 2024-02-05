@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('equipment', function (Blueprint $table) {
             $table->id();
-            
+            $table->string('name');
+            $table->foreignId('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brand_id');
+            $table->string('Price');
+            $table->string('Color');
+            $table->string('Equipment_security');
+            $table->string('Equipment_weight');
+            $table->string(  'Equipment_dimensions');
+            $table->string(  'description');
             $table->timestamps();
         });
     }
