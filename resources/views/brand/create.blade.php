@@ -42,18 +42,18 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ثبت برند جدید</h5>
-                <form action="{{ route('rule.store') }}" method="POST" class="card-body">
+                <form action="{{ route('brand.store') }}" method="POST" class="card-body">
                     @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-rule">نام برند</label>
+                            <label class="form-label" for="basic-icon-default-brand">نام برند</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-rule2" class="input-group-text"><i
+                                <span id="basic-icon-default-brand2" class="input-group-text"><i
                                         class="bx bx-award"></i></span>
-                                <input name="name" type="text" id="basic-icon-default-rule"
+                                <input name="name" type="text" id="basic-icon-default-brand"
                                     class="form-control" placeholder="مثال:گیربکس فلندر Flender " aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-rule2">
+                                    aria-describedby="basic-icon-default-brand2">
                             </div>
                         </div>
 

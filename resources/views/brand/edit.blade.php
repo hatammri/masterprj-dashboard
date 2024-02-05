@@ -42,18 +42,18 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ویرایش برند </h5>
-                <form action="{{ route('rule.update' , ['rule' => $rule->id]) }}" method="POST" class="card-body">
+                <form action="{{ route('brand.update' , ['brand' => $brand->id]) }}" method="POST" class="card-body">
                     @csrf
                     @method('put')                    {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-rule">نام برند</label>
+                            <label class="form-label" for="basic-icon-default-brand">نام برند</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-rule2" class="input-group-text"><i
+                                <span id="basic-icon-default-brand2" class="input-group-text"><i
                                         class="bx bx-buildings"></i></span>
-                                <input name="name" type="text" id="basic-icon-default-rule" value="{{$rule->name}}"
+                                <input name="name" type="text" id="basic-icon-default-brand" value="{{$brand->name}}"
                                     class="form-control" placeholder="مثال:آماده‌ساز " aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-rule2">
+                                    aria-describedby="basic-icon-default-brand2">
                             </div>
                         </div>
 
