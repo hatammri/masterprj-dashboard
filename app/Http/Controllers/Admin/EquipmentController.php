@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Equipment;
 use App\Models\Rule;
+use App\Models\TypeEquipment;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class EquipmentController extends Controller
@@ -24,10 +26,9 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        $company = Company::all();
-        $rule = Rule::all();
-
-        return view('equipment.create', compact('company','rule'));
+        $brand = Brand::all();
+        $typeEquipment = TypeEquipment::all();
+        return view('equipment.create', compact('brand','typeEquipment'));
     }
 
     /**
