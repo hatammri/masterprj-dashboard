@@ -32,7 +32,7 @@
         <li
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bxs-report"></i>
+                <i class="menu-icon tf-icons bx bxs-folder"></i>
                 <div>کار پوشه</div>
             </a>
             <ul class="menu-sub">
@@ -81,7 +81,7 @@
         <li
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bxs-report"></i>
+                <i class="menu-icon tf-icons bx bxs-layer"></i>
                 <div>درخواست‌کار</div>
             </a>
             <ul class="menu-sub">
@@ -111,7 +111,7 @@
         <li
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bxs-buildings"></i>
+                <i class="menu-icon tf-icons bx bxs-award"></i>
                 <div>برندها</div>
             </a>
             <ul class="menu-sub">
@@ -160,18 +160,18 @@
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-universal-access"></i>
+                <i class="menu-icon tf-icons bx bx-hive"></i>
                 <div> ماشین </div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="{{ route('accesslevel.index') }}" class="menu-link ">
-                        <div>سطوح دسترسی مراکز</div>
+                        <div>ثبت ماشین</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="{{ route('accesslevel.accesspermission') }}" class="menu-link">
-                        <div>لیست مجوزها</div>
+                        <div>لیست ماشین</div>
                     </a>
                 </li>
 
@@ -179,36 +179,25 @@
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-group"></i>
+                <i class="menu-icon tf-icons bx bx-hard-hat"></i>
                 <div>تخصص</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
                     <a href="#" class="menu-link">
-                        <div>لیست رانندگان</div>
+                        <div>اضافه کردن تخصص</div>
                     </a>
                 </li>
                 <li class="menu-item">
                     <a href="#" class="menu-link">
-                        <div>اضافه کردن رانندگان</div>
+                        <div>لیست تخصص</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>ویرایش کردن اطلاعات رانندگان</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>بارکدخوان</div>
-                    </a>
-                </li>
-
             </ul>
         </li>
         <li class="menu-item">
             <a href="{{ route('accesslevel.accesspermission') }}" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-group"></i>
+                <i class="menu-icon tf-icons bx bx-customize"></i>
                 <div>نقش‌ها</div>
             </a>
             <ul class="menu-sub">
@@ -226,31 +215,30 @@
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-group"></i>
+                <i class="menu-icon tf-icons bx bx-package"></i>
                 <div>تجهیز</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>لیست رانندگان</div>
+                    <a href="{{ route('equipment.create') }}" class="menu-link">
+                        <div>ثبت تجهیز</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>اضافه کردن رانندگان</div>
+                    <a  href="{{ route('equipment.index') }}" class="menu-link">
+                        <div>لیست تجهیز</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>ویرایش کردن اطلاعات رانندگان</div>
+                    <a href="{{ route('typeequipment.create') }}" class="menu-link">
+                        <div>اضافه کردن مدل و تیپ تجهیز</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>بارکدخوان</div>
+                    <a href="{{ route('typeequipment.index')}}" class="menu-link">
+                        <div>لیست مدل و تیپ تجهیز</div>
                     </a>
                 </li>
-
             </ul>
         </li>
         <li class="menu-item">

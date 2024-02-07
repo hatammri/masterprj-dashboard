@@ -16,9 +16,12 @@ class Customer extends Model
     // {
     //     return $this->hasOne(Company::class,'company');
     // }
-    // public function company(): BelongsTo
-    // {
-    //     return $this->belongsTo(Company::class,'company');
-    // }
-
+    public function companies(): BelongsTo
+    {
+        return $this->belongsTo(Company::class,'company');
+    }
+    public function rlues(): BelongsTo
+    {
+        return $this->belongsTo(Rule::class,'rule');
+    }
 }

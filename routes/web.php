@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\RuleController;
 use App\Http\Controllers\Admin\EquipmentController;
+use App\Http\Controllers\Admin\TypeEquipmentController;
+
 use App\Models\Rule;
 
 //require __DIR__ . '/auth.php';
@@ -52,6 +54,15 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/edit/{id}', [EquipmentController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [EquipmentController::class, 'show'])->name('show');
         Route::put('/update/{equipment}', [EquipmentController::class, 'update'])->name('update');
+    });
+    Route::prefix('typeequipment')->name('typeequipment.')->group(function () {
+        Route::get('/create', [TypeEquipmentController::class, 'create'])->name('create');
+        Route::post('/store', [TypeEquipmentController::class, 'store'])->name('store');
+        Route::get('/index', [TypeEquipmentController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [TypeEquipmentController::class, 'edit'])->name('edit');
+        Route::get('/show/{data}', [TypeEquipmentController::class, 'show'])->name('show');
+        Route::put('/update/{typeequipment}', [TypeEquipmentController::class, 'update'])->name('update');
+
     });
     Route::get('', function () {
         return view('dashboard.index');
@@ -124,6 +135,7 @@ Route::get('customer/datatable', [CustomerController::class, 'datatable'])->name
 Route::get('/getListShahrestan', [CompanyController::class, 'getShahrestanList'])->name('getListShahrestan');
 Route::get('rule/datatable', [RuleController::class, 'datatable'])->name('rule.datatable');
 Route::get('brand/datatable', [BrandController::class, 'datatable'])->name('brand.datatable');
+Route::get('typeEquipment/datatable', [TypeEquipmentController::class, 'datatable'])->name('typeEquipment.datatable');
 
 
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
