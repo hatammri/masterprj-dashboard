@@ -44,7 +44,8 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ثبت تجهیز جدید</h5>
-
+                {{-- <form action="{{ route('customer.store') }}" method="POST" class="card-body">
+                    @csrf --}}
                 {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                 <div class="card-body">
                     <div class="row g-3">
@@ -53,43 +54,42 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-brand2" class="input-group-text"><i
                                         class="bx bx-cube"></i></span>
-                                <input form="dropzone-multi" name="name" type="text" id="basic-icon-default-brand" class="form-control"
+                                <input form="formeqipment" name="name" type="text" id="basic-icon-default-brand" class="form-control"
                                     placeholder="مثال: گیربکس" aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-brand2">
                             </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-price">قیمت تجهیز (تومان)</label>
+                            <label class="form-label" for="basic-icon-default-email">قیمت تجهیز (تومان)</label>
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text"><i class="bx bx-dollar"></i></span>
 
-                                <input form="dropzone-multi" name="price" type="text" id="basic-icon-default-price"
+                                <input name="email" type="text" id="basic-icon-default-email"
                                     class="form-control text-start" placeholder="10,000,000" aria-label="john.doe"
-                                    aria-describedby="basic-icon-default-price2" dir="ltr">
+                                    aria-describedby="basic-icon-default-email2" dir="ltr">
                             </div>
                             <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-brand">رنگ</label>
+                            <label class="form-label" for="basic-icon-default-phone">رنگ</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-brand2" class="input-group-text"><i
+                                <span id="basic-icon-default-phone2" class="input-group-text"><i
                                         class="bx bx-palette"></i></span>
-                                <input form="dropzone-multi" name="color" type="text" id="basic-icon-default-brand" class="form-control"
-                                    placeholder="مثال: سفید" aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-brand2">
+                                <input name="phonenumber" type="text" id="basic-icon-default-phone"
+                                    class="form-control phone-mask text-start" placeholder="سفید" aria-label="سفید"
+                                    aria-describedby="basic-icon-default-phone2" dir="ltr">
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <label class="d-block form-label">امنیت تجهیز</label>
                             <div class="form-check form-check-inline">
-                                <input form="dropzone-multi" name='equipment_security' type="radio" id="basic-default-radio-male"
+                                <input type="radio" id="basic-default-radio-male" name="basic-default-radio"
                                     class="form-check-input" required>
                                 <label class="form-check-label" for="basic-default-radio-male">فعال</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input form="dropzone-multi"  type="radio" id="basic-default-radio-female" name="unactive"
+                                <input type="radio" id="basic-default-radio-female" name="basic-default-radio"
                                     class="form-check-input" required>
                                 <label class="form-check-label" for="basic-default-radio-female">غیرفعال</label>
                             </div>
@@ -100,7 +100,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-phone2" class="input-group-text"><i
                                         class="bx bx-calculator"></i></span>
-                                <input form="dropzone-multi" name="weight" type="text" id="basic-icon-default-phone"
+                                <input name="phonenumber" type="text" id="basic-icon-default-phone"
                                     class="form-control phone-mask text-start" placeholder="1000" aria-label="1000"
                                     aria-describedby="basic-icon-default-phone2" dir="ltr">
 
@@ -108,14 +108,12 @@
                             <div class="form-text">وزن تجهیز مورد نظر خود را به کیلوگرم وارد کنید</div>
 
                         </div>
-
-
                         <div class="col-md-6">
                             <label class="form-label" for="basic-icon-default-phone">ابعاد تجهیز</label>
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-phone2" class="input-group-text"><i
                                         class="bx bx-phone"></i></span>
-                                <input form="dropzone-multi" name="dimensions" type="text" id="basic-icon-default-phone"
+                                <input name="phonenumber" type="text" id="basic-icon-default-phone"
                                     class="form-control phone-mask text-start" placeholder="10*20*30"
                                     aria-label="10*20*30" aria-describedby="basic-icon-default-phone2" dir="ltr">
                             </div>
@@ -125,7 +123,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
-                                <textarea form="dropzone-multi" name="description" id="basic-icon-default-message" class="form-control"
+                                <textarea name="description" id="basic-icon-default-message" class="form-control"
                                     placeholder="توضیحات را اینجا بنویسید" aria-label="Hi, Do you have a moment to talk Joe?"
                                     aria-describedby="basic-icon-default-message2"></textarea>
                             </div>
@@ -133,7 +131,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-brand">برند تجهیز</label>
-                            <select form="dropzone-multi" name="brand_id" id="collapsible-brand" class="select2 form-select"
+                            <select name="brand" id="collapsible-brand" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($brand as $itembrand)
                                     <option value="{{ $itembrand->id }}">
@@ -145,7 +143,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-typeEquipment">تیپ و نوع تجهیز</label>
-                            <select form="dropzone-multi" name="type_equipment_id" id="collapsible-typeEquipment" class="select2 form-select"
+                            <select name="typeEquipment" id="collapsible-typeEquipment" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($typeEquipment as $itemtypeEquipment)
                                     <option value="{{ $itemtypeEquipment->id }}">
@@ -156,12 +154,13 @@
                         </div>
                     </div>
                 </div>
+                {{-- </form> --}}
                 <!-- Multi  -->
                 <div class="col-12">
                     <h5 class="card-header heading-color">بارگذاری تصاویر و مدارک تجهیز</h5>
                     <div class="card-body">
-                        <form  action="{{ route('equipment.store') }}" method="POST" class="dropzone needsclick" id="dropzone-multi">
-                           @csrf
+                        <form id="formeqipment" action="{{ route('equipment.store') }}" method="POST" class="dropzone needsclick" id="dropzone-multi">
+                            @csrf
                             <div class="dz-message needsclick">
                                 فایل‌ها را اینجا رها کنید و یا کلیک کنید
                                 <span class="note needsclick">لطفا منتظر بمانید تا
@@ -171,11 +170,12 @@
                                 <input name="file" type="file">
                             </div>
 
-                        </form>
                         <div class="pt-4">
-                            <button form="dropzone-multi" type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
+                            <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
                             <button type="reset" class="btn btn-label-secondary">انصراف</button>
                         </div>
+                    </form>
+
                     </div>
                 </div>
                 <!-- Multi  -->
