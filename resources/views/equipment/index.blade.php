@@ -11,35 +11,40 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">جدول‌داده /</span> لیست مشتری ها
+                <span class="text-muted fw-light">جدول‌داده /</span> لیست تجهیز
             </h4>
 
             <!-- Column Search -->
             <div class="card">
-                <h5 class="card-header heading-color">لیست مشتری ها</h5>
+                <h5 class="card-header heading-color">لیست تجهیز </h5>
                 <div class="card-datatable text-nowrap">
                     <table class="dt-column-search table table-bordered">
 
                         <thead>
-
                             <tr>
-                                <th>نام مشتری</th>
-                                <th>ایمیل</th>
-                                <th>شماره همراه</th>
-                                <th>توضیحات</th>
-                                <th>نام شرکت</th>
-                                <th>نقش</th>
+                                <th>نام تجهیز</th>
+                                <th>برند تجهیز</th>
+                                <th>تیپ تجهیز</th>
+                                <th>قیمت تجهیز</th>
+                                <th>رنگ تجهیز</th>
+                                <th>امنیت تجهیز</th>
+                                <th>وزن تجهیز</th>
+                                <th>ابعاد تجهیز</th>
+                                <th>توضیحات تجهیز</th>
                                 <th>نمایش جزئیات</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>نام مشتری</th>
-                                <th>ایمیل</th>
-                                <th>شماره همراه</th>
-                                <th>توضیحات</th>
-                                <th>نام شرکت</th>
-                                <th>نقش</th>
+                                <th>نام تجهیز</th>
+                                <th>برند تجهیز</th>
+                                <th>تیپ تجهیز</th>
+                                <th>قیمت تجهیز</th>
+                                <th>رنگ تجهیز</th>
+                                <th>امنیت تجهیز</th>
+                                <th>وزن تجهیز</th>
+                                <th>ابعاد تجهیز</th>
+                                <th>توضیحات تجهیز</th>
                                 <th>نمایش جزئیات</th>
                             </tr>
                         </tfoot>
@@ -66,5 +71,5 @@
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../../assets/js/tables-datatables-customer.js"></script>
+    <script src="../../assets/js/tables-datatables-equipment.js"></script>
 @endsection

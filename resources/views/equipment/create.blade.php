@@ -81,16 +81,16 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
+                       <div class="col-md-6">
                             <label class="d-block form-label">امنیت تجهیز</label>
                             <div class="form-check form-check-inline">
-                                <input form="dropzone-multi" name='equipment_security' type="radio" id="basic-default-radio-male"
-                                    class="form-check-input" required>
+                                <input form="dropzone-multi" type="radio" id="basic-default-radio-male" name="equipment_security"
+                                    class="form-check-input" value="1" required>
                                 <label class="form-check-label" for="basic-default-radio-male">فعال</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input form="dropzone-multi"  type="radio" id="basic-default-radio-female" name="unactive"
-                                    class="form-check-input" required>
+                                <input form="dropzone-multi" type="radio" id="basic-default-radio-female" name="equipment_security"
+                                    class="form-check-input" value="0" required>
                                 <label class="form-check-label" for="basic-default-radio-female">غیرفعال</label>
                             </div>
                         </div>
@@ -109,17 +109,17 @@
 
                         </div>
 
-
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-phone">ابعاد تجهیز</label>
+                            <label class="form-label" for="basic-icon-default-brand">ابعاد تجهیز</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-phone2" class="input-group-text"><i
-                                        class="bx bx-phone"></i></span>
-                                <input form="dropzone-multi" name="dimensions" type="text" id="basic-icon-default-phone"
-                                    class="form-control phone-mask text-start" placeholder="10*20*30"
-                                    aria-label="10*20*30" aria-describedby="basic-icon-default-phone2" dir="ltr">
+                                <span id="basic-icon-default-brand2" class="input-group-text"><i
+                                        class="bx bx-palette"></i></span>
+                                <input form="dropzone-multi" name="dimensions" type="text" id="basic-icon-default-brand" class="form-control"
+                                    placeholder="مثال: 10*20*30" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-brand2">
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <label class="form-label" for="basic-icon-default-message">توضیحات</label>
                             <div class="input-group input-group-merge">
@@ -168,7 +168,7 @@
                                     انتخاب شده واقعا ارسال <strong>نمی‌شوند</strong>.)</span>
                             </div>
                             <div class="fallback">
-                                <input name="file" type="file">
+                                <input  name="file" type="file">
                             </div>
 
                         </form>

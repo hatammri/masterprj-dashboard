@@ -136,6 +136,7 @@ Route::get('/getListShahrestan', [CompanyController::class, 'getShahrestanList']
 Route::get('rule/datatable', [RuleController::class, 'datatable'])->name('rule.datatable');
 Route::get('brand/datatable', [BrandController::class, 'datatable'])->name('brand.datatable');
 Route::get('typeEquipment/datatable', [TypeEquipmentController::class, 'datatable'])->name('typeEquipment.datatable');
+Route::get('equipment/datatable', [EquipmentController::class, 'datatable'])->name('Equipment.datatable');
 
 
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
