@@ -172,13 +172,13 @@ $(function () {
                             '<div class="d-inline-block">' +
                             '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></a>' +
                             '<div class="dropdown-menu dropdown-menu-end m-0">' +
-                            '<a href="/customer/edit/' +
+                            '<a href="/equipment/edit/' +
                             full.id +
                             '"' +
-                            'class="dropdown-item">ویرایش اطلاعات مشتری' +
+                            'class="dropdown-item">ویرایش اطلاعات تجهیز' +
                             "</div>" +
                             "</div>" +
-                            '<a  href="/customer/edit/' +
+                            '<a  href="/equipment/edit/' +
                             full.id +
                             '"' +
                             'class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>'
@@ -199,7 +199,7 @@ $(function () {
 
             buttons: [
                 {
-                    text: '<i class="bx bx-plus me-md-2"></i><span class="d-md-inline-block d-none">ایجاد مشتری</span>',
+                    text: '<i class="bx bx-plus me-md-2"></i><span class="d-md-inline-block d-none">ایجاد تجهیز</span>',
                     className: "btn btn-primary",
                     action: function (e, dt, button, config) {
                         window.location = "create";

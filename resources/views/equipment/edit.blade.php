@@ -16,8 +16,10 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/dropzone/dropzone.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css">
+
     <!-- Page CSS -->
     <!-- Helpers -->
     <script src="../../assets/vendor/js/helpers.js"></script>
@@ -35,97 +37,141 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">مشتری /</span> ویرایش مشتری جدید
+                <span class="text-muted fw-light">تجهیز /</span>ویرایش تجهیز
             </h4>
 
 
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
-                <h5 class="card-header heading-color">ویرایش مشتری جدید</h5>
-                <form action="{{ route('customer.update' , ['customer' => $customer->id]) }}"  method="POST" class="card-body">
+                <h5 class="card-header heading-color">ویرایش تجهیز </h5>
+                <form action="{{ route('equipment.update', ['equipment' => $equipment->id]) }}" method="POST"
+                    class="card-body">
                     @csrf
                     @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-customer">نام مشتری</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-customer2" class="input-group-text"><i
-                                        class="bx bx-buildings"></i></span>
-                                <input name="name" type="text" id="basic-icon-default-customer"
-                                    value="{{ $customer->name }}" class="form-control" placeholder="مثال:سجاد رضایی"
-                                    aria-label="ACME Inc." aria-describedby="basic-icon-default-customer2">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label" for="basic-icon-default-brand">نام تجهیز</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-brand2" class="input-group-text"><i
+                                            class="bx bx-cube"></i></span>
+                                    <input value="{{ $equipment->name }}" form="dropzone-multi" name="name"
+                                        type="text" id="basic-icon-default-brand" class="form-control"
+                                        placeholder="مثال: گیربکس" aria-label="ACME Inc."
+                                        aria-describedby="basic-icon-default-brand2">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-email">ایمیل</label>
-                            <div class="input-group input-group-merge">
-                                <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                                <span id="basic-icon-default-email2" class="input-group-text"
-                                    dir="ltr">@gmail.com</span>
-                                <input name="email" type="text" id="basic-icon-default-email"
-                                    value="{{ $customer->email }}" class="form-control text-start" placeholder="john.doe"
-                                    aria-label="john.doe" aria-describedby="basic-icon-default-email2" dir="ltr">
-                            </div>
-                            <div class="form-text">می‌توانید از حروف، اعداد و نقطه استفاده کنید</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-phone">شماره همراه</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-phone2" class="input-group-text"><i
-                                        class="bx bx-phone"></i></span>
-                                <input name="phonenumber" type="text" id="basic-icon-default-phone"
-                                    value="{{ $customer->phonenumber }}" class="form-control phone-mask text-start"
-                                    placeholder="09122156584" aria-label="09122156584"
-                                    aria-describedby="basic-icon-default-phone2" dir="ltr">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-message">توضیحات</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-message2" class="input-group-text"><i
-                                        class="bx bx-comment"></i></span>
-                                <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
-                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{ $customer->description }}</textarea>
-                            </div>
-                        </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="basic-icon-default-price">قیمت تجهیز (تومان)</label>
+                                <div class="input-group input-group-merge">
+                                    <span class="input-group-text"><i class="bx bx-dollar"></i></span>
 
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-company">نام شرکت</label>
-                            <select name="company" id="collapsible-company" class="select2 form-select"
-                                data-allow-clear="true">
-                                @foreach ($companyall as $itemcompany)
-                                    <option value="{{ $itemcompany->id }}"
-                                        {{ $itemcompany->id == $customer->company ? 'selected' : '' }}>
-                                        {{ $itemcompany->name }}
+                                    <input value="{{ $equipment->price }}" form="dropzone-multi" name="price"
+                                        type="text" id="basic-icon-default-price" class="form-control text-start"
+                                        placeholder="10,000,000" aria-label="john.doe"
+                                        aria-describedby="basic-icon-default-price2" dir="ltr">
+                                </div>
+                                <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="basic-icon-default-brand">رنگ</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-brand2" class="input-group-text"><i
+                                            class="bx bx-palette"></i></span>
+                                    <input value="{{ $equipment->color }}" form="dropzone-multi" name="color"
+                                        type="text" id="basic-icon-default-brand" class="form-control"
+                                        placeholder="مثال: سفید" aria-label="ACME Inc."
+                                        aria-describedby="basic-icon-default-brand2">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="d-block form-label">امنیت تجهیز</label>
+                                <div class="form-check form-check-inline">
+                                    <input form="dropzone-multi" type="radio" id="basic-default-radio-male"
+                                        name="equipment_security" class="form-check-input" value="1"
+                                        {{ $equipment->equipment_security == 1 ? 'checked' : '' }} required>
+                                    <label class="form-check-label" for="basic-default-radio-male">فعال</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input form="dropzone-multi" type="radio" id="basic-default-radio-female"
+                                        name="equipment_security" class="form-check-input" value="0"
+                                        {{ $equipment->equipment_security == 0 ? 'checked' : '' }} required>
+                                    <label class="form-check-label" for="basic-default-radio-female">غیرفعال</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="basic-icon-default-phone">وزن تجهیز (کیلوگرم)</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-phone2" class="input-group-text"><i
+                                            class="bx bx-calculator"></i></span>
+                                    <input value="{{ $equipment->weight }}" form="dropzone-multi" name="weight"
+                                        type="text" id="basic-icon-default-phone"
+                                        class="form-control phone-mask text-start" placeholder="1000" aria-label="1000"
+                                        aria-describedby="basic-icon-default-phone2" dir="ltr">
+
+                                </div>
+                                <div class="form-text">وزن تجهیز مورد نظر خود را به کیلوگرم وارد کنید</div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="basic-icon-default-brand">ابعاد تجهیز</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-brand2" class="input-group-text"><i
+                                            class="bx bx-palette"></i></span>
+                                    <input value="{{ $equipment->dimensions }}" form="dropzone-multi" name="dimensions"
+                                        type="text" id="basic-icon-default-brand" class="form-control"
+                                        placeholder="مثال: 10*20*30" aria-label="ACME Inc."
+                                        aria-describedby="basic-icon-default-brand2">
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="basic-icon-default-message">توضیحات</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-message2" class="input-group-text"><i
+                                            class="bx bx-comment"></i></span>
+                                    <textarea form="dropzone-multi" name="description" id="basic-icon-default-message" class="form-control"
+                                        placeholder="توضیحات را اینجا بنویسید" aria-label="Hi, Do you have a moment to talk Joe?"
+                                        aria-describedby="basic-icon-default-message2">{{ $equipment->description }}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="collapsible-brand">برند تجهیز</label>
+                                <select form="dropzone-multi" name="brand_id" id="collapsible-brand"
+                                    class="select2 form-select" data-allow-clear="true">
+                                    @foreach ($brand as $itembrand)
+                                        <option value="{{ $itembrand->id }}"
+                                            {{ $equipment->brand_id == $itembrand->id ? 'selected' : '' }}>
+                                            {{ $itembrand->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="collapsible-typeEquipment">تیپ و نوع تجهیز</label>
+                                <select form="dropzone-multi" name="type_equipment_id" id="collapsible-typeEquipment"
+                                    class="select2 form-select" data-allow-clear="true">
+                                    @foreach ($typeEquipment as $itemtypeEquipment)
+                                    <option value="{{ $itemtypeEquipment->id }}"
+                                        {{ $equipment->type_equipment_id == $itemtypeEquipment->id ? 'selected' : '' }}>
+                                        {{ $itemtypeEquipment->name }}
                                     </option>
                                 @endforeach
-                            </select>
+
+                                </select>
+                            </div>
                         </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">سمت مشتری در شرکت</label>
-                            <select name="rule" id="collapsible-rule" class="select2 form-select"
-                                data-allow-clear="true">
-                                @foreach ($ruleall as $itemrule)
-                                    <option value="{{ $itemrule->id }}"
-                                        {{ $itemrule->id == $customer->rule ? 'selected' : '' }}>
-                                        {{ $itemrule->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                    </div>
-
-                    <div class="pt-4">
-                        <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
-                        <button type="reset" class="btn btn-label-secondary">انصراف</button>
                     </div>
                 </form>
-            </div>
 
+            </div>
 
 
         </div>
@@ -150,6 +196,8 @@
 
     <script src="../../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
+    <script src="../../assets/vendor/libs/dropzone/dropzone.js"></script>
+    <script src="../../assets/js/forms-file-upload.js"></script>
 
     <!-- Vendors JS -->
     <script src="../../assets/vendor/libs/cleavejs/cleave.js"></script>

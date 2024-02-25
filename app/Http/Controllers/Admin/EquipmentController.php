@@ -35,7 +35,7 @@ class EquipmentController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {   dd($request);
         $request->validate([
             'name' => 'required',
             'price' => 'required',
@@ -96,11 +96,10 @@ class EquipmentController extends Controller
     public function edit(string $id)
     {
         $equipment = Equipment::where('id', $id)->get()->first();
-        $company= Equipment::where('id',$equipment->company)->get()->first();
-        $rule=Rule::where('id',$equipment->rule)->get()->first();
-        $companyall = Equipment::all();
-        $ruleall = Rule::all();
-        return view('equipment.edit', compact('equipment', 'company', 'rule', 'companyall', 'ruleall'));
+        $brand = Brand::all();
+        $typeEquipment = TypeEquipment::all();
+
+        return view('equipment.edit', compact('equipment', 'brand', 'typeEquipment'));
     }
 
     /**
