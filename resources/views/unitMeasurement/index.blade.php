@@ -11,37 +11,25 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">جدول‌داده /</span> لیست شرکت ها
+                <span class="text-muted fw-light">جدول‌داده /</span> لیست واحدهای اندازه‌گیری
             </h4>
 
             <!-- Column Search -->
             <div class="card">
-                <h5 class="card-header heading-color">لیست شرکت ها</h5>
+                <h5 class="card-header heading-color">لیست واحدهای اندازه‌گیری</h5>
                 <div class="card-datatable text-nowrap">
                     <table class="dt-column-search table table-bordered">
 
                         <thead>
 
                             <tr>
-                                <th>نام شرکت</th>
-                                <th>ایمیل</th>
-                                <th>شماره تلفن</th>
-                                <th>توضیحات</th>
-                                <th>آدرس</th>
-                                <th>استان</th>
-                                <th>شهر</th>
+                                <th>واحد اندازه‌گیری</th>
                                 <th>نمایش جزئیات</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>نام شرکت</th>
-                                <th>ایمیل</th>
-                                <th>شماره تلفن</th>
-                                <th>توضیحات</th>
-                                <th>آدرس</th>
-                                <th>استان</th>
-                                <th>شهر</th>
+                                <th>واحد اندازه‌گیری</th>
                                 <th>نمایش جزئیات</th>
                             </tr>
                         </tfoot>
@@ -68,5 +56,5 @@
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../../assets/js/tables-datatables-company.js"></script>
+    <script src="../../assets/js/tables-datatables-unitMeasurement.js"></script>
 @endsection
