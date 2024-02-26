@@ -184,13 +184,23 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('specialty.create') }}" class="menu-link">
                         <div>اضافه کردن تخصص</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="#" class="menu-link">
+                    <a href="{{ route('specialty.index') }}" class="menu-link">
                         <div>لیست تخصص</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('unitMeasurement.create') }}" class="menu-link">
+                        <div>اضافه‌کردن واحد اندازه‌گیری</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('unitMeasurement.create') }}" class="menu-link">
+                        <div>لیست واحد اندازه‌گیری</div>
                     </a>
                 </li>
             </ul>
