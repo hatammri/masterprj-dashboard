@@ -101,8 +101,8 @@
                             <select name="state" id="collapsible-ostan" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($ostan as $itemostan)
-                                    <option value="{{ $itemostan->id }}" {{ $itemostan->id == 4 ? 'selected' : '' }}>
-                                        {{ $itemostan->name }}
+                                   <option value="{{ $itemostan->id }}" {{ $itemostan->id == 4 ? 'selected' : '' }}>
+                                         {{ $itemostan->name }}
                                     </option>
                                 @endforeach
                             </select>
