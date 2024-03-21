@@ -53,10 +53,20 @@
                             <label class="form-label" for="basic-icon-default-company">واحد اندازه گیری</label>
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
-                                        class="bx bx-buildings"></i></span>
+                                        class="bx bx-copy"></i></span>
                                 <input name="name" type="text" id="basic-icon-default-company"
                                     class="form-control" placeholder="مثال:کیلوگرم" aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">سمبل</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-euro"></i></span>
+                                <input name="symptom" type="text" id="basic-icon-default-symptom"
+                                    class="form-control" placeholder="مثال:kg" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-symptom">
                             </div>
                         </div>
                     </div>

@@ -24,10 +24,8 @@ class UnitMeasurementController extends Controller
      */
     public function create()
     {
-        $ostan = Ostan::all();
-        $shahrestan = Shahrestan::all();
 
-        return view('unitmeasurement.create', compact('ostan', 'shahrestan'));
+        return view('unitmeasurement.create');
     }
 
     /**
@@ -37,13 +35,16 @@ class UnitMeasurementController extends Controller
     {
         $request->validate([
             'name' => 'required',
-
+            'symptom' => 'required',
         ], $messages = [
             'name.required' => 'واحد اندازه‌گیری نباید خالی باشد',
+            'symptom.required' => 'سمبل واحد اندازه‌گیری نباید خالی باشد',
+
         ]);
         try {
             UnitMeasurement::create([
-                'name' => $request->name
+                'name' => $request->name,
+                'symptom' => $request->symptom
             ]);
             Alert::success('واحد اندازه‌گیری مورد نظر ایجاد شد', 'باتشکر');
             return redirect()->route('unitMeasurement.index');
