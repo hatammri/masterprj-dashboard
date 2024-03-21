@@ -24,6 +24,7 @@ class EquipmentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
     public function create()
     {
         $brand = Brand::all();
@@ -31,12 +32,8 @@ class EquipmentController extends Controller
         return view('equipment.create', compact('brand', 'typeEquipment'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        dd($request);
         $request->validate([
             'name' => 'required',
             'price' => 'required',
@@ -164,13 +161,14 @@ class EquipmentController extends Controller
     }
     public function datatable()
     {
-        $data_equipment = Equipment::paginate();
-        $code = 200;
+        $equipments = Equipment::with(['brands:id,name','typeEquipments:id,name'])->paginate();
+
         return response()->json(
-            $data_equipment,
-            $code,
+            $equipments,
+            200,
             ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
             JSON_UNESCAPED_UNICODE
         );
+
     }
 }

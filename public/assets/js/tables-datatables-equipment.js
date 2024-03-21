@@ -113,8 +113,8 @@ $(function () {
             },
             columns: [
                 { data: "name" },
-                { data: "brand_id" },
-                { data: "type_equipment_id" },
+                { data: "brands.name" },
+                { data: "type_equipments.name" },
                 { data: "price" },
                 { data: "color" },
                 { data: "equipment_security" },
@@ -126,24 +126,16 @@ $(function () {
             columnDefs: [
                 {
                     // Label
-                    targets: -2,
+                    targets: -5,
                     render: function (data, type, full, meta) {
-                        var $status_number = full["status"];
+                        var $status_number = full["equipment_security"];
                         var $status = {
-                            1: { title: "فعال", class: "bg-label-success" },
-                            2: {
+                            0:  {
                                 title: "غیرفعال",
                                 class: " bg-label-warning",
                             },
-                            3: { title: "خراب", class: " bg-label-danger" },
-                            4: {
-                                title: "درحال‌تعمیر",
-                                class: " bg-label-primary",
-                            },
-                            5: {
-                                title: "نامشخص",
-                                class: " bg-label-secondary",
-                            },
+                            1: { title: "فعال", class: "bg-label-success" },
+
                         };
                         if (typeof $status[$status_number] === "undefined") {
                             return data;
