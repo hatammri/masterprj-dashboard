@@ -113,7 +113,7 @@ $(function () {
             }, //ajax:"http://localhost:8000/customer/datatable",
             columns: [
                 { data: "name" },
-                { data: "unitmeasurement" },
+                { data: "unitmeasurements.name" },
                 { data: "numberofoperator" },
                 { data: "" },
             ],

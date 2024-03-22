@@ -139,10 +139,10 @@ class SpecialtyController extends Controller
     }
     public function datatable()
     {
-        $data_companies = Specialty::paginate();
+        $data_Specialties = Specialty::with(['unitmeasurements:id,name'])->paginate();
         $code = 200;
         return response()->json(
-            $data_companies,
+            $data_Specialties,
             $code,
             ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
             JSON_UNESCAPED_UNICODE

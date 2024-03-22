@@ -83,7 +83,7 @@ class UnitMeasurementController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, UnitMeasurement $unitmeasurement)
-    { dd( $unitmeasurement);
+    {// dd( $unitmeasurement);
          $request->validate([
             'name' => 'required',
             'symptom' => 'required',
