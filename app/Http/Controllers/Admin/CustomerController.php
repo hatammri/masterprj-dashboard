@@ -102,7 +102,7 @@ class CustomerController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Customer $customer)
-    { //dd($request,$customer);
+    { dd($customer);
 
         $request->validate([
             'name' => 'required',

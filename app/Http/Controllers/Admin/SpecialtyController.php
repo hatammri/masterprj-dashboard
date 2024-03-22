@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Specialty;
 use App\Models\Ostan;
-use App\Models\Shahrestan;
+use App\Models\UnitMeasurement;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class SpecialtyController extends Controller
@@ -21,10 +21,8 @@ class SpecialtyController extends Controller
      */
     public function create()
     {
-        $ostan = Ostan::all();
-        $shahrestan = Shahrestan::all();
-
-        return view('specialty.create', compact('ostan', 'shahrestan'));
+        $UnitMeasurement = UnitMeasurement::all();
+        return view('specialty.create', compact('UnitMeasurement'));
     }
 
     /**
@@ -34,45 +32,33 @@ class SpecialtyController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'phonenumber' => 'required',
-            'address' => 'required',
-            'state' => 'required',
-            'city' => 'required'
+            'unitmeasurement' => 'required',
+            'numberofoperator' => 'required',
+
         ], $messages = [
-            'name.required' => 'نام شرکت نباید خالی باشد',
-            'email.required' => 'ایمیل نباید خالی باشد',
-            'phonenumber.required' => 'شماره همراه نباید خالی باشد',
-            'address' => 'آدرس نباید خالی باشد',
-            'state' =>  'استان نباید خالی باشد',
-            'city' =>  'شهرستان نباید خالی باشد',
+            'name.required' => 'نام تخصص نباید خالی باشد',
+            'unitmeasurement.required' => 'واحد اندازه‌گیری نباید خالی باشد',
+            'numberofoperator.required' => 'تعداد اپراتور نباید خالی باشد',
 
         ]);
         try {
-            // Your query here
-            $ostan_name = Ostan::where('id', $request->state)->value('name');
-            $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
             Specialty::create([
                 'name' => $request->name,
-                'email' => $request->email,
-                'phonenumber' => $request->phonenumber,
-                'description' => $request->description,
-                'address' => $request->address,
-                'state' => $ostan_name,
-                'city' => $Shahrestan_name,
+                'unitmeasurement' => $request->unitmeasurement,
+                'numberofoperator' => $request->numberofoperator,
             ]);
-            Alert::success('شرکت مورد نظر ایجاد شد', 'باتشکر');
-            return redirect()->route('specialty.index');
+            Alert::success('تخصص مورد نظر ایجاد شد', 'باتشکر');
+           return redirect()->route('specialty.index');
         } catch (\Illuminate\Database\QueryException $e) {
             // You need to handle the error here.
             // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات تخصص تکراری و یا اشتباه است', 'خطا');
             return back();
 
             // Just some example
             //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات تخصص تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }
@@ -111,7 +97,7 @@ class SpecialtyController extends Controller
             'state' => 'required',
             'city' => 'required'
         ], $messages = [
-            'name.required' => 'نام شرکت نباید خالی باشد',
+            'name.required' => 'نام تخصص نباید خالی باشد',
             'email.required' => 'ایمیل نباید خالی باشد',
             'phonenumber.required' => 'شماره همراه نباید خالی باشد',
             'address' => 'آدرس نباید خالی باشد',
@@ -130,16 +116,16 @@ class SpecialtyController extends Controller
                 'state' => $ostan_name,
                 'city' => $Shahrestan_name,
             ]);
-            Alert::success('شرکت مورد نظر ویرایش شد', 'باتشکر');
+            Alert::success('تخصص مورد نظر ویرایش شد', 'باتشکر');
             return redirect()->route('specialty.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات تخصص تکراری و یا اشتباه است', 'خطا');
             return back();
             //     // Just some example
             //     //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات تخصص تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }

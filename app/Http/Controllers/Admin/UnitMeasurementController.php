@@ -57,7 +57,7 @@ class UnitMeasurementController extends Controller
             // Just some example
             //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات واحد اندازه گیری تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }
@@ -75,56 +75,38 @@ class UnitMeasurementController extends Controller
      */
     public function edit(string $id)
     {
-        $unitmeasurement = UnitMeasurement::where('id', $id)->get()->first();
-        $ostan_select = Ostan::where('name', $unitmeasurement->state)->get()->first();
-        $shahrestan_select = shahrestan::where('name', $unitmeasurement->city)->get()->first();
-        $ostan = Ostan::all();
-        $shahrestan = Shahrestan::all();
-        return view('unitmeasurement.edit', compact('unitmeasurement', 'ostan_select', 'shahrestan_select', 'ostan', 'shahrestan'));
+        $unitMeasurement = UnitMeasurement::where('id', $id)->get()->first();
+        return view('unitmeasurement.edit', compact('unitMeasurement'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, UnitMeasurement $unitmeasurement)
-    { //dd($request,$unitmeasurement);
-        $request->validate([
+    { dd( $unitmeasurement);
+         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'phonenumber' => 'required',
-            'address' => 'required',
-            'state' => 'required',
-            'city' => 'required'
-        ], $messages = [
-            'name.required' => 'نام شرکت نباید خالی باشد',
-            'email.required' => 'ایمیل نباید خالی باشد',
-            'phonenumber.required' => 'شماره همراه نباید خالی باشد',
-            'address' => 'آدرس نباید خالی باشد',
-            'state' =>  'استان نباید خالی باشد',
-            'city' =>  'شهرستان نباید خالی باشد',
+            'symptom' => 'required',
 
+        ], $messages = [
+            'name.required' => 'واحد اندازه‌گیری نباید خالی باشد',
+            'symptom.required' => 'سمبل واحد اندازه‌گیری نباید خالی باشد',
         ]);
         try {
-            $ostan_name = Ostan::where('id', $request->state)->value('name');
-            $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
             $unitmeasurement->update([
                 'name' => $request->name,
-                'email' => $request->email,
-                'phonenumber' => $request->phonenumber,
-                'address' => $request->address,
-                'state' => $ostan_name,
-                'city' => $Shahrestan_name,
+                'symptom' => $request->symptom,
             ]);
-            Alert::success('شرکت مورد نظر ویرایش شد', 'باتشکر');
-            return redirect()->route('unitmeasurement.index');
+            Alert::success('واحد اندازه گیری مورد نظر ویرایش شد', 'باتشکر');
+            return redirect()->route('unitMeasurement.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات واحد اندازه گیری تکراری و یا اشتباه است', 'خطا');
             return back();
             //     // Just some example
             //     //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات شرکت تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات واحد اندازه گیری تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }

@@ -108,15 +108,16 @@ $(function () {
 
         var dt_filter = dt_filter_table.DataTable({
             ajax: {
-                url: "http://localhost:8000/unitMeasurement/datatable",
+                url: "http://localhost:8000/specialty/datatable",
                 type: "GET",
-            },
+            }, //ajax:"http://localhost:8000/customer/datatable",
             columns: [
                 { data: "name" },
-                { data: "symptom" },
+                { data: "unitmeasurement" },
+                { data: "numberofoperator" },
                 { data: "" },
             ],
-             columnDefs: [
+            columnDefs: [
                 {
                     // Label
                     targets: -2,
@@ -165,13 +166,13 @@ $(function () {
                             '<div class="d-inline-block">' +
                             '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></a>' +
                             '<div class="dropdown-menu dropdown-menu-end m-0">' +
-                            '<a href="/unitMeasurement/edit/' +
+                            '<a href="/customer/edit/' +
                             full.id +
                             '"' +
-                            'class="dropdown-item">ویرایش اطلاعات واحد اندازه‌گیری</a>' +
+                            'class="dropdown-item">ویرایش اطلاعات تخصص' +
                             "</div>" +
                             "</div>" +
-                            '<a  href="/unitMeasurement/edit/' +
+                            '<a  href="/customer/edit/' +
                             full.id +
                             '"' +
                             'class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>'
@@ -192,7 +193,7 @@ $(function () {
 
             buttons: [
                 {
-                    text: '<i class="bx bx-plus me-md-2"></i><span class="d-md-inline-block d-none">ایجاد واحد اندازه‌گیری</span>',
+                    text: '<i class="bx bx-plus me-md-2"></i><span class="d-md-inline-block d-none">ایجاد تخصص</span>',
                     className: "btn btn-primary",
                     action: function (e, dt, button, config) {
                         window.location = "create";
