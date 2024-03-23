@@ -77,11 +77,13 @@ class SpecialtyController extends Controller
     public function edit(string $id)
     {
         $specialty = Specialty::where('id', $id)->get()->first();
-        $ostan_select = Ostan::where('name', $specialty->state)->get()->first();
-        $shahrestan_select = shahrestan::where('name', $specialty->city)->get()->first();
-        $ostan = Ostan::all();
-        $shahrestan = Shahrestan::all();
-        return view('specialty.edit', compact('specialty', 'ostan_select', 'shahrestan_select', 'ostan', 'shahrestan'));
+       // dd($specialty->unitmeasurement);
+
+        $UnitMeasurement_select = UnitMeasurement::where('id', $specialty->unitmeasurement)->get()->first();
+        // $shahrestan_select = shahrestan::where('name', $specialty->city)->get()->first();
+        $UnitMeasurement = UnitMeasurement::all();
+        $operatorarray = ["1", "2", "3","4","5","6","7","8","9","10"];
+        return view('specialty.edit', compact('specialty', 'UnitMeasurement_select', 'UnitMeasurement','operatorarray'));
     }
 
     /**
@@ -91,30 +93,21 @@ class SpecialtyController extends Controller
     { //dd($request,$specialty);
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'phonenumber' => 'required',
-            'address' => 'required',
-            'state' => 'required',
-            'city' => 'required'
+            'unitmeasurement' => 'required',
+            'numberofoperator' => 'required',
         ], $messages = [
             'name.required' => 'نام تخصص نباید خالی باشد',
-            'email.required' => 'ایمیل نباید خالی باشد',
-            'phonenumber.required' => 'شماره همراه نباید خالی باشد',
-            'address' => 'آدرس نباید خالی باشد',
-            'state' =>  'استان نباید خالی باشد',
-            'city' =>  'شهرستان نباید خالی باشد',
+            'unitmeasurement.required' => 'واحد اندازه گیری نباید خالی باشد',
+            'numberofoperator.required' => 'تعداد اپراتور نباید خالی باشد',
+
 
         ]);
         try {
-            $ostan_name = Ostan::where('id', $request->state)->value('name');
-            $Shahrestan_name = Shahrestan::where('id', $request->city)->value('name');
             $specialty->update([
                 'name' => $request->name,
-                'email' => $request->email,
-                'phonenumber' => $request->phonenumber,
-                'address' => $request->address,
-                'state' => $ostan_name,
-                'city' => $Shahrestan_name,
+                'unitmeasurement' => $request->unitmeasurement,
+                'numberofoperator' => $request->numberofoperator,
+
             ]);
             Alert::success('تخصص مورد نظر ویرایش شد', 'باتشکر');
             return redirect()->route('specialty.index');

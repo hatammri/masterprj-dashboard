@@ -35,85 +35,54 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">مشتری /</span> ویرایش مشتری جدید
+                <span class="text-muted fw-light">تخصص /</span> ویرایش تخصص جدید
             </h4>
 
 
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
-                <h5 class="card-header heading-color">ویرایش مشتری جدید</h5>
-                <form action="{{ route('customer.update' , ['customer' => $customer->id]) }}"  method="POST" class="card-body">
+                <h5 class="card-header heading-color">ویرایش تخصص جدید</h5>
+                <form action="{{ route('specialty.update' , ['specialty' => $specialty->id]) }}"  method="POST" class="card-body">
                     @csrf
                     @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-customer">نام مشتری</label>
+                            <label class="form-label" for="basic-icon-default-company">نام تخصص</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-customer2" class="input-group-text"><i
-                                        class="bx bx-buildings"></i></span>
-                                <input name="name" type="text" id="basic-icon-default-customer"
-                                    value="{{ $customer->name }}" class="form-control" placeholder="مثال:سجاد رضایی"
-                                    aria-label="ACME Inc." aria-describedby="basic-icon-default-customer2">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-hard-hat"></i></span>
+                                <input name="name" type="text" id="basic-icon-default-company" class="form-control"
+                                value="{{ $specialty->name }}"
+                                    placeholder="مثال:دنده " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-email">ایمیل</label>
-                            <div class="input-group input-group-merge">
-                                <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                                <span id="basic-icon-default-email2" class="input-group-text"
-                                    dir="ltr">@gmail.com</span>
-                                <input name="email" type="text" id="basic-icon-default-email"
-                                    value="{{ $customer->email }}" class="form-control text-start" placeholder="john.doe"
-                                    aria-label="john.doe" aria-describedby="basic-icon-default-email2" dir="ltr">
-                            </div>
-                            <div class="form-text">می‌توانید از حروف، اعداد و نقطه استفاده کنید</div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-phone">شماره همراه</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-phone2" class="input-group-text"><i
-                                        class="bx bx-phone"></i></span>
-                                <input name="phonenumber" type="text" id="basic-icon-default-phone"
-                                    value="{{ $customer->phonenumber }}" class="form-control phone-mask text-start"
-                                    placeholder="09122156584" aria-label="09122156584"
-                                    aria-describedby="basic-icon-default-phone2" dir="ltr">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-message">توضیحات</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-message2" class="input-group-text"><i
-                                        class="bx bx-comment"></i></span>
-                                <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
-                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{ $customer->description }}</textarea>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-company">نام شرکت</label>
-                            <select name="company" id="collapsible-company" class="select2 form-select"
+                            <label class="form-label" for="collapsible-UnitMeasurement">واحد اندازه‌گیری</label>
+                            <select name="unitmeasurement" id="collapsible-UnitMeasurement" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($companyall as $itemcompany)
-                                    <option value="{{ $itemcompany->id }}"
-                                        {{ $itemcompany->id == $customer->company ? 'selected' : '' }}>
-                                        {{ $itemcompany->name }}
-                                    </option>
-                                @endforeach
+
+                                @foreach ($UnitMeasurement as $itemUnitMeasurement)
+                                <option value="{{ $itemUnitMeasurement->id }}"
+                                    {{ $itemUnitMeasurement->id == $UnitMeasurement_select->id ? 'selected' : '' }}>
+                                    {{ $itemUnitMeasurement->name }}
+                                </option>
+                            @endforeach
                             </select>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">سمت مشتری در شرکت</label>
-                            <select name="rule" id="collapsible-rule" class="select2 form-select"
+                            <label class="form-label" for="collapsible-rule">تعداد اپراتور</label>
+                            <select name="numberofoperator" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($ruleall as $itemrule)
-                                    <option value="{{ $itemrule->id }}"
-                                        {{ $itemrule->id == $customer->rule ? 'selected' : '' }}>
-                                        {{ $itemrule->name }}
-                                    </option>
-                                @endforeach
+                                @foreach ($operatorarray as $itemoperatorarray)
+                                <option value="{{ $itemoperatorarray}}"
+                                    {{ $itemoperatorarray == $specialty->numberofoperator ? 'selected' : '' }}>
+                                    {{ $itemoperatorarray}}
+                                </option>
+                            @endforeach
                             </select>
                         </div>
 

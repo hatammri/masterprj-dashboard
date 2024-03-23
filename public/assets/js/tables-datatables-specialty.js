@@ -110,7 +110,7 @@ $(function () {
             ajax: {
                 url: "http://localhost:8000/specialty/datatable",
                 type: "GET",
-            }, //ajax:"http://localhost:8000/customer/datatable",
+            }, //ajax:"http://localhost:8000/specialty/datatable",
             columns: [
                 { data: "name" },
                 { data: "unitmeasurements.name" },
@@ -166,13 +166,13 @@ $(function () {
                             '<div class="d-inline-block">' +
                             '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></a>' +
                             '<div class="dropdown-menu dropdown-menu-end m-0">' +
-                            '<a href="/customer/edit/' +
+                            '<a href="/specialty/edit/' +
                             full.id +
                             '"' +
                             'class="dropdown-item">ویرایش اطلاعات تخصص' +
                             "</div>" +
                             "</div>" +
-                            '<a  href="/customer/edit/' +
+                            '<a  href="/specialty/edit/' +
                             full.id +
                             '"' +
                             'class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>'
