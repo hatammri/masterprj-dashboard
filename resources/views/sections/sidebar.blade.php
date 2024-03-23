@@ -6,7 +6,8 @@
                     src="{{ asset('/assets/img/logo/sapa.png') }}">
 
             </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2"> گروه رادیس </span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2"> گروه
+                .رادیس </span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -165,12 +166,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('accesslevel.index') }}" class="menu-link ">
+                    <a href="{{ route('machine.create') }}" class="menu-link ">
                         <div>ثبت ماشین</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('accesslevel.accesspermission') }}" class="menu-link">
+                    <a href="{{ route('machine.index') }}" class="menu-link">
                         <div>لیست ماشین</div>
                     </a>
                 </li>
@@ -199,7 +200,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('unitMeasurement.create') }}" class="menu-link">
+                    <a href="{{ route('unitMeasurement.index') }}" class="menu-link">
                         <div>لیست واحد اندازه‌گیری</div>
                     </a>
                 </li>

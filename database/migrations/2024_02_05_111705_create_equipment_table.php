@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('color');
             $table->string('equipment_security');
             $table->string('weight');
-            $table->string(  'dimensions');
-            $table->string(  'description');
+            $table->string('dimensions');
+            $table->string('description');
             $table->timestamps();
         });
     }
