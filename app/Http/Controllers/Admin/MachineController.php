@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\machine;
+use App\Models\Machine;
 use App\Models\Ostan;
 use App\Models\UnitMeasurement;
+use App\Models\Specialty;
+
 use RealRashid\SweetAlert\Facades\Alert;
 
 class machineController extends Controller
@@ -21,8 +23,8 @@ class machineController extends Controller
      */
     public function create()
     {
-        $UnitMeasurement = UnitMeasurement::all();
-        return view('machine.create', compact('UnitMeasurement'));
+        $Specialty = Specialty::all();
+        return view('machine.create', compact('Specialty'));
     }
 
     /**
@@ -32,20 +34,25 @@ class machineController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'unitmeasurement' => 'required',
-            'numberofoperator' => 'required',
+            'code' => 'required',
+            'available' => 'required',
+            'specialty' => 'required',
 
         ], $messages = [
             'name.required' => 'نام ماشین نباید خالی باشد',
-            'unitmeasurement.required' => 'واحد اندازه‌گیری نباید خالی باشد',
-            'numberofoperator.required' => 'تعداد اپراتور نباید خالی باشد',
+            'code.required' => 'کد ماشین نباید خالی باشد',
+            'available.required' => 'وضعیت استفاده از ماشین  نباید خالی باشد',
+            'specialty.required' => ' تخصص نباید خالی باشد',
 
         ]);
         try {
-            machine::create([
+            Machine::create([
                 'name' => $request->name,
-                'unitmeasurement' => $request->unitmeasurement,
-                'numberofoperator' => $request->numberofoperator,
+                'code' => $request->code,
+                'available' => $request->available,
+                'specialty' => $request->specialty,
+                'is_active' => "1",
+
             ]);
             Alert::success('ماشین مورد نظر ایجاد شد', 'باتشکر');
            return redirect()->route('machine.index');

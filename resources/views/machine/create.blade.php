@@ -42,7 +42,7 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ثبت ماشین جدید</h5>
-                <form action="{{ route('specialty.store') }}" method="POST" class="card-body">
+                <form action="{{ route('machine.store') }}" method="POST" class="card-body">
                     @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
@@ -69,50 +69,26 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-UnitMeasurement">تخصص</label>
-                            <select name="unitmeasurement" id="collapsible-UnitMeasurement" class="select2 form-select"
+                            <select name="specialty" id="collapsible-UnitMeasurement" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($UnitMeasurement as $itemUnitMeasurement)
-                                    <option value="{{ $itemUnitMeasurement->id }}">
-                                        {{ $itemUnitMeasurement->name }} ({{$itemUnitMeasurement->symptom}})
+                                @foreach ($Specialty as $itemSpecialty)
+                                    <option value="{{ $itemSpecialty->id }}">
+                                        {{ $itemSpecialty->name }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">قابل استفاده</label>
-                            <select name="numberofoperator" id="collapsible-rule" class="select2 form-select"
+                            <label class="form-label" for="collapsible-rule">وضعیت استفاده از ماشین</label>
+                            <select name="available" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
-                                    <option value="1">
-                                       1
-                                    </option>
-                                    <option value="2">
-                                       2
-                                    </option>
-                                    <option value="3">
-                                        3
-                                     </option>
-                                     <option value="4">
-                                       4
-                                     </option>
-                                     <option value="5">
-                                        5
-                                     </option>
-                                     <option value="6">
-                                        6
-                                     </option>
-                                      <option value="7">
-                                        7
-                                     </option>
-                                     <option value="8">
-                                        8
-                                     </option>
-                                     <option value="9">
-                                        9
-                                     </option>
-                                     <option value="10">
-                                        10
-                                     </option>
+                                <option value="1">
+                                    ماشین سالم است
+                                </option>
+                                <option value="0">
+                                    ماشین خراب است
+                                </option>
                             </select>
                         </div>
 
