@@ -35,58 +35,67 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">تخصص /</span> ویرایش تخصص جدید
+                <span class="text-muted fw-light">ماشین /</span> ویرایش ماشین
             </h4>
 
 
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
-                <h5 class="card-header heading-color">ویرایش تخصص جدید</h5>
-                <form action="{{ route('specialty.update' , ['specialty' => $specialty->id]) }}"  method="POST" class="card-body">
+                <h5 class="card-header heading-color">ویرایش ماشین</h5>
+                <form action="{{ route('machine.update' , ['machine' => $machine->id]) }}"  method="POST" class="card-body">
                     @csrf
                     @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-company">نام تخصص</label>
+                            <label class="form-label" for="basic-icon-default-company">نام ماشین</label>
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
-                                        class="bx bx-hard-hat"></i></span>
-                                <input name="name" type="text" id="basic-icon-default-company" class="form-control"
-                                value="{{ $specialty->name }}"
-                                    placeholder="مثال:دنده " aria-label="ACME Inc."
+                                        class="bx bx-crosshair"></i></span>
+                                <input name="name" value="{{ $machine->name }}" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال:دستگاه تراش " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">کد ماشین (سریال ماشین)</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-barcode"></i></span>
+                                <input name="code"  value="{{ $machine->code }}" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال: FG34225556GS  " aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-UnitMeasurement">واحد اندازه‌گیری</label>
-                            <select name="unitmeasurement" id="collapsible-UnitMeasurement" class="select2 form-select"
+                            <label class="form-label" for="collapsible-UnitMeasurement">تخصص</label>
+                            <select name="specialty" id="collapsible-UnitMeasurement" class="select2 form-select"
                                 data-allow-clear="true">
-
-                                @foreach ($UnitMeasurement as $itemUnitMeasurement)
-                                <option value="{{ $itemUnitMeasurement->id }}"
-                                    {{ $itemUnitMeasurement->id == $UnitMeasurement_select->id ? 'selected' : '' }}>
-                                    {{ $itemUnitMeasurement->name }}
+                                @foreach ($Specialty as $itemSpecialty)
+                                <option value="{{ $itemSpecialty->id }}"
+                                    {{ $itemSpecialty->id == $Specialty_select->id ? 'selected' : '' }}>
+                                    {{ $itemSpecialty->name }}
                                 </option>
                             @endforeach
                             </select>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">تعداد اپراتور</label>
-                            <select name="numberofoperator" id="collapsible-rule" class="select2 form-select"
+                            <label class="form-label" for="collapsible-rule">وضعیت استفاده از ماشین</label>
+                            <select name="available" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($operatorarray as $itemoperatorarray)
-                                <option value="{{ $itemoperatorarray}}"
-                                    {{ $itemoperatorarray == $specialty->numberofoperator ? 'selected' : '' }}>
-                                    {{ $itemoperatorarray}}
+                                <option value="1"  {{ "1" == $machine->available ? 'selected' : '' }}>
+                                    ماشین سالم است
                                 </option>
-                            @endforeach
+                                <option value="0"  {{ "0" == $machine->available ? 'selected' : '' }}>
+                                    ماشین خراب است
+                                </option>
                             </select>
                         </div>
 
                     </div>
+
 
                     <div class="pt-4">
                         <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>

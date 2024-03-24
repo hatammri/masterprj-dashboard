@@ -86,11 +86,10 @@ class machineController extends Controller
         $machine = machine::where('id', $id)->get()->first();
        // dd($machine->unitmeasurement);
 
-        $UnitMeasurement_select = UnitMeasurement::where('id', $machine->unitmeasurement)->get()->first();
+        $Specialty_select = Specialty::where('id', $machine->specialty)->get()->first();
         // $shahrestan_select = shahrestan::where('name', $machine->city)->get()->first();
-        $UnitMeasurement = UnitMeasurement::all();
-        $operatorarray = ["1", "2", "3","4","5","6","7","8","9","10"];
-        return view('machine.edit', compact('machine', 'UnitMeasurement_select', 'UnitMeasurement','operatorarray'));
+        $Specialty = Specialty::all();
+        return view('machine.edit', compact('machine', 'Specialty_select', 'Specialty'));
     }
 
     /**
@@ -100,20 +99,23 @@ class machineController extends Controller
     { //dd($request,$machine);
         $request->validate([
             'name' => 'required',
-            'unitmeasurement' => 'required',
-            'numberofoperator' => 'required',
+            'code' => 'required',
+            'available' => 'required',
+            'specialty' => 'required',
         ], $messages = [
             'name.required' => 'نام ماشین نباید خالی باشد',
-            'unitmeasurement.required' => 'واحد اندازه گیری نباید خالی باشد',
-            'numberofoperator.required' => 'تعداد اپراتور نباید خالی باشد',
-
+            'code.required' => 'کد ماشین نباید خالی باشد',
+            'available.required' => 'وضعیت استفاده از ماشین  نباید خالی باشد',
+            'specialty.required' => ' تخصص نباید خالی باشد',
 
         ]);
         try {
             $machine->update([
                 'name' => $request->name,
-                'unitmeasurement' => $request->unitmeasurement,
-                'numberofoperator' => $request->numberofoperator,
+                'code' => $request->code,
+                'available' => $request->available,
+                'specialty' => $request->specialty,
+                'is_active' => "1",
 
             ]);
             Alert::success('ماشین مورد نظر ویرایش شد', 'باتشکر');
@@ -139,10 +141,10 @@ class machineController extends Controller
     }
     public function datatable()
     {
-        $data_Specialties = machine::with(['unitmeasurements:id,name'])->paginate();
+        $data_machines = machine::with(['Specialties:id,name'])->paginate();
         $code = 200;
         return response()->json(
-            $data_Specialties,
+            $data_machines,
             $code,
             ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
             JSON_UNESCAPED_UNICODE

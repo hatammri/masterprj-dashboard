@@ -11,29 +11,31 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">جدول‌داده /</span> لیست تخصص ها
+                <span class="text-muted fw-light">جدول‌داده /</span> لیست ماشین ها
             </h4>
 
             <!-- Column Search -->
             <div class="card">
-                <h5 class="card-header heading-color">لیست تخصص ها</h5>
+                <h5 class="card-header heading-color">لیست ماشین ها</h5>
                 <div class="card-datatable text-nowrap">
                     <table class="dt-column-search table table-bordered">
 
                         <thead>
 
                             <tr>
-                                <th>نام تخصص</th>
-                                <th>واحد اندازه گیری</th>
-                                <th>تعداد اپراتور</th>
+                                <th>نام ماشین</th>
+                                <th>کد ماشین</th>
+                                <th>وضیت ماشین</th>
+                                <th>تخصص</th>
                                 <th>نمایش جزئیات</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>نام تخصص</th>
-                                <th>واحد اندازه گیری</th>
-                                <th>تعداد اپراتور</th>
+                                <th>نام ماشین</th>
+                                <th>کد ماشین</th>
+                                <th>وضیت ماشین</th>
+                                <th>تخصص</th>
                                 <th>نمایش جزئیات</th>
                             </tr>
                         </tfoot>
@@ -60,5 +62,5 @@
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../../assets/js/tables-datatables-specialty.js"></script>
+    <script src="../../assets/js/tables-datatables-machine.js"></script>
 @endsection
