@@ -30,13 +30,13 @@
             </a>
         </li>
         <!-- Apps & Pages -->
-        <li
+        {{-- <li
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-folder"></i>
                 <div>کار پوشه</div>
             </a>
-            <ul class="menu-sub">
+            <ul class="menu-sub"> --}}
                 {{-- <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
                     <a href="{{ route('reports.list_scan_period') }}" class="menu-link ">
                         <div>لیست دوره‌های اسکن شده </div>
@@ -77,8 +77,8 @@
                         <div>لیست گزارشات پرسنل</div>
                     </a>
                 </li> --}}
-            </ul>
-        </li>
+            {{-- </ul>
+        </li> --}}
         <li
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -226,6 +226,24 @@
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                <div>اپراتور</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('specialty.create') }}" class="menu-link">
+                        <div>اضافه کردن اپراتور</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('specialty.index') }}" class="menu-link">
+                        <div>لیست اپراتور</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-package"></i>
                 <div>تجهیز</div>
             </a>
@@ -271,72 +289,33 @@
 
             </ul>
         </li>
-        <li class="menu-item">
+
+        {{-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div>اطلاعات پایه‌ای</div>
             </a>
-        </li>
-        <li class="menu-item">
+        </li> --}}
+        {{-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div>فعالیت</div>
             </a>
-        </li>
-        <li class="menu-item">
+        </li> --}}
+        {{-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div>امنیت و سطوح دسترسی</div>
             </a>
-        </li>
-        <li class="menu-item">
+        </li> --}}
+        {{-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div>برنامه ریزی</div>
             </a>
-        </li>
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">اطلاعات ایستگاه و مراکز
+        </li> --}}
+        {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">اطلاعات ایستگاه و مراکز
                 اسکن</span></li>
-        <li
-            class="menu-item {{ request()->is('personnels/list_centers') ? 'active open' : '' }} {{ request()->is('personnels/list_personnels') ? 'active open' : '' }} ">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-group"></i>
-                <div>پیگیری</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item  {{ request()->is('personnels/list_centers') ? 'active' : '' }}">
-                    <a href="#" class="menu-link ">
-                        <div>لیست مراکز </div>
-                    </a>
-                </li>
-                <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
-                    <a href="#" class="menu-link">
-                        <div>لسیت پرسنل</div>
-                    </a>
-                </li>
-
-            </ul>
-        </li>
-        <li
-            class="menu-item {{ request()->is('personnels/list_centers') ? 'active open' : '' }} {{ request()->is('personnels/list_personnels') ? 'active open' : '' }} ">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-group"></i>
-                <div>پرسنل</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item  {{ request()->is('personnels/list_centers') ? 'active' : '' }}">
-                    <a href="#" class="menu-link ">
-                        <div>لیست مراکز </div>
-                    </a>
-                </li>
-                <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
-                    <a href="#" class="menu-link">
-                        <div>لسیت پرسنل</div>
-                    </a>
-                </li>
-
-            </ul>
-        </li>
 
         <li class="menu-item">
             <a href="#" class="menu-link">
@@ -368,7 +347,7 @@
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation">مستندات</div>
             </a>
-        </li>
+        </li> --}}
         <li class="menu-item">
             <a href="{{ route('logout') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-log-out-circle"></i>
