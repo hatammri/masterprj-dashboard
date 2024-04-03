@@ -231,12 +231,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('specialty.create') }}" class="menu-link">
+                    <a href="{{ route('operator.create') }}" class="menu-link">
                         <div>اضافه کردن اپراتور</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('specialty.index') }}" class="menu-link">
+                    <a href="{{ route('operator.index') }}" class="menu-link">
                         <div>لیست اپراتور</div>
                     </a>
                 </li>

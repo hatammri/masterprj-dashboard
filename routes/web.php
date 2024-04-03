@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\TypeEquipmentController;
 use App\Http\Controllers\Admin\SpecialtyController;
 use App\Http\Controllers\Admin\UnitMeasurementController;
 use App\Http\Controllers\Admin\MachineController;
+use App\Http\Controllers\Admin\OperatorController;
 use App\Models\Rule;
 
 //require __DIR__ . '/auth.php';
@@ -73,6 +74,22 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/show/{data}', [SpecialtyController::class, 'show'])->name('show');
         Route::put('/update/{specialty}', [SpecialtyController::class, 'update'])->name('update');
     });
+    Route::prefix('operator')->name('operator.')->group(function () {
+        Route::get('/create', [OperatorController::class, 'create'])->name('create');
+        Route::post('/store', [OperatorController::class, 'store'])->name('store');
+        Route::get('/index', [OperatorController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [OperatorController::class, 'edit'])->name('edit');
+        Route::get('/show/{data}', [OperatorController::class, 'show'])->name('show');
+        Route::put('/update/{operator}', [OperatorController::class, 'update'])->name('update');
+    });
+    // Route::prefix('operatorSpecialty')->name('operatorSpecialty.')->group(function () {
+    //     Route::get('/create', [OperatorController::class, 'create'])->name('create');
+    //     Route::post('/store', [OperatorController::class, 'store'])->name('store');
+    //     Route::get('/index', [OperatorController::class, 'index'])->name('index');
+    //     Route::get('/edit/{id}', [OperatorController::class, 'edit'])->name('edit');
+    //     Route::get('/show/{data}', [OperatorController::class, 'show'])->name('show');
+    //     Route::put('/update/{operator}', [OperatorController::class, 'update'])->name('update');
+    // });
     Route::prefix('machine')->name('machine.')->group(function () {
         Route::get('/create', [MachineController::class, 'create'])->name('create');
         Route::post('/store', [MachineController::class, 'store'])->name('store');
@@ -81,6 +98,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/show/{data}', [MachineController::class, 'show'])->name('show');
         Route::put('/update/{machine}', [MachineController::class, 'update'])->name('update');
     });
+
     Route::prefix('unitMeasurement')->name('unitMeasurement.')->group(function () {
         Route::get('/create', [UnitMeasurementController::class, 'create'])->name('create');
         Route::post('/store', [UnitMeasurementController::class, 'store'])->name('store');
@@ -165,6 +183,7 @@ Route::get('equipment/datatable', [EquipmentController::class, 'datatable'])->na
 Route::get('specialty/datatable', [SpecialtyController::class, 'datatable'])->name('Specialty.datatable');
 Route::get('machine/datatable', [MachineController::class, 'datatable'])->name('machine.datatable');
 Route::get('unitMeasurement/datatable', [UnitMeasurementController::class, 'datatable'])->name('unitMeasurement.datatable');
+Route::get('operator/datatable', [OperatorController::class, 'datatable'])->name('operator.datatable');
 
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 Route::post('/resend_otp', [AuthController::class, 'resendOtp'])->middleware('guest')->name('resendOtp');
