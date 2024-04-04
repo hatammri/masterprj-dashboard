@@ -51,9 +51,9 @@
                             <label class="form-label" for="collapsible-UnitMeasurement">نام مشتری</label>
                             <select name="unitmeasurement" id="collapsible-UnitMeasurement" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($UnitMeasurement as $itemUnitMeasurement)
-                                    <option value="{{ $itemUnitMeasurement->id }}">
-                                        {{ $itemUnitMeasurement->name }} ({{$itemUnitMeasurement->symptom}})
+                                @foreach ($Customer as $itemCustomer)
+                                    <option value="{{ $itemCustomer->id }}">
+                                        {{ $itemCustomer->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -62,9 +62,9 @@
                             <label class="form-label" for="collapsible-UnitMeasurement">تجهیز</label>
                             <select name="unitmeasurement" id="collapsible-UnitMeasurement" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($UnitMeasurement as $itemUnitMeasurement)
-                                    <option value="{{ $itemUnitMeasurement->id }}">
-                                        {{ $itemUnitMeasurement->name }} ({{$itemUnitMeasurement->symptom}})
+                                @foreach ($Equipment as $itemEquipment)
+                                    <option value="{{ $itemEquipment->id }}">
+                                        {{ $itemEquipment->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -74,36 +74,13 @@
                             <label class="form-label" for="collapsible-rule">سرویس در مکان</label>
                             <select name="numberofoperator" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
+                                    <option value="0">
+                                       0
+                                    </option>
                                     <option value="1">
                                        1
                                     </option>
-                                    <option value="2">
-                                       2
-                                    </option>
-                                    <option value="3">
-                                        3
-                                     </option>
-                                     <option value="4">
-                                       4
-                                     </option>
-                                     <option value="5">
-                                        5
-                                     </option>
-                                     <option value="6">
-                                        6
-                                     </option>
-                                      <option value="7">
-                                        7
-                                     </option>
-                                     <option value="8">
-                                        8
-                                     </option>
-                                     <option value="9">
-                                        9
-                                     </option>
-                                     <option value="10">
-                                        10
-                                     </option>
+
                             </select>
                         </div>
                         <div class="col-md-6">
@@ -140,20 +117,21 @@
                           </div>
                           <!-- /Date Picker -->
                           <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">فوریت انجام کار </label>
+                            <label class="form-label" for="collapsible-rule">فوریت انجام کار  (عدد کمتر اهمیت بیشتری دارد)</label>
                             <select name="numberofoperator" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
                                     <option value="1">
-                                       1
+                                      (اضطراری) 1
                                     </option>
                                     <option value="2">
-                                       2
+
+                                      (خیلی مهم)  2
                                     </option>
                                     <option value="3">
-                                        3
+                                       (مهم) 3
                                      </option>
                                      <option value="4">
-                                       4
+                                     (عادی)  4
                                      </option>
                                      <option value="5">
                                         5

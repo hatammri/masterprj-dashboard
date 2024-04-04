@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Specialty;
 use App\Models\Ostan;
+use App\Models\Customer;
+use App\Models\Equipment;
 use App\Models\UnitMeasurement;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -21,8 +23,10 @@ class RequestworkController extends Controller
      */
     public function create()
     {
-        $UnitMeasurement = UnitMeasurement::all();
-        return view('requestwork.create', compact('UnitMeasurement'));
+        $Customer = Customer::all();
+        $Equipment = Equipment::all();
+
+        return view('requestwork.create', compact('Customer','Equipment'));
     }
 
     /**
