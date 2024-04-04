@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\SpecialtyController;
 use App\Http\Controllers\Admin\UnitMeasurementController;
 use App\Http\Controllers\Admin\MachineController;
 use App\Http\Controllers\Admin\OperatorController;
+use App\Http\Controllers\Admin\RequestworkController;
 use App\Models\Rule;
 
 //require __DIR__ . '/auth.php';
@@ -73,6 +74,14 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/edit/{id}', [SpecialtyController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [SpecialtyController::class, 'show'])->name('show');
         Route::put('/update/{specialty}', [SpecialtyController::class, 'update'])->name('update');
+    });
+    Route::prefix('requestwork')->name('requestwork.')->group(function () {
+        Route::get('/create', [RequestworkController::class, 'create'])->name('create');
+        Route::post('/store', [RequestworkController::class, 'store'])->name('store');
+        Route::get('/index', [RequestworkController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [RequestworkController::class, 'edit'])->name('edit');
+        Route::get('/show/{data}', [RequestworkController::class, 'show'])->name('show');
+        Route::put('/update/{requestwork}', [RequestworkController::class, 'update'])->name('update');
     });
     Route::prefix('operator')->name('operator.')->group(function () {
         Route::get('/create', [OperatorController::class, 'create'])->name('create');

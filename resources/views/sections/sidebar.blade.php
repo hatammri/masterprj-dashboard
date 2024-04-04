@@ -81,23 +81,19 @@
         </li> --}}
         <li
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-layer"></i>
                 <div>درخواست‌کار</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
-                    <a href="{{ route('reports.list_scan_period') }}" class="menu-link ">
+                <li class="menu-item">
+                    <a href="{{ route('requestwork.create') }}" class="menu-link ">
                         <div>صدور درخواست‌کار </div>
                     </a>
                 </li>
-                {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
-            <a href="{{ route('reports.testtable') }}" class="menu-link">
-              <div >تست جدول</div>
-            </a>
-          </li> --}}
-                <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
-                    <a href="{{ route('reports.listContradictions.listcontradictions') }}" class="menu-link">
+
+                <li class="menu-item ">
+                    <a href="{{ route('requestwork.index') }}" class="menu-link">
                         <div>لیست درخواست‌کار</div>
                     </a>
                 </li>
