@@ -18,8 +18,11 @@ class Operator extends Model
     // }
     public function Specialties()
     {
-        return $this->belongsToMany(Operator_specialty::class);
+        return $this->belongsToMany(Specialty::class,"operator_specialty");
     }
-
+    public function Sematdata(): BelongsTo
+    {
+        return $this->belongsTo(Rule::class,'semat');
+    }
 
 }

@@ -14,43 +14,63 @@
                 <span class="text-muted fw-light">جدول‌داده /</span> لیست اپراتور ها
             </h4>
 
-            <!-- Column Search -->
-            <div class="card">
-                <h5 class="card-header heading-color">لیست اپراتور ها</h5>
-                <div class="card-datatable text-nowrap">
-                    <table class="dt-column-search table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>نام اپراتور</th>
-                                <th>کد اپراتور</th>
-                                <th>وضعیت اپراتور</th>
-                                <th>کد ملی</th>
-                                <th>سمت</th>
-                                <th>حقوق</th>
-                                <th>وضعیت اپراتور</th>
-                                <th>شماره همراه</th>
-                                <th>تخصص</th>
-                                <th>نمایش جزئیات</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>نام اپراتور</th>
-                                <th>کد اپراتور</th>
-                                <th>وضعیت اپراتور</th>
-                                <th>کد ملی</th>
-                                <th>سمت</th>
-                                <th>حقوق</th>
-                                <th>وضعیت اپراتور</th>
-                                <th>شماره همراه</th>
-                                <th>تخصص</th>
-                                <th>نمایش جزئیات</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+             <!-- Basic Bootstrap Table -->
+             <div class="card">
+                <h5 class="card-header heading-color">جدول پایه</h5>
+                <div class="table-responsive text-nowrap">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>تصویر اپراتور</th>
+                        <th>نام اپراتور</th>
+                        <th>سمت</th>
+                        <th>تخصص‌های‌ اپراتور</th>
+                        <th>وضعیت</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach ($Operators as $itemOperators)
+                      <tr>
+                        <td>                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="تونی استارک">
+                            <img src="../../assets/img/avatars/{{$itemOperators->image  }}" alt="آواتار" class="rounded-circle">
+                        </li>
+                        </td>
+
+                        <td>{{ $itemOperators->name }}</td>
+                        <td>{{ $itemOperators->Sematdata->name }}</td>
+                        <td>
+                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="تونی استارک">
+                                <span class="badge bg-label-success me-1">اتمام یافته</span>
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="دیوید بکهام">
+                                <span class="badge bg-label-success me-1">اتمام یافته</span>
+                            </li>
+                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="اولیور کویین">
+                                <span class="badge bg-label-success me-1">اتمام یافته</span>
+                            </li>
+                          </ul>
+                        </td>
+                        <td><span class="badge bg-label-success me-1">اتمام یافته</span></td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu">
+                              <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-2"></i> ویرایش</a>
+                              <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i> حذف</a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      @endforeach
+
+                    </tbody>
+                  </table>
                 </div>
-            </div>
-            <!--/ Column Search -->
+              </div>
+              <!--/ Basic Bootstrap Table -->
         </div>
 
         <div class="content-backdrop fade"></div>

@@ -112,9 +112,13 @@ $(function () {
                 type: "GET",
             }, //ajax:"http://localhost:8000/specialty/datatable",
             columns: [
+                { data: "image"},
                 { data: "name" },
-                { data: "unitmeasurements.name" },
-                { data: "numberofoperator" },
+                { data: "available"},
+                { data: "codemeli"},
+                { data: "semat"},
+                { data: "salery"},
+                { data: "specialties"},
                 { data: "" },
             ],
             columnDefs: [

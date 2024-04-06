@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('operator_specialty', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('operator');
-            $table->foreign('operator')->references('id')->on('operator')->onDelete('cascade');
-            $table->foreignId('specialty');
-            $table->foreign('specialty')->references('id')->on('specialty')->onDelete('cascade');
+            $table->foreignId('operator_id');
+            $table->foreign('operator_id')->references('id')->on('operator')->onDelete('cascade');
+            $table->foreignId('specialty_id');
+            $table->foreign('specialty_id')->references('id')->on('specialty')->onDelete('cascade');
             $table->timestamps();
         });
     }

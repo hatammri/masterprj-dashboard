@@ -16,9 +16,9 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class operatorController extends Controller
 {
-    public function index()
-    {
-        return view('operator.index');
+    public function index(){
+    $Operators = Operator::with('Specialties','Sematdata')->paginate();
+        return view('operator.index',compact('Operators'));
     }
 
     /**
@@ -70,8 +70,8 @@ class operatorController extends Controller
 
             foreach ($request->specialty as $specialtyitem) {
                 Operator_specialty::create([
-                    'operator' => $operator->id,
-                    'specialty' => $specialtyitem
+                    'operator_id' => $operator->id,
+                    'specialty_id' => $specialtyitem
                 ]);
             }
 
@@ -164,7 +164,7 @@ class operatorController extends Controller
     }
     public function datatable()
     {
-        $data_operators = Operator::with('Specialties')->paginate();
+        $data_operators = Operator::with('Specialties','semat')->paginate();
         $code = 200;
         return response()->json(
             $data_operators,
