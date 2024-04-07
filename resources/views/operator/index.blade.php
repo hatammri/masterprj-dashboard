@@ -14,63 +14,138 @@
                 <span class="text-muted fw-light">جدول‌داده /</span> لیست اپراتور ها
             </h4>
 
-             <!-- Basic Bootstrap Table -->
-             <div class="card">
-                <h5 class="card-header heading-color">جدول پایه</h5>
+            <!-- Basic Bootstrap Table -->
+            <div class="card">
+                <h5 class="card-header heading-color">جدول اپراتور ها</h5>
                 <div class="table-responsive text-nowrap">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>تصویر اپراتور</th>
-                        <th>نام اپراتور</th>
-                        <th>سمت</th>
-                        <th>تخصص‌های‌ اپراتور</th>
-                        <th>وضعیت</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                        @foreach ($Operators as $itemOperators)
-                      <tr>
-                        <td>                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="تونی استارک">
-                            <img src="../../assets/img/avatars/{{$itemOperators->image  }}" alt="آواتار" class="rounded-circle">
-                        </li>
-                        </td>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>تصویر اپراتور</th>
+                                <th>نام اپراتور</th>
+                                <th>سمت</th>
+                                <th>تخصص‌های‌ اپراتور</th>
+                                <th>وضعیت</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach ($Operators as $itemOperators)
+                                <tr>
+                                    <td>
+                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                                            class="avatar avatar-xs pull-up" title="{{ $itemOperators->name }}">
+                                            <img src="../../assets/img/avatars/{{ $itemOperators->image }}" alt="آواتار"
+                                                class="rounded-circle">
+                                        </li>
+                                    </td>
 
-                        <td>{{ $itemOperators->name }}</td>
-                        <td>{{ $itemOperators->Sematdata->name }}</td>
-                        <td>
-                          <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="تونی استارک">
-                                <span class="badge bg-label-success me-1">اتمام یافته</span>
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="دیوید بکهام">
-                                <span class="badge bg-label-success me-1">اتمام یافته</span>
-                            </li>
-                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top" class="avatar avatar-xs pull-up" title="اولیور کویین">
-                                <span class="badge bg-label-success me-1">اتمام یافته</span>
-                            </li>
-                          </ul>
-                        </td>
-                        <td><span class="badge bg-label-success me-1">اتمام یافته</span></td>
-                        <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-2"></i> ویرایش</a>
-                              <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i> حذف</a>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      @endforeach
+                                    <td>{{ $itemOperators->name }}</td>
+                                    <td>{{ $itemOperators->Sematdata->name }}</td>
+                                    <td>
+                                        <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
 
-                    </tbody>
-                  </table>
+                                            @foreach ($itemOperators->specialties as $itemspecialties)
+                                                @switch($loop->index)
+                                                    @case(0)
+                                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                            data-bs-placement="top" class="avatar avatar-xs pull-up"
+                                                            title="{{ $itemspecialties->name }}">
+                                                            <span
+                                                                class="badge bg-label-success me-1">{{ $itemspecialties->name }}</span>
+                                                        </li>
+                                                    @break
+
+                                                    @case(1)
+                                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                            data-bs-placement="top" class="avatar avatar-xs pull-up"
+                                                            title="{{ $itemspecialties->name }}">
+                                                            <span
+                                                                class="badge bg-label-primary me-1">{{ $itemspecialties->name }}</span>
+                                                        </li>
+                                                    @break
+
+                                                    @case(2)
+                                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                            data-bs-placement="top" class="avatar avatar-xs pull-up"
+                                                            title="{{ $itemspecialties->name }}">
+                                                            <span
+                                                                class="badge bg-label-secondary me-1">{{ $itemspecialties->name }}</span>
+                                                        </li>
+                                                    @break
+
+                                                    @case(3)
+                                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                            data-bs-placement="top" class="avatar avatar-xs pull-up"
+                                                            title="{{ $itemspecialties->name }}">
+                                                            <span
+                                                                class="badge bg-label-danger me-1">{{ $itemspecialties->name }}</span>
+                                                        </li>
+                                                    @break
+
+                                                    @case(4)
+                                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                            data-bs-placement="top" class="avatar avatar-xs pull-up"
+                                                            title="{{ $itemspecialties->name }}">
+                                                            <span
+                                                                class="badge bg-label-warning me-1">{{ $itemspecialties->name }}</span>
+                                                        </li>
+                                                    @break
+
+                                                    @case(5)
+                                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                            data-bs-placement="top" class="avatar avatar-xs pull-up"
+                                                            title="{{ $itemspecialties->name }}">
+                                                            <span
+                                                                class="badge bg-label-dark me-1">{{ $itemspecialties->name }}</span>
+                                                        </li>
+                                                    @break
+
+                                                    @default
+                                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
+                                                            data-bs-placement="top" class="avatar avatar-xs pull-up"
+                                                            title="{{ $itemspecialties->name }}">
+                                                            <span
+                                                                class="badge bg-label-success me-1">{{ $itemspecialties->name }}</span>
+                                                        </li>
+                                                @endswitch
+                                            @endforeach
+
+                                        </ul>
+                                    </td>
+                                    @switch($itemOperators->available)
+                                    @case(0)
+                                    <td><span class="badge bg-label-danger me-1">غیر فعال</span></td>
+                                    @break
+                                    @case(1)
+                                    <td><span class="badge bg-label-success me-1">فعال</span></td>
+                                    @break
+                                    @default
+                                    <td><span class="badge bg-label-warning me-1">نامشخص</span></td>
+
+                                    @endswitch
+
+                                    <td>
+                                        <div class="dropdown">
+                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                                data-bs-toggle="dropdown">
+                                                <i class="bx bx-dots-vertical-rounded"></i>
+                                            </button>
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="javascript:void(0);"><i
+                                                        class="bx bx-edit-alt me-2"></i> ویرایش</a>
+                                                <a class="dropdown-item" href="javascript:void(0);"><i
+                                                        class="bx bx-trash me-2"></i> حذف</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
                 </div>
-              </div>
-              <!--/ Basic Bootstrap Table -->
+            </div>
+            <!--/ Basic Bootstrap Table -->
         </div>
 
         <div class="content-backdrop fade"></div>
