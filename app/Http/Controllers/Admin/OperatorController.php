@@ -143,7 +143,7 @@ class operatorController extends Controller
                 'semat' => $request->semat,
                 'salery' => $request->salery,
                 'available'=> $request->available,
-                'image'=> "Defult.png",
+                'image'=> "2.png",
                 'phonenumber'=>"null",
                 'email'=> "null",
                 'username'=> "null",

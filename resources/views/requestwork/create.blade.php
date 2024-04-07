@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/pickr/pickr-themes.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css">
     <!-- Page CSS -->
     <!-- Helpers -->
@@ -74,12 +78,12 @@
                             <label class="form-label" for="collapsible-rule">سرویس در مکان</label>
                             <select name="numberofoperator" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
-                                    <option value="0">
-                                       0
-                                    </option>
-                                    <option value="1">
-                                       1
-                                    </option>
+                                <option value="0">
+                                    0
+                                </option>
+                                <option value="1">
+                                    1
+                                </option>
 
                             </select>
                         </div>
@@ -105,53 +109,56 @@
                             <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
                         </div>
 
-                         <div class="col-md-6">
-                            <label for="flatpickr-date" class="form-label">تاریخ ورود</label>
-                            <input type="text" class="form-control" placeholder="YYYY/MM/DD" id="flatpickr-date">
-                          </div>
-                          <!-- /Date Picker -->
-                              <!-- Date Picker-->
-                         <div class="col-md-6">
-                            <label for="flatpickr-date" class="form-label">تاریخ تحویل</label>
-                            <input type="text" class="form-control" placeholder="YYYY/MM/DD" id="flatpickr-date">
-                          </div>
-                          <!-- /Date Picker -->
-                          <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">فوریت انجام کار  (عدد کمتر اهمیت بیشتری دارد)</label>
+
+                        <!-- Datetime Picker-->
+                        <div class="col-md-6 col-12 mb-4">
+                            <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
+                            <input type="text" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
+                                id="flatpickr-datetime">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="collapsible-rule">فوریت انجام کار (عدد کمتر اهمیت بیشتری
+                                دارد)</label>
                             <select name="numberofoperator" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
-                                    <option value="1">
-                                      (اضطراری) 1
-                                    </option>
-                                    <option value="2">
+                                <option value="1">
+                                    (اضطراری) 1
+                                </option>
+                                <option value="2">
 
-                                      (خیلی مهم)  2
-                                    </option>
-                                    <option value="3">
-                                       (مهم) 3
-                                     </option>
-                                     <option value="4">
-                                     (عادی)  4
-                                     </option>
-                                     <option value="5">
-                                        5
-                                     </option>
-                                     <option value="6">
-                                        6
-                                     </option>
-                                      <option value="7">
-                                        7
-                                     </option>
-                                     <option value="8">
-                                        8
-                                     </option>
-                                     <option value="9">
-                                        9
-                                     </option>
-                                     <option value="10">
-                                        10
-                                     </option>
+                                    (خیلی مهم) 2
+                                </option>
+                                <option value="3">
+                                    (مهم) 3
+                                </option>
+                                <option value="4">
+                                    (عادی) 4
+                                </option>
+                                <option value="5">
+                                    5
+                                </option>
+                                <option value="6">
+                                    6
+                                </option>
+                                <option value="7">
+                                    7
+                                </option>
+                                <option value="8">
+                                    8
+                                </option>
+                                <option value="9">
+                                    9
+                                </option>
+                                <option value="10">
+                                    10
+                                </option>
                             </select>
+                        </div>
+                        <div class="col-md-6 col-12 mb-4">
+                            <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
+                            <input type="text" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
+                                id="flatpickr-datetime">
                         </div>
                     </div>
 
@@ -194,12 +201,16 @@
     <script src="../../assets/vendor/libs/flatpickr/l10n/fa-jdate.js"></script>
     <script src="../../assets/vendor/libs/select2/select2.js"></script>
     <script src="../../assets/vendor/libs/select2/i18n/fa.js"></script>
-
+    <script src="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
+    <script src="../../assets/vendor/libs/pickr/pickr.js"></script>
     <!-- Main JS -->
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
     <script src="../../assets/js/form-layouts.js"></script>
+    <script src="../../assets/js/forms-pickers.js"></script>
 
     <script>
         console.log('script');
