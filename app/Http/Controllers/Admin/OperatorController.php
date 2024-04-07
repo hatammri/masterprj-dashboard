@@ -43,9 +43,9 @@ class operatorController extends Controller
             'salery' => 'required',
             'specialty' => 'required',
         ], $messages = [
-            'name.required' => 'نام ماشین نباید خالی باشد',
-            'code.required' => 'کد ماشین نباید خالی باشد',
-            'available.required' => 'وضعیت استفاده از ماشین  نباید خالی باشد',
+            'name.required' => 'نام اپراتور نباید خالی باشد',
+            'code.required' => 'کد اپراتور نباید خالی باشد',
+            'available.required' => 'وضعیت استفاده از اپراتور  نباید خالی باشد',
             'specialty.required' => ' تخصص نباید خالی باشد',
 
         ]);
@@ -59,7 +59,7 @@ class operatorController extends Controller
                 'semat' => $request->semat,
                 'salery' => $request->salery,
                 'available'=> $request->available,
-                'image'=> "Defult.png",
+                'image'=> "2.png",
                 'phonenumber'=>"null",
                 'email'=> "null",
                 'username'=> "null",
@@ -75,8 +75,8 @@ class operatorController extends Controller
                 ]);
             }
 
-            DB::commit();
 
+            DB::commit();
             Alert::success('اطلاعات اپراتور مورد نظر ایجاد شد', 'باتشکر');
            return redirect()->route('operator.index');
         } catch (\Illuminate\Database\QueryException $e) {
@@ -88,7 +88,7 @@ class operatorController extends Controller
             // Just some example
             //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات ماشین تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات اپراتور تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }
@@ -123,35 +123,53 @@ class operatorController extends Controller
     { //dd($request,$operator);
         $request->validate([
             'name' => 'required',
-            'code' => 'required',
-            'available' => 'required',
+            'semat' => 'required',
+            'salery' => 'required',
             'specialty' => 'required',
         ], $messages = [
-            'name.required' => 'نام ماشین نباید خالی باشد',
-            'code.required' => 'کد ماشین نباید خالی باشد',
-            'available.required' => 'وضعیت استفاده از ماشین  نباید خالی باشد',
+            'name.required' => 'نام اپراتور نباید خالی باشد',
+            'code.required' => 'کد اپراتور نباید خالی باشد',
+            'available.required' => 'وضعیت استفاده از اپراتور  نباید خالی باشد',
             'specialty.required' => ' تخصص نباید خالی باشد',
 
         ]);
+
         try {
+
+            DB::beginTransaction();
             $operator->update([
                 'name' => $request->name,
-                'code' => $request->code,
-                'available' => $request->available,
-                'specialty' => $request->specialty,
+                'codemeli' => $request->codemeli,
+                'semat' => $request->semat,
+                'salery' => $request->salery,
+                'available'=> $request->available,
+                'image'=> "Defult.png",
+                'phonenumber'=>"null",
+                'email'=> "null",
+                'username'=> "null",
+                'password'=> "null",
                 'is_active' => "1",
-
             ]);
-            Alert::success('ماشین مورد نظر ویرایش شد', 'باتشکر');
+            DB::table('operator_specialty')->where('operator_id', $operator->id)->delete();
+            foreach ($request->specialty as $specialtyitem) {
+                Operator_specialty::create([
+                    'operator_id' => $operator->id,
+                    'specialty_id' => $specialtyitem
+                ]);
+            }
+
+            DB::commit();
+
+            Alert::success('اپراتور مورد نظر ویرایش شد', 'باتشکر');
             return redirect()->route('operator.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات ماشین تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات اپراتور تکراری و یا اشتباه است', 'خطا');
             return back();
             //     // Just some example
             //     //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات ماشین تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات اپراتور تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }
