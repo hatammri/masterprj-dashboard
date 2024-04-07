@@ -112,7 +112,8 @@ class operatorController extends Controller
         $Specialty_select = Specialty::where('id', $operator->specialty)->get()->first();
         // $shahrestan_select = shahrestan::where('name', $operator->city)->get()->first();
         $Specialty = Specialty::all();
-        return view('operator.edit', compact('operator', 'Specialty_select', 'Specialty'));
+        $Rule=Rule::all();
+        return view('operator.edit', compact('operator', 'Specialty_select', 'Specialty',"Rule"));
     }
 
     /**
@@ -164,7 +165,7 @@ class operatorController extends Controller
     }
     public function datatable()
     {
-        $data_operators = Operator::with('Specialties','semat')->paginate();
+        $data_operators = Operator::with('Specialties','Sematdata')->paginate();
         $code = 200;
         return response()->json(
             $data_operators,

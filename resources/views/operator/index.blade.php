@@ -131,10 +131,10 @@
                                                 <i class="bx bx-dots-vertical-rounded"></i>
                                             </button>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
+                                                <a class="dropdown-item" href="/operator/edit/{{$itemOperators->id}}"><i
                                                         class="bx bx-edit-alt me-2"></i> ویرایش</a>
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
-                                                        class="bx bx-trash me-2"></i> حذف</a>
+                                                {{-- <a class="dropdown-item" href="/operator/edit/{{$itemOperators->id}}"><i
+                                                        class="bx bx-trash me-2"></i> حذف</a> --}}
                                             </div>
                                         </div>
                                     </td>

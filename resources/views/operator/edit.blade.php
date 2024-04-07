@@ -35,63 +35,105 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">ماشین /</span> ویرایش ماشین
+                <span class="text-muted fw-light">اپراتور /</span> ویرایش اپراتور
             </h4>
 
 
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
-                <h5 class="card-header heading-color">ویرایش ماشین</h5>
-                <form action="{{ route('machine.update' , ['machine' => $machine->id]) }}"  method="POST" class="card-body">
+                <h5 class="card-header heading-color">ویرایش اپراتور</h5>
+                <form action="{{ route('operator.update' , ['operator' => $operator->id]) }}"  method="POST" class="card-body">
                     @csrf
                     @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
+
+                        <div class="card-body">
+                            <div class="d-flex align-items-start align-items-sm-center gap-4">
+                              <img src="../../assets/img/avatars/12.png" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar">
+                              <div class="button-wrapper">
+                                <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                                  <span class="d-none d-sm-block">ارسال تصویر جدید</span>
+                                  <i class="bx bx-upload d-block d-sm-none"></i>
+                                  <input type="file" id="upload" class="account-file-input" hidden accept="image/png, image/jpeg">
+                                </label>
+                                <button type="button" class="btn btn-label-secondary account-image-reset mb-4">
+                                  <i class="bx bx-reset d-block d-sm-none"></i>
+                                  <span class="d-none d-sm-block">بازنشانی</span>
+                                </button>
+
+                                <p class="mb-0">فایل‌های JPG، GIF یا PNG مجاز هستند. حداکثر اندازه فایل 800KB.</p>
+                              </div>
+                            </div>
+                          </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-company">نام ماشین</label>
+                            <label class="form-label" for="basic-icon-default-company">نام اپراتور</label>
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-crosshair"></i></span>
-                                <input name="name" value="{{ $machine->name }}" type="text" id="basic-icon-default-company" class="form-control"
-                                    placeholder="مثال:دستگاه تراش " aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-company2">
+                                <input name="name" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال: محمد امینی " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2" value="{{ $operator->name }}">
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-company">کد ماشین (سریال ماشین)</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-company2" class="input-group-text"><i
-                                        class="bx bx-barcode"></i></span>
-                                <input name="code"  value="{{ $machine->code }}" type="text" id="basic-icon-default-company" class="form-control"
-                                    placeholder="مثال: FG34225556GS  " aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-company2">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-UnitMeasurement">تخصص</label>
-                            <select name="specialty" id="collapsible-UnitMeasurement" class="select2 form-select"
+                            <label class="form-label" for="basic-icon-default-company">نقش و سمت اپراتور</label>
+                            <select name="semat" id="collapsible-UnitMeasurement" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($Specialty as $itemSpecialty)
-                                <option value="{{ $itemSpecialty->id }}"
-                                    {{ $itemSpecialty->id == $Specialty_select->id ? 'selected' : '' }}>
-                                    {{ $itemSpecialty->name }}
-                                </option>
-                            @endforeach
+                                @foreach ($Rule as $itemRule)
+                                    <option value="{{ $itemRule->id }}" {{ $itemRule->id == $operator->Sematdata->id ? 'selected' : '' }}>
+
+                                        {{ $itemRule->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
+                        <div class="col-md-6">
+                            <label for="select2Multiple" class="form-label">تخصص</label>
+                            <select name="specialty[]" id="select2Multiple" class="select2 form-select" multiple>
+                                @foreach ($Specialty as $itemSpecialty)
+                                        <option value="{{ $itemSpecialty->id}}" @foreach ($operator->specialties as $itemselect) {{ $itemSpecialty->id == $itemselect->id ? 'selected' : '' }}   @endforeach>
+                                        {{ $itemSpecialty->name }}
+                                    </option>
+
+                                @endforeach
+
+                            </select>
+                          </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">وضعیت استفاده از ماشین</label>
+
+                            <label class="form-label" for="collapsible-rule">وضعیت استفاده از اپراتور</label>
                             <select name="available" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
-                                <option value="1"  {{ "1" == $machine->available ? 'selected' : '' }}>
-                                    ماشین سالم است
+                                <option value="0" {{ $operator->available == 0 ? 'selected' : '' }} >
+                                    اپراتور غایب است
                                 </option>
-                                <option value="0"  {{ "0" == $machine->available ? 'selected' : '' }}>
-                                    ماشین خراب است
+                                <option value="1" {{ $operator->available == 1 ? 'selected' : '' }} >
+                                    اپراتور حاضر است
                                 </option>
+
                             </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">کد ملی</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-detail"></i></span>
+                                <input name="codemeli" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال: 1272459854" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2" value="{{ $operator->codemeli}}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">میزان  (تومان)</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-coin"></i></span>
+                                <input name="salery" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال: 10000000" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2" value="{{ $operator->salery}}">
+                            </div>
                         </div>
 
                     </div>
