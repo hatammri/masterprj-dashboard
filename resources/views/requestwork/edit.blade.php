@@ -91,7 +91,7 @@
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
                                 <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
-                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{ $requestwork->description }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -101,7 +101,7 @@
 
                                 <input name="estimated_cost" type="text" id="basic-icon-default-email"
                                     class="form-control text-start" placeholder="10,000,000" aria-label="john.doe"
-                                    aria-describedby="basic-icon-default-email2" dir="ltr">
+                                    aria-describedby="basic-icon-default-email2" dir="ltr" value="{{ $requestwork->estimated_cost}}">
                             </div>
                             <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
                         </div>
@@ -109,12 +109,12 @@
                         <div class="col-md-6 col-12 mb-4">
                             <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
                             <input type="text"  name="date_enter" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime1">
+                                id="flatpickr-datetime1" value="{{ $requestwork->date_enter }}">
                         </div>
                         <div class="col-md-6 col-12 mb-4">
                             <label for="flatpickr-datetime"  name="date_delivery"  class="form-label"> تاریخ تحویل</label>
                             <input type="text" name="date_delivery" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime2">
+                                id="flatpickr-datetime2" value="{{ $requestwork->date_delivery }}">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-rule">فوریت انجام کار (عدد کمتر اهمیت بیشتری
