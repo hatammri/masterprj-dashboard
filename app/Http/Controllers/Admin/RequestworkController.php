@@ -105,14 +105,13 @@ class RequestworkController extends Controller
      */
     public function edit(string $id)
     {
-        $specialty = Specialty::where('id', $id)->get()->first();
-       // dd($specialty->unitmeasurement);
+        $requestwork = RequestWork::where('id', $id)->get()->first();
+        $customer= Customer::where('id', $requestwork->customer)->get()->first();
+        $equipment= Equipment::where('id', $requestwork->equipment)->get()->first();
+        $customerall = customer::all();
+        $equipmentall = Equipment::all();
 
-        $UnitMeasurement_select = UnitMeasurement::where('id', $specialty->unitmeasurement)->get()->first();
-        // $shahrestan_select = shahrestan::where('name', $specialty->city)->get()->first();
-        $UnitMeasurement = UnitMeasurement::all();
-        $operatorarray = ["1", "2", "3","4","5","6","7","8","9","10"];
-        return view('specialty.edit', compact('specialty', 'UnitMeasurement_select', 'UnitMeasurement','operatorarray'));
+        return view('requestwork.edit', compact('requestwork', 'customer','customerall', 'equipment','equipmentall'));
     }
 
     /**

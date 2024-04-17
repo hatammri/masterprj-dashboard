@@ -31,10 +31,10 @@
                                 <th>هزینه تقریبی</th>
                                 <th>هزینه واقعی</th>
                                 <th>فوریت درخواست‌کار</th>
-                                <th>وضعیت درخواست‌کار</th>
                                 <th>توضیحات</th>
                                 <th>ایجاد شده توسط</th>
                                 <th>وضعیت</th>
+                                <th>سرویس در محل</th>
                                 <th>نمایش جزئیات</th>
                             </tr>
                         </thead>
@@ -49,10 +49,10 @@
                                 <th>هزینه تقریبی</th>
                                 <th>هزینه واقعی</th>
                                 <th>فوریت درخواست‌کار</th>
-                                <th>وضعیت درخواست‌کار</th>
                                 <th>توضیحات</th>
                                 <th>ایجاد شده توسط</th>
                                 <th>وضعیت</th>
+                                <th>سرویس در محل</th>
                                 <th>نمایش جزئیات</th>
                             </tr>
                         </tfoot>
@@ -79,5 +79,5 @@
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../../assets/js/tables-datatables-specialty.js"></script>
+    <script src="../../assets/js/tables-datatables-requestwork.js"></script>
 @endsection
