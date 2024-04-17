@@ -46,14 +46,14 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ثبت درخواست‌کار جدید</h5>
-                <form action="{{ route('specialty.store') }}" method="POST" class="card-body">
+                <form action="{{ route('requestwork.store') }}" method="POST" class="card-body">
                     @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-UnitMeasurement">نام مشتری</label>
-                            <select name="unitmeasurement" id="collapsible-UnitMeasurement" class="select2 form-select"
+                            <label class="form-label" for="collapsible-Customer">نام مشتری</label>
+                            <select name="customer" id="collapsible-Customer" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($Customer as $itemCustomer)
                                     <option value="{{ $itemCustomer->id }}">
@@ -63,8 +63,8 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-UnitMeasurement">تجهیز</label>
-                            <select name="unitmeasurement" id="collapsible-UnitMeasurement" class="select2 form-select"
+                            <label class="form-label" for="collapsible-equipment">تجهیز</label>
+                            <select name="equipment" id="collapsible-equipment" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($Equipment as $itemEquipment)
                                     <option value="{{ $itemEquipment->id }}">
@@ -75,8 +75,8 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">سرویس در مکان</label>
-                            <select name="numberofoperator" id="collapsible-rule" class="select2 form-select"
+                            <label class="form-label" for="collapsible-serviceplace">سرویس در مکان</label>
+                            <select name="serviceplace" id="collapsible-serviceplace" class="select2 form-select"
                                 data-allow-clear="true">
                                 <option value="0">
                                     0
@@ -102,25 +102,27 @@
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text"><i class="bx bx-dollar"></i></span>
 
-                                <input name="email" type="text" id="basic-icon-default-email"
+                                <input name="estimated_cost" type="text" id="basic-icon-default-email"
                                     class="form-control text-start" placeholder="10,000,000" aria-label="john.doe"
                                     aria-describedby="basic-icon-default-email2" dir="ltr">
                             </div>
                             <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
                         </div>
-
-
                         <!-- Datetime Picker-->
                         <div class="col-md-6 col-12 mb-4">
                             <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
-                            <input type="text" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime">
+                            <input type="text"  name="date_enter" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
+                                id="flatpickr-datetime1">
                         </div>
-
+                        <div class="col-md-6 col-12 mb-4">
+                            <label for="flatpickr-datetime"  name="date_delivery"  class="form-label"> تاریخ تحویل</label>
+                            <input type="text" name="date_delivery" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
+                                id="flatpickr-datetime2">
+                        </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-rule">فوریت انجام کار (عدد کمتر اهمیت بیشتری
                                 دارد)</label>
-                            <select name="numberofoperator" id="collapsible-rule" class="select2 form-select"
+                            <select name="Urgency_Work" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
                                 <option value="1">
                                     (اضطراری) 1
@@ -154,11 +156,6 @@
                                     10
                                 </option>
                             </select>
-                        </div>
-                        <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
-                            <input type="text" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime">
                         </div>
                     </div>
 

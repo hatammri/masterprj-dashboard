@@ -9,7 +9,8 @@
   // --------------------------------------------------------------------
   const flatpickrDate = document.querySelector('#flatpickr-date'),
     flatpickrTime = document.querySelector('#flatpickr-time'),
-    flatpickrDateTime = document.querySelector('#flatpickr-datetime'),
+    flatpickrDateTime1 = document.querySelector('#flatpickr-datetime1'),
+    flatpickrDateTime2 = document.querySelector('#flatpickr-datetime2'),
     flatpickrMulti = document.querySelector('#flatpickr-multi'),
     flatpickrRange = document.querySelector('#flatpickr-range'),
     flatpickrInline = document.querySelector('#flatpickr-inline'),
@@ -40,8 +41,8 @@
   }
 
   // Datetime
-  if (flatpickrDateTime) {
-    flatpickrDateTime.flatpickr({
+  if (flatpickrDateTime1) {
+    flatpickrDateTime1.flatpickr({
       enableTime: true,
       locale: 'fa',
       altInput: true,
@@ -49,7 +50,15 @@
       disableMobile: true
     });
   }
-
+  if (flatpickrDateTime2) {
+    flatpickrDateTime2.flatpickr({
+      enableTime: true,
+      locale: 'fa',
+      altInput: true,
+      altFormat: 'Y/m/d - H:i',
+      disableMobile: true
+    });
+  }
   // Multi Date Select
   if (flatpickrMulti) {
     flatpickrMulti.flatpickr({
@@ -123,7 +132,7 @@
 $(function () {
   // Bootstrap Datepicker
   // --------------------------------------------------------------------
-  
+
   $.fn.datepicker.dates['fa'] = {
 		days: ["یک‌شنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنج‌شنبه", "جمعه", "شنبه", "یک‌شنبه"],
 		daysShort: ["یک", "دو", "سه", "چهار", "پنج", "جمعه", "شنبه", "یک"],
@@ -224,7 +233,7 @@ $(function () {
 
   // Bootstrap Daterange Picker
   // --------------------------------------------------------------------
-  
+
   var dateRangePickerLocaleFa = {
 		"format": "YYYY/MM/DD",
 		"separator": " - ",
@@ -331,7 +340,7 @@ $(function () {
 
   // jQuery Timepicker
   // --------------------------------------------------------------------
-  
+
   var timePickerLocaleFa = {
     am: ' ق.ظ',
     pm: ' ب.ظ',
@@ -413,7 +422,7 @@ $(function () {
 // color picker (pickr)
 // --------------------------------------------------------------------
 (function () {
-  
+
   var colorPickerLocaleFa = {
     'ui:dialog': 'دیالوگ انتخاب رنگ',
     'btn:toggle': 'تغییر وضعیت دیالوگ انتخاب رنگ',

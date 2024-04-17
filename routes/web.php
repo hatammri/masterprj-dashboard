@@ -193,6 +193,7 @@ Route::get('specialty/datatable', [SpecialtyController::class, 'datatable'])->na
 Route::get('machine/datatable', [MachineController::class, 'datatable'])->name('machine.datatable');
 Route::get('unitMeasurement/datatable', [UnitMeasurementController::class, 'datatable'])->name('unitMeasurement.datatable');
 Route::get('operator/datatable', [OperatorController::class, 'datatable'])->name('operator.datatable');
+Route::get('requestwork/datatable', [RequestworkController::class, 'datatable'])->name('requestwork.datatable');
 
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 Route::post('/resend_otp', [AuthController::class, 'resendOtp'])->middleware('guest')->name('resendOtp');
