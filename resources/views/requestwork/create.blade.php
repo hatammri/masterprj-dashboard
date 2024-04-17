@@ -92,9 +92,8 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
-                                <textarea form="dropzone-multi" name="description" id="basic-icon-default-message" class="form-control"
-                                    placeholder="توضیحات را اینجا بنویسید" aria-label="Hi, Do you have a moment to talk Joe?"
-                                    aria-describedby="basic-icon-default-message2"></textarea>
+                                <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
+                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">

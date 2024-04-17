@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('requestwork', function (Blueprint $table) {
             $table->id();
             $table->foreign('customer')->references('id')->on('customer');
-            $table->string('customer')->unique();
+            $table->string('customer');
             $table->foreign('equipment')->references('id')->on('equipment');
-            $table->string('equipment')->unique();
+            $table->string('equipment');
             $table->foreign('creator')->references('id')->on('operator');
-            $table->string('creator')->unique();
+            $table->string('creator');
             $table->string('request_status')->default("IS");
             $table->string('serviceplace')->default(0);
             $table->string('description')->nullable();

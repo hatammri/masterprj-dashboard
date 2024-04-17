@@ -9,6 +9,8 @@ use App\Models\Ostan;
 use App\Models\Customer;
 use App\Models\Equipment;
 use App\Models\UnitMeasurement;
+use App\Models\RequestWork;
+
 use RealRashid\SweetAlert\Facades\Alert;
 
 class RequestworkController extends Controller
@@ -33,37 +35,59 @@ class RequestworkController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {  dd($request);
-
+    {
         $request->validate([
-            'name' => 'required',
-            'unitmeasurement' => 'required',
-            'numberofoperator' => 'required',
+            'customer' => 'required',
+            'equipment' => 'required',
+            'serviceplace' => 'required',
+            'estimated_cost' => 'required',
+            'date_enter' => 'required',
+            'date_delivery' => 'required',
+            'Urgency_Work' => 'required',
+            'description' => 'required',
+
+
 
         ], $messages = [
-            'name.required' => 'نام تخصص نباید خالی باشد',
-            'unitmeasurement.required' => 'واحد اندازه‌گیری نباید خالی باشد',
-            'numberofoperator.required' => 'تعداد اپراتور نباید خالی باشد',
+            'customer.required' => 'نام مشتری نباید خالی باشد',
+            'equipment.required' => 'نام تجهیز نباید خالی باشد',
+            'serviceplace.required' => ' سرویس در محل نباید خالی باشد',
+            'estimated_cost.required' => ' هزینه تف=قریبی نباید خالی باشد',
+            'date_enter.required' => 'تاریخ ورود نباید خالی باشد',
+            'date_delivery.required' => ' تاریخ تحویل نباید خالی باشد',
+            'Urgency_Work.required' => 'نام درخواست‌کار نباید خالی باشد'
 
         ]);
+
         try {
-            Specialty::create([
-                'name' => $request->name,
-                'unitmeasurement' => $request->unitmeasurement,
-                'numberofoperator' => $request->numberofoperator,
+            RequestWork::create([
+                'customer' => $request->customer,
+                'equipment' => $request->equipment,
+                'creator' => "1",
+                'request_status' => "IS",
+                'serviceplace' => $request->serviceplace,
+                'description' => $request->description,
+                'estimated_cost' => $request->estimated_cost,
+                'date_enter' => $request->date_enter,
+                'real_cost' => "null",
+                'date_delivery' => $request->date_delivery,
+                'Urgency_Work' => $request->Urgency_Work,
+                'date_out' => "null",
+                'is_active' => "1",
+
             ]);
-            Alert::success('تخصص مورد نظر ایجاد شد', 'باتشکر');
-           return redirect()->route('requestwork.index');
+            Alert::success('درخواست‌کار مورد نظر ایجاد شد', 'باتشکر');
+          return redirect()->route('requestwork.index');
         } catch (\Illuminate\Database\QueryException $e) {
             // You need to handle the error here.
             // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات تخصص تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
             return back();
 
             // Just some example
             //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات تخصص تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }
@@ -101,7 +125,7 @@ class RequestworkController extends Controller
             'unitmeasurement' => 'required',
             'numberofoperator' => 'required',
         ], $messages = [
-            'name.required' => 'نام تخصص نباید خالی باشد',
+            'name.required' => 'نام درخواست‌کار نباید خالی باشد',
             'unitmeasurement.required' => 'واحد اندازه گیری نباید خالی باشد',
             'numberofoperator.required' => 'تعداد اپراتور نباید خالی باشد',
 
@@ -114,16 +138,16 @@ class RequestworkController extends Controller
                 'numberofoperator' => $request->numberofoperator,
 
             ]);
-            Alert::success('تخصص مورد نظر ویرایش شد', 'باتشکر');
+            Alert::success('درخواست‌کار مورد نظر ویرایش شد', 'باتشکر');
             return redirect()->route('specialty.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات تخصص تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
             return back();
             //     // Just some example
             //     //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات تخصص تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }
@@ -137,7 +161,7 @@ class RequestworkController extends Controller
     }
     public function datatable()
     {
-        $data_Specialties = Specialty::with(['unitmeasurements:id,name'])->paginate();
+        $data_Specialties = RequestWork::with(['customers:id,name','equipments:id,name','creators:id,name'])->paginate();
         $code = 200;
         return response()->json(
             $data_Specialties,
