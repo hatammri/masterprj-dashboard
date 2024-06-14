@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\RuleController;
 use App\Http\Controllers\Admin\EquipmentController;
 use App\Http\Controllers\Admin\TypeEquipmentController;
 use App\Http\Controllers\Admin\SpecialtyController;
+use App\Http\Controllers\Admin\PmController;
 use App\Http\Controllers\Admin\UnitMeasurementController;
 use App\Http\Controllers\Admin\MachineController;
 use App\Http\Controllers\Admin\OperatorController;
@@ -75,6 +76,15 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/show/{data}', [SpecialtyController::class, 'show'])->name('show');
         Route::put('/update/{specialty}', [SpecialtyController::class, 'update'])->name('update');
     });
+    Route::prefix('pm')->name('pm.')->group(function () {
+        Route::get('/create', [PmController::class, 'create'])->name('create');
+        Route::post('/store', [PmController::class, 'store'])->name('store');
+        Route::get('/index', [PmController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [PmController::class, 'edit'])->name('edit');
+        Route::get('/show/{data}', [PmController::class, 'show'])->name('show');
+        Route::put('/update/{specialty}', [PmController::class, 'update'])->name('update');
+    });
+
     Route::prefix('requestwork')->name('requestwork.')->group(function () {
         Route::get('/create', [RequestworkController::class, 'create'])->name('create');
         Route::post('/store', [RequestworkController::class, 'store'])->name('store');
@@ -82,6 +92,8 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/edit/{id}', [RequestworkController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [RequestworkController::class, 'show'])->name('show');
         Route::put('/update/{requestwork}', [RequestworkController::class, 'update'])->name('update');
+        Route::get('/editstatus/{id}', [RequestworkController::class, 'editstatus'])->name('editstatus');
+
     });
     Route::prefix('operator')->name('operator.')->group(function () {
         Route::get('/create', [OperatorController::class, 'create'])->name('create');

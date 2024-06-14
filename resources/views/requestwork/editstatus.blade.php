@@ -154,44 +154,6 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">تغییر وضعیت درخواستکار</label>
-                            <select name="Urgency_Work" id="collapsible-rule" class="select2 form-select"
-                                data-allow-clear="true">
-                                <option value="1">
-                                    (اضطراری) 1
-                                </option>
-                                <option value="
-                                2">
-
-                                    (خیلی مهم) 2
-                                </option>
-                                <option value="3">
-                                    (مهم) 3
-                                </option>
-                                <option value="4">
-                                    (عادی) 4
-                                </option>
-                                <option value="5">
-                                    5
-                                </option>
-                                <option value="6">
-                                    6
-                                </option>
-                                <option value="7">
-                                    7
-                                </option>
-                                <option value="8">
-                                    8
-                                </option>
-                                <option value="9">
-                                    9
-                                </option>
-                                <option value="FF">
-                                    FF
-                                </option>
-                            </select>
-                        </div>
                     </div>
 
 

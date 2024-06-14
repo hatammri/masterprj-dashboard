@@ -50,6 +50,16 @@
                     @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">شماره یا کد درخواست‌کار</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-crosshair"></i></span>
+                                <input name="name" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال:c0203011" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
+                            </div>
+                        </div>
 
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-Customer">نام مشتری</label>
@@ -73,7 +83,16 @@
                                 @endforeach
                             </select>
                         </div>
-
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">شماره سریال تجهیز</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-crosshair"></i></span>
+                                <input name="name" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال:620c124 " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-serviceplace">سرویس در مکان</label>
                             <select name="serviceplace" id="collapsible-serviceplace" class="select2 form-select"
@@ -92,8 +111,9 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
-                                <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
-                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+                                <textarea name="description" id="basic-icon-default-message" class="form-control"
+                                    placeholder="توضیحات را اینجا بنویسید" aria-label="Hi, Do you have a moment to talk Joe?"
+                                    aria-describedby="basic-icon-default-message2"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -110,13 +130,13 @@
                         <!-- Datetime Picker-->
                         <div class="col-md-6 col-12 mb-4">
                             <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
-                            <input type="text"  name="date_enter" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime1">
+                            <input type="text" name="date_enter" class="form-control"
+                                placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime1">
                         </div>
                         <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime"  name="date_delivery"  class="form-label"> تاریخ تحویل</label>
-                            <input type="text" name="date_delivery" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime2">
+                            <label for="flatpickr-datetime" name="date_delivery" class="form-label"> تاریخ تحویل</label>
+                            <input type="text" name="date_delivery" class="form-control"
+                                placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime2">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-rule">فوریت انجام کار (عدد کمتر اهمیت بیشتری

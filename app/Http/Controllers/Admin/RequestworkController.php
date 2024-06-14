@@ -113,7 +113,17 @@ class RequestworkController extends Controller
 
         return view('requestwork.edit', compact('requestwork', 'customer','customerall', 'equipment','equipmentall'));
     }
+    public function editstatus(string $id)
+    {
+        $requestwork = RequestWork::where('id', $id)->get()->first();
+        $customer= Customer::where('id', $requestwork->customer)->get()->first();
+        $equipment= Equipment::where('id', $requestwork->equipment)->get()->first();
+        $customerall = customer::all();
+        $equipmentall = Equipment::all();
+        
 
+        return view('requestwork.editstatus', compact('requestwork', 'customer','customerall', 'equipment','equipmentall'));
+    }
     /**
      * Update the specified resource in storage.
      */

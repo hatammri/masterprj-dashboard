@@ -106,6 +106,32 @@
             </ul>
         </li>
         <li
+        class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+        <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bx-link"></i>
+            <div>برنامه PM</div>
+        </a>
+        <ul class="menu-sub">
+            <li class="menu-item">
+                <a href="{{ route('pm.create') }}" class="menu-link ">
+                    <div>ایجاد PM</div>
+                </a>
+            </li>
+
+            <li class="menu-item ">
+                <a href="{{ route('pm.index') }}" class="menu-link">
+                    <div>لیست PM ها</div>
+                </a>
+            </li>
+            {{-- <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <div>ویرایش درخواست‌کار</div>
+                </a>
+            </li> --}}
+
+        </ul>
+    </li>
+        <li
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bxs-award"></i>

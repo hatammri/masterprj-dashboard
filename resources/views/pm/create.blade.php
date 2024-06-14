@@ -17,6 +17,10 @@
     <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/pickr/pickr-themes.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css">
     <!-- Page CSS -->
     <!-- Helpers -->
@@ -35,17 +39,15 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">درخواست‌کار /</span> ویرایش درخواست‌کار جدید
+                <span class="text-muted fw-light">PM /</span> ثبت PM جدید
             </h4>
 
 
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
-                <h5 class="card-header heading-color">ویرایش درخواست‌کار جدید</h5>
-                <form action="{{ route('requestwork.update', ['requestwork' => $requestwork->id]) }}" method="POST"
-                    class="card-body">
+                <h5 class="card-header heading-color">ثبت PM جدید</h5>
+                <form action="{{ route('requestwork.store') }}" method="POST" class="card-body">
                     @csrf
-                    @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
 
@@ -53,22 +55,22 @@
                             <label class="form-label" for="collapsible-Customer">نام مشتری</label>
                             <select name="customer" id="collapsible-Customer" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($customerall as $itemCustomer)
-                                <option value="{{ $itemCustomer->id }}" {{ $itemCustomer->id == $customer->id ? 'selected' : '' }}>
+                                {{-- @foreach ($Customer as $itemCustomer)
+                                    <option value="{{ $itemCustomer->id }}">
                                         {{ $itemCustomer->name }}
                                     </option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment">تجهیز</label>
                             <select name="equipment" id="collapsible-equipment" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($equipmentall as $itemEquipment)
-                                <option value="{{ $itemEquipment->id }}" {{ $itemEquipment->id == $equipment->id ? 'selected' : '' }}>
+                                {{-- @foreach ($Equipment as $itemEquipment)
+                                    <option value="{{ $itemEquipment->id }}">
                                         {{ $itemEquipment->name }}
                                     </option>
-                                @endforeach
+                                @endforeach --}}
                             </select>
                         </div>
 
@@ -91,7 +93,7 @@
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
                                 <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
-                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{ $requestwork->description }}</textarea>
+                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -101,7 +103,7 @@
 
                                 <input name="estimated_cost" type="text" id="basic-icon-default-email"
                                     class="form-control text-start" placeholder="10,000,000" aria-label="john.doe"
-                                    aria-describedby="basic-icon-default-email2" dir="ltr" value="{{ $requestwork->estimated_cost}}">
+                                    aria-describedby="basic-icon-default-email2" dir="ltr">
                             </div>
                             <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
                         </div>
@@ -109,12 +111,12 @@
                         <div class="col-md-6 col-12 mb-4">
                             <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
                             <input type="text"  name="date_enter" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime1" value="{{ $requestwork->date_enter }}">
+                                id="flatpickr-datetime1">
                         </div>
                         <div class="col-md-6 col-12 mb-4">
                             <label for="flatpickr-datetime"  name="date_delivery"  class="form-label"> تاریخ تحویل</label>
                             <input type="text" name="date_delivery" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime2" value="{{ $requestwork->date_delivery }}">
+                                id="flatpickr-datetime2">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-rule">فوریت انجام کار (عدد کمتر اهمیت بیشتری
@@ -154,46 +156,7 @@
                                 </option>
                             </select>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">تغییر وضعیت درخواستکار</label>
-                            <select name="Urgency_Work" id="collapsible-rule" class="select2 form-select"
-                                data-allow-clear="true">
-                                <option value="1">
-                                    (اضطراری) 1
-                                </option>
-                                <option value="
-                                2">
-
-                                    (خیلی مهم) 2
-                                </option>
-                                <option value="3">
-                                    (مهم) 3
-                                </option>
-                                <option value="4">
-                                    (عادی) 4
-                                </option>
-                                <option value="5">
-                                    5
-                                </option>
-                                <option value="6">
-                                    6
-                                </option>
-                                <option value="7">
-                                    7
-                                </option>
-                                <option value="8">
-                                    8
-                                </option>
-                                <option value="9">
-                                    9
-                                </option>
-                                <option value="FF">
-                                    FF
-                                </option>
-                            </select>
-                        </div>
                     </div>
-
 
                     <div class="pt-4">
                         <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
@@ -201,8 +164,6 @@
                     </div>
                 </form>
             </div>
-
-
 
         </div>
         <!-- / Content -->
@@ -236,12 +197,16 @@
     <script src="../../assets/vendor/libs/flatpickr/l10n/fa-jdate.js"></script>
     <script src="../../assets/vendor/libs/select2/select2.js"></script>
     <script src="../../assets/vendor/libs/select2/i18n/fa.js"></script>
-
+    <script src="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
+    <script src="../../assets/vendor/libs/pickr/pickr.js"></script>
     <!-- Main JS -->
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
     <script src="../../assets/js/form-layouts.js"></script>
+    <script src="../../assets/js/forms-pickers.js"></script>
 
     <script>
         console.log('script');
