@@ -112,8 +112,10 @@ $(function () {
                 type: "GET",
             },
             columns: [
+                { data: "request_number" },
                 { data: "customers.name" },
                 { data: "equipments.name" },
+                { data: "equipment_number" },
                 { data: "request_status" },
                 { data: "date_enter" },
                 { data: "date_out" },
