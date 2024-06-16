@@ -35,10 +35,12 @@ class RequestworkController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {// dd($request);
         $request->validate([
+            'request_number'=>'required',
             'customer' => 'required',
             'equipment' => 'required',
+            'equipment_number'=>'required',
             'serviceplace' => 'required',
             'estimated_cost' => 'required',
             'date_enter' => 'required',
@@ -46,11 +48,11 @@ class RequestworkController extends Controller
             'Urgency_Work' => 'required',
             'description' => 'required',
 
-
-
         ], $messages = [
+            'request_number.required'=>'شماره درخواستکار نباید خالی باشد',
             'customer.required' => 'نام مشتری نباید خالی باشد',
             'equipment.required' => 'نام تجهیز نباید خالی باشد',
+            'equipment_number.required' => 'شماره سریال تجهیز نباید خالی باشد',
             'serviceplace.required' => ' سرویس در محل نباید خالی باشد',
             'estimated_cost.required' => ' هزینه تف=قریبی نباید خالی باشد',
             'date_enter.required' => 'تاریخ ورود نباید خالی باشد',
@@ -61,8 +63,10 @@ class RequestworkController extends Controller
 
         try {
             RequestWork::create([
+                'request_number' =>  $request->request_number,
                 'customer' => $request->customer,
                 'equipment' => $request->equipment,
+                'equipment_number'=> $request->equipment_number,
                 'creator' => "1",
                 'request_status' => "IS",
                 'serviceplace' => $request->serviceplace,
@@ -74,7 +78,6 @@ class RequestworkController extends Controller
                 'Urgency_Work' => $request->Urgency_Work,
                 'date_out' => "null",
                 'is_active' => "1",
-
             ]);
             Alert::success('درخواست‌کار مورد نظر ایجاد شد', 'باتشکر');
           return redirect()->route('requestwork.index');
@@ -120,7 +123,7 @@ class RequestworkController extends Controller
         $equipment= Equipment::where('id', $requestwork->equipment)->get()->first();
         $customerall = customer::all();
         $equipmentall = Equipment::all();
-        
+
 
         return view('requestwork.editstatus', compact('requestwork', 'customer','customerall', 'equipment','equipmentall'));
     }

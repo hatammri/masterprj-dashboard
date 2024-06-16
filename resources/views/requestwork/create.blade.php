@@ -55,7 +55,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-crosshair"></i></span>
-                                <input name="name" type="text" id="basic-icon-default-company" class="form-control"
+                                <input name="request_number" type="text" id="basic-icon-default-company" class="form-control"
                                     placeholder="مثال:c0203011" aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                             </div>
@@ -88,7 +88,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-crosshair"></i></span>
-                                <input name="name" type="text" id="basic-icon-default-company" class="form-control"
+                                <input name="equipment_number" type="text" id="basic-icon-default-company" class="form-control"
                                     placeholder="مثال:620c124 " aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                             </div>
