@@ -52,7 +52,7 @@
                     <div class="row g-3">
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-Customer">نام مشتری</label>
+                            <label class="form-label" for="collapsible-Customer">شماره سریال تجهیز </label>
                             <select name="customer" id="collapsible-Customer" class="select2 form-select"
                                 data-allow-clear="true">
                                 {{-- @foreach ($Customer as $itemCustomer)
@@ -63,7 +63,19 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-equipment">تجهیز</label>
+                            <label class="form-label" for="collapsible-equipment"> نام تجهیز</label>
+                            <select name="customer" id="collapsible-Customer" class="select2 form-select"
+                                data-allow-clear="true">
+                                {{-- @foreach ($Customer as $itemCustomer)
+                                    <option value="{{ $itemCustomer->id }}">
+                                        {{ $itemCustomer->name }}
+                                    </option>
+                                @endforeach --}}
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="collapsible-equipment"> نام شرکت</label>
                             <select name="equipment" id="collapsible-equipment" class="select2 form-select"
                                 data-allow-clear="true">
                                 {{-- @foreach ($Equipment as $itemEquipment)
@@ -74,87 +86,25 @@
                             </select>
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-serviceplace">سرویس در مکان</label>
-                            <select name="serviceplace" id="collapsible-serviceplace" class="select2 form-select"
-                                data-allow-clear="true">
-                                <option value="0">
-                                    0
-                                </option>
-                                <option value="1">
-                                    1
-                                </option>
 
-                            </select>
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">نام مستعار تجهیز</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-hard-hat"></i></span>
+                                <input name="name" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال:گیربکس  " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-message">توضیحات</label>
+                            <label class="form-label" for="basic-icon-default-message">محل نصب</label>
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
                                 <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
                                     aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-email">هزینه تقریبی</label>
-                            <div class="input-group input-group-merge">
-                                <span class="input-group-text"><i class="bx bx-dollar"></i></span>
-
-                                <input name="estimated_cost" type="text" id="basic-icon-default-email"
-                                    class="form-control text-start" placeholder="10,000,000" aria-label="john.doe"
-                                    aria-describedby="basic-icon-default-email2" dir="ltr">
-                            </div>
-                            <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
-                        </div>
-                        <!-- Datetime Picker-->
-                        <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
-                            <input type="text"  name="date_enter" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime1">
-                        </div>
-                        <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime"  name="date_delivery"  class="form-label"> تاریخ تحویل</label>
-                            <input type="text" name="date_delivery" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime2">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">فوریت انجام کار (عدد کمتر اهمیت بیشتری
-                                دارد)</label>
-                            <select name="Urgency_Work" id="collapsible-rule" class="select2 form-select"
-                                data-allow-clear="true">
-                                <option value="1">
-                                    (اضطراری) 1
-                                </option>
-                                <option value="2">
-
-                                    (خیلی مهم) 2
-                                </option>
-                                <option value="3">
-                                    (مهم) 3
-                                </option>
-                                <option value="4">
-                                    (عادی) 4
-                                </option>
-                                <option value="5">
-                                    5
-                                </option>
-                                <option value="6">
-                                    6
-                                </option>
-                                <option value="7">
-                                    7
-                                </option>
-                                <option value="8">
-                                    8
-                                </option>
-                                <option value="9">
-                                    9
-                                </option>
-                                <option value="10">
-                                    10
-                                </option>
-                            </select>
                         </div>
                     </div>
 
