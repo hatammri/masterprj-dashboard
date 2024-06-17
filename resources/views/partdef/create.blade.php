@@ -18,6 +18,12 @@
     <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/pickr/pickr-themes.css">
+
     <!-- Page CSS -->
     <!-- Helpers -->
     <script src="../../assets/vendor/js/helpers.js"></script>
@@ -45,6 +51,14 @@
     <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-maxlength/bootstrap-maxlength.css">
 
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/pickr/pickr-themes.css">
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -126,18 +140,14 @@
                                         <div class="col-md-6">
                                             <label class="form-label" for="form-repeater-1-3">تعداد
                                                 استفاده شده</label>
-                                                <input type="password" id="form-repeater-1-2" class="form-control text-start"
-                                                placeholder="············" dir="ltr">
+                                                <input type="text" id="form-repeater-1-2" class="form-control text-start"
+                                                placeholder="مثال :3" dir="ltr">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label" for="form-repeater-1-4">تاریخ
                                                 تعویض</label>
-                                            <select id="form-repeater-1-4" class="form-select">
-                                                <option value="Designer">طراح</option>
-                                                <option value="Developer">توسعه دهنده</option>
-                                                <option value="Tester">آزمایشگر</option>
-                                                <option value="Manager">مدیر</option>
-                                            </select>
+                                                <label for="bs-datepicker-autoclose" class="form-label">بسته شدن خودکار</label>
+                                                <input type="text" id="bs-datepicker-autoclose" placeholder="YYYY/MM/DD" class="form-control">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label" for="form-repeater-1-4">تاریخ
@@ -202,7 +212,17 @@
 
     <script src="../../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
+  <!-- Vendors JS -->
+  <script src="../../assets/vendor/libs/moment/moment.js"></script>
+  <script src="../../assets/vendor/libs/jdate/jdate.js"></script>
+  <script src="../../assets/vendor/libs/flatpickr/flatpickr-jdate.js"></script>
+  <script src="../../assets/vendor/libs/flatpickr/l10n/fa-jdate.js"></script>
+  <script src="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+  <script src="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+  <script src="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
+  <script src="../../assets/vendor/libs/pickr/pickr.js"></script>
 
+  <!-- Main JS -->
     <!-- Vendors JS -->
     <script src="../../assets/vendor/libs/autosize/autosize.js"></script>
     <script src="../../assets/vendor/libs/cleavejs/cleave.js"></script>
@@ -214,5 +234,6 @@
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
+    <script src="../../assets/js/forms-pickers.js"></script>
     <script src="../../assets/js/forms-extras.js"></script>
 @endsection
