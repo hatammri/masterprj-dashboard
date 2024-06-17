@@ -96,14 +96,15 @@ class PmController extends Controller
      */
     public function edit(string $id)
     {
-        $specialty = Specialty::where('id', $id)->get()->first();
-       // dd($specialty->unitmeasurement);
+        $pm = Pm::where('id', $id)->get()->first();
+        $requestWork= RequestWork::where('id', $pm->requestwork_id)->get()->first();
+        $equipment= Equipment::where('id', $pm->equipment_id)->get()->first();
+        $company= Company::where('id', $pm->company_id)->get()->first();
+        $requestworkall = RequestWork::all();
+        $equipmentall = Equipment::all();
+        $companyall = Company::all();
 
-        $UnitMeasurement_select = UnitMeasurement::where('id', $specialty->unitmeasurement)->get()->first();
-        // $shahrestan_select = shahrestan::where('name', $specialty->city)->get()->first();
-        $UnitMeasurement = UnitMeasurement::all();
-        $operatorarray = ["1", "2", "3","4","5","6","7","8","9","10"];
-        return view('specialty.edit', compact('specialty', 'UnitMeasurement_select', 'UnitMeasurement','operatorarray'));
+        return view('pm.edit', compact('pm', 'requestWork', 'equipment','company','requestworkall','equipmentall','companyall'));
     }
 
     /**

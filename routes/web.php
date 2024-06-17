@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin\MachineController;
 use App\Http\Controllers\Admin\OperatorController;
 use App\Http\Controllers\Admin\RequestworkController;
 use App\Http\Controllers\Admin\PartController;
-
+use App\Http\Controllers\Admin\PartDefController;
 use App\Models\Rule;
 
 //require __DIR__ . '/auth.php';
@@ -94,7 +94,14 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/show/{data}', [PartController::class, 'show'])->name('show');
         Route::put('/update/{part}', [PartController::class, 'update'])->name('update');
     });
-
+    Route::prefix('partdef')->name('partdef.')->group(function () {
+        Route::get('/create', [PartDefController::class, 'create'])->name('create');
+        Route::post('/store', [PartDefController::class, 'store'])->name('store');
+        Route::get('/index', [PartDefController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [PartDefController::class, 'edit'])->name('edit');
+        Route::get('/show/{data}', [PartDefController::class, 'show'])->name('show');
+        Route::put('/update/{partdef}', [PartDefController::class, 'update'])->name('update');
+    });
     Route::prefix('requestwork')->name('requestwork.')->group(function () {
         Route::get('/create', [RequestworkController::class, 'create'])->name('create');
         Route::post('/store', [RequestworkController::class, 'store'])->name('store');
@@ -218,6 +225,7 @@ Route::get('operator/datatable', [OperatorController::class, 'datatable'])->name
 Route::get('requestwork/datatable', [RequestworkController::class, 'datatable'])->name('requestwork.datatable');
 Route::get('part/datatable', [PartController::class, 'datatable'])->name('part.datatable');
 Route::get('pm/datatable', [PmController::class, 'datatable'])->name('pm.datatable');
+Route::get('partdef/datatable', [PartDefController::class, 'datatable'])->name('partdef.datatable');
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 Route::post('/resend_otp', [AuthController::class, 'resendOtp'])->middleware('guest')->name('resendOtp');
 Route::post('/check_otp', [AuthController::class, 'checkOtp'])->middleware('guest')->name('checkOtp');

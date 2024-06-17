@@ -17,10 +17,6 @@
     <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css">
-    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
-    <link rel="stylesheet" href="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.css">
-    <link rel="stylesheet" href="../../assets/vendor/libs/pickr/pickr-themes.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css">
     <!-- Page CSS -->
     <!-- Helpers -->
@@ -39,86 +35,67 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">PM /</span> ثبت PM جدید
+                <span class="text-muted fw-light">قطعات زیر مجموعه تجهیز /</span> ویرایش قطعات زیر مجموعه تجهیز
             </h4>
 
 
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
-                <h5 class="card-header heading-color">ثبت PM جدید</h5>
-                <form action="{{ route('pm.store') }}" method="POST" class="card-body">
+                <h5 class="card-header heading-color">ویرایش قطعات زیر مجموعه تجهیز</h5>
+                <form action="{{ route('machine.update' , ['machine' => $machine->id]) }}"  method="POST" class="card-body">
                     @csrf
+                    @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
-
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-Customer">شماره سریال تجهیز </label>
-                            <select name="equipment_number" id="collapsible-Customer" class="select2 form-select"
-                                data-allow-clear="true">
-                                @foreach ($requestwork as $itemRequestwork)
-                                    <option value="{{ $itemRequestwork->equipment_number }}">
-                                        {{ $itemRequestwork->equipment_number }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-Customer">شماره درخواست‌‌‌‌‌‌‌‌‌کار </label>
-                            <select name="requestwork_id" id="collapsible-Customer" class="select2 form-select"
-                                data-allow-clear="true">
-                                @foreach ($requestwork as $itemRequestwork)
-                                    <option value="{{ $itemRequestwork->id }}">
-                                        {{ $itemRequestwork->request_number }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-equipment"> نام تجهیز</label>
-                            <select name="equipment_id" id="collapsible-Customer" class="select2 form-select"
-                                data-allow-clear="true">
-                                @foreach ($equipment as $itemequipment)
-                                    <option value="{{ $itemequipment->id }}">
-                                        {{ $itemequipment->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-equipment"> نام شرکت</label>
-                            <select name="company_id" id="collapsible-equipment" class="select2 form-select"
-                                data-allow-clear="true">
-                                @foreach ($company as $itemcompany)
-                                    <option value="{{ $itemcompany->id }}">
-                                        {{ $itemcompany->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-company">نام مستعار تجهیز</label>
+                            <label class="form-label" for="basic-icon-default-company">نام قطعات زیر مجموعه تجهیز</label>
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
-                                        class="bx bx-hard-hat"></i></span>
-                                <input name="equipment_name_Alias" type="text" id="basic-icon-default-company" class="form-control"
-                                    placeholder="مثال:گیربکس  " aria-label="ACME Inc."
+                                        class="bx bx-crosshair"></i></span>
+                                <input name="name" value="{{ $machine->name }}" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال:دستگاه تراش " aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-message">محل نصب</label>
+                            <label class="form-label" for="basic-icon-default-company">کد قطعات زیر مجموعه تجهیز (سریال قطعات زیر مجموعه تجهیز)</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-message2" class="input-group-text"><i
-                                        class="bx bx-comment"></i></span>
-                                <textarea name="installation_location" id="basic-icon-default-message" class="form-control"
-                                    placeholder="توضیحات را اینجا بنویسید" aria-label="Hi, Do you have a moment to talk Joe?"
-                                    aria-describedby="basic-icon-default-message2"></textarea>
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-barcode"></i></span>
+                                <input name="code"  value="{{ $machine->code }}" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال: FG34225556GS  " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="collapsible-UnitMeasurement">تخصص</label>
+                            <select name="specialty" id="collapsible-UnitMeasurement" class="select2 form-select"
+                                data-allow-clear="true">
+                                @foreach ($Specialty as $itemSpecialty)
+                                <option value="{{ $itemSpecialty->id }}"
+                                    {{ $itemSpecialty->id == $Specialty_select->id ? 'selected' : '' }}>
+                                    {{ $itemSpecialty->name }}
+                                </option>
+                            @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="collapsible-rule">وضعیت استفاده از قطعات زیر مجموعه تجهیز</label>
+                            <select name="available" id="collapsible-rule" class="select2 form-select"
+                                data-allow-clear="true">
+                                <option value="1"  {{ "1" == $machine->available ? 'selected' : '' }}>
+                                    قطعات زیر مجموعه تجهیز سالم است
+                                </option>
+                                <option value="0"  {{ "0" == $machine->available ? 'selected' : '' }}>
+                                    قطعات زیر مجموعه تجهیز خراب است
+                                </option>
+                            </select>
+                        </div>
+
                     </div>
+
 
                     <div class="pt-4">
                         <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
@@ -126,6 +103,8 @@
                     </div>
                 </form>
             </div>
+
+
 
         </div>
         <!-- / Content -->
@@ -159,16 +138,12 @@
     <script src="../../assets/vendor/libs/flatpickr/l10n/fa-jdate.js"></script>
     <script src="../../assets/vendor/libs/select2/select2.js"></script>
     <script src="../../assets/vendor/libs/select2/i18n/fa.js"></script>
-    <script src="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
-    <script src="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
-    <script src="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
-    <script src="../../assets/vendor/libs/pickr/pickr.js"></script>
+
     <!-- Main JS -->
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
     <script src="../../assets/js/form-layouts.js"></script>
-    <script src="../../assets/js/forms-pickers.js"></script>
 
     <script>
         console.log('script');
