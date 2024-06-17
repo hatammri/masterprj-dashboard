@@ -46,14 +46,14 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ثبت PM جدید</h5>
-                <form action="{{ route('requestwork.store') }}" method="POST" class="card-body">
+                <form action="{{ route('pm.store') }}" method="POST" class="card-body">
                     @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
 
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-Customer">شماره سریال تجهیز </label>
-                            <select name="customer" id="collapsible-Customer" class="select2 form-select"
+                            <select name="equipment_number" id="collapsible-Customer" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($requestwork as $itemRequestwork)
                                     <option value="{{ $itemRequestwork->id }}">
@@ -64,7 +64,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-Customer">شماره درخواست‌‌‌‌‌‌‌‌‌کار </label>
-                            <select name="customer" id="collapsible-Customer" class="select2 form-select"
+                            <select name="requestwork_id" id="collapsible-Customer" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($requestwork as $itemRequestwork)
                                     <option value="{{ $itemRequestwork->id }}">
@@ -75,7 +75,7 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment"> نام تجهیز</label>
-                            <select name="customer" id="collapsible-Customer" class="select2 form-select"
+                            <select name="equipment_id" id="collapsible-Customer" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($equipment as $itemequipment)
                                     <option value="{{ $itemequipment->id }}">
@@ -87,7 +87,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment"> نام شرکت</label>
-                            <select name="equipment" id="collapsible-equipment" class="select2 form-select"
+                            <select name="company_id" id="collapsible-equipment" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($company as $itemcompany)
                                     <option value="{{ $itemcompany->id }}">
@@ -103,7 +103,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-hard-hat"></i></span>
-                                <input name="name" type="text" id="basic-icon-default-company" class="form-control"
+                                <input name="equipment_name_Alias" type="text" id="basic-icon-default-company" class="form-control"
                                     placeholder="مثال:گیربکس  " aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                             </div>
@@ -113,7 +113,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
-                                <textarea name="description" id="basic-icon-default-message" class="form-control"
+                                <textarea name="installation_location" id="basic-icon-default-message" class="form-control"
                                     placeholder="توضیحات را اینجا بنویسید" aria-label="Hi, Do you have a moment to talk Joe?"
                                     aria-describedby="basic-icon-default-message2"></textarea>
                             </div>
