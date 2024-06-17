@@ -8,6 +8,8 @@ use App\Models\Machine;
 use App\Models\Ostan;
 use App\Models\UnitMeasurement;
 use App\Models\Specialty;
+use App\Models\Part;
+use App\Models\Brand;
 
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -23,8 +25,10 @@ class PartDefController extends Controller
      */
     public function create()
     {
-        $Specialty = Specialty::all();
-        return view('partdef.create', compact('Specialty'));
+        $Part = Part::all();
+        $Brand = Brand::all();
+
+        return view('partdef.create', compact('Part','Brand'));
     }
 
     /**
