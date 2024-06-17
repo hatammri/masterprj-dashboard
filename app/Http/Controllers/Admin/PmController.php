@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Specialty;
-use App\Models\Ostan;
+use App\Models\Equipment;
+use App\Models\RequestWork;
+use App\Models\Company;
 use App\Models\UnitMeasurement;
+
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PmController extends Controller
@@ -21,7 +24,12 @@ class PmController extends Controller
      */
     public function create()
     {
-        return view('pm.create');
+        $requestwork = RequestWork::all();
+        $equipment = Equipment::all();
+        $company = Company::all();
+
+
+        return view('pm.create', compact('requestwork','equipment','company'));
     }
 
     /**

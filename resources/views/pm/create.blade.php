@@ -55,22 +55,33 @@
                             <label class="form-label" for="collapsible-Customer">شماره سریال تجهیز </label>
                             <select name="customer" id="collapsible-Customer" class="select2 form-select"
                                 data-allow-clear="true">
-                                {{-- @foreach ($Customer as $itemCustomer)
-                                    <option value="{{ $itemCustomer->id }}">
-                                        {{ $itemCustomer->name }}
+                                @foreach ($requestwork as $itemRequestwork)
+                                    <option value="{{ $itemRequestwork->id }}">
+                                        {{ $itemRequestwork->equipment_number }}
                                     </option>
-                                @endforeach --}}
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="collapsible-Customer">شماره درخواست‌‌‌‌‌‌‌‌‌کار </label>
+                            <select name="customer" id="collapsible-Customer" class="select2 form-select"
+                                data-allow-clear="true">
+                                @foreach ($requestwork as $itemRequestwork)
+                                    <option value="{{ $itemRequestwork->id }}">
+                                        {{ $itemRequestwork->request_number }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment"> نام تجهیز</label>
                             <select name="customer" id="collapsible-Customer" class="select2 form-select"
                                 data-allow-clear="true">
-                                {{-- @foreach ($Customer as $itemCustomer)
-                                    <option value="{{ $itemCustomer->id }}">
-                                        {{ $itemCustomer->name }}
+                                @foreach ($equipment as $itemequipment)
+                                    <option value="{{ $itemequipment->id }}">
+                                        {{ $itemequipment->name }}
                                     </option>
-                                @endforeach --}}
+                                @endforeach
                             </select>
                         </div>
 
@@ -78,11 +89,11 @@
                             <label class="form-label" for="collapsible-equipment"> نام شرکت</label>
                             <select name="equipment" id="collapsible-equipment" class="select2 form-select"
                                 data-allow-clear="true">
-                                {{-- @foreach ($Equipment as $itemEquipment)
-                                    <option value="{{ $itemEquipment->id }}">
-                                        {{ $itemEquipment->name }}
+                                @foreach ($company as $itemcompany)
+                                    <option value="{{ $itemcompany->id }}">
+                                        {{ $itemcompany->name }}
                                     </option>
-                                @endforeach --}}
+                                @endforeach
                             </select>
                         </div>
 
@@ -102,8 +113,9 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
-                                <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
-                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2"></textarea>
+                                <textarea name="description" id="basic-icon-default-message" class="form-control"
+                                    placeholder="توضیحات را اینجا بنویسید" aria-label="Hi, Do you have a moment to talk Joe?"
+                                    aria-describedby="basic-icon-default-message2"></textarea>
                             </div>
                         </div>
                     </div>

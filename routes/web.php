@@ -15,6 +15,8 @@ use App\Http\Controllers\Admin\UnitMeasurementController;
 use App\Http\Controllers\Admin\MachineController;
 use App\Http\Controllers\Admin\OperatorController;
 use App\Http\Controllers\Admin\RequestworkController;
+use App\Http\Controllers\Admin\PartController;
+
 use App\Models\Rule;
 
 //require __DIR__ . '/auth.php';
@@ -82,7 +84,15 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/index', [PmController::class, 'index'])->name('index');
         Route::get('/edit/{id}', [PmController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [PmController::class, 'show'])->name('show');
-        Route::put('/update/{specialty}', [PmController::class, 'update'])->name('update');
+        Route::put('/update/{pm}', [PmController::class, 'update'])->name('update');
+    });
+    Route::prefix('part')->name('part.')->group(function () {
+        Route::get('/create', [PartController::class, 'create'])->name('create');
+        Route::post('/store', [PartController::class, 'store'])->name('store');
+        Route::get('/index', [PartController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [PartController::class, 'edit'])->name('edit');
+        Route::get('/show/{data}', [PartController::class, 'show'])->name('show');
+        Route::put('/update/{part}', [PartController::class, 'update'])->name('update');
     });
 
     Route::prefix('requestwork')->name('requestwork.')->group(function () {
@@ -206,7 +216,8 @@ Route::get('machine/datatable', [MachineController::class, 'datatable'])->name('
 Route::get('unitMeasurement/datatable', [UnitMeasurementController::class, 'datatable'])->name('unitMeasurement.datatable');
 Route::get('operator/datatable', [OperatorController::class, 'datatable'])->name('operator.datatable');
 Route::get('requestwork/datatable', [RequestworkController::class, 'datatable'])->name('requestwork.datatable');
-
+Route::get('part/datatable', [PartController::class, 'datatable'])->name('part.datatable');
+Route::get('pm/datatable', [PmController::class, 'datatable'])->name('pm.datatable');
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 Route::post('/resend_otp', [AuthController::class, 'resendOtp'])->middleware('guest')->name('resendOtp');
 Route::post('/check_otp', [AuthController::class, 'checkOtp'])->middleware('guest')->name('checkOtp');

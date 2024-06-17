@@ -37,27 +37,27 @@
                 <div>کار پوشه</div>
             </a>
             <ul class="menu-sub"> --}}
-                {{-- <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
+        {{-- <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
                     <a href="{{ route('reports.list_scan_period') }}" class="menu-link ">
                         <div>لیست دوره‌های اسکن شده </div>
                     </a>
                 </li> --}}
-                {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
+        {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
             <a href="{{ route('reports.testtable') }}" class="menu-link">
               <div >تست جدول</div>
             </a>
           </li> --}}
-                {{-- <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
+        {{-- <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
                     <a href="{{ route('reports.listContradictions.listcontradictions') }}" class="menu-link">
                         <div>لیست مغایرت‌های بارنامه</div>
                     </a>
                 </li> --}}
-                {{-- <li class="menu-item">
+        {{-- <li class="menu-item">
                     <a href="#" class="menu-link">
                         <div>گزارش مغایرت های بارنامه در مبدا و مقصد</div>
                     </a>
                 </li> --}}
-                {{-- <li class="menu-item">
+        {{-- <li class="menu-item">
                     <a href="#" class="menu-link">
                         <div>گزارش عملکرد سگ های موادیاب</div>
                     </a>
@@ -77,7 +77,7 @@
                         <div>لیست گزارشات پرسنل</div>
                     </a>
                 </li> --}}
-            {{-- </ul>
+        {{-- </ul>
         </li> --}}
         <li
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
@@ -106,31 +106,57 @@
             </ul>
         </li>
         <li
-        class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-        <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
-            <i class="menu-icon tf-icons bx bx-link"></i>
-            <div>برنامه PM</div>
-        </a>
-        <ul class="menu-sub">
-            <li class="menu-item">
-                <a href="{{ route('pm.create') }}" class="menu-link ">
-                    <div>ایجاد PM</div>
-                </a>
-            </li>
+            class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+            <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-link"></i>
+                <div>برنامه PM</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('pm.create') }}" class="menu-link ">
+                        <div>ایجاد PM</div>
+                    </a>
+                </li>
 
-            <li class="menu-item ">
-                <a href="{{ route('pm.index') }}" class="menu-link">
-                    <div>لیست PM ها</div>
-                </a>
-            </li>
-            {{-- <li class="menu-item">
+                <li class="menu-item ">
+                    <a href="{{ route('pm.index') }}" class="menu-link">
+                        <div>لیست PM ها</div>
+                    </a>
+                </li>
+                {{-- <li class="menu-item">
                 <a href="#" class="menu-link">
                     <div>ویرایش درخواست‌کار</div>
                 </a>
             </li> --}}
 
-        </ul>
-    </li>
+            </ul>
+        </li>
+        <li
+            class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+            <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-link"></i>
+                <div>قطعات تجهیز</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('part.create') }}" class="menu-link ">
+                        <div>ایجاد قطعه</div>
+                    </a>
+                </li>
+
+                <li class="menu-item ">
+                    <a href="{{ route('part.index') }}" class="menu-link">
+                        <div>لیست قطعه‌ها</div>
+                    </a>
+                </li>
+                {{-- <li class="menu-item">
+                <a href="#" class="menu-link">
+                    <div>ویرایش درخواست‌کار</div>
+                </a>
+            </li> --}}
+
+            </ul>
+        </li>
         <li
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -276,7 +302,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a  href="{{ route('equipment.index') }}" class="menu-link">
+                    <a href="{{ route('equipment.index') }}" class="menu-link">
                         <div>لیست تجهیز</div>
                     </a>
                 </li>
@@ -286,7 +312,7 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('typeequipment.index')}}" class="menu-link">
+                    <a href="{{ route('typeequipment.index') }}" class="menu-link">
                         <div>لیست مدل و تیپ تجهیز</div>
                     </a>
                 </li>
