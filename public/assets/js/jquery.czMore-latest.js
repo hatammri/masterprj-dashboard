@@ -58,6 +58,8 @@ MIT License, https://github.com/cozeit/czMore/blob/master/LICENSE.md
                   'width': '25px',
                   'cursor': 'pointer',
               });
+
+              
             }
 
             if (recordset.length) {

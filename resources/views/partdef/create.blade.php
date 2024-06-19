@@ -59,6 +59,8 @@
     <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/pickr/pickr-themes.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css">
+
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -76,40 +78,49 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="py-3 breadcrumb-wrapper mb-4"><span class="text-muted fw-light">فرم‌ها /</span>
-                موارد بیشتر</h4>
+            <h4 class="py-3 breadcrumb-wrapper mb-4"><span class="text-muted fw-light">تعریف قطعات زیر مجموعه تجهیز /</span>
+                pm </h4>
 
             <div class="row">
 
 
-                <div class="card mb-4">
-                    <h5 class="card-header heading-color">مشخصات pm</h5>
-                    <div class="card-body">
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="exampleFormControlReadOnlyInput1" class="form-label">
-                                    شماره سریال تجهیز</label>
-                                <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1"
-                                    placeholder="ورودی فقط خواندنی ..." readonly>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="exampleFormControlReadOnlyInput1" class="form-label">
-                                    شماره درخواست‌کار</label>
-                                <input class="form-control" type="text" id="exampleFormControlReadOnlyInput1"
-                                    placeholder="ورودی فقط خواندنی ..." readonly>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
 
                 <!-- Form Repeater -->
-                <div class="card mb-4">
-                    <h5 class="card-header heading-color">تکرار کننده فرم</h5>
-                    <div class="card-body">
+
                         <form action="{{ route('partdef.store') }}" method="POST">
                             @csrf
+                            <div class="card mb-4">
+                                <h5 class="card-header heading-color">مشخصات pm</h5>
+                                <div class="card-body">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label for="exampleFormControlReadOnlyInput1" class="form-label">
+                                                شماره سریال تجهیز</label>
+                                                <select id="select2Disabled" class="select2 form-select" disabled>
+                                                    <option value="1">گزینه 1</option>
+                                                    <option value="2" selected>گزینه 2</option>
+                                                    <option value="3">گزینه 3</option>
+                                                    <option value="4">گزینه 4</option>
+                                                  </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="exampleFormControlReadOnlyInput1" class="form-label">
+                                                شماره درخواست‌کار</label>
+                                                <select id="select2Disabled" class="select2 form-select" disabled>
+                                                    <option value="1">گزینه 1</option>
+                                                    <option value="2" selected>گزینه 2</option>
+                                                    <option value="3">گزینه 3</option>
+                                                    <option value="4">گزینه 4</option>
+                                                  </select>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="card mb-4">
+                                <h5 class="card-header heading-color">تعریف قطعات زیر مجموعه تجهیز</h5>
+                                <div class="card-body">
                             <div id="czContainer">
                                 <div id="first">
                                     <div class="recordset">
@@ -152,19 +163,19 @@
                                                 <label class="form-label" for="form-repeater-1-4">تاریخ
                                                     تعویض</label>
                                                     <input type="text" name="FormData[date_Replacement][]" class="form-control"
-                                                    placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime1">
+                                                    placeholder="YYYY/MM/DD - HH:MM" id="form-repeater-1-3">
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="form-repeater-1-4">تاریخ
                                                     تعویض بعدی</label>
-                                                <input name="FormData[date_Replacement_next][]" type="text" id="bs-datepicker-autoclose"
-                                                    placeholder="YYYY/MM/DD" class="form-control">
 
+                                                    <input type="text" name="FormData[date_Replacement_next][]" class="form-control"
+                                                    placeholder="YYYY/MM/DD - HH:MM" id="form-repeater-1-4">
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="form-repeater-1-4">ساعت کار
                                                     مجاز</label>
-                                                <input name="FormData[Allowed_working_hours][]" type="text" id="timepicker-format" placeholder="HH:MM:SS"
+                                                <input name="FormData[Allowed_working_hours][]" type="text" id="form-repeater-1-5" placeholder="HH:MM:SS"
                                                     class="form-control">
 
                                             </div>
@@ -182,11 +193,12 @@
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
                                 <button type="reset" class="btn btn-label-secondary">انصراف</button>
                             </div>
-                        </form>
-
 
                     </div>
                 </div>
+                        </form>
+
+
                 <!-- /Form Repeater -->
             </div>
         </div>
@@ -231,7 +243,9 @@
 
     <!-- Main JS -->
     <script src="../../assets/js/main.js"></script>
-
+    <!-- Page JS -->
+    <script src="../../assets/js/form-layouts.js"></script>
+    <script src="../../assets/js/forms-pickers.js"></script>
     <!-- Page JS -->
     {{-- <script src="../../assets/js/forms-pickers.js"></script> --}}
     <script src="../../assets/js/forms-extras.js"></script>
