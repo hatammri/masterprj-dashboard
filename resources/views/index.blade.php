@@ -98,8 +98,9 @@
 
     <!-- Page JS -->
     <script src="../../assets/js/dashboards-analytics.js"></script>
-    <script>
+    <script src="../../assets/js/jquery.czMore-latest.js"></script>
 
+    
         // Page full screen
         $(".nav-link-expand").on("click", function(e) {
 

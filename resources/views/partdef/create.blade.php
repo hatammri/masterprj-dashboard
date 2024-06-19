@@ -110,15 +110,17 @@
                     <div class="card-body">
                         <form action="{{ route('partdef.store') }}" method="POST">
                             @csrf
-                            <form class="form-repeater">
-                                <div data-repeater-list="group-a">
-                                    <div data-repeater-item>
+                            <div id="czContainer">
+                                <div id="first">
+                                    <div class="recordset">
+                                        <br/>
+
                                         <div class="row">
 
                                             <div class="col-md-6">
                                                 <label class="form-label" for="form-repeater-1-1">نام
                                                     قطعه</label>
-                                                <select name="semat" id="collapsible-UnitMeasurement"
+                                                <select name="FormData[part_id][]" id="collapsible-UnitMeasurement"
                                                     class="select2 form-select" data-allow-clear="true">
                                                     @foreach ($Part as $itemPart)
                                                         <option value="{{ $itemPart->id }}">
@@ -129,7 +131,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="form-repeater-1-2">برند</label>
-                                                <select name="semat" id="collapsible-UnitMeasurement"
+                                                <select name="FormData[brand_id][]" id="collapsible-UnitMeasurement"
                                                     class="select2 form-select" data-allow-clear="true">
                                                     @foreach ($Brand as $itemBrand)
                                                         <option value="{{ $itemBrand->id }}">
@@ -142,51 +144,47 @@
                                             <div class="col-md-6">
                                                 <label class="form-label" for="form-repeater-1-3">تعداد
                                                     استفاده شده</label>
-                                                <input type="text" id="form-repeater-1-2"
+                                                <input name="FormData[num_parts_used][]" type="text" id="form-repeater-1-2"
                                                     class="form-control text-start" placeholder="مثال :3" dir="ltr">
                                             </div>
+
                                             <div class="col-md-6">
                                                 <label class="form-label" for="form-repeater-1-4">تاریخ
                                                     تعویض</label>
-                                                <input type="text" id="bs-datepicker-autoclose"
-                                                    placeholder="YYYY/MM/DD" class="form-control">
+                                                    <input type="text" name="FormData[date_Replacement][]" class="form-control"
+                                                    placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime1">
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="form-repeater-1-4">تاریخ
                                                     تعویض بعدی</label>
-                                                <input type="text" id="bs-datepicker-autoclose"
+                                                <input name="FormData[date_Replacement_next][]" type="text" id="bs-datepicker-autoclose"
                                                     placeholder="YYYY/MM/DD" class="form-control">
 
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="form-label" for="form-repeater-1-4">ساعت کار
                                                     مجاز</label>
-                                                <input type="text" id="timepicker-format" placeholder="HH:MM:SS"
+                                                <input name="FormData[Allowed_working_hours][]" type="text" id="timepicker-format" placeholder="HH:MM:SS"
                                                     class="form-control">
 
                                             </div>
-                                            <div class="mb-3 col-lg-12 col-xl-2 col-12 d-flex align-items-center mb-0">
-                                                <button class="btn btn-label-danger mt-4" data-repeater-delete>
-                                                    <i class="bx bx-x me-1"></i>
-                                                    <span class="align-middle">حذف</span>
-                                                </button>
-                                            </div>
+
                                         </div>
-                                        <hr>
+                                        <br/>
+
                                     </div>
                                 </div>
-                                <div class="mb-0">
-                                    <button class="btn btn-primary" data-repeater-create>
-                                        <i class="bx bx-plus me-1"></i>
-                                        <span class="align-middle">افزودن</span>
-                                    </button>
-                                </div>
-                            </form>
+                            </div>
+                            <br/>
+                            <br/>
+
                             <div class="pt-4">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
                                 <button type="reset" class="btn btn-label-secondary">انصراف</button>
                             </div>
                         </form>
+
+
                     </div>
                 </div>
                 <!-- /Form Repeater -->
@@ -237,25 +235,9 @@
     <!-- Page JS -->
     {{-- <script src="../../assets/js/forms-pickers.js"></script> --}}
     <script src="../../assets/js/forms-extras.js"></script>
-
-    <script>
-        < script >
-            $(document).ready(function() {
-                $('.form-repeater').repeater({
-                    // (Required if there is a nested repeater)
-                    // Specify the configuration of the nested repeaters.
-                    // Nested configuration follows the same format as the base configuration,
-                    // supporting options "defaultValues", "show", "hide", etc.
-                    // Nested repeaters additionally require a "selector" field.
-                    repeaters: [{
-                        // (Required)
-                        // Specify the jQuery selector for this nested repeater
-                        selector: '.inner-repeater'
-                    }]
-                });
-            });
-    </script>
-
-
+    <script src="../../assets/js/jquery.czMore-latest.js"></script>
+    <script type="text/javascript">
+        //One-to-many relationship plugin by Yasir O. Atabani. Copyrights Reserved.
+        $("#czContainer").czMore();
     </script>
 @endsection
