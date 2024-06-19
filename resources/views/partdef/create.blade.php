@@ -84,7 +84,7 @@
 
                 <div class="card mb-4">
                     <h5 class="card-header heading-color">مشخصات pm</h5>
-                    <form class="card-body">
+                    <div class="card-body">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="exampleFormControlReadOnlyInput1" class="form-label">
@@ -101,89 +101,90 @@
 
                         </div>
 
-                    </form>
+                    </div>
                 </div>
 
                 <!-- Form Repeater -->
                 <div class="card mb-4">
                     <h5 class="card-header heading-color">تکرار کننده فرم</h5>
                     <div class="card-body">
-                        <form class="form-repeater">
-                            <div data-repeater-list="group-a">
-                                <div data-repeater-item>
-                                    <div class="row">
+                        <form action="{{ route('partdef.store') }}" method="POST">
+                            @csrf
+                            <form class="form-repeater">
+                                <div data-repeater-list="group-a">
+                                    <div data-repeater-item>
+                                        <div class="row">
 
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="form-repeater-1-1">نام
-                                                قطعه</label>
-                                            <select name="semat" id="collapsible-UnitMeasurement"
-                                                class="select2 form-select" data-allow-clear="true">
-                                                @foreach ($Part as $itemPart)
-                                                    <option value="{{ $itemPart->id }}">
-                                                        {{ $itemPart->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="form-repeater-1-2">برند</label>
-                                            <select name="semat" id="collapsible-UnitMeasurement"
-                                            class="select2 form-select" data-allow-clear="true">
-                                            @foreach ($Brand as $itemBrand)
-                                                <option value="{{ $itemBrand->id }}">
-                                                    {{ $itemBrand->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="form-repeater-1-1">نام
+                                                    قطعه</label>
+                                                <select name="semat" id="collapsible-UnitMeasurement"
+                                                    class="select2 form-select" data-allow-clear="true">
+                                                    @foreach ($Part as $itemPart)
+                                                        <option value="{{ $itemPart->id }}">
+                                                            {{ $itemPart->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="form-repeater-1-2">برند</label>
+                                                <select name="semat" id="collapsible-UnitMeasurement"
+                                                    class="select2 form-select" data-allow-clear="true">
+                                                    @foreach ($Brand as $itemBrand)
+                                                        <option value="{{ $itemBrand->id }}">
+                                                            {{ $itemBrand->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
 
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="form-repeater-1-3">تعداد
-                                                استفاده شده</label>
-                                                <input type="text" id="form-repeater-1-2" class="form-control text-start"
-                                                placeholder="مثال :3" dir="ltr">
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="form-repeater-1-3">تعداد
+                                                    استفاده شده</label>
+                                                <input type="text" id="form-repeater-1-2"
+                                                    class="form-control text-start" placeholder="مثال :3" dir="ltr">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="form-repeater-1-4">تاریخ
+                                                    تعویض</label>
+                                                <input type="text" id="bs-datepicker-autoclose"
+                                                    placeholder="YYYY/MM/DD" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="form-repeater-1-4">تاریخ
+                                                    تعویض بعدی</label>
+                                                <input type="text" id="bs-datepicker-autoclose"
+                                                    placeholder="YYYY/MM/DD" class="form-control">
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label" for="form-repeater-1-4">ساعت کار
+                                                    مجاز</label>
+                                                <input type="text" id="timepicker-format" placeholder="HH:MM:SS"
+                                                    class="form-control">
+
+                                            </div>
+                                            <div class="mb-3 col-lg-12 col-xl-2 col-12 d-flex align-items-center mb-0">
+                                                <button class="btn btn-label-danger mt-4" data-repeater-delete>
+                                                    <i class="bx bx-x me-1"></i>
+                                                    <span class="align-middle">حذف</span>
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="form-repeater-1-4">تاریخ
-                                                تعویض</label>
-                                                <label for="bs-datepicker-autoclose" class="form-label">بسته شدن خودکار</label>
-                                                <input type="text" id="bs-datepicker-autoclose" placeholder="YYYY/MM/DD" class="form-control">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="form-repeater-1-4">تاریخ
-                                                تعویض بعدی</label>
-                                            <select id="form-repeater-1-4" class="form-select">
-                                                <option value="Designer">طراح</option>
-                                                <option value="Developer">توسعه دهنده</option>
-                                                <option value="Tester">آزمایشگر</option>
-                                                <option value="Manager">مدیر</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label" for="form-repeater-1-4">ساعت کار
-                                                مجاز</label>
-                                            <select id="form-repeater-1-4" class="form-select">
-                                                <option value="Designer">طراح</option>
-                                                <option value="Developer">توسعه دهنده</option>
-                                                <option value="Tester">آزمایشگر</option>
-                                                <option value="Manager">مدیر</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3 col-lg-12 col-xl-2 col-12 d-flex align-items-center mb-0">
-                                            <button class="btn btn-label-danger mt-4" data-repeater-delete>
-                                                <i class="bx bx-x me-1"></i>
-                                                <span class="align-middle">حذف</span>
-                                            </button>
-                                        </div>
+                                        <hr>
                                     </div>
-                                    <hr>
                                 </div>
-                            </div>
-                            <div class="mb-0">
-                                <button class="btn btn-primary" data-repeater-create>
-                                    <i class="bx bx-plus me-1"></i>
-                                    <span class="align-middle">افزودن</span>
-                                </button>
+                                <div class="mb-0">
+                                    <button class="btn btn-primary" data-repeater-create>
+                                        <i class="bx bx-plus me-1"></i>
+                                        <span class="align-middle">افزودن</span>
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="pt-4">
+                                <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
+                                <button type="reset" class="btn btn-label-secondary">انصراف</button>
                             </div>
                         </form>
                     </div>
@@ -212,17 +213,17 @@
 
     <script src="../../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
-  <!-- Vendors JS -->
-  <script src="../../assets/vendor/libs/moment/moment.js"></script>
-  <script src="../../assets/vendor/libs/jdate/jdate.js"></script>
-  <script src="../../assets/vendor/libs/flatpickr/flatpickr-jdate.js"></script>
-  <script src="../../assets/vendor/libs/flatpickr/l10n/fa-jdate.js"></script>
-  <script src="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
-  <script src="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
-  <script src="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
-  <script src="../../assets/vendor/libs/pickr/pickr.js"></script>
+    <!-- Vendors JS -->
+    <script src="../../assets/vendor/libs/moment/moment.js"></script>
+    <script src="../../assets/vendor/libs/jdate/jdate.js"></script>
+    <script src="../../assets/vendor/libs/flatpickr/flatpickr-jdate.js"></script>
+    <script src="../../assets/vendor/libs/flatpickr/l10n/fa-jdate.js"></script>
+    <script src="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
+    <script src="../../assets/vendor/libs/pickr/pickr.js"></script>
 
-  <!-- Main JS -->
+    <!-- Main JS -->
     <!-- Vendors JS -->
     <script src="../../assets/vendor/libs/autosize/autosize.js"></script>
     <script src="../../assets/vendor/libs/cleavejs/cleave.js"></script>
@@ -234,6 +235,27 @@
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../../assets/js/forms-pickers.js"></script>
+    {{-- <script src="../../assets/js/forms-pickers.js"></script> --}}
     <script src="../../assets/js/forms-extras.js"></script>
+
+    <script>
+        < script >
+            $(document).ready(function() {
+                $('.form-repeater').repeater({
+                    // (Required if there is a nested repeater)
+                    // Specify the configuration of the nested repeaters.
+                    // Nested configuration follows the same format as the base configuration,
+                    // supporting options "defaultValues", "show", "hide", etc.
+                    // Nested repeaters additionally require a "selector" field.
+                    repeaters: [{
+                        // (Required)
+                        // Specify the jQuery selector for this nested repeater
+                        selector: '.inner-repeater'
+                    }]
+                });
+            });
+    </script>
+
+
+    </script>
 @endsection

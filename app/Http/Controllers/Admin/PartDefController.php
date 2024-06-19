@@ -35,7 +35,7 @@ class PartDefController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    { dd($request);
         $request->validate([
             'name' => 'required',
             'code' => 'required',
