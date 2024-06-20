@@ -10,7 +10,12 @@ use App\Models\RequestWork;
 use App\Models\Company;
 use App\Models\UnitMeasurement;
 use App\Models\Pm;
+use App\Models\Part;
+use App\Models\Brand;
+use App\Models\PmPart;
 
+
+use Illuminate\Support\Facades\DB;
 
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -29,23 +34,34 @@ class PmController extends Controller
         $requestwork = RequestWork::all();
         $equipment = Equipment::all();
         $company = Company::all();
+        $Part = Part::all();
+        $Brand = Brand::all();
 
 
-        return view('pm.create', compact('requestwork','equipment','company'));
+        return view('pm.create', compact('requestwork','equipment','company','Part','Brand'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+    {//dd($request);
+
         $request->validate([
             'equipment_number' => 'required',
             'requestwork_id' => 'required',
             'equipment_id' => 'required',
             'company_id' => 'required',
             'equipment_name_Alias' => 'required',
-            'installation_location' => 'required'
+            'installation_location' => 'required',
+            'FormData' => 'required',
+            'FormData.*.*' => 'required',
+            'FormData.part_id.*' => 'required',
+            'FormData.brand_id.*' => 'required',
+            'FormData.num_parts_used.*' => 'required',
+            'FormData.date_Replacement.*' => 'required',
+            'FormData.date_Replacement_next.*' => 'required',
+            'FormData.Allowed_working_hours.*' => 'required',
 
         ], $messages = [
             'equipment_number.required' => 'شماره سریال تجهیز  نباید خالی باشد',
@@ -57,8 +73,10 @@ class PmController extends Controller
 
 
         ]);
-        try {
-            Pm::create([
+
+            DB::beginTransaction();
+
+            $Pm = Pm::create([
                 'equipment_number' => $request->equipment_number,
                 'requestwork_id' => $request->requestwork_id,
                 'equipment_id' => $request->equipment_id,
@@ -67,21 +85,43 @@ class PmController extends Controller
                 'installation_location' => $request->installation_location,
 
             ]);
-            Alert::success('pm مورد نظر ایجاد شد', 'باتشکر');
-           return redirect()->route('pm.index');
-        } catch (\Illuminate\Database\QueryException $e) {
-            // You need to handle the error here.
-            // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات pm تکراری و یا اشتباه است', 'خطا');
-            return back();
 
-            // Just some example
-            //dd($e->getMessage(), $e->errorInfo);
-        } catch (\Exception $e) {
-            Alert::error('اطلاعات pm تکراری و یا اشتباه است', 'خطا');
-            return redirect()->back();
-        }
+            $counter = count($request->FormData['part_id']);
+
+            for ($i=0; $i<$counter ; $i++) {
+                $PmPart = PmPart::create([
+                    'pm_id' =>$Pm->id,
+                    'part_id' => $request->FormData['part_id'][$i],
+                    'brand_id' =>$request->FormData['brand_id'][$i],
+                    'num_parts_used' =>$request->FormData['num_parts_used'][$i],
+                    'date_Replacement' => $request->FormData['date_Replacement'][$i],
+                    'date_Replacement_next' => $request->FormData['date_Replacement_next'][$i],
+                    'Allowed_working_hours' => $request->FormData['Allowed_working_hours'][$i],
+
+                ]);
+            }
+
+
+
+            DB::commit();
+            Alert::success('pm مورد نظر ایجاد شد', 'باتشکر');
+            return redirect()->route('pm.index');
+
+
+        // catch (\Illuminate\Database\QueryException $e) {
+        //     // You need to handle the error here.
+        //     // Either send the user back to the screen or redirect them somewhere else
+        //     DB::rollBack();
+        //     Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
+        //     return back();
+
+        // } catch (\Exception $e) {
+        //     DB::rollBack();
+        //     Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
+        //     return redirect()->back();
+        // }
     }
+
 
     /**
      * Display the specified resource.
