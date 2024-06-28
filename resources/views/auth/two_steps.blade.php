@@ -7,12 +7,12 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-    <title>تایید کد امنیتی | داشبورد مدیر صنعت </title>
+    <title>تایید کد امنیتی | داشبورد گروه صنعتی رادیس </title>
 
     <meta name="description" content="">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico">
+    {{-- <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico"> --}}
 
     <!-- Icons -->
     <link rel="stylesheet" href="../../assets/vendor/fonts/boxicons.css">
@@ -56,8 +56,8 @@
                     <div class="app-brand justify-content-center">
                         <a href="index.html" class="app-brand-link gap-2">
                             <span class="app-brand-logo demo">
-                                <img width="35px" height="35px" viewbox="0 0 30 30" version="1.1"
-                                    src="{{ asset('/assets/img/logo/sapa.png') }}">
+                                {{-- <img width="35px" height="35px" viewbox="0 0 30 30" version="1.1"
+                                    src="{{ asset('/assets/img/logo/sapa.png') }}"> --}}
 
                             </span>
                             <span class="app-brand-text demo h3 mb-0 fw-bold">مدیرصنعت</span>
