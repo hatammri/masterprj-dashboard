@@ -58,7 +58,7 @@
                     {{-- <img width="35px" height="35px" viewbox="0 0 30 30" version="1.1" src="{{ asset('/assets/img/logo/sapa.png')}}"> --}}
 
                   </span>
-                  <span class="app-brand-text demo h3 mb-0 fw-bold">مدیرصنعت</span>
+                  <span class="app-brand-text demo h3 mb-0 fw-bold">گروه صنعتی رادیس</span>
                 </a>
               </div>
               <!-- /Logo -->
