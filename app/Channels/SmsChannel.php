@@ -5,7 +5,7 @@ use Illuminate\Notifications\Notification;
 use Ghasedak\Laravel\GhasedakFacade as Ghasedak;
 class SmsChannel{
     public function send($notifiable, Notification $notification)
-    {return true;  //remove this code when app lanch in server
+    {  //remove this code when app lanch in server
       $receptor=$notifiable->cellphone;
       $template="Test3";
       $param1=$notification->code;
