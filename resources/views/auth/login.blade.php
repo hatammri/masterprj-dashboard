@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-    <title>ورود| داشبورد مدیریت صنعتی  </title>
+    <title>ورود|گروه صنعتی رادیس</title>
 
     <meta name="description" content="">
 

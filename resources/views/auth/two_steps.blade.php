@@ -7,7 +7,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-    <title>تایید کد امنیتی | داشبورد گروه صنعتی رادیس </title>
+    <title>تایید کد امنیتی|گروه صنعتی رادیس</title>
 
     <meta name="description" content="">
 
@@ -60,7 +60,7 @@
                                     src="{{ asset('/assets/img/logo/sapa.png') }}"> --}}
 
                             </span>
-                            <span class="app-brand-text demo h3 mb-0 fw-bold">مدیرصنعت</span>
+                            <span class="app-brand-text demo h3 mb-0 fw-bold">گروه صنعتی رادیس</span>
                         </a>
                     </div>
                     <!-- /Logo -->
