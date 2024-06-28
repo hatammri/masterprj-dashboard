@@ -100,39 +100,6 @@
     <script src="../../assets/js/dashboards-analytics.js"></script>
     <script src="../../assets/js/jquery.czMore-latest.js"></script>
 
-    
-        // Page full screen
-        $(".nav-link-expand").on("click", function(e) {
-
-            if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-                (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-
-                if (document.documentElement.requestFullScreen) {
-                    console.log("p2")
-                    document.documentElement.requestFullScreen();
-                } else if (document.documentElement.mozRequestFullScreen) {
-                    console.log("p3")
-
-                    document.documentElement.mozRequestFullScreen();
-                } else if (document.documentElement.webkitRequestFullScreen) {
-                    console.log("p4")
-
-                    document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-                }
-            } else {
-                if (document.cancelFullScreen) {
-                    console.log("p5")
-                    document.cancelFullScreen();
-                } else if (document.mozCancelFullScreen) {
-                    console.log("p6")
-                    document.mozCancelFullScreen();
-                } else if (document.webkitCancelFullScreen) {
-                    console.log("p7")
-                    document.webkitCancelFullScreen();
-                }
-            }
-        })
-    </script>
     @yield('scripts')
 
 </body>

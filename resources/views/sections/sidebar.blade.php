@@ -337,7 +337,25 @@
 
             </ul>
         </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-group"></i>
+                <div>سطوح دسترسی</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('permission.index') }}" class="menu-link">
+                        <div>Permissions لیست </div>
+                    </a>
+                </li>
+                {{-- <li class="menu-item">
+                    <a href="{{ route('customer.create') }}" class="menu-link">
+                        <div>اضافه کردن مشتری</div>
+                    </a>
+                </li> --}}
 
+            </ul>
+        </li>
         {{-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>

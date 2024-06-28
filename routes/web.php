@@ -17,6 +17,8 @@ use App\Http\Controllers\Admin\OperatorController;
 use App\Http\Controllers\Admin\RequestworkController;
 use App\Http\Controllers\Admin\PartController;
 use App\Http\Controllers\Admin\PartDefController;
+use App\Http\Controllers\Admin\PermissionController;
+
 use App\Models\Rule;
 
 //require __DIR__ . '/auth.php';
@@ -145,6 +147,16 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/show/{data}', [UnitMeasurementController::class, 'show'])->name('show');
         Route::put('/update/{unitMeasurement}', [UnitMeasurementController::class, 'update'])->name('update');
     });
+
+    Route::prefix('permission')->name('permission.')->group(function () {
+        Route::get('/create', [PermissionController::class, 'create'])->name('create');
+        Route::post('/store', [PermissionController::class, 'store'])->name('store');
+        Route::get('/index', [PermissionController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [PermissionController::class, 'edit'])->name('edit');
+        Route::get('/show/{data}', [PermissionController::class, 'show'])->name('show');
+        Route::put('/update/{permission}', [PermissionController::class, 'update'])->name('update');
+    });
+
     Route::get('', function () {
         return view('dashboard.index');
     })->name('dashboard');
@@ -226,6 +238,8 @@ Route::get('requestwork/datatable', [RequestworkController::class, 'datatable'])
 Route::get('part/datatable', [PartController::class, 'datatable'])->name('part.datatable');
 Route::get('pm/datatable', [PmController::class, 'datatable'])->name('pm.datatable');
 Route::get('partdef/datatable', [PartDefController::class, 'datatable'])->name('partdef.datatable');
+Route::get('permission/datatable', [PermissionController::class, 'datatable'])->name('permission.datatable');
+
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
 Route::post('/resend_otp', [AuthController::class, 'resendOtp'])->middleware('guest')->name('resendOtp');
 Route::post('/check_otp', [AuthController::class, 'checkOtp'])->middleware('guest')->name('checkOtp');

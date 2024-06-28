@@ -46,7 +46,7 @@ class PmController extends Controller
      */
     public function store(Request $request)
     {//dd($request);
-
+   try{
         $request->validate([
             'equipment_number' => 'required',
             'requestwork_id' => 'required',
@@ -86,40 +86,27 @@ class PmController extends Controller
 
             ]);
 
-            $counter = count($request->FormData['part_id']);
-
-            for ($i=0; $i<$counter ; $i++) {
-                $PmPart = PmPart::create([
-                    'pm_id' =>$Pm->id,
-                    'part_id' => $request->FormData['part_id'][$i],
-                    'brand_id' =>$request->FormData['brand_id'][$i],
-                    'num_parts_used' =>$request->FormData['num_parts_used'][$i],
-                    'date_Replacement' => $request->FormData['date_Replacement'][$i],
-                    'date_Replacement_next' => $request->FormData['date_Replacement_next'][$i],
-                    'Allowed_working_hours' => $request->FormData['Allowed_working_hours'][$i],
-
-                ]);
-            }
-
+            $PartDefController= new PartDefController();
+            $PartDefController->store($request->FormData,$Pm->id);
 
 
             DB::commit();
             Alert::success('pm مورد نظر ایجاد شد', 'باتشکر');
             return redirect()->route('pm.index');
 
+        }
+        catch (\Illuminate\Database\QueryException $e) {
+            // You need to handle the error here.
+            // Either send the user back to the screen or redirect them somewhere else
+            DB::rollBack();
+            Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
+            return back();
 
-        // catch (\Illuminate\Database\QueryException $e) {
-        //     // You need to handle the error here.
-        //     // Either send the user back to the screen or redirect them somewhere else
-        //     DB::rollBack();
-        //     Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
-        //     return back();
-
-        // } catch (\Exception $e) {
-        //     DB::rollBack();
-        //     Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
-        //     return redirect()->back();
-        // }
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
+            return redirect()->back();
+        }
     }
 
 
