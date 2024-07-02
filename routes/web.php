@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\BrandController;
-use App\Http\Controllers\Admin\RuleController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\EquipmentController;
 use App\Http\Controllers\Admin\TypeEquipmentController;
 use App\Http\Controllers\Admin\SpecialtyController;
@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\PartController;
 use App\Http\Controllers\Admin\PartDefController;
 use App\Http\Controllers\Admin\PermissionController;
 
-use App\Models\Rule;
+use App\Models\Role;
 
 //require __DIR__ . '/auth.php';
 Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
@@ -48,13 +48,13 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/show/{data}', [BrandController::class, 'show'])->name('show');
         Route::put('/update/{brand}', [BrandController::class, 'update'])->name('update');
     });
-    Route::prefix('rule')->name('rule.')->group(function () {
-        Route::get('/create', [RuleController::class, 'create'])->name('create');
-        Route::post('/store', [RuleController::class, 'store'])->name('store');
-        Route::get('/index', [RuleController::class, 'index'])->name('index');
-        Route::get('/edit/{id}', [RuleController::class, 'edit'])->name('edit');
-        Route::get('/show/{data}', [RuleController::class, 'show'])->name('show');
-        Route::put('/update/{rule}', [RuleController::class, 'update'])->name('update');
+    Route::prefix('role')->name('role.')->group(function () {
+        Route::get('/create', [RoleController::class, 'create'])->name('create');
+        Route::post('/store', [RoleController::class, 'store'])->name('store');
+        Route::get('/index', [RoleController::class, 'index'])->name('index');
+        Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('edit');
+        Route::get('/show/{data}', [RoleController::class, 'show'])->name('show');
+        Route::put('/update/{role}', [RoleController::class, 'update'])->name('update');
     });
     Route::prefix('equipment')->name('equipment.')->group(function () {
         Route::get('/create', [EquipmentController::class, 'create'])->name('create');
@@ -226,7 +226,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
 Route::get('company/datatable', [CompanyController::class, 'datatable'])->name('company.datatable');
 Route::get('customer/datatable', [CustomerController::class, 'datatable'])->name('customer.datatable');
 Route::get('/getListShahrestan', [CompanyController::class, 'getShahrestanList'])->name('getListShahrestan');
-Route::get('rule/datatable', [RuleController::class, 'datatable'])->name('rule.datatable');
+Route::get('role/datatable', [RoleController::class, 'datatable'])->name('role.datatable');
 Route::get('brand/datatable', [BrandController::class, 'datatable'])->name('brand.datatable');
 Route::get('typeEquipment/datatable', [TypeEquipmentController::class, 'datatable'])->name('typeEquipment.datatable');
 Route::get('equipment/datatable', [EquipmentController::class, 'datatable'])->name('Equipment.datatable');

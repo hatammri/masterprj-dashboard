@@ -42,21 +42,45 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ثبت نقش جدید</h5>
-                <form action="{{ route('rule.store') }}" method="POST" class="card-body">
+                <form action="{{ route('role.store') }}" method="POST" class="card-body">
                     @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
+
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-rule">نام نقش</label>
+                            <label class="form-label" for="basic-icon-default-role">نام نمایشی نقش</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-rule2" class="input-group-text"><i
+                                <span id="basic-icon-default-role2" class="input-group-text"><i
                                         class="bx bx-buildings"></i></span>
-                                <input name="name" type="text" id="basic-icon-default-rule"
-                                    class="form-control" placeholder="مثال:آماده‌ساز " aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-rule2">
+                                <input name="display_name" type="text" id="basic-icon-default-role"
+                                    class="form-control" placeholder="مثال:آماده‌ساز" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-role2">
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-role">نام سیستمی و انگلیسی نقش</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-role2" class="input-group-text"><i
+                                        class="bx bx-buildings"></i></span>
+                                <input name="name" type="text" id="basic-icon-default-role"
+                                    class="form-control" placeholder="مثال:preparer " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-role2">
+                            </div>
+                        </div>
+                        <!-- Checkboxes & Radio Colors -->
+                        <div class="row row-bordered g-0">
+                          <div class="col-md p-4">
+                            <small class="text-light fw-semibold d-block">سطح دسترسی این نقش</small>
+                            @foreach ($permissions as $permission )
 
+                            <div class="form-check form-check-primary mt-3">
+                              <input class="form-check-input" type="checkbox"  id="permission_{{$permission->id}}" name="{{$permission->name}}" value="{{$permission->name}}" >
+                              <label class="form-check-label" for="customCheckPrimary">{{ $permission->display_name }}</label>
+                            </div>
+                            @endforeach
+
+                          </div>
+                        </div>
                     </div>
 
                     <div class="pt-4">

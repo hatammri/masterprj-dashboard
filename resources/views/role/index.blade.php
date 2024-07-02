@@ -56,5 +56,5 @@
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="../../assets/js/tables-datatables-rule.js"></script>
+    <script src="../../assets/js/tables-datatables-role.js"></script>
 @endsection

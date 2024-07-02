@@ -261,12 +261,12 @@
             </a>
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('rule.index') }}" class="menu-link">
+                    <a href="{{ route('role.index') }}" class="menu-link">
                         <div>لیست نقش‌ها</div>
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('rule.create') }}" class="menu-link">
+                    <a href="{{ route('role.create') }}" class="menu-link">
                         <div>اضافه کردن نقش</div>
                     </a>
                 </li>

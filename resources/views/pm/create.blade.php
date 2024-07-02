@@ -119,7 +119,7 @@
                             </div>
                         </div>
                         <div class="card mb-4">
-                            <h5 class="card-header heading-color">تعریف قطعات زیر مجموعه تجهیز</h5>
+                            <h5 class="card-header heading-color">تعریف قطعات اجزا  تجهیز</h5>
                             <div class="card-body">
                                 <div id="czContainer">
                                     <div id="first">
