@@ -117,7 +117,9 @@ $(function () {
                 { data: "phonenumber" },
                 { data: "description" },
                 { data: "companies.name" },
-                { data: "rlues.name" },
+                { data: "posts.display_name" },
+                { data: "rloes.display_name" },
+                { data: "allow_access_system" },
                 { data: "" },
             ],
             columnDefs: [
@@ -125,22 +127,14 @@ $(function () {
                     // Label
                     targets: -2,
                     render: function (data, type, full, meta) {
-                        var $status_number = full["status"];
+                        var $status_number = full["allow_access_system"];
                         var $status = {
                             1: { title: "فعال", class: "bg-label-success" },
-                            2: {
+                            0: {
                                 title: "غیرفعال",
                                 class: " bg-label-warning",
                             },
-                            3: { title: "خراب", class: " bg-label-danger" },
-                            4: {
-                                title: "درحال‌تعمیر",
-                                class: " bg-label-primary",
-                            },
-                            5: {
-                                title: "نامشخص",
-                                class: " bg-label-secondary",
-                            },
+                         
                         };
                         if (typeof $status[$status_number] === "undefined") {
                             return data;

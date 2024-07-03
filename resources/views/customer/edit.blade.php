@@ -105,17 +105,49 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-rule">سمت مشتری در شرکت</label>
-                            <select name="rule" id="collapsible-rule" class="select2 form-select"
+                            <label class="form-label" for="collapsible-post">سمت مشتری در شرکت</label>
+                            <select name="post" id="collapsible-post" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($ruleall as $itemrule)
-                                    <option value="{{ $itemrule->id }}"
-                                        {{ $itemrule->id == $customer->rule ? 'selected' : '' }}>
-                                        {{ $itemrule->name }}
+                                @foreach ($roleall as $itemrole)
+                                    <option value="{{ $itemrole->id }}"
+                                        {{ $itemrole->id == $customer->role ? 'selected' : '' }}>
+                                        {{ $itemrole->display_name }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="collapsible-role">انتخاب نقش جهت دسترسی به داشبورد</label>
+                            <select name="role" id="collapsible-role" class="select2 form-select"
+                                data-allow-clear="true">
+                                @foreach ($roleall as $itemrole)
+                                    <option value="{{ $itemrole->id }}"
+                                        {{ $itemrole->id == $customer->post ? 'selected' : '' }}>
+
+                                        {{ $itemrole->display_name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="collapsible-allow_access_system">وضعیت در سیستم</label>
+                            <select name="allow_access_system" id="collapsible-allow_access_system" class="select2 form-select"
+                                data-allow-clear="true">
+                                    <option value="1"
+                                    {{ $customer->allow_access_system == 1 ? 'selected' : '' }}>
+
+                                      فعال
+                                    </option>
+                                    <option value="0"
+                                    {{ $customer->allow_access_system == 0 ? 'selected' : '' }}>
+                                    غیرفعال
+                                    </option>
+                            </select>
+                        </div>
+
+
+
 
                     </div>
 

@@ -80,10 +80,10 @@
                             <label class="form-label" for="basic-icon-default-company">نقش و سمت اپراتور</label>
                             <select name="semat" id="collapsible-UnitMeasurement" class="select2 form-select"
                                 data-allow-clear="true">
-                                @foreach ($Rule as $itemRule)
-                                    <option value="{{ $itemRule->id }}" {{ $itemRule->id == $operator->Sematdata->id ? 'selected' : '' }}>
+                                @foreach ($Role as $itemRole)
+                                    <option value="{{ $itemRole->id }}" {{ $itemRole->id == $operator->Sematdata->id ? 'selected' : '' }}>
 
-                                        {{ $itemRule->name }}
+                                        {{ $itemRole->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -103,8 +103,8 @@
 
                         <div class="col-md-6">
 
-                            <label class="form-label" for="collapsible-rule">وضعیت استفاده از اپراتور</label>
-                            <select name="available" id="collapsible-rule" class="select2 form-select"
+                            <label class="form-label" for="collapsible-role">وضعیت استفاده از اپراتور</label>
+                            <select name="available" id="collapsible-role" class="select2 form-select"
                                 data-allow-clear="true">
                                 <option value="0" {{ $operator->available == 0 ? 'selected' : '' }} >
                                     اپراتور غایب است

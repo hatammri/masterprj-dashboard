@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('customer', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('email');
-            $table->string('phonenumber');
+            $table->string('phonenumber')->unique();
             $table->string('description');
             $table->foreignId('company');
             $table->foreign('company')->references('id')->on('company');
-            $table->foreignId('rule');
-            $table->foreign('rule')->references('id')->on('rule');
+            $table->foreignId('post');
+            $table->foreign('post')->references('id')->on('role');
+            $table->foreignId('role');
+            $table->foreign('role')->references('id')->on('role');
+            $table->integer('allow_access_system')->default(1);
             $table->timestamps();
         });
     }

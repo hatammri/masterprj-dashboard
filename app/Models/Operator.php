@@ -22,7 +22,7 @@ class Operator extends Model
     }
     public function Sematdata(): BelongsTo
     {
-        return $this->belongsTo(Rule::class,'semat');
+        return $this->belongsTo(Role::class,'semat');
     }
 
 }

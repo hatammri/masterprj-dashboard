@@ -7,7 +7,7 @@ use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\Equipment;
-use App\Models\Rule;
+use App\Models\Role;
 use App\Models\TypeEquipment;
 use RealRashid\SweetAlert\Facades\Alert;
 

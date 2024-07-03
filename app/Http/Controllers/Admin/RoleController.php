@@ -99,19 +99,26 @@ class RoleController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Role $role)
-    { //dd($request,$role);
+    {
         $request->validate([
             'name' => 'required',
-
+            'display_name' => 'required',
         ], $messages = [
-            'name.required' => 'نام نقش نباید خالی باشد'
+            'name.required' => 'نام نقش نباید خالی باشد',
+            'display_name.required' => 'نام نمایشی نقش نباید خالی باشد'
+
         ]);
         try {
+            DB::beginTransaction();
+
             $role->update([
                 'name' => $request->name,
+                'display_name' => $request->display_name,
+                'guard_name'=>'web'
             ]);
-            Alert::success('نقش مورد نظر ویرایش شد', 'باتشکر');
-            return redirect()->route('role.index');
+            $permissions=$request->except('_token','display_name','name','_method');
+            $role->syncPermissions($permissions);
+           DB::commit();
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
             Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
@@ -122,6 +129,8 @@ class RoleController extends Controller
             Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
+        Alert::success('نقش مورد نظر ویرایش شد', 'باتشکر');
+        return redirect()->route('role.index');
     }
 
     /**

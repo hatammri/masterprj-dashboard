@@ -11,7 +11,7 @@ use App\Models\Ostan;
 use App\Models\UnitMeasurement;
 use App\Models\Specialty;
 use Illuminate\Support\Facades\DB;
-use App\Models\Rule;
+use App\Models\Role;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class operatorController extends Controller
@@ -27,8 +27,8 @@ class operatorController extends Controller
     public function create()
     {
         $Specialty = Specialty::all();
-        $Rule=Rule::all();
-        return view('operator.create', compact('Specialty','Rule'));
+        $Role=Role::all();
+        return view('operator.create', compact('Specialty','Role'));
     }
 
     /**
@@ -112,8 +112,8 @@ class operatorController extends Controller
         $Specialty_select = Specialty::where('id', $operator->specialty)->get()->first();
         // $shahrestan_select = shahrestan::where('name', $operator->city)->get()->first();
         $Specialty = Specialty::all();
-        $Rule=Rule::all();
-        return view('operator.edit', compact('operator', 'Specialty_select', 'Specialty',"Rule"));
+        $Role=Role::all();
+        return view('operator.edit', compact('operator', 'Specialty_select', 'Specialty',"Role"));
     }
 
     /**

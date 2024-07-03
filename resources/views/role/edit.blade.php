@@ -76,7 +76,7 @@
 
                 <div class="form-check form-check-primary mt-3">
                   <input class="form-check-input" type="checkbox"  id="permission_{{$permission->id}}" name="{{$permission->name}}" value="{{$permission->name}}"
-                  {{ in_array($permission->id,$role->permissions->pluck('id')->toArray()) ? 'checked':'' }}
+                  {{ in_array($permission->id, $role->permissions->pluck('id')->toArray()) ? 'checked':'' }}
                   >
                   <label class="form-check-label" for="customCheckPrimary">{{ $permission->display_name }}</label>
                 </div>

@@ -14,16 +14,17 @@ class Customer extends Model
     protected $table = "customer";
     protected $guarded = [];
 
-    // public function company(): HasOne
-    // {
-    //     return $this->hasOne(Company::class,'company');
-    // }
+
     public function companies(): BelongsTo
     {
         return $this->belongsTo(Company::class,'company');
     }
-    public function rlues(): BelongsTo
+    public function rloes(): BelongsTo
     {
-        return $this->belongsTo(Rule::class,'rule');
+        return $this->belongsTo(Role::class,'role');
+    }
+    public function posts(): BelongsTo
+    {
+        return $this->belongsTo(Role::class,'post');
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Customer;
 use App\Models\Ostan;
 use App\Models\Company;
-use App\Models\Rule;
+use App\Models\Role;
 use App\Models\Shahrestan;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -27,9 +27,9 @@ class CustomerController extends Controller
     public function create()
     {
         $company = Company::all();
-        $rule = Rule::all();
+        $role = Role::all();
 
-        return view('customer.create', compact('company','rule'));
+        return view('customer.create', compact('company','role'));
     }
 
     /**
@@ -43,38 +43,44 @@ class CustomerController extends Controller
             'phonenumber' => 'required',
             'description' => 'required',
             'company' => 'required',
-            'rule' => 'required'
+            'post' => 'required',
+            'role' => 'required',
+            'allow_access_system'=>'required'
         ], $messages = [
             'name.required' => 'نام مشتری نباید خالی باشد',
             'email.required' => 'ایمیل نباید خالی باشد',
             'phonenumber.required' => 'شماره همراه نباید خالی باشد',
             'description.required' => 'توضیحات نباید خالی باشد',
             'company.required' =>  'شرکت نباید خالی باشد',
-            'rule.required' =>  'نقش نباید خالی باشد',
+            'post.required' =>  'سمت مشترس  در شرکت نباید خالی باشد',
+            'role.required' =>  'نوع دسترسی مشتری نباید خالی باشد',
+            'allow_access_system.required' =>  'وضعیت مشتری در سیستم نباید خالی باشد',
+
         ]);
-      //  try {
+        try {
             Customer::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'phonenumber' => $request->phonenumber,
                 'description' => $request->description,
                 'company' =>  $request->company,
-                'rule' => $request->rule,
+                'post' => $request->post,
+                'role' => $request->role,
+                'allow_access_system'=>$request->allow_access_system
             ]);
             Alert::success('مشتری مورد نظر ایجاد شد', 'باتشکر');
             return redirect()->route('customer.index');
-      //  } catch (\Illuminate\Database\QueryException $e) {
-            // You need to handle the error here.
-            // Either send the user back to the screen or redirect them somewhere else
-            // Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
-            // return back();
+        } catch (\Illuminate\Database\QueryException $e) {
+            //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
+            Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
+            return back();
+            //     // Just some example
+            //     //dd($e->getMessage(), $e->errorInfo);
+        } catch (\Exception $e) {
+            Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
+            return redirect()->back();
+        }
 
-            // Just some example
-            //dd($e->getMessage(), $e->errorInfo);
-        // } catch (\Exception $e) {
-        //     Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
-        //     return redirect()->back();
-        // }
     }
 
     /**
@@ -92,32 +98,36 @@ class CustomerController extends Controller
     {
         $customer = Customer::where('id', $id)->get()->first();
         $company= Company::where('id',$customer->company)->get()->first();
-        $rule=Rule::where('id',$customer->rule)->get()->first();
+        $role=Role::where('id',$customer->role)->get()->first();
         $companyall = Company::all();
-        $ruleall = Rule::all();
-        return view('customer.edit', compact('customer', 'company', 'rule', 'companyall', 'ruleall'));
+        $roleall = Role::all();
+        return view('customer.edit', compact('customer', 'company', 'role', 'companyall', 'roleall'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Customer $customer)
-    { dd($customer);
-
+    {
         $request->validate([
             'name' => 'required',
             'email' => 'required',
             'phonenumber' => 'required',
             'description' => 'required',
             'company' => 'required',
-            'rule' => 'required'
+            'post' => 'required',
+            'role' => 'required',
+            'allow_access_system'=>'required'
         ], $messages = [
             'name.required' => 'نام مشتری نباید خالی باشد',
             'email.required' => 'ایمیل نباید خالی باشد',
             'phonenumber.required' => 'شماره همراه نباید خالی باشد',
             'description.required' => 'توضیحات نباید خالی باشد',
             'company.required' =>  'شرکت نباید خالی باشد',
-            'rule.required' =>  'نقش نباید خالی باشد',
+            'post.required' =>  'سمت مشترس  در شرکت نباید خالی باشد',
+            'role.required' =>  'نوع دسترسی مشتری نباید خالی باشد',
+            'allow_access_system.required' =>  'وضعیت مشتری در سیستم نباید خالی باشد',
+
         ]);
 
         try {
@@ -127,10 +137,11 @@ class CustomerController extends Controller
                 'phonenumber' => $request->phonenumber,
                 'description' => $request->description,
                 'company' =>  $request->company,
-                'rule' => $request->rule,
+                'post' => $request->post,
+                'role' => $request->role,
+                'allow_access_system'=>$request->allow_access_system
             ]);
-            Alert::success('مشتری مورد نظر ویرایش شد', 'باتشکر');
-            return redirect()->route('customer.index');
+
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
             Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
@@ -141,6 +152,9 @@ class CustomerController extends Controller
             Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
+
+        Alert::success('مشتری مورد نظر ویرایش شد', 'باتشکر');
+        return redirect()->route('customer.index');
     }
 
     /**
@@ -151,7 +165,7 @@ class CustomerController extends Controller
         //
     }
     public function datatable()
-    {   $customers = Customer::with(['companies:id,name','rlues:id,name'])->paginate();
+    {   $customers = Customer::with(['companies:id,name','rloes:id,display_name','posts:id,display_name'])->paginate();
 
         return response()->json(
             $customers,
