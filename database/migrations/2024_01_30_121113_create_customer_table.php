@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::defaultStringLength(191);
         Schema::create('customer', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -24,6 +25,9 @@ return new class extends Migration
             $table->foreignId('role');
             $table->foreign('role')->references('id')->on('role');
             $table->integer('allow_access_system')->default(1);
+            $table->string('login_token')->nullable();
+            $table->integer('otp')->nullable();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

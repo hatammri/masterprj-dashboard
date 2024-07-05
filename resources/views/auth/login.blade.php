@@ -59,7 +59,7 @@
                     {{-- <img width="35px" height="35px" viewbox="0 0 30 30" version="1.1" src="{{ asset('/assets/img/logo/sapa.png')}}"> --}}
 
                   </span>
-                  <span class="app-brand-text demo h3 mb-0 fw-bold">گروه صنعتی رادیس</span>
+                  <span class="app-brand-text demo h3 mb-0 fw-bold">گروه صنعتی رادیس </span>
                 </a>
               </div>
               <!-- /Logo -->
@@ -80,6 +80,15 @@
                 <span>کاربر جدید هستید؟</span>
                 <a href="{{ route('register') }}" >
                   <span>یک حساب بسازید</span>
+                </a>
+              </p>
+              <div class="divider my-4">
+                <div class="divider-text">یا</div>
+              </div>
+              <p class="text-center">
+                <span>ورود پرسنل :</span>
+                <a href="{{ route('register') }}" >
+                  <span>ورود</span>
                 </a>
               </p>
             </div>

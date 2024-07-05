@@ -11,4 +11,5 @@ class Role extends Model
     use HasFactory,HasRoles;
     protected $table = "roles";
     protected $guarded = [];
+    
 }

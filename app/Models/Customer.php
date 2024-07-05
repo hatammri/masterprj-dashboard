@@ -14,6 +14,7 @@ class Customer extends Model
     protected $table = "customer";
     protected $guarded = [];
 
+    protected array $guard_name = ['api', 'web'];
 
     public function companies(): BelongsTo
     {

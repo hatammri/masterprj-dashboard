@@ -8,8 +8,9 @@ use App\Models\Customer;
 use App\Models\Ostan;
 use App\Models\Company;
 use App\Models\Role;
-use App\Models\Shahrestan;
+use App\Models\Permission;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -101,14 +102,15 @@ class CustomerController extends Controller
         $role=Role::where('id',$customer->role)->get()->first();
         $companyall = Company::all();
         $roleall = Role::all();
-        return view('customer.edit', compact('customer', 'company', 'role', 'companyall', 'roleall'));
+        $permissions=Permission::all();
+        return view('customer.edit', compact('customer', 'company', 'role', 'companyall', 'roleall','permissions'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Customer $customer)
-    {
+    { 
         $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -130,7 +132,8 @@ class CustomerController extends Controller
 
         ]);
 
-        try {
+            DB::beginTransaction();
+
             $customer->update([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -141,17 +144,14 @@ class CustomerController extends Controller
                 'role' => $request->role,
                 'allow_access_system'=>$request->allow_access_system
             ]);
+            $role_find = Role::where('id', $request->role)->get()->first();
 
-        } catch (\Illuminate\Database\QueryException $e) {
-            //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
-            return back();
-            //     // Just some example
-            //     //dd($e->getMessage(), $e->errorInfo);
-        } catch (\Exception $e) {
-            Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
-            return redirect()->back();
-        }
+            $customer->syncRoles($role_find->name);
+            $permissions = $request->except('_token','_method','name','email','phonenumber','description','company','post','role','allow_access_system');
+            $customer->givePermissionTo($permissions);
+            DB::commit();
+
+
 
         Alert::success('مشتری مورد نظر ویرایش شد', 'باتشکر');
         return redirect()->route('customer.index');

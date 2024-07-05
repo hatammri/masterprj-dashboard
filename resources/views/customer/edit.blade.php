@@ -42,7 +42,8 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ویرایش مشتری جدید</h5>
-                <form action="{{ route('customer.update' , ['customer' => $customer->id]) }}"  method="POST" class="card-body">
+                <form action="{{ route('customer.update', ['customer' => $customer->id]) }}" method="POST"
+                    class="card-body">
                     @csrf
                     @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
@@ -123,7 +124,7 @@
                                 data-allow-clear="true">
                                 @foreach ($roleall as $itemrole)
                                     <option value="{{ $itemrole->id }}"
-                                        {{ $itemrole->id == $customer->post ? 'selected' : '' }}>
+                                        {{ in_array($itemrole->id, $customer->roles->pluck('id')->toArray()) ? 'selected' : '' }}>
 
                                         {{ $itemrole->display_name }}
                                     </option>
@@ -132,22 +133,45 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-allow_access_system">وضعیت در سیستم</label>
-                            <select name="allow_access_system" id="collapsible-allow_access_system" class="select2 form-select"
-                                data-allow-clear="true">
-                                    <option value="1"
-                                    {{ $customer->allow_access_system == 1 ? 'selected' : '' }}>
+                            <select name="allow_access_system" id="collapsible-allow_access_system"
+                                class="select2 form-select" data-allow-clear="true">
+                                <option value="1" {{ $customer->allow_access_system == 1 ? 'selected' : '' }}>
 
-                                      فعال
-                                    </option>
-                                    <option value="0"
-                                    {{ $customer->allow_access_system == 0 ? 'selected' : '' }}>
+                                    فعال
+                                </option>
+                                <option value="0" {{ $customer->allow_access_system == 0 ? 'selected' : '' }}>
                                     غیرفعال
-                                    </option>
+                                </option>
                             </select>
                         </div>
 
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-customer">کد ورود به سیستم کاربر با شماره
+                                تلفن</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-customer2" class="input-group-text"><i
+                                        class="bx bx-pencil"></i></span>
+                                <input name="otp" type="text" id="basic-icon-default-customer"
+                                    value=" {{ $customer->otp }}" class="form-control" disabled aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-customer2">
+                            </div>
+                        </div>
+                        <div class="row row-bordered g-0">
+                            <div class="col-md p-4">
+                                <small class="text-light fw-semibold d-block">سطح دسترسی این نقش</small>
+                                @foreach ($permissions as $permission)
+                                    <div class="form-check form-check-primary mt-3">
+                                        <input class="form-check-input" type="checkbox"
+                                            id="permission_{{ $permission->id }}" name="{{ $permission->name }}"
+                                            value="{{ $permission->name }}"
+                                            {{ in_array($permission->id, $customer->permissions->pluck('id')->toArray()) ? 'checked' : '' }}>
+                                        <label class="form-check-label"
+                                            for="customCheckPrimary">{{ $permission->display_name }}</label>
+                                    </div>
+                                @endforeach
 
-
+                            </div>
+                        </div>
 
                     </div>
 

@@ -339,7 +339,7 @@
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-group"></i>
+                <i class="menu-icon tf-icons bx bx-universal-access"></i>
                 <div>سطوح دسترسی</div>
             </a>
             <ul class="menu-sub">

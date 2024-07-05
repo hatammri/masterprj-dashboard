@@ -64,12 +64,15 @@ class RoleController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
             // You need to handle the error here.
             // Either send the user back to the screen or redirect them somewhere else
+            DB::rollBack();
+
             Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
             return back();
 
             // Just some example
             //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
+            DB::rollBack();
             Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
