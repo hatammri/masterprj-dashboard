@@ -20,10 +20,10 @@ class AuthController extends Controller
         }
 
             $request->validate([
-            'cellphone'=>'required|iran_mobile'
+            'phonenumber'=>'required|iran_mobile'
         ]);
         try{
-            $user=User::where('cellphone',$request->cellphone)->where('role','admin')->first();
+            $user=User::where('phonenumber',$request->phonenumber)->first();
             $OTPCode=mt_rand(10000,99999);
             $loginToken =Hash::make('DCDVFBVYJJ!@EDFRdgthjngrNHBVF');
             if($user){
@@ -45,14 +45,53 @@ class AuthController extends Controller
         }
 
     }
+
+    public function login_with_user_pass(Request $request)
+    {
+        if($request->method()=='GET'){
+            return view('auth.login_with_user_pass');
+        }
+
+            $request->validate([
+            'username'=>'required',
+            'password'=>'required',
+
+        ]);
+
+
+
+            $user =User::where('phonenumber',$request->username)
+            ->orWhere('username', $request->username)
+            ->get();
+            if ($user->first()==null) {
+
+                return redirect()->back()->with('errors',"نام کاربری یا شماره همراه در سیستم ثبت نشده است." );
+
+               }
+
+           if($user[0]->password==$request->password)
+            {
+              auth()->login($user[0],$remember=true);
+              return redirect()->route('dashboard');
+            }
+            else
+            {
+        return redirect()->back()->with('errors',"رمز عبور به درستی وارد نشده است" );
+
+      }
+
+
+
+    }
+
     public function checkOtp(Request $request)
     {
         $request->validate([
             'otp'=>'required|digits:5',
-            'cellphone'=>'required'
+            'phonenumber'=>'required'
         ]);
          try{
-      $user=User::where('cellphone',$request->cellphone)->firstOrFail();
+      $user=User::where('phonenumber',$request->phonenumber)->firstOrFail();
       if($user->otp==$request->otp)
       {
         auth()->login($user,$remember=true);
@@ -73,10 +112,10 @@ class AuthController extends Controller
     public function resendOtp(Request $request)
     {
         $request->validate([
-            'cellphone'=>'required'
+            'phonenumber'=>'required'
         ]);
         try{
-            $user=User::where('cellphone',$request->cellphone)->firstOrFail();
+            $user=User::where('phonenumber',$request->phonenumber)->firstOrFail();
             $OTPCode=mt_rand(10000,99999);
             $loginToken =Hash::make('DCDVFBVYJJ!@EDFRdgthjngrNHBVF');
           $user->update([

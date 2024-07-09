@@ -48,7 +48,7 @@ class RoleController extends Controller
             'display_name.required' => 'نام نمایشی نقش نباید خالی باشد'
 
         ]);
-        try {
+        // try {
             // Your query here
             DB::beginTransaction();
 
@@ -61,21 +61,21 @@ class RoleController extends Controller
             $role->givePermissionTo($permissions);
             DB::commit();
 
-        } catch (\Illuminate\Database\QueryException $e) {
-            // You need to handle the error here.
-            // Either send the user back to the screen or redirect them somewhere else
-            DB::rollBack();
+        // } catch (\Illuminate\Database\QueryException $e) {
+        //     // You need to handle the error here.
+        //     // Either send the user back to the screen or redirect them somewhere else
+        //     DB::rollBack();
 
-            Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
-            return back();
+        //     Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
+        //     return back();
 
-            // Just some example
-            //dd($e->getMessage(), $e->errorInfo);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
-            return redirect()->back();
-        }
+        //     // Just some example
+        //     //dd($e->getMessage(), $e->errorInfo);
+        // } catch (\Exception $e) {
+        //     DB::rollBack();
+        //     Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
+        //     return redirect()->back();
+        // }
         Alert::success('نقش مورد نظر ایجاد شد', 'باتشکر');
         return redirect()->route('role.index');
     }
@@ -102,7 +102,7 @@ class RoleController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Role $role)
-    {
+    { dd($request);
         $request->validate([
             'name' => 'required',
             'display_name' => 'required',
@@ -111,7 +111,7 @@ class RoleController extends Controller
             'display_name.required' => 'نام نمایشی نقش نباید خالی باشد'
 
         ]);
-        try {
+        // try {
             DB::beginTransaction();
 
             $role->update([
@@ -119,19 +119,20 @@ class RoleController extends Controller
                 'display_name' => $request->display_name,
                 'guard_name'=>'web'
             ]);
+
             $permissions=$request->except('_token','display_name','name','_method');
             $role->syncPermissions($permissions);
-           DB::commit();
-        } catch (\Illuminate\Database\QueryException $e) {
-            //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
-            return back();
-            //     // Just some example
-            //     //dd($e->getMessage(), $e->errorInfo);
-        } catch (\Exception $e) {
-            Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
-            return redirect()->back();
-        }
+        //    DB::commit();
+        // } catch (\Illuminate\Database\QueryException $e) {
+        //     //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
+        //     Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
+        //     return back();
+        //     //     // Just some example
+        //     //     //dd($e->getMessage(), $e->errorInfo);
+        // } catch (\Exception $e) {
+        //     Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
+        //     return redirect()->back();
+        // }
         Alert::success('نقش مورد نظر ویرایش شد', 'باتشکر');
         return redirect()->route('role.index');
     }

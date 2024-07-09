@@ -66,16 +66,25 @@
               <h5 class="mb-3 secondary-font">به داشبورد مدیریتی صنعتی خوش آمدید!</h5>
               <p class="mb-4">لطفا وارد حساب خود شوید</p>
 
-              <form action="{{ route('login') }}" id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="formAuthentication" class="mb-3" action="{{ route('login_with_user_pass')}}" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <label for="phonenumber" class="form-label">شماره همراه</label>
-                  <input type="text" class="form-control text-start" id="phonenumber" name="phonenumber" placeholder="شماره همراه خود را وارد کنید" autofocus dir="ltr" value="{{ old('phonenumber') }}">
+                  <label for="username" class="form-label"> نام کاربری یا شماره همراه</label>
+                  <input type="text" class="form-control text-start" id="username" name="username" placeholder="نام کاربری خود را وارد کنید" autofocus dir="ltr">
                 </div>
-                <div class="mb-3">
-                  <button class="btn btn-primary d-grid w-100" type="submit">ورود</button>
+
+                <div class="mb-3 form-password-toggle">
+                  <label class="form-label" for="password">رمز عبور</label>
+                  <div class="input-group input-group-merge">
+                    <input type="password" id="password" class="form-control text-start" name="password" placeholder="············" aria-describedby="password" dir="ltr">
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                  </div>
                 </div>
+
+
+                <button class="btn btn-primary d-grid w-100">ورود</button>
               </form>
+
               <p class="text-center">
                 <span>کاربر جدید هستید؟</span>
                 <a href="{{ route('register') }}" >
@@ -86,8 +95,8 @@
                 <div class="divider-text">یا</div>
               </div>
               <p class="text-center">
-                <span>ورود پرسنل :</span>
-                <a href="{{ route('login_with_user_pass') }}" >
+                <span>ورود با شماره همراه :</span>
+                <a href="{{ route('login') }}" >
                   <span>ورود</span>
                 </a>
               </p>

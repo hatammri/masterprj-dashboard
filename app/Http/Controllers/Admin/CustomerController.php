@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use App\Models\User;
 use App\Models\Ostan;
 use App\Models\Company;
 use App\Models\Role;
@@ -29,8 +30,9 @@ class CustomerController extends Controller
     {
         $company = Company::all();
         $role = Role::all();
+        $permissions = Permission::all();
 
-        return view('customer.create', compact('company','role'));
+        return view('customer.create', compact('company', 'role', 'permissions'));
     }
 
     /**
@@ -38,49 +40,56 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
             'phonenumber' => 'required',
-            'description' => 'required',
             'company' => 'required',
-            'post' => 'required',
+            'post_incompany' => 'required',
             'role' => 'required',
-            'allow_access_system'=>'required'
         ], $messages = [
-            'name.required' => 'نام مشتری نباید خالی باشد',
-            'email.required' => 'ایمیل نباید خالی باشد',
-            'phonenumber.required' => 'شماره همراه نباید خالی باشد',
-            'description.required' => 'توضیحات نباید خالی باشد',
-            'company.required' =>  'شرکت نباید خالی باشد',
-            'post.required' =>  'سمت مشترس  در شرکت نباید خالی باشد',
-            'role.required' =>  'نوع دسترسی مشتری نباید خالی باشد',
-            'allow_access_system.required' =>  'وضعیت مشتری در سیستم نباید خالی باشد',
+                'name.required' => 'نام مشتری نباید خالی باشد',
+                'phonenumber.required' => 'شماره همراه نباید خالی باشد',
+                'company.required' => 'شرکت نباید خالی باشد',
+                'post_incompany.required' => 'سمت مشترس  در شرکت نباید خالی باشد',
+                'role.required' => 'نوع دسترسی مشتری نباید خالی باشد',
+                'is_active.required' => 'وضعیت مشتری در سیستم نباید خالی باشد',
 
-        ]);
-        try {
-            Customer::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'phonenumber' => $request->phonenumber,
-                'description' => $request->description,
-                'company' =>  $request->company,
-                'post' => $request->post,
-                'role' => $request->role,
-                'allow_access_system'=>$request->allow_access_system
             ]);
-            Alert::success('مشتری مورد نظر ایجاد شد', 'باتشکر');
-            return redirect()->route('customer.index');
-        } catch (\Illuminate\Database\QueryException $e) {
-            //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
-            return back();
-            //     // Just some example
-            //     //dd($e->getMessage(), $e->errorInfo);
-        } catch (\Exception $e) {
-            Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
-            return redirect()->back();
-        }
+
+        // try {
+            DB::beginTransaction();
+            $user = User::create([
+                'name' => $request->name,
+                'phonenumber' => $request->phonenumber,
+                'email' => $request->email,
+                'role' => $request->role,
+                'is_active' => $request->is_active
+            ]);
+
+            $customer = Customer::create([
+                'user_id' => $user->id,
+                'description' => $request->description,
+                'company' => $request->company,
+                'post_incompany' => $request->post_incompany,
+            ]);
+
+
+            DB::commit();
+
+
+        // } catch (\Illuminate\Database\QueryException $e) {
+        //     //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
+        //     Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
+        //     return back();
+        //     //     // Just some example
+        //     //     //dd($e->getMessage(), $e->errorInfo);
+        // } catch (\Exception $e) {
+        //     Alert::error('اطلاعات مشتری تکراری و یا اشتباه است', 'خطا');
+        //     return redirect()->back();
+        // }
+        Alert::success('مشتری مورد نظر ایجاد شد', 'باتشکر');
+        return redirect()->route('customer.index');
 
     }
 
@@ -98,59 +107,58 @@ class CustomerController extends Controller
     public function edit(string $id)
     {
         $customer = Customer::where('id', $id)->get()->first();
-        $company= Company::where('id',$customer->company)->get()->first();
-        $role=Role::where('id',$customer->role)->get()->first();
+        $user =User::where('id',$customer->user_id)->get()->first();
+        $company = Company::where('id', $customer->company)->get()->first();
+        $role = Role::where('id', $customer->role)->get()->first();
         $companyall = Company::all();
         $roleall = Role::all();
-        $permissions=Permission::all();
-        return view('customer.edit', compact('customer', 'company', 'role', 'companyall', 'roleall','permissions'));
+        $permissions = Permission::all();
+        return view('customer.edit', compact('customer','user', 'company', 'role', 'companyall', 'roleall', 'permissions'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Customer $customer)
-    { 
+    {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
             'phonenumber' => 'required',
-            'description' => 'required',
             'company' => 'required',
-            'post' => 'required',
+            'post_incompany' => 'required',
             'role' => 'required',
-            'allow_access_system'=>'required'
         ], $messages = [
-            'name.required' => 'نام مشتری نباید خالی باشد',
-            'email.required' => 'ایمیل نباید خالی باشد',
-            'phonenumber.required' => 'شماره همراه نباید خالی باشد',
-            'description.required' => 'توضیحات نباید خالی باشد',
-            'company.required' =>  'شرکت نباید خالی باشد',
-            'post.required' =>  'سمت مشترس  در شرکت نباید خالی باشد',
-            'role.required' =>  'نوع دسترسی مشتری نباید خالی باشد',
-            'allow_access_system.required' =>  'وضعیت مشتری در سیستم نباید خالی باشد',
+                'name.required' => 'نام مشتری نباید خالی باشد',
+                'phonenumber.required' => 'شماره همراه نباید خالی باشد',
+                'company.required' => 'شرکت نباید خالی باشد',
+                'post_incompany.required' => 'سمت مشترس  در شرکت نباید خالی باشد',
+                'role.required' => 'نوع دسترسی مشتری نباید خالی باشد',
+            ]);
 
+        DB::beginTransaction();
+
+        $customer->update([
+            'description' => $request->description,
+            'company' => $request->company,
+            'post_incompany' => $request->post_incompany,
         ]);
 
-            DB::beginTransaction();
+         User::where('id', $customer->user_id)
+        ->update(['name' => $request->name,
+        'phonenumber' => $request->phonenumber,
+        'email' => $request->email,
+        'role' => $request->role,
+        'is_active' => $request->is_active
 
-            $customer->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'phonenumber' => $request->phonenumber,
-                'description' => $request->description,
-                'company' =>  $request->company,
-                'post' => $request->post,
-                'role' => $request->role,
-                'allow_access_system'=>$request->allow_access_system
-            ]);
-            $role_find = Role::where('id', $request->role)->get()->first();
+    ]);
 
-            $customer->syncRoles($role_find->name);
-            $permissions = $request->except('_token','_method','name','email','phonenumber','description','company','post','role','allow_access_system');
-            $customer->givePermissionTo($permissions);
-            DB::commit();
 
+        $role_find = Role::where('id', $request->role)->get()->first();
+        $user = User::where('id', $customer->user_id)->get()->first();
+        $user->syncRoles($role_find->name);
+        $permissions = $request->except('_token', '_method', 'name', 'email', 'phonenumber', 'description', 'company', 'post_incompany', 'role', 'is_active');
+        $user->givePermissionTo($permissions);
+        DB::commit();
 
 
         Alert::success('مشتری مورد نظر ویرایش شد', 'باتشکر');
@@ -165,7 +173,8 @@ class CustomerController extends Controller
         //
     }
     public function datatable()
-    {   $customers = Customer::with(['companies:id,name','rloes:id,display_name','posts:id,display_name'])->paginate();
+    {
+        $customers = Customer::with(['companies:id,name', 'rloes:id,display_name', 'posts:id,display_name'])->paginate();
 
         return response()->json(
             $customers,

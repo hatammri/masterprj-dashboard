@@ -103,8 +103,8 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-role">سمت مشتری در شرکت</label>
-                            <select name="post" id="collapsible-role" class="select2 form-select"
+                            <label class="form-label" for="collapsible-post_incompany">سمت مشتری در شرکت مربوطه</label>
+                            <select name="post_incompany" id="collapsible-post_incompany" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($role as $itemrole)
                                     <option value="{{ $itemrole->id }}">
@@ -125,8 +125,8 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-allow_access_system">وضعیت در سیستم</label>
-                            <select name="allow_access_system" id="collapsible-allow_access_system" class="select2 form-select"
+                            <label class="form-label" for="collapsible-is_active">وضعیت در سیستم</label>
+                            <select name="is_active" id="collapsible-is_active" class="select2 form-select"
                                 data-allow-clear="true">
                                     <option value="1" >
                                          فعال
@@ -136,7 +136,7 @@
                                     </option>
                             </select>
                         </div>
-
+                      
                     </div>
 
                     <div class="pt-4">
@@ -187,33 +187,33 @@
     <script>
         console.log('script');
 
-        $('#collapsible-ostan').change(function() {
-            console.log('change');
-            let ostanSelectedid = $(this).val();
+        // $('#collapsible-role').change(function() {
 
-            if (ostanSelectedid) {
-                $.ajax({
-                    type: "Get",
-                    url: "{{ url('/getListShahrestan') }}?ostan=" + ostanSelectedid,
-                    success: function(res) {
-                        if (res) {
-                            $('#collapsible-shahrestan').empty();
-                            $.each(res, function(key, shahrestan) {
+        //     let rol_id = $(this).val();
 
-                                $("#collapsible-shahrestan").append('<option value="' +
-                                    shahrestan.id + '">' + shahrestan.name + '</option>');
+        //     if (rol_id) {
+        //         $.ajax({
+        //             type: "Get",
+        //             url: "{{ url('/getListShahrestan') }}?ostan=" + ostanSelectedid,
+        //             success: function(res) {
+        //                 if (res) {
+        //                     $('#collapsible-shahrestan').empty();
+        //                     $.each(res, function(key, shahrestan) {
 
-                            });
-                        } else {
-                            $('#collapsible-shahrestan').empty();
-                        }
-                    }
-                })
+        //                         $("#collapsible-shahrestan").append('<option value="' +
+        //                             shahrestan.id + '">' + shahrestan.name + '</option>');
 
-            } else {
-                $('#collapsible-shahrestan').empty();
-            }
+        //                     });
+        //                 } else {
+        //                     $('#collapsible-shahrestan').empty();
+        //                 }
+        //             }
+        //         })
 
-        });
+        //     } else {
+        //         $('#collapsible-shahrestan').empty();
+        //     }
+
+      //  });
     </script>
 @endsection

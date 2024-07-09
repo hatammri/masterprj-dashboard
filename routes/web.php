@@ -241,6 +241,7 @@ Route::get('partdef/datatable', [PartDefController::class, 'datatable'])->name('
 Route::get('permission/datatable', [PermissionController::class, 'datatable'])->name('permission.datatable');
 
 Route::any('/login', [AuthController::class, 'login'])->middleware('guest')->name('login');
+Route::any('/login_with_user_pass', [AuthController::class, 'login_with_user_pass'])->middleware('guest')->name('login_with_user_pass');
 Route::post('/resend_otp', [AuthController::class, 'resendOtp'])->middleware('guest')->name('resendOtp');
 Route::post('/check_otp', [AuthController::class, 'checkOtp'])->middleware('guest')->name('checkOtp');
 Route::any('/register', [RegisterController::class, 'register'])->middleware('guest')->name('register');

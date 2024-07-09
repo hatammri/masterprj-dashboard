@@ -42,7 +42,7 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ویرایش مشتری جدید</h5>
-                <form action="{{ route('customer.update', ['customer' => $customer->id]) }}" method="POST"
+                <form action="{{ route('customer.update', ['customer' => $customer->id ]) }}" method="POST"
                     class="card-body">
                     @csrf
                     @method('put')
@@ -54,7 +54,7 @@
                                 <span id="basic-icon-default-customer2" class="input-group-text"><i
                                         class="bx bx-buildings"></i></span>
                                 <input name="name" type="text" id="basic-icon-default-customer"
-                                    value="{{ $customer->name }}" class="form-control" placeholder="مثال:سجاد رضایی"
+                                    value="{{ $user->name }}" class="form-control" placeholder="مثال:سجاد رضایی"
                                     aria-label="ACME Inc." aria-describedby="basic-icon-default-customer2">
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                                 <span id="basic-icon-default-email2" class="input-group-text"
                                     dir="ltr">@gmail.com</span>
                                 <input name="email" type="text" id="basic-icon-default-email"
-                                    value="{{ $customer->email }}" class="form-control text-start" placeholder="john.doe"
+                                    value="{{ $user->email }}" class="form-control text-start" placeholder="john.doe"
                                     aria-label="john.doe" aria-describedby="basic-icon-default-email2" dir="ltr">
                             </div>
                             <div class="form-text">می‌توانید از حروف، اعداد و نقطه استفاده کنید</div>
@@ -77,7 +77,7 @@
                                 <span id="basic-icon-default-phone2" class="input-group-text"><i
                                         class="bx bx-phone"></i></span>
                                 <input name="phonenumber" type="text" id="basic-icon-default-phone"
-                                    value="{{ $customer->phonenumber }}" class="form-control phone-mask text-start"
+                                    value="{{ $user->phonenumber }}" class="form-control phone-mask text-start"
                                     placeholder="09122156584" aria-label="09122156584"
                                     aria-describedby="basic-icon-default-phone2" dir="ltr">
                             </div>
@@ -107,7 +107,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-post">سمت مشتری در شرکت</label>
-                            <select name="post" id="collapsible-post" class="select2 form-select"
+                            <select name="post_incompany" id="collapsible-post" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($roleall as $itemrole)
                                     <option value="{{ $itemrole->id }}"
@@ -132,14 +132,14 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-allow_access_system">وضعیت در سیستم</label>
-                            <select name="allow_access_system" id="collapsible-allow_access_system"
+                            <label class="form-label" for="collapsible-is_active">وضعیت در سیستم</label>
+                            <select name="is_active" id="collapsible-is_active"
                                 class="select2 form-select" data-allow-clear="true">
-                                <option value="1" {{ $customer->allow_access_system == 1 ? 'selected' : '' }}>
+                                <option value="1" {{ $user->is_active == 1 ? 'selected' : '' }}>
 
                                     فعال
                                 </option>
-                                <option value="0" {{ $customer->allow_access_system == 0 ? 'selected' : '' }}>
+                                <option value="0" {{ $user->is_active == 0 ? 'selected' : '' }}>
                                     غیرفعال
                                 </option>
                             </select>
@@ -152,7 +152,7 @@
                                 <span id="basic-icon-default-customer2" class="input-group-text"><i
                                         class="bx bx-pencil"></i></span>
                                 <input name="otp" type="text" id="basic-icon-default-customer"
-                                    value=" {{ $customer->otp }}" class="form-control" disabled aria-label="ACME Inc."
+                                    value=" {{ $user->otp }}" class="form-control" disabled aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-customer2">
                             </div>
                         </div>
@@ -164,7 +164,8 @@
                                         <input class="form-check-input" type="checkbox"
                                             id="permission_{{ $permission->id }}" name="{{ $permission->name }}"
                                             value="{{ $permission->name }}"
-                                            {{ in_array($permission->id, $customer->permissions->pluck('id')->toArray()) ? 'checked' : '' }}>
+                                            {{ in_array($permission->id, $user->permissions->pluck('id')->toArray()) ? 'checked' : '' }}
+                                            >
                                         <label class="form-check-label"
                                             for="customCheckPrimary">{{ $permission->display_name }}</label>
                                     </div>

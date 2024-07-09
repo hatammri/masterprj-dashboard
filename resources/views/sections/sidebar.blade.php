@@ -79,6 +79,8 @@
                 </li> --}}
         {{-- </ul>
         </li> --}}
+        @can('Requestwork_Admin')
+
         <li
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
             <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
@@ -105,6 +107,8 @@
 
             </ul>
         </li>
+        @endcan
+
         <li
             class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
             <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">

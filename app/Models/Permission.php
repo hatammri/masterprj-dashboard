@@ -11,4 +11,5 @@ class Permission extends Model
     use HasFactory,HasRoles;
     protected $table = "permissions";
     protected $guarded = [];
+
 }

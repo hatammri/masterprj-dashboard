@@ -72,8 +72,8 @@
                   <input type="text" class="form-control text-start" id="username" name="name" placeholder="نام و نام خانوادگی خود را وارد کنید" autofocus dir="ltr">
                 </div>
                 <div class="mb-3">
-                  <label for="cellphone" class="form-label">شماره همراه</label>
-                  <input type="text" class="form-control text-start" id="email" name="cellphone" placeholder="شماره همراه خود را وارد کنید" dir="ltr">
+                  <label for="phonenumber" class="form-label">شماره همراه</label>
+                  <input type="text" class="form-control text-start" id="phonenumber" name="phonenumber" placeholder="شماره همراه خود را وارد کنید" dir="ltr">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">ایمیل</label>

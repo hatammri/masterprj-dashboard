@@ -67,7 +67,7 @@
                     <h5 class="mb-3 secondary-font">تایید شماره‌ همراه</h5>
                     <p class="text-start mb-4">
                         ما یک کد تایید به موبایل شما ارسال کردیم. کد ارسال شده را در فیلد زیر وارد کنید.
-                        <span class="fw-bold d-block mt-2">شماره تلفن شما: {{ $user->cellphone }} </span>
+                        <span class="fw-bold d-block mt-2">شماره تلفن شما: {{ $user->phonenumber }} </span>
                     </p>
                     <p class="mb-0 fw-semibold">کد 5 رقمی امنیتی را وارد کنید</p>
                     <form id="twoStepsForm" action="{{ route('checkOtp') }}" method="POST">
@@ -93,7 +93,7 @@
                             </div>
                             <!-- Create a hidden field which is combined by 3 fields above -->
                             <input type="hidden" name="otp">
-                            <input type="hidden" name="cellphone" value="{{ $user->cellphone }}">
+                            <input type="hidden" name="phonenumber" value="{{ $user->phonenumber }}">
 
                         </div>
                         <button class="btn btn-primary d-grid w-100 mb-3" type="submit">ورود به داشبورد</button>
@@ -170,7 +170,7 @@
             console.log("resendOTPButton");
             $.post("{{ url('/resend_otp') }}", {
                 '_token': "{{ csrf_token() }}",
-                'cellphone': user.cellphone
+                'phonenumber': user.phonenumber
             }, function(response, status) {
                 $('#resendOTPButton').fadeOut();
                 timer();
