@@ -30,361 +30,410 @@
             </a>
         </li>
         <!-- Apps & Pages -->
-        {{-- <li
-            class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bxs-folder"></i>
-                <div>کار پوشه</div>
-            </a>
-            <ul class="menu-sub"> --}}
-        {{-- <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
-                    <a href="{{ route('reports.list_scan_period') }}" class="menu-link ">
-                        <div>لیست دوره‌های اسکن شده </div>
-                    </a>
-                </li> --}}
-        {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
-            <a href="{{ route('reports.testtable') }}" class="menu-link">
-              <div >تست جدول</div>
-            </a>
-          </li> --}}
-        {{-- <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
-                    <a href="{{ route('reports.listContradictions.listcontradictions') }}" class="menu-link">
-                        <div>لیست مغایرت‌های بارنامه</div>
-                    </a>
-                </li> --}}
-        {{-- <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>گزارش مغایرت های بارنامه در مبدا و مقصد</div>
-                    </a>
-                </li> --}}
-        {{-- <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>گزارش عملکرد سگ های موادیاب</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>گزارش خودروهای متخلف</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>لیست پراکندگی خودرو</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>لیست گزارشات پرسنل</div>
-                    </a>
-                </li> --}}
-        {{-- </ul>
-        </li> --}}
-        @can('Requestwork_Admin')
 
-        <li
-            class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-            <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bxs-layer"></i>
-                <div>درخواست‌کار</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('requestwork.create') }}" class="menu-link ">
-                        <div>صدور درخواست‌کار </div>
-                    </a>
-                </li>
+        {{-- Requestwork --}}
 
-                <li class="menu-item ">
-                    <a href="{{ route('requestwork.index') }}" class="menu-link">
-                        <div>لیست درخواست‌کار</div>
-                    </a>
-                </li>
-                {{-- <li class="menu-item">
-                    <a href="#" class="menu-link">
-                        <div>ویرایش درخواست‌کار</div>
-                    </a>
-                </li> --}}
+        @canany(['Requestwork_Create_Admin', 'Requestwork_List_Admin'])
+            <li
+                class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+                <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bxs-layer"></i>
+                    <div>درخواست‌کار</div>
+                </a>
 
-            </ul>
-        </li>
+                <ul class="menu-sub">
+                    @can('Requestwork_Create_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('requestwork.create') }}" class="menu-link ">
+                                <div>صدور درخواست‌کار </div>
+                            </a>
+                        </li>
+                    @endcan
+
+                    @can('Requestwork_List_Admin')
+                        <li class="menu-item ">
+                            <a href="{{ route('requestwork.index') }}" class="menu-link">
+                                <div>لیست درخواست‌کار</div>
+                            </a>
+                        </li>
+                    @endcan
+
+
+                </ul>
+            </li>
         @endcan
 
-        <li
-            class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-            <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-link"></i>
-                <div>برنامه PM</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('pm.create') }}" class="menu-link ">
-                        <div>ایجاد PM</div>
-                    </a>
-                </li>
+        {{-- PM  --}}
 
-                <li class="menu-item ">
-                    <a href="{{ route('pm.index') }}" class="menu-link">
-                        <div>لیست PM ها</div>
-                    </a>
-                </li>
-                {{-- <li class="menu-item">
-                <a href="#" class="menu-link">
-                    <div>ویرایش درخواست‌کار</div>
+        @canany(['Pm_Create_Admin', 'Pm_List_Admin'])
+
+            <li
+                class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+                <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-link"></i>
+                    <div>برنامه PM</div>
                 </a>
-            </li> --}}
+                <ul class="menu-sub">
+                    @can('Pm_Create_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('pm.create') }}" class="menu-link ">
+                                <div>ایجاد PM</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('Pm_List_Admin')
+                        <li class="menu-item ">
+                            <a href="{{ route('pm.index') }}" class="menu-link">
+                                <div>لیست PM ها</div>
+                            </a>
+                        </li>
+                    @endcan
 
-            </ul>
-        </li>
-        <li
-            class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-            <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-link"></i>
-                <div>قطعات تجهیز</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('part.create') }}" class="menu-link ">
-                        <div>ایجاد قطعه</div>
-                    </a>
-                </li>
 
-                <li class="menu-item ">
-                    <a href="{{ route('part.index') }}" class="menu-link">
-                        <div>لیست قطعه‌ها</div>
-                    </a>
-                </li>
-                {{-- <li class="menu-item">
-                <a href="#" class="menu-link">
-                    <div>ویرایش درخواست‌کار</div>
+                </ul>
+            </li>
+        @endcan
+
+        {{-- part  --}}
+        @canany(['Part_Create_Admin', 'Part_List_Admin'])
+
+            <li
+                class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+                <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-link"></i>
+                    <div>قطعات تجهیز</div>
                 </a>
-            </li> --}}
+                <ul class="menu-sub">
+                    @can('Part_Create_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('part.create') }}" class="menu-link ">
+                                <div>ایجاد قطعه</div>
+                            </a>
+                        </li>
+                    @endcan
 
-            </ul>
-        </li>
-        <li
-            class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bxs-award"></i>
-                <div>برندها</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
-                    <a href="{{ route('brand.create') }}" class="menu-link ">
-                        <div>اضافه کردن برند جدید</div>
-                    </a>
-                </li>
-                {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
-            <a href="{{ route('reports.testtable') }}" class="menu-link">
-              <div >تست جدول</div>
-            </a>
-          </li> --}}
-                <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
-                    <a href="{{ route('brand.index') }}" class="menu-link">
-                        <div>لیست برندها</div>
-                    </a>
-                </li>
+                    @can('Part_List_Admin')
+                        <li class="menu-item ">
+                            <a href="{{ route('part.index') }}" class="menu-link">
+                                <div>لیست قطعه‌ها</div>
+                            </a>
+                        </li>
+                    @endcan
 
-            </ul>
-        </li>
-        <li
-            class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bxs-buildings"></i>
-                <div>شرکت و کارگاه</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
-                    <a href="{{ route('company.create') }}" class="menu-link ">
-                        <div>اضافه کردن شرکت جدید</div>
-                    </a>
-                </li>
-                {{-- <li class="menu-item  {{ request()->is('personnels/list_personnels') ? 'active' : '' }}">
-        <a href="{{ route('reports.testtable') }}" class="menu-link">
-          <div >تست جدول</div>
-        </a>
-      </li> --}}
-                <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
-                    <a href="{{ route('company.index') }}" class="menu-link">
-                        <div>لیست شرکت‌ها</div>
-                    </a>
-                </li>
+                </ul>
+            </li>
 
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-hive"></i>
-                <div> ماشین </div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('machine.create') }}" class="menu-link ">
-                        <div>ثبت ماشین</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('machine.index') }}" class="menu-link">
-                        <div>لیست ماشین</div>
-                    </a>
-                </li>
+        @endcan
 
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-hard-hat"></i>
-                <div>تخصص</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('specialty.create') }}" class="menu-link">
-                        <div>اضافه کردن تخصص</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('specialty.index') }}" class="menu-link">
-                        <div>لیست تخصص</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('unitMeasurement.create') }}" class="menu-link">
-                        <div>اضافه‌کردن واحد اندازه‌گیری</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('unitMeasurement.index') }}" class="menu-link">
-                        <div>لیست واحد اندازه‌گیری</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('accesslevel.accesspermission') }}" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-customize"></i>
-                <div>نقش‌ها</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('role.index') }}" class="menu-link">
-                        <div>لیست نقش‌ها</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('role.create') }}" class="menu-link">
-                        <div>اضافه کردن نقش</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-user-circle"></i>
-                <div>اپراتور</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('operator.create') }}" class="menu-link">
-                        <div>اضافه کردن اپراتور</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('operator.index') }}" class="menu-link">
-                        <div>لیست اپراتور</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-package"></i>
-                <div>تجهیز</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('equipment.create') }}" class="menu-link">
-                        <div>ثبت تجهیز</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('equipment.index') }}" class="menu-link">
-                        <div>لیست تجهیز</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('typeequipment.create') }}" class="menu-link">
-                        <div>اضافه کردن مدل و تیپ تجهیز</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('typeequipment.index') }}" class="menu-link">
-                        <div>لیست مدل و تیپ تجهیز</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-group"></i>
-                <div>مشتری</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('customer.index') }}" class="menu-link">
-                        <div>لیست مشتری</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="{{ route('customer.create') }}" class="menu-link">
-                        <div>اضافه کردن مشتری</div>
-                    </a>
-                </li>
+        {{-- brand  --}}
+        @canany(['Brand_Create_Admin', 'Brand_List_Admin'])
 
-            </ul>
-        </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-universal-access"></i>
-                <div>سطوح دسترسی</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{{ route('permission.index') }}" class="menu-link">
-                        <div>Permissions لیست </div>
-                    </a>
-                </li>
-                {{-- <li class="menu-item">
-                    <a href="{{ route('customer.create') }}" class="menu-link">
-                        <div>اضافه کردن مشتری</div>
-                    </a>
-                </li> --}}
+            <li
+                class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bxs-award"></i>
+                    <div>برندها</div>
+                </a>
+                <ul class="menu-sub">
+                    @can('Brand_Create_Admin')
+                        <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
+                            <a href="{{ route('brand.create') }}" class="menu-link ">
+                                <div>اضافه کردن برند جدید</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('Brand_List_Admin')
+                        <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
+                            <a href="{{ route('brand.index') }}" class="menu-link">
+                                <div>لیست برندها</div>
+                            </a>
+                        </li>
+                    @endcan
 
-            </ul>
-        </li>
-        {{-- <li class="menu-item">
+                </ul>
+            </li>
+        @endcan
+
+        {{-- company  --}}
+        @canany(['Company_Create_Admin', 'Company_List_Admin'])
+
+            <li
+                class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bxs-buildings"></i>
+                    <div>شرکت و کارگاه</div>
+                </a>
+                <ul class="menu-sub">
+                    @can('Company_Create_Admin')
+                        <li class="menu-item  {{ request()->is('reports/list_scan_period') ? 'active' : '' }}">
+                            <a href="{{ route('company.create') }}" class="menu-link ">
+                                <div>اضافه کردن شرکت جدید</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('Company_List_Admin')
+                        <li class="menu-item {{ request()->is('reports/listContradictions') ? 'active' : '' }}">
+                            <a href="{{ route('company.index') }}" class="menu-link">
+                                <div>لیست شرکت‌ها</div>
+                            </a>
+                        </li>
+                    @endcan
+
+                </ul>
+            </li>
+        @endcan
+
+        {{-- machine  --}}
+        @canany(['Machine_Create_Admin', 'Machine_List_Admin'])
+
+            <li class="menu-item">
+                <a href="#" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-hive"></i>
+                    <div> ماشین </div>
+                </a>
+                <ul class="menu-sub">
+                    @can('Machine_Create_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('machine.create') }}" class="menu-link ">
+                                <div>ثبت ماشین</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('Machine_List_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('machine.index') }}" class="menu-link">
+                                <div>لیست ماشین</div>
+                            </a>
+                        </li>
+                    @endcan
+
+                </ul>
+            </li>
+        @endcan
+
+        {{-- specialty And unitMeasurement --}}
+        @canany(['Specialty_Create_Admin', 'Specialty_List_Admin', 'UnitMeasurement_Create_Admin',
+            'UnitMeasurement_List_Admin'])
+
+            <li class="menu-item">
+                <a href="#" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-hard-hat"></i>
+                    <div>تخصص</div>
+                </a>
+                <ul class="menu-sub">
+                    @can('Specialty_Create_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('specialty.create') }}" class="menu-link">
+                                <div>اضافه کردن تخصص</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('Specialty_List_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('specialty.index') }}" class="menu-link">
+                                <div>لیست تخصص</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('UnitMeasurement_Create_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('unitMeasurement.create') }}" class="menu-link">
+                                <div>اضافه‌کردن واحد اندازه‌گیری</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('UnitMeasurement_List_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('unitMeasurement.index') }}" class="menu-link">
+                                <div>لیست واحد اندازه‌گیری</div>
+                            </a>
+                        </li>
+                    @endcan
+
+                </ul>
+            </li>
+
+        @endcan
+
+        {{-- role  --}}
+        @canany(['Role_Create_Admin', 'Role_List_Admin'])
+            <li class="menu-item">
+                <a href="{{ route('accesslevel.accesspermission') }}" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-customize"></i>
+                    <div>نقش‌ها</div>
+                </a>
+                <ul class="menu-sub">
+                    @can('Role_List_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('role.index') }}" class="menu-link">
+                                <div>لیست نقش‌ها</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('Role_Create_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('role.create') }}" class="menu-link">
+                                <div>اضافه کردن نقش</div>
+                            </a>
+                        </li>
+                    @endcan
+
+                </ul>
+            </li>
+        @endcan
+
+        {{-- operator  --}}
+        @canany(['Operator_Create_Admin', 'Operator_List_Admin'])
+            <li class="menu-item">
+                <a href="#" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-user-circle"></i>
+                    <div>اپراتور</div>
+                </a>
+                <ul class="menu-sub">
+                    @can('Operator_Create_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('operator.create') }}" class="menu-link">
+                                <div>اضافه کردن اپراتور</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('Operator_List_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('operator.index') }}" class="menu-link">
+                                <div>لیست اپراتور</div>
+                            </a>
+                        </li>
+                    @endcan
+
+                </ul>
+            </li>
+        @endcan
+
+        {{-- equipment And typeequipment --}}
+        @canany(['Equipment_Create_Admin', 'Equipment_List_Admin', 'Typeequipment_Create_Admin',
+            'Typeequipment_List_Admin'])
+            <li class="menu-item">
+                <a href="#" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-package"></i>
+                    <div>تجهیز</div>
+                </a>
+                <ul class="menu-sub">
+                    @can('Equipment_Create_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('equipment.create') }}" class="menu-link">
+                                <div>ثبت تجهیز</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('Equipment_List_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('equipment.index') }}" class="menu-link">
+                                <div>لیست تجهیز</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('Typeequipment_Create_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('typeequipment.create') }}" class="menu-link">
+                                <div>اضافه کردن مدل و تیپ تجهیز</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('Typeequipment_List_Admin')
+                        <li class="menu-item">
+                            <a href="{{ route('typeequipment.index') }}" class="menu-link">
+                                <div>لیست مدل و تیپ تجهیز</div>
+                            </a>
+                        </li>
+                    @endcan
+
+                </ul>
+            </li>
+        @endcan
+
+        {{-- customer  --}}
+        @canany(['Customer_Create_Admin', 'Customer_List_Admin'])
+            <li class="menu-item">
+                <a href="#" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-group"></i>
+                    <div>مشتری</div>
+                </a>
+
+                <ul class="menu-sub">
+                    @can('Customer_List_Admin')
+
+                        <li class="menu-item">
+                            <a href="{{ route('customer.index') }}" class="menu-link">
+                                <div>لیست مشتری</div>
+                            </a>
+                        </li>
+                    @endcan
+
+                    @can('Customer_Create_Admin')
+
+                        <li class="menu-item">
+                            <a href="{{ route('customer.create') }}" class="menu-link">
+                                <div>اضافه کردن مشتری</div>
+                            </a>
+                        </li>
+                    @endcan
+
+                </ul>
+            </li>
+        @endcan
+        {{-- permission  --}}
+        @canany(['Permission_Create_Admin', 'Permission_List_Admin'])
+            <li class="menu-item">
+                <a href="#" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-universal-access"></i>
+                    <div>سطوح دسترسی</div>
+                </a>
+                <ul class="menu-sub">
+                    @can('Permission_List_Admin')
+
+                    <li class="menu-item">
+                        <a href="{{ route('permission.index') }}" class="menu-link">
+                            <div> لیست Permissions</div>
+                        </a>
+                    </li>
+                    @endcan
+                    @can('Permission_Create_Admin')
+
+                    <li class="menu-item">
+                        <a href="{{ route('permission.create') }}" class="menu-link">
+                            <div>اضافه کردن Permissions </div>
+                        </a>
+                    </li>
+                    @endcan
+                </ul>
+            </li>
+            @endcan
+
+            {{-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div>اطلاعات پایه‌ای</div>
             </a>
         </li> --}}
-        {{-- <li class="menu-item">
+            {{-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div>فعالیت</div>
             </a>
         </li> --}}
-        {{-- <li class="menu-item">
+            {{-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div>امنیت و سطوح دسترسی</div>
             </a>
         </li> --}}
-        {{-- <li class="menu-item">
+            {{-- <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-cog"></i>
                 <div>برنامه ریزی</div>
             </a>
         </li> --}}
-        {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">اطلاعات ایستگاه و مراکز
+            {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">اطلاعات ایستگاه و مراکز
                 اسکن</span></li>
 
         <li class="menu-item">
@@ -418,18 +467,18 @@
                 <div data-i18n="Documentation">مستندات</div>
             </a>
         </li> --}}
-        <li class="menu-item">
-            <a href="{{ route('logout') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-log-out-circle"></i>
-                <div>خروج</div>
-            </a>
-        </li>
+            <li class="menu-item">
+                <a href="{{ route('logout') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-log-out-circle"></i>
+                    <div>خروج</div>
+                </a>
+            </li>
 
 
 
 
-        <!-- Charts & Maps -->
-        {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">نمودارها و نقشه‌ها</span></li>
+            <!-- Charts & Maps -->
+            {{-- <li class="menu-header small text-uppercase"><span class="menu-header-text">نمودارها و نقشه‌ها</span></li>
       <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
           <i class="menu-icon tf-icons bx bx-chart"></i>
@@ -448,13 +497,13 @@
           </li>
         </ul>
       </li> --}}
-        {{-- <li class="menu-item">
+            {{-- <li class="menu-item">
         <a href="maps-leaflet.html" class="menu-link">
           <i class="menu-icon tf-icons bx bx-map-alt"></i>
           <div data-i18n="Leaflet Maps">نقشه‌های Leaflet</div>
         </a>
       </li> --}}
 
-        <!-- Misc -->
-    </ul>
-</aside>
+            <!-- Misc -->
+        </ul>
+    </aside>

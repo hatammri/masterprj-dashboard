@@ -60,7 +60,7 @@ class RoleController extends Controller
             $permissions = $request->except('_token','display_name','name');
             $role->givePermissionTo($permissions);
             DB::commit();
-
+         
         // } catch (\Illuminate\Database\QueryException $e) {
         //     // You need to handle the error here.
         //     // Either send the user back to the screen or redirect them somewhere else
@@ -102,7 +102,7 @@ class RoleController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Role $role)
-    { dd($request);
+    {
         $request->validate([
             'name' => 'required',
             'display_name' => 'required',
