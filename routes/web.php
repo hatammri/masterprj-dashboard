@@ -112,6 +112,8 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/show/{data}', [RequestworkController::class, 'show'])->name('show');
         Route::put('/update/{requestwork}', [RequestworkController::class, 'update'])->name('update');
         Route::get('/editstatus/{id}', [RequestworkController::class, 'editstatus'])->name('editstatus');
+        Route::get('/get_equipmentnumber/{request_id}', [RequestworkController::class, 'getRequestworkEquipmentNumber']);
+        Route::get('/get_requestwork/{equipment_number}' ,[RequestworkController::class , 'getEquipmentNumberRequestwork']);
 
     });
     Route::prefix('operator')->name('operator.')->group(function () {

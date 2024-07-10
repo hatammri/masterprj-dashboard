@@ -52,9 +52,12 @@
                     <div class="row g-3">
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-Customer">شماره سریال تجهیز </label>
-                            <select name="equipment_number" id="collapsible-Customer" class="select2 form-select"
+                            <label class="form-label" for="collapsible-equipment_number">شماره سریال تجهیز </label>
+                            <select name="equipment_number" id="collapsible-equipment_number" class="select2 form-select"
                                 data-allow-clear="true">
+                                <option value="">
+                                    انتخاب کنید
+                                </option>
                                 @foreach ($requestwork as $itemRequestwork)
                                     <option value="{{ $itemRequestwork->equipment_number }}">
                                         {{ $itemRequestwork->equipment_number }}
@@ -63,9 +66,12 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-Customer">شماره درخواست‌‌‌‌‌‌‌‌‌کار </label>
-                            <select name="requestwork_id" id="collapsible-Customer" class="select2 form-select"
+                            <label class="form-label" for="collapsible-request_number">شماره درخواست‌‌‌‌‌‌‌‌‌کار </label>
+                            <select name="requestwork_id" id="collapsible-request_number" class="select2 form-select"
                                 data-allow-clear="true">
+                                <option value="">
+                                    انتخاب کنید
+                                </option>
                                 @foreach ($requestwork as $itemRequestwork)
                                     <option value="{{ $itemRequestwork->id }}">
                                         {{ $itemRequestwork->request_number }}
@@ -77,6 +83,9 @@
                             <label class="form-label" for="collapsible-equipment"> نام تجهیز</label>
                             <select name="equipment_id" id="collapsible-Customer" class="select2 form-select"
                                 data-allow-clear="true">
+                                <option value="">
+                                    انتخاب کنید
+                                </option>
                                 @foreach ($equipment as $itemequipment)
                                     <option value="{{ $itemequipment->id }}">
                                         {{ $itemequipment->name }}
@@ -89,6 +98,9 @@
                             <label class="form-label" for="collapsible-equipment"> نام شرکت</label>
                             <select name="company_id" id="collapsible-equipment" class="select2 form-select"
                                 data-allow-clear="true">
+                                <option value="">
+                                    انتخاب کنید
+                                </option>
                                 @foreach ($company as $itemcompany)
                                     <option value="{{ $itemcompany->id }}">
                                         {{ $itemcompany->name }}
@@ -133,6 +145,9 @@
                                                         قطعه</label>
                                                     <select name="FormData[part_id][]" id="collapsible-UnitMeasurement"
                                                         class="select2 form-select" data-allow-clear="true">
+                                                        <option value="">
+                                                            انتخاب کنید
+                                                        </option>
                                                         @foreach ($Part as $itemPart)
                                                             <option value="{{ $itemPart->id }}">
                                                                 {{ $itemPart->name }}
@@ -144,6 +159,9 @@
                                                     <label class="form-label" for="form-repeater-1-2">برند</label>
                                                     <select name="FormData[brand_id][]" id="collapsible-UnitMeasurement"
                                                         class="select2 form-select" data-allow-clear="true">
+                                                        <option value="">
+                                                            انتخاب کنید
+                                                        </option>
                                                         @foreach ($Brand as $itemBrand)
                                                             <option value="{{ $itemBrand->id }}">
                                                                 {{ $itemBrand->name }}
@@ -259,36 +277,107 @@
         //One-to-many relationship plugin by Yasir O. Atabani. Copyrights Reserved.
         $("#czContainer").czMore();
     </script>
-    <script>
-        console.log('script');
 
-        $('#collapsible-ostan').change(function() {
-            console.log('change');
-            let ostanSelectedid = $(this).val();
+<script>
+    console.log('script');
 
-            if (ostanSelectedid) {
-                $.ajax({
-                    type: "Get",
-                    url: "{{ url('/getListShahrestan') }}?ostan=" + ostanSelectedid,
-                    success: function(res) {
-                        if (res) {
-                            $('#collapsible-shahrestan').empty();
-                            $.each(res, function(key, shahrestan) {
+    $('#collapsible-equipment_number').change(function() {
+        console.log('change');
+        let equipment_number = $(this).val();
 
-                                $("#collapsible-shahrestan").append('<option value="' +
-                                    shahrestan.id + '">' + shahrestan.name + '</option>');
 
-                            });
-                        } else {
-                            $('#collapsible-shahrestan').empty();
-                        }
-                    }
-                })
+        $.get(`{{ url('/requestwork/get_requestwork/${equipment_number}') }}`, function(response,
+            status) {
+            if (status == 'success') {
+                console.log(response);
+                $('#collapsible-request_number').empty();
 
+                $.each(response, function(key,requestwork) {
+                    console.log(requestwork,key);
+                    console.log(requestwork.request_number,"item");
+
+                    $("#collapsible-request_number").append('<option value="' +
+                    requestwork.id + '">' + requestwork.request_number + '</option>');
+
+                });
             } else {
-                $('#collapsible-shahrestan').empty();
+                $('#collapsible-request_number').empty();
+                console.log("error");
             }
+        }).fail(function() {
+            $('#collapsible-request_number').empty();
+            console.log("errorlist");
+        })
 
-        });
+    });
+</script>
+<script>
+    console.log('script');
+
+    $('#collapsible-request_number').change(function() {
+        console.log('change');
+        let request_id = $(this).val();
+        console.log('request_number',request_id);
+
+
+        $.get(`{{ url('/requestwork/get_equipmentnumber/${request_id}') }}`, function(response,
+            status) {
+            if (status == 'success') {
+                console.log(response);
+                $('#collapsible-equipment_number').empty();
+
+                $.each(response, function(key,requestwork) {
+
+                    $("#collapsible-equipment_number").append('<option value="' +
+                    requestwork.equipment_number + '">' + requestwork.equipment_number + '</option>');
+
+                });
+            } else {
+                $('#collapsible-equipment_number').empty();
+                console.log("error");
+            }
+        }).fail(function() {
+            $('#collapsible-equipment_number').empty();
+            console.log("errorlist");
+        })
+
+    });
+</script>
+
+
+
+
+
+    <script>
+        // console.log('script');
+
+        // $('#collapsible-equipment_number').change(function() {
+        //     console.log('change');
+        //      let equipment_number = $(this).val();
+
+        //      if (equipment_number) {
+        //       $.ajax({
+        //              type: "Get",
+        //              url: "{{ url('/requestwork/get_requestwork/') }}?equipment_number=" + equipment_number,
+        //              success: function(res) {
+            //             if (res) {
+            //                 $('#collapsible-shahrestan').empty();
+            //                 $.each(res, function(key, shahrestan) {
+
+            //                     $("#collapsible-shahrestan").append('<option value="' +
+            //                         shahrestan.id + '">' + shahrestan.name + '</option>');
+
+            //                 });
+            //             } else {
+            //                 $('#collapsible-shahrestan').empty();
+            //             }
+            //         }
+            //     })
+
+            // } else {
+            //     $('#collapsible-shahrestan').empty();
+            // }
+
+       // });
     </script>
 @endsection

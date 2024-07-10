@@ -31,7 +31,7 @@ class PmController extends Controller
      */
     public function create()
     {
-        $requestwork = RequestWork::all();
+        $requestwork = RequestWork::all()->unique('equipment_number');
         $equipment = Equipment::all();
         $company = Company::all();
         $Part = Part::all();

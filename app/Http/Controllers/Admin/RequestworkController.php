@@ -183,9 +183,16 @@ class RequestworkController extends Controller
         );
     }
 
-    public function getShahrestanList(Request $request)
+
+    public function getRequestworkEquipmentNumber($request_id)
     {
-        $shahrestan = Shahrestan::where('ostan', $request->ostan)->get();
-        return $shahrestan;
+        $equipment_number = RequestWork::where('id', $request_id)->get();
+        return $equipment_number;
+
+    }
+    public function getEquipmentNumberRequestwork($equipment_number)
+    {
+        $requestwork = RequestWork::where('equipment_number', $equipment_number)->get();
+        return  $requestwork;
     }
 }

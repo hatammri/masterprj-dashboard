@@ -69,6 +69,16 @@
                         </div>
                         <!-- Checkboxes & Radio Colors -->
                         <div class="row row-bordered g-0">
+                            <div class="col-md p-4">
+                              <small class="text-light fw-semibold d-block"></small>
+
+                              <div class="form-check form-check-primary mt-3">
+                                <input class="form-check-input" type="checkbox"  id="permission_all" name="allpermission" value="allpermission" >
+                                <label class="form-check-label" for="customCheckPrimary">فعال کردن و قابل دسترس قرار دادن همه ی permission ها برای این نقش</label>
+                              </div>
+                            </div>
+                          </div>
+                        <div class="row row-bordered g-0">
                           <div class="col-md p-4">
                             <small class="text-light fw-semibold d-block">سطح دسترسی این نقش</small>
                             @foreach ($permissions as $permission )
