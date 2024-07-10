@@ -46,13 +46,19 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ثبت PM جدید</h5>
+
                 <form action="{{ route('pm.store') }}" method="POST" class="card-body">
                     @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
 
+
                         <div class="col-md-6">
+
                             <label class="form-label" for="collapsible-equipment_number">شماره سریال تجهیز </label>
+                            <span onclick="RefreshEquipmentNumber()">
+                                <i class="bx bx-refresh" id="refresh-equipment_number"></i>
+                            </span>
                             <select name="equipment_number" id="collapsible-equipment_number" class="select2 form-select"
                                 data-allow-clear="true">
                                 <option value="">
@@ -72,7 +78,7 @@
                                 <option value="">
                                     انتخاب کنید
                                 </option>
-                                @foreach ($requestwork as $itemRequestwork)
+                                @foreach ($requestworkwithoutunique as $itemRequestwork)
                                     <option value="{{ $itemRequestwork->id }}">
                                         {{ $itemRequestwork->request_number }}
                                     </option>
@@ -131,7 +137,7 @@
                             </div>
                         </div>
                         <div class="card mb-4">
-                            <h5 class="card-header heading-color">تعریف قطعات اجزا  تجهیز</h5>
+                            <h5 class="card-header heading-color">تعریف قطعات اجزا تجهیز</h5>
                             <div class="card-body">
                                 <div id="czContainer">
                                     <div id="first">
@@ -211,16 +217,16 @@
                             </div>
 
 
-                            </div>
-                            <div class="pt-4">
-                                <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
-                                <button type="reset" class="btn btn-label-secondary">انصراف</button>
-                                <br/>
+                        </div>
+                        <div class="pt-4">
+                            <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
+                            <button type="reset" class="btn btn-label-secondary">انصراف</button>
+                            <br />
                 </form>
-                <br/>
+                <br />
 
             </div>
-            <br/>
+            <br />
 
         </div>
     </div>
@@ -278,73 +284,116 @@
         $("#czContainer").czMore();
     </script>
 
-<script>
-    console.log('script');
+    <script>
+        console.log('script');
 
-    $('#collapsible-equipment_number').change(function() {
-        console.log('change');
-        let equipment_number = $(this).val();
+        $('#collapsible-equipment_number').change(function() {
+            console.log('change');
+            let equipment_number = $(this).val();
 
 
-        $.get(`{{ url('/requestwork/get_requestwork/${equipment_number}') }}`, function(response,
-            status) {
-            if (status == 'success') {
-                console.log(response);
+            $.get(`{{ url('/requestwork/get_requestwork/${equipment_number}') }}`, function(response,
+                status) {
+                if (status == 'success') {
+                    console.log(response);
+                    $('#collapsible-request_number').empty();
+
+                    $.each(response, function(key, requestwork) {
+                        console.log(requestwork, key);
+                        console.log(requestwork.request_number, "item");
+
+                        $("#collapsible-request_number").append('<option value="' +
+                            requestwork.id + '">' + requestwork.request_number + '</option>');
+
+                    });
+                } else {
+                    $('#collapsible-request_number').empty();
+                    console.log("error");
+                }
+            }).fail(function() {
                 $('#collapsible-request_number').empty();
+                console.log("errorlist");
+            })
 
-                $.each(response, function(key,requestwork) {
-                    console.log(requestwork,key);
-                    console.log(requestwork.request_number,"item");
+        });
+    </script>
+    <script>
+        console.log('script');
 
-                    $("#collapsible-request_number").append('<option value="' +
-                    requestwork.id + '">' + requestwork.request_number + '</option>');
-
-                });
-            } else {
-                $('#collapsible-request_number').empty();
-                console.log("error");
-            }
-        }).fail(function() {
-            $('#collapsible-request_number').empty();
-            console.log("errorlist");
-        })
-
-    });
-</script>
-<script>
-    console.log('script');
-
-    $('#collapsible-request_number').change(function() {
-        console.log('change');
-        let request_id = $(this).val();
-        console.log('request_number',request_id);
+        $('#collapsible-request_number').change(function() {
+            console.log('change');
+            let request_id = $(this).val();
+            console.log('request_number', request_id);
 
 
-        $.get(`{{ url('/requestwork/get_equipmentnumber/${request_id}') }}`, function(response,
-            status) {
-            if (status == 'success') {
-                console.log(response);
+            $.get(`{{ url('/requestwork/get_equipmentnumber/${request_id}') }}`, function(response,
+                status) {
+                if (status == 'success') {
+                    console.log(response);
+                    $('#collapsible-equipment_number').empty();
+
+                    $.each(response, function(key, requestwork) {
+
+                        $("#collapsible-equipment_number").append('<option value="' +
+                            requestwork.equipment_number + '">' + requestwork.equipment_number +
+                            '</option>');
+
+                    });
+                } else {
+                    $('#collapsible-equipment_number').empty();
+                    console.log("error");
+                }
+            }).fail(function() {
                 $('#collapsible-equipment_number').empty();
+                console.log("errorlist");
+            })
 
-                $.each(response, function(key,requestwork) {
+        });
+    </script>
+
+    <script>
+        function RefreshEquipmentNumber() {
+            i = "null";
+            info = "انتخاب ";
+            console.log("refresh");
+            $.get(`{{ url('/requestwork/getallrequestwork/') }}`, function(response,
+                status) {
+                if (status == 'success') {
+                    console.log(response);
+                    $('#collapsible-equipment_number').empty();
+                    $('#collapsible-request_number').empty();
 
                     $("#collapsible-equipment_number").append('<option value="' +
-                    requestwork.equipment_number + '">' + requestwork.equipment_number + '</option>');
+                        i + '">' + info +
+                        '</option>');
+                    $("#collapsible-request_number").append('<option value="' +
+                        i + '">' + info + '</option>');
 
-                });
-            } else {
+                    $.each(response.requestwork, function(key, requestwork) {
+
+                     
+                        $("#collapsible-request_number").append('<option value="' +
+                            requestwork.id + '">' + requestwork.request_number + '</option>');
+                    });
+                    $.each(response.requestworkwithunique, function(key, requestwork) {
+                        $("#collapsible-equipment_number").append('<option value="' +
+                            requestwork.equipment_number + '">' + requestwork.equipment_number +
+                            '</option>');
+                    });
+
+                } else {
+                    $('#collapsible-equipment_number').empty();
+                    $('#collapsible-request_number').empty();
+                    console.log("error");
+                }
+            }).fail(function() {
                 $('#collapsible-equipment_number').empty();
-                console.log("error");
-            }
-        }).fail(function() {
-            $('#collapsible-equipment_number').empty();
-            console.log("errorlist");
-        })
+                $('#collapsible-request_number').empty();
+                console.log("errorlist");
+            })
 
-    });
-</script>
-
-
+        }
+    </script>
 
 
 
@@ -360,24 +409,24 @@
         //              type: "Get",
         //              url: "{{ url('/requestwork/get_requestwork/') }}?equipment_number=" + equipment_number,
         //              success: function(res) {
-            //             if (res) {
-            //                 $('#collapsible-shahrestan').empty();
-            //                 $.each(res, function(key, shahrestan) {
+        //             if (res) {
+        //                 $('#collapsible-shahrestan').empty();
+        //                 $.each(res, function(key, shahrestan) {
 
-            //                     $("#collapsible-shahrestan").append('<option value="' +
-            //                         shahrestan.id + '">' + shahrestan.name + '</option>');
+        //                     $("#collapsible-shahrestan").append('<option value="' +
+        //                         shahrestan.id + '">' + shahrestan.name + '</option>');
 
-            //                 });
-            //             } else {
-            //                 $('#collapsible-shahrestan').empty();
-            //             }
-            //         }
-            //     })
+        //                 });
+        //             } else {
+        //                 $('#collapsible-shahrestan').empty();
+        //             }
+        //         }
+        //     })
 
-            // } else {
-            //     $('#collapsible-shahrestan').empty();
-            // }
+        // } else {
+        //     $('#collapsible-shahrestan').empty();
+        // }
 
-       // });
+        // });
     </script>
 @endsection

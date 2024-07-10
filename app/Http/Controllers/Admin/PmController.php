@@ -32,13 +32,14 @@ class PmController extends Controller
     public function create()
     {
         $requestwork = RequestWork::all()->unique('equipment_number');
+        $requestworkwithoutunique = RequestWork::all();
         $equipment = Equipment::all();
         $company = Company::all();
         $Part = Part::all();
         $Brand = Brand::all();
 
 
-        return view('pm.create', compact('requestwork','equipment','company','Part','Brand'));
+        return view('pm.create', compact('requestwork','equipment','company','Part','Brand','requestworkwithoutunique'));
     }
 
     /**

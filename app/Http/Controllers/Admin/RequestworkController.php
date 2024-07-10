@@ -195,4 +195,14 @@ class RequestworkController extends Controller
         $requestwork = RequestWork::where('equipment_number', $equipment_number)->get();
         return  $requestwork;
     }
+
+
+    public function getAllRequestwork()
+    {
+
+        $requestwork = RequestWork::all();
+        $requestworkwithunique = RequestWork::all()->unique('equipment_number');
+        return ['requestwork' => $requestwork , 'requestworkwithunique' => $requestworkwithunique];
+
+    }
 }
