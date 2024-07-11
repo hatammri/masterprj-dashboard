@@ -15,7 +15,7 @@
                     <div class="content-left">
                       <span class="secondary-font fw-medium">تعداد درخواست‌کار</span>
                       <div class="d-flex align-items-baseline mt-2">
-                        <h4 class="mb-0 me-2">16</h4>
+                        <h4 class="mb-0 me-2">{{ $requestwork_count }}</h4>
                         <small class="text-success">(+29%)</small>
                       </div>
                       <small>مجموع درخواست‌کار</small>
@@ -34,7 +34,7 @@
                     <div class="content-left">
                       <span class="secondary-font fw-medium">تعداد درخواست‌کار فعال </span>
                       <div class="d-flex align-items-baseline mt-2">
-                        <h4 class="mb-0 me-2">10</h4>
+                        <h4 class="mb-0 me-2">{{ $requestwork_count }}</h4>
                         <small class="text-success">(+18%)</small>
                       </div>
                       <small>تحلیل امروز</small>
@@ -51,10 +51,10 @@
                 <div class="card-body">
                   <div class="d-flex align-items-start justify-content-between">
                     <div class="content-left">
-                      <span class="secondary-font fw-medium">تعداد فازهای فعال</span>
+                      <span class="secondary-font fw-medium">تعداد pm ها</span>
                       <div class="d-flex align-items-baseline mt-2">
-                        <h4 class="mb-0 me-2">100</h4>
-                        <small class="text-danger">(-14%)</small>
+                        <h4 class="mb-0 me-2">{{ $pm_count }}</h4>
+                        <small class="text-success">(+14%)</small>
                       </div>
                       <small>تحلیل امروز</small>
                     </div>
@@ -70,9 +70,9 @@
                 <div class="card-body">
                   <div class="d-flex align-items-start justify-content-between">
                     <div class="content-left">
-                      <span class="secondary-font fw-medium">تعداد مغایرت بار</span>
+                      <span class="secondary-font fw-medium">تعداد شرکت‌ها</span>
                       <div class="d-flex align-items-baseline mt-2">
-                        <h4 class="mb-0 me-2">4</h4>
+                        <h4 class="mb-0 me-2">{{ $company_count }}</h4>
                         <small class="text-success">(+42%)</small>
                       </div>
                       <small>تحلیل هفته اخیر</small>
@@ -88,7 +88,7 @@
 
       <div class="row">
         <!-- Website Analytics-->
-        <div class="col-lg-6 col-md-12 mb-4">
+        {{-- <div class="col-lg-6 col-md-12 mb-4">
           <div class="card h-100">
             <div class="card-header d-flex justify-content-between align-items-center">
               <h5 class="card-title mb-0">تعداد درخواست‌کار ‌ها در ماه های اخیر </h5>
@@ -132,13 +132,13 @@
               <div id="analyticsBarChart"></div>
             </div>
           </div>
-        </div>
+        </div> --}}
 
         <!-- Referral, conversion, impression & income charts -->
         <div class="col-lg-6 col-md-12">
           <div class="row">
             <!-- Referral Chart-->
-            <div class="col-sm-6 col-12 mb-4">
+            {{-- <div class="col-sm-6 col-12 mb-4">
               <div class="card h-100">
                 <div class="card-body text-center">
                   <h2 class="mb-1">32,690</h2>
@@ -146,9 +146,9 @@
                   <div id="referralLineChart"></div>
                 </div>
               </div>
-            </div>
+            </div> --}}
             <!-- Conversion Chart-->
-            <div class="col-sm-6 col-12 mb-4">
+            {{-- <div class="col-sm-6 col-12 mb-4">
               <div class="card h-100">
                 <div class="card-header d-flex justify-content-between pb-3">
                   <div class="conversion-title">
@@ -164,18 +164,36 @@
                   <div id="conversionBarchart"></div>
                 </div>
               </div>
-            </div>
+            </div> --}}
             <!-- Impression Radial Chart-->
-            <div class="col-sm-6 col-12 mb-4">
+            {{-- <div class="col-sm-6 col-12 mb-4">
               <div class="card h-100">
                 <div class="card-body text-center">
                   <div id="impressionDonutChart" class="mt-2"></div>
                 </div>
               </div>
-            </div>
+            </div> --}}
             <!-- Growth Chart-->
             <div class="col-sm-6 col-12">
               <div class="row">
+                {{-- <div class="col-12 mb-4">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex align-items-center gap-3">
+                          <div class="avatar">
+                            <span class="avatar-initial bg-label-primary rounded-circle"><i class="bx bx-user fs-4"></i></span>
+                          </div>
+                          <div class="card-info">
+                            <h5 class="card-title mb-0 me-2 primary-font"></h5>
+                            <small class="text-muted">null</small>
+                          </div>
+                        </div>
+                        <div id="conversationChart"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div> --}}
                 <div class="col-12 mb-4">
                   <div class="card h-100">
                     <div class="card-body">
@@ -185,26 +203,8 @@
                             <span class="avatar-initial bg-label-primary rounded-circle"><i class="bx bx-user fs-4"></i></span>
                           </div>
                           <div class="card-info">
-                            <h5 class="card-title mb-0 me-2 primary-font">38,566</h5>
-                            <small class="text-muted">null</small>
-                          </div>
-                        </div>
-                        <div id="conversationChart"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 mb-4">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex align-items-center gap-3">
-                          <div class="avatar">
-                            <span class="avatar-initial bg-label-warning rounded-circle"><i class="bx bx-dollar fs-4"></i></span>
-                          </div>
-                          <div class="card-info">
-                            <h5 class="card-title mb-0 me-2 primary-font">53,659</h5>
-                            <small class="text-muted">null</small>
+                            <h5 class="card-title mb-0 me-2 primary-font">{{$customer_count }}</h5>
+                            <small class="text-muted">تعداد مشتریان</small>
                           </div>
                         </div>
                         <div id="incomeChart"></div>

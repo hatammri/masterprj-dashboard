@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\RequestworkController;
 use App\Http\Controllers\Admin\PartController;
 use App\Http\Controllers\Admin\PartDefController;
 use App\Http\Controllers\Admin\PermissionController;
-
+use App\Http\Controllers\Admin\DashboardController;
 use App\Models\Role;
 
 //require __DIR__ . '/auth.php';
@@ -159,10 +159,12 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/show/{data}', [PermissionController::class, 'show'])->name('show');
         Route::put('/update/{permission}', [PermissionController::class, 'update'])->name('update');
     });
-
-    Route::get('', function () {
-        return view('dashboard.index');
-    })->name('dashboard');
+    
+    Route::prefix('')->name('dashboard.')->group(function () {
+        Route::get('', [DashboardController::class, 'index'])->name('index');
+    });
+    // Route::get('', function () {return view('dashboard.index');
+    // })->name('dashboard');
     Route::get('/personnels/list_centers', function () {
         return view('personnel.index');
     })->name('personnels.list_centers');

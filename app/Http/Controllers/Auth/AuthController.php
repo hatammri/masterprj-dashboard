@@ -72,7 +72,7 @@ class AuthController extends Controller
            if($user[0]->password==$request->password)
             {
               auth()->login($user[0],$remember=true);
-              return redirect()->route('dashboard');
+              return redirect()->route('dashboard.index');
             }
             else
             {
@@ -96,7 +96,7 @@ class AuthController extends Controller
       {
         auth()->login($user,$remember=true);
        // return redirect('/');
-       return redirect()->route('dashboard');
+       return redirect()->route('dashboard.index');
 
 
       }else

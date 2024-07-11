@@ -24,7 +24,7 @@
 
         <!-- Layouts -->
         <li class="menu-item {{ request()->is('/') ? 'active' : '' }}">
-            <a href="{{ route('dashboard') }}" class="menu-link">
+            <a href="{{ route('dashboard.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div>داشبورد</div>
             </a>

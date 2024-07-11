@@ -139,7 +139,7 @@ class EquipmentController extends Controller
                 'type_equipment_id' => $request->type_equipment_id
             ]);
 
-            
+
             Alert::success('تجهیز مورد نظر ویرایش شد', 'باتشکر');
             return redirect()->route('equipment.index');
         } catch (\Illuminate\Database\QueryException $e) {
