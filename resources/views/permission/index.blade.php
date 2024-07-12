@@ -18,26 +18,66 @@
             <div class="card">
                 <h5 class="card-header heading-color">لیست permission ها</h5>
                 <div class="card-datatable text-nowrap">
-                    <table class="dt-column-search table table-bordered">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5">
 
-                        <thead>
+                        <div class="table-responsive">
+                            <table class="dt-column-search table table-bordered dataTable" id="DataTables_Table_0"
+                                aria-describedby="DataTables_Table_0_info" style="width: 1366px;">
 
-                            <tr>
-                                <th>نام </th>
-                                <th> نام نمایشی</th>
-                                <th>نوع دسترسی</th>
-                                <th>نمایش جزئیات</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>نام </th>
-                                <th> نام نمایشی</th>
-                                <th>نوع دسترسی</th>
-                                <th>نمایش جزئیات</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                                <thead>
+                                    <tr>
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0"
+                                            rowspan="1" colspan="1" aria-label="نام : فعال سازی نمایش به صورت نزولی"
+                                            style="width: 414.2px;" aria-sort="ascending">نام </th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                            colspan="1" aria-label=" نام نمایشی: فعال سازی نمایش به صورت صعودی"
+                                            style="width: 356.2px;"> نام نمایشی</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                            colspan="1" aria-label="نوع دسترسی: فعال سازی نمایش به صورت صعودی"
+                                            style="width: 187.2px;">نوع دسترسی</th>
+                                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="نمایش جزئیات"
+                                            style="width: 200px;">نمایش جزئیات</th>
+                                    </tr>
+                                </thead>
+
+                                @foreach ($permissions as $permission )
+
+                                <tr class="odd">
+                                    <td class="sorting_1">{{$permission->name}}</td>
+                                    <td class="">{{ $permission->display_name }}</td>
+                                    <td class="">{{ $permission->guard_name }}</td>
+                                    <td>
+                                        <div class="d-inline-block"><a href="javascript:;"
+                                                class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
+                                                data-bs-toggle="dropdown"><i
+                                                    class="bx bx-dots-vertical-rounded"></i></a>
+                                            <div class="dropdown-menu dropdown-menu-end m-0"><a
+                                                    href="/permission/edit/{{$permission->id}}" class="dropdown-item">ویرایش اطلاعات
+                                                    شرکت</a></div>
+                                        </div><a href="/permission/edit/{{$permission->id}}" class="btn btn-sm btn-icon item-edit"><i
+                                                class="bx bxs-edit"></i></a>
+                                    </td>
+                                </tr>
+
+                                @endforeach
+
+                                <tbody>
+
+
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th rowspan="1" colspan="1">نام </th>
+                                        <th rowspan="1" colspan="1"> نام نمایشی</th>
+                                        <th rowspan="1" colspan="1">نوع دسترسی</th>
+                                        <th rowspan="1" colspan="1">نمایش جزئیات</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             <!--/ Column Search -->
@@ -58,7 +98,5 @@
 
     <!-- Main JS -->
     <script src="../../assets/js/main.js"></script>
-
-    <!-- Page JS -->
     <script src="../../assets/js/tables-datatables-permission.js"></script>
 @endsection

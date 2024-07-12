@@ -13,7 +13,13 @@ class PermissionController extends Controller
 
     public function index()
     {
-        return view('permission.index');
+        //    $data_permission = Permission::paginate(20);
+        //  $data_permission_all = Permission::all();
+
+        //      dd($data_permission,$data_permission_all);
+        $permissions = Permission::all();
+
+        return view('permission.index', compact('permissions'));
     }
 
     /**
@@ -26,7 +32,7 @@ class PermissionController extends Controller
         return view('permission.create');
     }
 
-    public function edit(string $id)
+    public function edit($id)
     {
         $permission = Permission::where('id', $id)->get()->first();
 

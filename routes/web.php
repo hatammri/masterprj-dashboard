@@ -159,7 +159,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/show/{data}', [PermissionController::class, 'show'])->name('show');
         Route::put('/update/{permission}', [PermissionController::class, 'update'])->name('update');
     });
-    
+
     Route::prefix('')->name('dashboard.')->group(function () {
         Route::get('', [DashboardController::class, 'index'])->name('index');
     });
