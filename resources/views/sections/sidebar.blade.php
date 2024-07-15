@@ -32,7 +32,33 @@
         <!-- Apps & Pages -->
 
         {{-- Requestwork --}}
+        {{-- <li
+        class="menu-item">
+        <a href="{{ route('customerprofile.indexprofile') }}" class="menu-link menu-toggle">
+            <i class="menu-icon tf-icons bx bxs-user"></i>
+            <div>پروفایل</div>
+        </a>
 
+        <ul class="menu-sub"> --}}
+            {{-- @can('Requestwork_Create_Admin') --}}
+                {{-- <li class="menu-item">
+                    <a href="{{ route('customerprofile.security') }}" class="menu-link ">
+                        <div>حساب</div>
+                    </a>
+                </li> --}}
+            {{-- @endcan --}}
+
+            {{-- @can('Requestwork_List_Admin') --}}
+                {{-- <li class="menu-item ">
+                    <a href="{{ route('requestwork.index') }}" class="menu-link">
+                        <div>امنیت</div>
+                    </a>
+                </li> --}}
+            {{-- @endcan --}}
+
+
+        {{-- </ul>
+    </li> --}}
         @canany(['Requestwork_Create_Admin', 'Requestwork_List_Admin'])
             <li
                 class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">

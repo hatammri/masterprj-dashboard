@@ -17,7 +17,8 @@ class RequestworkController extends Controller
 {
     public function index()
     {
-        return view('requestwork.index');
+        $requestworks = RequestWork::with(['customers.userID','equipments:id,name'])->get();
+        return view('requestwork.index',compact('requestworks'));
     }
 
     /**
@@ -173,7 +174,8 @@ class RequestworkController extends Controller
     }
     public function datatable()
     {
-        $data_Specialties = RequestWork::with(['customers:id,name','equipments:id,name','creators:id,name'])->paginate();
+        $data_Specialties = RequestWork::with(['customers.userID','equipments:id,name'])->paginate();
+
         $code = 200;
         return response()->json(
             $data_Specialties,

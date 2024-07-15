@@ -19,10 +19,22 @@ class CustomerController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('customer.index');
+    {     $customers =Customer::with(['companies:id,name', 'postCompany', 'userID.getrole'])->get();
+          return view('customer.index',compact('customers'));
     }
-
+    public function indexprofile()
+    {     //$customers =Customer::with(['companies:id,name', 'postCompany', 'userID.getrole'])->get();
+        $company = Company::all();
+        $role = Role::all();
+        $permissions = Permission::all();
+          return view('customerprofile.indexprofile', compact('company', 'role', 'permissions'));
+    }
+    public function security()
+    {     //$customers =Customer::with(['companies:id,name', 'postCompany', 'userID.getrole'])->get();
+        $company = Company::all();
+        $role = Role::all();
+        $permissions = Permission::all();
+          return view('customerprofile.indexprofile', compact('company', 'role', 'permissions'));    }
     /**
      * Show the form for creating a new resource.
      */
@@ -104,7 +116,7 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
         $customer = Customer::where('id', $id)->get()->first();
         $user =User::where('id',$customer->user_id)->get()->first();
@@ -174,8 +186,7 @@ class CustomerController extends Controller
     }
     public function datatable()
     {
-        $customers = Customer::with(['companies:id,name', 'rloes:id,display_name', 'posts:id,display_name'])->paginate();
-
+        $customers = Customer::with(['companies:id,name', 'post_incompany:id,display_name', 'userID:id,name,email,is_active,phonenumber'])->get();
         return response()->json(
             $customers,
             200,

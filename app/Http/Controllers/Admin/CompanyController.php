@@ -37,18 +37,10 @@ class CompanyController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'phonenumber' => 'required',
-            'address' => 'required',
-            'state' => 'required',
-            'city' => 'required'
+
         ], $messages = [
             'name.required' => 'نام شرکت نباید خالی باشد',
-            'email.required' => 'ایمیل نباید خالی باشد',
-            'phonenumber.required' => 'شماره همراه نباید خالی باشد',
-            'address' => 'آدرس نباید خالی باشد',
-            'state' =>  'استان نباید خالی باشد',
-            'city' =>  'شهرستان نباید خالی باشد',
+           
 
         ]);
         try {

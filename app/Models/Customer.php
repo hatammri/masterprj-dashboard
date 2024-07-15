@@ -6,26 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Spatie\Permission\Traits\HasRoles;
 
 class Customer extends Model
 {
-    use HasFactory,HasRoles;
+    use HasFactory;
     protected $table = "customer";
     protected $guarded = [];
-
-    protected array $guard_name = ['api', 'web'];
 
     public function companies(): BelongsTo
     {
         return $this->belongsTo(Company::class,'company');
     }
-    public function rloes(): BelongsTo
+    public function postCompany(): BelongsTo
     {
-        return $this->belongsTo(Role::class,'role');
+        return $this->belongsTo(Role::class,'post_incompany');
     }
-    public function posts(): BelongsTo
+    public function userID(): BelongsTo
     {
-        return $this->belongsTo(Role::class,'post');
+        return $this->belongsTo(User::class,'user_id');
     }
+
 }

@@ -46,6 +46,7 @@
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ثبت درخواست‌کار جدید</h5>
+
                 <form action="{{ route('requestwork.store') }}" method="POST" class="card-body">
                     @csrf
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
@@ -98,11 +99,13 @@
                             <select name="serviceplace" id="collapsible-serviceplace" class="select2 form-select"
                                 data-allow-clear="true">
                                 <option value="0">
-                                    0
+                                    نیاز ندارد
                                 </option>
                                 <option value="1">
-                                    1
+                                    نیاز دارد
                                 </option>
+
+
 
                             </select>
                         </div>
@@ -130,6 +133,11 @@
                         <!-- Datetime Picker-->
                         <div class="col-md-6 col-12 mb-4">
                             <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
+                            <input type="text" name="date_enter" class="form-control"
+                                placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime1">
+                        </div>
+                        <div class="col-md-6 col-12 mb-4">
+                            <label for="flatpickr-datetime" class="form-label"> تاریخ پایان کار</label>
                             <input type="text" name="date_enter" class="form-control"
                                 placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime1">
                         </div>
@@ -183,6 +191,7 @@
                         <button type="reset" class="btn btn-label-secondary">انصراف</button>
                     </div>
                 </form>
+
             </div>
 
         </div>

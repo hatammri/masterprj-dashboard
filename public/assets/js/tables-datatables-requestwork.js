@@ -8,40 +8,7 @@ $(function () {
     var dt_filter_table = $(".dt-column-search"),
         startDateEle = $(".start_date"),
         endDateEle = $(".end_date");
-    // nameselect = $(".dt-name"),
-    // Scanningdeviceselect= $(".dt-Scanning_device"),
-    // statusselect= $(".dt-status");
-    // Advanced Search Functions Starts
-    // --------------------------------------------------------------------
-    // Filter column with select name function
-    //  nameselect.change(function () {
-    //     dt_adv_filter_table
-    //         .DataTable()
-    //         .column(1)
-    //         .search($(this).val(), false, true)
-    //         .draw();
-    // });
-    // Filter column with select Scanningdevice function
 
-    // Scanningdeviceselect.change(function () {
-    //     dt_adv_filter_table
-    //         .DataTable()
-    //         .column(2)
-    //         .search($(this).val(), false, true)
-    //         .draw();
-    // });
-    // Filter column with select Scanningdevice function
-
-    // statusselect.change(function () {
-    //     dt_adv_filter_table
-    //         .DataTable()
-    //         .column(7)
-    //         .search($(this).val(), false, true)
-    //         .draw();
-    // });
-    // Datepicker for advanced filter
-
-    // Filter column wise function
     function filterColumn(i, val) {
         if (i == 5) {
             var startDate = startDateEle.val(),
@@ -107,26 +74,23 @@ $(function () {
     if (dt_filter_table.length) {
 
         var dt_filter = dt_filter_table.DataTable({
-            ajax: {
-                url: "http://localhost:8000/requestwork/datatable",
-                type: "GET",
-            },
+
             columns: [
                 { data: "request_number" },
-                { data: "customers.name" },
+                { data: "customers.userID.name" },
                 { data: "equipments.name" },
                 { data: "equipment_number" },
                 { data: "request_status" },
                 { data: "date_enter" },
-                { data: "date_out" },
                 { data: "date_delivery" },
+                { data: "date_out" },
                 { data: "estimated_cost" },
                 { data: "real_cost" },
                 { data: "Urgency_Work" },
                 { data: "description" },
                 { data: "creators.name" },
-                { data: "serviceplace" },
                 { data: "is_active" },
+                { data: "serviceplace" },
                 { data: "" },
 
             ],
@@ -135,14 +99,17 @@ $(function () {
                     // Label
                     targets: -3,
                     render: function (data, type, full, meta) {
-                        var $status_number = full["available"];
+                        var $status_number = full["is_active"];
                         var $status = {
-                            1: { title: "سالم", class: "bg-label-success" },
+                            1: { title: "فعال", class: "bg-label-success" },
                             0: {
-                                title: "خراب",
+                                title: "غیرفعال",
                                 class: " bg-label-warning",
                             },
-                            2: { title: "غیرفعال", class: " bg-label-danger" },
+                            null: {
+                                title: "نامشخص",
+                                class: " bg-label-warning",
+                            },
 
                         };
                         if (typeof $status[$status_number] === "undefined") {
@@ -158,18 +125,84 @@ $(function () {
                     },
                 },
                 {
-                    // Actions
-                    targets: -1,
-                    title: "نمایش جزئیات",
-                    orderable: false,
-                    searchable: false,
+                    // Label
+                    targets: -2,
                     render: function (data, type, full, meta) {
-                        // console.log(meta.row);
-                        // console.log(meta);
-                       // console.log(full.id);
+                        var $status_number = full["serviceplace"];
+                        var $status = {
+                            1: { title: "نیاز دارد", class: "bg-label-success" },
+                            0: {
+                                title: "نیاز ندارد",
+                                class: " bg-label-warning",
+                            },
+                            null: {
+                                title: "نامشخص",
+                                class: " bg-label-warning",
+                            },
+                        };
+                        if (typeof $status[$status_number] === "undefined") {
+                            return data;
+                        }
+                        return (
+                            '<span class="badge rounded-pill ' +
+                            $status[$status_number].class +
+                            '">' +
+                            $status[$status_number].title +
+                            "</span>"
+                        );
+                    },
+                },
+                {
+                    // Label
+                    targets: 10,
+                    render: function (data, type, full, meta) {
+                        var $status_number = full["Urgency_Work"];
+                        var $status = {
+                            1: { title: "اضطراری", class: "bg-label-success" },
+                            2: {
+                                title: "خیلی مهم",
+                                class: "bg-label-info",
+                            },
+                            3: {
+                                title: "مهم",
+                                class: "bg-label-danger",
+                            },
+                            4: {
+                                title: "عادی",
+                                class: "bg-label-primary",
+                            },
+                        };
+                        if (typeof $status[$status_number] === "undefined") {
+                            return data;
+                        }
+                        return (
+                            '<span class="badge rounded-pill ' +
+                            $status[$status_number].class +
+                            '">' +
+                            $status[$status_number].title +
+                            "</span>"
+                        );
+                    },
+                },
+                {
+                    // Label
+                    targets: 4,
+                    render: function (data, type, full, meta) {
+                        var $status_number = full["request_status"];
+                        var $status = {
+                            IS: { title: "IS - صدور درخواست", class: "bg-label-primary" },
 
-                        return ('<div class="d-inline-block">' + '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></a>' +'<div class="dropdown-menu dropdown-menu-end m-0">' +'<a href="/requestwork/edit/' +full.id +'"' +'class="dropdown-item">ویرایش اطلاعات درخواست‌کار' +"</div>" +"</div>" +'<a  href="/requestwork/edit/' +full.id +'"' +'class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>');
-
+                        };
+                        if (typeof $status[$status_number] === "undefined") {
+                            return data;
+                        }
+                        return (
+                            '<span class="badge rounded-pill ' +
+                            $status[$status_number].class +
+                            '">' +
+                            $status[$status_number].title +
+                            "</span>"
+                        );
                     },
                 },
             ],
@@ -206,28 +239,5 @@ $(function () {
         $(".dataTables_filter .form-control").removeClass("form-control-sm");
         $(".dataTables_length .form-select").removeClass("form-select-sm");
     }, 200);
-    var rangePickr = $(".flatpickr-range");
 
-    if (rangePickr.length) {
-        rangePickr.flatpickr({
-            mode: "range",
-            locale: "fa",
-            dateFormat: "Y/m/d",
-            orientation: isRtl ? "auto right" : "auto left",
-            onClose: function (selectedDates, dateStr, instance) {
-                var startDate = "",
-                    endDate = new Date();
-                if (selectedDates[0] != undefined) {
-                    startDate = selectedDates[0];
-                    startDateEle.val(startDate);
-                }
-                if (selectedDates[1] != undefined) {
-                    endDate = selectedDates[1];
-                    endDateEle.val(endDate);
-                }
-                $(rangePickr).trigger("change").trigger("keyup");
-            },
-            disableMobile: true,
-        });
-    }
 });

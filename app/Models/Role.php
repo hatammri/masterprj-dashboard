@@ -11,4 +11,10 @@ class Role extends Model
     use HasFactory,HasRoles;
     protected $table = "roles";
     protected $guarded = [];
+    public static function rolename($id) {
+
+            return 2;
+
+        // do something
+    }
 }

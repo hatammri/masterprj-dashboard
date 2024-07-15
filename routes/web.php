@@ -159,6 +159,13 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/show/{data}', [PermissionController::class, 'show'])->name('show');
         Route::put('/update/{permission}', [PermissionController::class, 'update'])->name('update');
     });
+    Route::prefix('customerprofile')->name('customerprofile.')->group(function () {
+        Route::get('/indexprofile', [CustomerController::class, 'indexprofile'])->name('indexprofile');
+        Route::get('/security', [CustomerController::class, 'security'])->name('security');
+        Route::get('/updatecustomer/{customer}', [PermissionController::class, 'updatecustomer'])->name('updatecustomer');
+        Route::get('/updatepassword/{customer}', [PermissionController::class, 'updatepassword'])->name('updatepassword');
+    });
+
 
     Route::prefix('')->name('dashboard.')->group(function () {
         Route::get('', [DashboardController::class, 'index'])->name('index');
