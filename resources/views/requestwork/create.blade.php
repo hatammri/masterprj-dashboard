@@ -68,7 +68,7 @@
                                 data-allow-clear="true">
                                 @foreach ($Customer as $itemCustomer)
                                     <option value="{{ $itemCustomer->id }}">
-                                        {{ $itemCustomer->name }}
+                                        {{ $itemCustomer->userID->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -138,12 +138,12 @@
                         </div>
                         <div class="col-md-6 col-12 mb-4">
                             <label for="flatpickr-datetime" class="form-label"> تاریخ پایان کار</label>
-                            <input type="text" name="date_enter" class="form-control"
+                            <input type="text" name="date_delivery" class="form-control"
                                 placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime1">
                         </div>
                         <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime" name="date_delivery" class="form-label"> تاریخ تحویل</label>
-                            <input type="text" name="date_delivery" class="form-control"
+                            <label for="flatpickr-datetime"  class="form-label"> تاریخ تحویل</label>
+                            <input type="text" name="date_out" class="form-control"
                                 placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime2">
                         </div>
                         <div class="col-md-6">
@@ -164,7 +164,7 @@
                                 <option value="4">
                                     (عادی) 4
                                 </option>
-                                <option value="5">
+                                {{-- <option value="5">
                                     5
                                 </option>
                                 <option value="6">
@@ -181,7 +181,7 @@
                                 </option>
                                 <option value="10">
                                     10
-                                </option>
+                                </option> --}}
                             </select>
                         </div>
                     </div>

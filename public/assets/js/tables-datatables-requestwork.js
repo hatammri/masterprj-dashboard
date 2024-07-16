@@ -190,8 +190,17 @@ $(function () {
                     render: function (data, type, full, meta) {
                         var $status_number = full["request_status"];
                         var $status = {
-                            IS: { title: "IS - صدور درخواست", class: "bg-label-primary" },
-
+                            IS: { title: "IS - صدور درخواست", class: "bg-label-danger" },
+                            RE: { title: "RE -  دریافت تجهیز", class: "bg-label-primary" },
+                            AC: { title: "AC -  پذیرش ", class: "bg-label-success" },
+                            AN: { title: "AN -  درحال برنامه‌ریزی ", class: "bg-label-warning" },
+                            PR: { title: "PR -  دربرنامه قرار گرفته", class: "bg-label-info" },
+                            FS: { title: "FS -  برنامه ریزی‌ادامه‌کار", class: "bg-label-info" },
+                            UP: { title: "UP - در حال بروزرسانی", class: "bg-label-warning" },
+                            FF: { title: "FF - پایان کار", class: "bg-label-success" },
+                            SS: { title: "SS - معلق", class: "bg-label-danger" },
+                            DD: { title: "DD - تجهیز تحویل مشتری شده", class: "bg-label-success" },
+                            AA: { title: "AA - قطعه اسقاط", class: "bg-label-danger" }
                         };
                         if (typeof $status[$status_number] === "undefined") {
                             return data;

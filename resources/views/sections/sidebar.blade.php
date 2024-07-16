@@ -62,7 +62,7 @@
         @canany(['Requestwork_Create_Admin', 'Requestwork_List_Admin'])
             <li
                 class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-                <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bxs-layer"></i>
                     <div>درخواست‌کار</div>
                 </a>
@@ -95,7 +95,7 @@
 
             <li
                 class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-                <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-link"></i>
                     <div>برنامه PM</div>
                 </a>
@@ -125,7 +125,7 @@
 
             <li
                 class="menu-item {{ request()->is('reports/list_scan_period') ? 'active open' : '' }} {{ request()->is('reports/listContradictions') ? 'active open' : '' }}">
-                <a href="{{ route('reports.list_scan_period') }}" class="menu-link menu-toggle">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-link"></i>
                     <div>قطعات تجهیز</div>
                 </a>

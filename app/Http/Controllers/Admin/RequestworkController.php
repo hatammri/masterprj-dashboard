@@ -38,27 +38,15 @@ class RequestworkController extends Controller
     public function store(Request $request)
     {// dd($request);
         $request->validate([
-            'request_number'=>'required',
+            'request_number'=> 'required',
             'customer' => 'required',
             'equipment' => 'required',
-            'equipment_number'=>'required',
-            'serviceplace' => 'required',
-            'estimated_cost' => 'required',
-            'date_enter' => 'required',
-            'date_delivery' => 'required',
-            'Urgency_Work' => 'required',
-            'description' => 'required',
 
         ], $messages = [
-            'request_number.required'=>'شماره درخواستکار نباید خالی باشد',
+            'request_number.required'=> 'شماره درخواست‌کار نباید خالی باشد',
             'customer.required' => 'نام مشتری نباید خالی باشد',
-            'equipment.required' => 'نام تجهیز نباید خالی باشد',
-            'equipment_number.required' => 'شماره سریال تجهیز نباید خالی باشد',
-            'serviceplace.required' => ' سرویس در محل نباید خالی باشد',
-            'estimated_cost.required' => ' هزینه تف=قریبی نباید خالی باشد',
-            'date_enter.required' => 'تاریخ ورود نباید خالی باشد',
-            'date_delivery.required' => ' تاریخ تحویل نباید خالی باشد',
-            'Urgency_Work.required' => 'نام درخواست‌کار نباید خالی باشد'
+            'equipment.required' => 'تجهیز نباید خالی باشد',
+
 
         ]);
 
@@ -131,28 +119,41 @@ class RequestworkController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Specialty $specialty)
-    { //dd($request,$specialty);
+    public function update(Request $request, requestwork $requestwork)
+    {
+
         $request->validate([
-            'name' => 'required',
-            'unitmeasurement' => 'required',
-            'numberofoperator' => 'required',
+            'request_number'=> 'required',
+            'customer' => 'required',
+            'equipment' => 'required',
+
         ], $messages = [
-            'name.required' => 'نام درخواست‌کار نباید خالی باشد',
-            'unitmeasurement.required' => 'واحد اندازه گیری نباید خالی باشد',
-            'numberofoperator.required' => 'تعداد اپراتور نباید خالی باشد',
+            'request_number.required'=> 'شماره درخواست‌کار نباید خالی باشد',
+
+            'customer.required' => 'نام مشتری نباید خالی باشد',
+            'equipment.required' => 'تجهیز نباید خالی باشد',
 
 
         ]);
         try {
-            $specialty->update([
-                'name' => $request->name,
-                'unitmeasurement' => $request->unitmeasurement,
-                'numberofoperator' => $request->numberofoperator,
+            $requestwork->update([
+                'request_number'=> $request->request_number,
+                'customer' => $request->customer,
+                'equipment' => $request->equipment,
+                'equipment_number' => $request->equipment_number,
+                'serviceplace' => $request->serviceplace,
+                'description' => $request->description,
+                'estimated_cost' => $request->estimated_cost,
+                'real_cost' => $request->real_cost,
+                'date_enter' => $request->date_enter,
+                'date_delivery' => $request->date_delivery,
+                'date_out' => $request->date_out,
+                'Urgency_Work' => $request->Urgency_Work,
+                "request_status" => $request->request_status
 
             ]);
             Alert::success('درخواست‌کار مورد نظر ویرایش شد', 'باتشکر');
-            return redirect()->route('specialty.index');
+            return redirect()->route('requestwork.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
             Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');

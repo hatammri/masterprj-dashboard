@@ -48,6 +48,16 @@
                     @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">شماره یا کد درخواست‌کار</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-crosshair"></i></span>
+                                <input name="request_number" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال:c0203011" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2" value="{{ $requestwork->request_number }}">
+                            </div>
+                        </div>
 
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-Customer">نام مشتری</label>
@@ -55,7 +65,7 @@
                                 data-allow-clear="true">
                                 @foreach ($customerall as $itemCustomer)
                                 <option value="{{ $itemCustomer->id }}" {{ $itemCustomer->id == $customer->id ? 'selected' : '' }}>
-                                        {{ $itemCustomer->name }}
+                                        {{ $itemCustomer->userID->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -71,16 +81,25 @@
                                 @endforeach
                             </select>
                         </div>
-
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">شماره سریال تجهیز</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-crosshair"></i></span>
+                                <input name="equipment_number" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال:620c124 " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2" value="{{ $requestwork->equipment_number }}">
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-serviceplace">سرویس در مکان</label>
                             <select name="serviceplace" id="collapsible-serviceplace" class="select2 form-select"
                                 data-allow-clear="true">
-                                <option value="0">
-                                    0
+                                <option value="0" {{ "0"== $requestwork->serviceplace ? 'selected' : '' }}>
+                                    نیاز ندارد
                                 </option>
-                                <option value="1">
-                                    1
+                                <option value="1" {{ "1"== $requestwork->serviceplace ? 'selected' : '' }}>
+                                    نیاز دارد
                                 </option>
 
                             </select>
@@ -105,6 +124,17 @@
                             </div>
                             <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
                         </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-email">هزینه واقعی</label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="bx bx-dollar"></i></span>
+
+                                <input name="real_cost" type="text" id="basic-icon-default-email"
+                                    class="form-control text-start" placeholder="10,000,000" aria-label="john.doe"
+                                    aria-describedby="basic-icon-default-email2" dir="ltr" value="{{ $requestwork->real_cost}}">
+                            </div>
+                            <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
+                        </div>
                         <!-- Datetime Picker-->
                         <div class="col-md-6 col-12 mb-4">
                             <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
@@ -112,29 +142,34 @@
                                 id="flatpickr-datetime1" value="{{ $requestwork->date_enter }}">
                         </div>
                         <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime"  name="date_delivery"  class="form-label"> تاریخ تحویل</label>
+                            <label for="flatpickr-datetime"  class="form-label"> تاریخ  پایان کار</label>
                             <input type="text" name="date_delivery" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
                                 id="flatpickr-datetime2" value="{{ $requestwork->date_delivery }}">
+                        </div>
+                        <div class="col-md-6 col-12 mb-4">
+                            <label for="flatpickr-datetime"  class="form-label"> تاریخ تحویل</label>
+                            <input type="text" name="date_out" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
+                                id="flatpickr-datetime3" value="{{ $requestwork->date_out }}">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-rule">فوریت انجام کار (عدد کمتر اهمیت بیشتری
                                 دارد)</label>
                             <select name="Urgency_Work" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
-                                <option value="1">
+                                <option value="1" {{ "1"== $requestwork->Urgency_Work ? 'selected' : '' }}>
                                     (اضطراری) 1
                                 </option>
-                                <option value="2">
+                                <option value="2" {{ "2"== $requestwork->Urgency_Work ? 'selected' : '' }}>
 
                                     (خیلی مهم) 2
                                 </option>
-                                <option value="3">
+                                <option value="3" {{ "3"== $requestwork->Urgency_Work ? 'selected' : '' }}>
                                     (مهم) 3
                                 </option>
-                                <option value="4">
+                                <option value="4" {{ "4"== $requestwork->Urgency_Work ? 'selected' : '' }}>
                                     (عادی) 4
                                 </option>
-                                <option value="5">
+                                {{-- <option value="5">
                                     5
                                 </option>
                                 <option value="6">
@@ -151,44 +186,51 @@
                                 </option>
                                 <option value="10">
                                     10
-                                </option>
+                                </option> --}}
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-rule">تغییر وضعیت درخواستکار</label>
-                            <select name="Urgency_Work" id="collapsible-rule" class="select2 form-select"
+                            <select name="request_status" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
-                                <option value="1">
-                                    (اضطراری) 1
+                                <option value="IS" {{ "IS"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (صدور) IS
                                 </option>
-                                <option value="
-                                2">
-
-                                    (خیلی مهم) 2
+                                <option value="RE"  {{ "RE"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (دریافت تجهیز) RE
                                 </option>
-                                <option value="3">
-                                    (مهم) 3
+                                <option value="AC"  {{ "AC"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (پذیرش ) AC
                                 </option>
-                                <option value="4">
-                                    (عادی) 4
+                                <option value="AN"  {{ "AN"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (درحال برنامه‌ریزی) AN
                                 </option>
-                                <option value="5">
-                                    5
+                                <option value="PR"  {{ "PR"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (دربرنامه قرار گرفته) PR
                                 </option>
-                                <option value="6">
-                                    6
+                                <option value="FS"  {{ "FS"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (برنامه ریزی‌ادامه‌کار) FS
                                 </option>
-                                <option value="7">
-                                    7
+                                <option value="UP" {{ "UP"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (در حال بروزرسانی) UP
                                 </option>
-                                <option value="8">
-                                    8
+                                <option value="FF" {{ "FF"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (پایان کار) FF
                                 </option>
-                                <option value="9">
-                                    9
+                                <option value="SS" {{ "SS"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (معلق) SS
                                 </option>
-                                <option value="FF">
-                                    FF
+                                <option value="DD" {{ "DD"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (تجهیز تحویل مشتری شده) DD
+                                </option>
+                                <option value="AA" {{ "AA"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (قطعه اسقاط) AA
+                                </option>
+                                <option value="SS" {{ "SS"== $requestwork->request_status ? 'selected' : '' }}>
+                                    (معلق) SS
+                                </option>
+                                <option value="FF" {{ "FF"== $requestwork->request_status ? 'selected' : '' }}>
+                                   (اتمام) FF
                                 </option>
                             </select>
                         </div>
@@ -243,36 +285,4 @@
     <!-- Page JS -->
     <script src="../../assets/js/form-layouts.js"></script>
 
-    <script>
-        console.log('script');
-
-        $('#collapsible-ostan').change(function() {
-            console.log('change');
-            let ostanSelectedid = $(this).val();
-
-            if (ostanSelectedid) {
-                $.ajax({
-                    type: "Get",
-                    url: "{{ url('/getListShahrestan') }}?ostan=" + ostanSelectedid,
-                    success: function(res) {
-                        if (res) {
-                            $('#collapsible-shahrestan').empty();
-                            $.each(res, function(key, shahrestan) {
-
-                                $("#collapsible-shahrestan").append('<option value="' +
-                                    shahrestan.id + '">' + shahrestan.name + '</option>');
-
-                            });
-                        } else {
-                            $('#collapsible-shahrestan').empty();
-                        }
-                    }
-                })
-
-            } else {
-                $('#collapsible-shahrestan').empty();
-            }
-
-        });
-    </script>
 @endsection
