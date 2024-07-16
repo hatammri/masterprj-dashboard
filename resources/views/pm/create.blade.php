@@ -87,32 +87,16 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment"> نام تجهیز</label>
-                            <select name="equipment_id" id="collapsible-Customer" class="select2 form-select"
-                                data-allow-clear="true">
-                                <option value="">
-                                    انتخاب کنید
-                                </option>
-                                @foreach ($equipment as $itemequipment)
-                                    <option value="{{ $itemequipment->id }}">
-                                        {{ $itemequipment->name }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <input name="equipment_name" type="text" id="basic-icon-default-company"
+                                    class="form-control" placeholder="مثال:گیربکس  " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment"> نام شرکت</label>
-                            <select name="company_id" id="collapsible-equipment" class="select2 form-select"
-                                data-allow-clear="true">
-                                <option value="">
-                                    انتخاب کنید
-                                </option>
-                                @foreach ($company as $itemcompany)
-                                    <option value="{{ $itemcompany->id }}">
-                                        {{ $itemcompany->name }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <input name="company_name" type="text" id="basic-icon-default-company"
+                            class="form-control" placeholder="مثال:گیربکس  " aria-label="ACME Inc."
+                            aria-describedby="basic-icon-default-company2">
                         </div>
 
 
@@ -371,7 +355,7 @@
 
                     $.each(response.requestwork, function(key, requestwork) {
 
-                     
+
                         $("#collapsible-request_number").append('<option value="' +
                             requestwork.id + '">' + requestwork.request_number + '</option>');
                     });
