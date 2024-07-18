@@ -189,13 +189,12 @@ class RequestworkController extends Controller
 
     public function getRequestworkEquipmentNumber($request_id)
     {
-        $equipment_number = RequestWork::where('id', $request_id)->get();
+        $equipment_number = RequestWork::with(['customers.companies','equipments:id,name'])->where('id', $request_id)->get();
         return $equipment_number;
 
     }
     public function getEquipmentNumberRequestwork($equipment_number)
-    {
-        $requestwork = RequestWork::where('equipment_number', $equipment_number)->get();
+    { $requestwork= RequestWork::with(['customers.companies','equipments:id,name'])->where('equipment_number', $equipment_number)->get();
         return  $requestwork;
     }
 

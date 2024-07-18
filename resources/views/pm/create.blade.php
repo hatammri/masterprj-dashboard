@@ -87,18 +87,17 @@
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment"> نام تجهیز</label>
-                            <input name="equipment_name" type="text" id="basic-icon-default-company"
+                            <input name="equipment_name" type="text" id="equipment_name"
                                     class="form-control" placeholder="مثال:گیربکس  " aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment"> نام شرکت</label>
-                            <input name="company_name" type="text" id="basic-icon-default-company"
+                            <input name="company_name" type="text" id="company_name"
                             class="form-control" placeholder="مثال:گیربکس  " aria-label="ACME Inc."
                             aria-describedby="basic-icon-default-company2">
                         </div>
-
 
                         <div class="col-md-6">
                             <label class="form-label" for="basic-icon-default-company">نام مستعار تجهیز</label>
@@ -272,9 +271,13 @@
         console.log('script');
 
         $('#collapsible-equipment_number').change(function() {
-            console.log('change');
+
             let equipment_number = $(this).val();
 
+            var equipment_name = document.getElementById("equipment_name");
+            var company_name = document.getElementById("company_name");
+
+            console.log("equipment_name")
 
             $.get(`{{ url('/requestwork/get_requestwork/${equipment_number}') }}`, function(response,
                 status) {
@@ -288,15 +291,19 @@
 
                         $("#collapsible-request_number").append('<option value="' +
                             requestwork.id + '">' + requestwork.request_number + '</option>');
-
+                            equipment_name.value = requestwork.equipments.name
+                            company_name.value=requestwork.customers.companies.name
                     });
                 } else {
                     $('#collapsible-request_number').empty();
-                    console.log("error");
+                    equipment_name.value ="";
+                    company_name.value="";
                 }
             }).fail(function() {
                 $('#collapsible-request_number').empty();
-                console.log("errorlist");
+                equipment_name.value ="";
+                company_name.value="";
+                     console.log("errorlist");
             })
 
         });
@@ -307,7 +314,8 @@
         $('#collapsible-request_number').change(function() {
             console.log('change');
             let request_id = $(this).val();
-            console.log('request_number', request_id);
+            var equipment_name = document.getElementById("equipment_name");
+            var company_name = document.getElementById("company_name");
 
 
             $.get(`{{ url('/requestwork/get_equipmentnumber/${request_id}') }}`, function(response,
@@ -321,15 +329,20 @@
                         $("#collapsible-equipment_number").append('<option value="' +
                             requestwork.equipment_number + '">' + requestwork.equipment_number +
                             '</option>');
-
+                            equipment_name.value = requestwork.equipments.name
+                            company_name.value=requestwork.customers.companies.name
                     });
                 } else {
                     $('#collapsible-equipment_number').empty();
                     console.log("error");
+                    equipment_name.value ="";
+                    company_name.value="";
                 }
             }).fail(function() {
                 $('#collapsible-equipment_number').empty();
                 console.log("errorlist");
+                equipment_name.value ="";
+                company_name.value="";
             })
 
         });
@@ -337,6 +350,8 @@
 
     <script>
         function RefreshEquipmentNumber() {
+            equipment_name.value ="";
+            company_name.value="";
             i = "null";
             info = "انتخاب ";
             console.log("refresh");
