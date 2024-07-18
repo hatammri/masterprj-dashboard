@@ -88,15 +88,15 @@
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment"> نام تجهیز</label>
                             <input name="equipment_name" type="text" id="equipment_name"
-                                    class="form-control" placeholder="مثال:گیربکس  " aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-company2">
+                                    class="form-control"  aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2" disabled>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment"> نام شرکت</label>
                             <input name="company_name" type="text" id="company_name"
-                            class="form-control" placeholder="مثال:گیربکس  " aria-label="ACME Inc."
-                            aria-describedby="basic-icon-default-company2">
+                            class="form-control" aria-label="ACME Inc."
+                            aria-describedby="basic-icon-default-company2" disabled>
                         </div>
 
                         <div class="col-md-6">
