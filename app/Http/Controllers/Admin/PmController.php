@@ -125,14 +125,21 @@ class PmController extends Controller
     public function edit(string $id)
     {
         $pm = Pm::where('id', $id)->get()->first();
-        $requestWork= RequestWork::where('id', $pm->requestwork_id)->get()->first();
-        $equipment= Equipment::where('id', $pm->equipment_id)->get()->first();
-        $company= Company::where('id', $pm->company_id)->get()->first();
-        $requestworkall = RequestWork::all();
-        $equipmentall = Equipment::all();
-        $companyall = Company::all();
-
-        return view('pm.edit', compact('pm', 'requestWork', 'equipment','company','requestworkall','equipmentall','companyall'));
+        // $requestWork= RequestWork::where('id', $pm->requestwork_id)->get()->first();
+        // $equipment= Equipment::where('id', $pm->equipment_id)->get()->first();
+        // $company= Company::where('id', $pm->company_id)->get()->first();
+        // $equipmentall = Equipment::all();
+        // $companyall = Company::all();
+        // $requestworkall = RequestWork::all()->unique('equipment_number');
+        // $requestworkwithoutunique = RequestWork::all();
+        $requestwork = RequestWork::all()->unique('equipment_number');
+        $requestworkwithoutunique = RequestWork::all();
+        $equipment = Equipment::all();
+        $company = Company::all();
+        $Part = Part::all();
+        $Brand = Brand::all();
+        
+        return view('pm.edit', compact('pm','requestwork','equipment','company','Part','Brand','requestworkwithoutunique'));
     }
 
     /**
