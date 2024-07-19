@@ -81,7 +81,7 @@
                                     انتخاب کنید
                                 </option>
                                 @foreach ($requestworkwithoutunique as $itemRequestwork)
-                                    <option value="{{ $itemRequestwork->id }}" {{ $itemRequestwork->equipment_number== $pm->equipment_number ? 'selected' : '' }}>
+                                    <option value="{{ $itemRequestwork->id }}" {{ $itemRequestwork->request_number== $pm_request_number->request_number ? 'selected' : '' }}>
                                         {{ $itemRequestwork->request_number }}
                                     </option>
                                 @endforeach

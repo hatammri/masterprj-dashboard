@@ -138,8 +138,8 @@ class PmController extends Controller
         $company = Company::all();
         $Part = Part::all();
         $Brand = Brand::all();
-        
-        return view('pm.edit', compact('pm','requestwork','equipment','company','Part','Brand','requestworkwithoutunique'));
+        $pm_request_number = RequestWork::where('id', $pm->requestwork_id)->get()->first();
+        return view('pm.edit', compact('pm','requestwork','equipment','company','Part','Brand','requestworkwithoutunique','pm_request_number'));
     }
 
     /**
