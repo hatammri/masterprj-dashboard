@@ -54,7 +54,7 @@
                                 <span id="basic-icon-default-customer2" class="input-group-text"><i
                                         class="bx bx-buildings"></i></span>
                                 <input name="name" type="text" id="basic-icon-default-customer"
-                                    value="{{ $user->name }}" class="form-control" placeholder="مثال:سجاد رضایی"
+                                    value="{{ $user->name }}" class="form-control" placeholder="مثال:سجاد رنجبر "
                                     aria-label="ACME Inc." aria-describedby="basic-icon-default-customer2">
                             </div>
                         </div>
@@ -106,12 +106,12 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="collapsible-post">سمت مشتری در شرکت</label>
+                            <label class="form-label" for="collapsible-post">سمت مشتری در شرکت خود</label>
                             <select name="post_incompany" id="collapsible-post" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($roleall as $itemrole)
                                     <option value="{{ $itemrole->id }}"
-                                        {{ $itemrole->id == $customer->role ? 'selected' : '' }}>
+                                        {{ $itemrole->id == $customer->postCompany->id ? 'selected' : '' }}>
                                         {{ $itemrole->display_name }}
                                     </option>
                                 @endforeach

@@ -118,7 +118,7 @@ class CustomerController extends Controller
      */
     public function edit( $id)
     {
-        $customer = Customer::with(['userID'])->where('id', $id)->get()->first();
+        $customer = Customer::with(['userID','postCompany'])->where('id', $id)->get()->first();
         $user =User::where('id',$customer->user_id)->get()->first();
         $company = Company::where('id', $customer->company)->get()->first();
         $role = Role::where('id', $customer->role)->get()->first();
@@ -126,6 +126,7 @@ class CustomerController extends Controller
         $roleall = Role::all();
         $permissions = Permission::all();
         return view('customer.edit', compact('customer','user', 'company', 'role', 'companyall', 'roleall', 'permissions'));
+
     }
 
     /**
