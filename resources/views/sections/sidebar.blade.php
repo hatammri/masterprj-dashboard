@@ -418,7 +418,7 @@
                     {{-- @can('Permission_List_Admin') --}}
 
                     <li class="menu-item">
-                        {{-- <a href="{{ route('permission.index') }}" class="menu-link"> --}}
+                        <a href="{{ route('permission.index') }}" class="menu-link">
                             <div> لیست Permissions</div>
                         </a>
                     </li>
