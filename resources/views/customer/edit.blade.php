@@ -123,8 +123,8 @@
                             <select name="role" id="collapsible-role" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($roleall as $itemrole)
-                                    <option value="{{ $itemrole->id }}"
-                                        {{ in_array($itemrole->id, $customer->roles->pluck('id')->toArray()) ? 'selected' : '' }}>
+                                     <option value="{{ $itemrole->id }}"
+                                       {{ $itemrole->id == $customer->userID->role ? 'selected' : '' }}>
 
                                         {{ $itemrole->display_name }}
                                     </option>

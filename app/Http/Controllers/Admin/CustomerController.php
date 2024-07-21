@@ -118,7 +118,7 @@ class CustomerController extends Controller
      */
     public function edit( $id)
     {
-        $customer = Customer::where('id', $id)->get()->first();
+        $customer = Customer::with(['userID'])->where('id', $id)->get()->first();
         $user =User::where('id',$customer->user_id)->get()->first();
         $company = Company::where('id', $customer->company)->get()->first();
         $role = Role::where('id', $customer->role)->get()->first();
