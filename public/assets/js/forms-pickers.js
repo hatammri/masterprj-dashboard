@@ -11,6 +11,8 @@
     flatpickrTime = document.querySelector('#flatpickr-time'),
     flatpickrDateTime1 = document.querySelector('#flatpickr-datetime1'),
     flatpickrDateTime2 = document.querySelector('#flatpickr-datetime2'),
+    flatpickrDateTime3 = document.querySelector('#flatpickr-datetime3'),
+
     flatpickrMulti = document.querySelector('#flatpickr-multi'),
     flatpickrRange = document.querySelector('#flatpickr-range'),
     flatpickrInline = document.querySelector('#flatpickr-inline'),
@@ -52,6 +54,15 @@
   }
   if (flatpickrDateTime2) {
     flatpickrDateTime2.flatpickr({
+      enableTime: true,
+      locale: 'fa',
+      altInput: true,
+      altFormat: 'Y/m/d - H:i',
+      disableMobile: true
+    });
+  }
+  if (flatpickrDateTime3) {
+    flatpickrDateTime3.flatpickr({
       enableTime: true,
       locale: 'fa',
       altInput: true,

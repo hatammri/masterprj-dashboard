@@ -139,7 +139,7 @@
                         <div class="col-md-6 col-12 mb-4">
                             <label for="flatpickr-datetime" class="form-label"> تاریخ پایان کار</label>
                             <input type="text" name="date_delivery" class="form-control"
-                                placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime1">
+                                placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime3">
                         </div>
                         <div class="col-md-6 col-12 mb-4">
                             <label for="flatpickr-datetime"  class="form-label"> تاریخ تحویل</label>
