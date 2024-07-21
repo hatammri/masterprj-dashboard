@@ -169,7 +169,9 @@ class CustomerController extends Controller
         $user = User::where('id', $customer->user_id)->get()->first();
         $user->syncRoles($role_find->name);
         $permissions = $request->except('_token', '_method', 'name', 'email', 'phonenumber', 'description', 'company', 'post_incompany', 'role', 'is_active');
-        $user->givePermissionTo($permissions);
+        $user->syncPermissions($permissions);
+      //  dd( $user->getAllPermissionS());
+
         DB::commit();
 
 
