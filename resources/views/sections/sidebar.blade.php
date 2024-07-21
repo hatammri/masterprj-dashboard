@@ -408,32 +408,32 @@
             </li>
         {{-- @endcan --}}
         {{-- permission  --}}
-        @canany(['Permission_Create_Admin', 'Permission_List_Admin'])
+        {{-- @canany(['Permission_Create_Admin', 'Permission_List_Admin']) --}}
             <li class="menu-item">
                 <a href="#" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-universal-access"></i>
                     <div>سطوح دسترسی</div>
                 </a>
                 <ul class="menu-sub">
-                    @can('Permission_List_Admin')
+                    {{-- @can('Permission_List_Admin') --}}
 
                     <li class="menu-item">
-                        <a href="{{ route('permission.index') }}" class="menu-link">
+                        {{-- <a href="{{ route('permission.index') }}" class="menu-link"> --}}
                             <div> لیست Permissions</div>
                         </a>
                     </li>
-                    @endcan
-                    @can('Permission_Create_Admin')
+                    {{-- @endcan --}}
+                    {{-- @can('Permission_Create_Admin') --}}
 
                     <li class="menu-item">
                         <a href="{{ route('permission.create') }}" class="menu-link">
                             <div>اضافه کردن Permissions </div>
                         </a>
                     </li>
-                    @endcan
+                    {{-- @endcan --}}
                 </ul>
             </li>
-            @endcan
+            {{-- @endcan --}}
 
             {{-- <li class="menu-item">
             <a href="#" class="menu-link">
