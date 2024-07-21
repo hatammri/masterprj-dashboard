@@ -378,7 +378,7 @@
         @endcan
 
         {{-- customer  --}}
-        @canany(['Customer_Create_Admin', 'Customer_List_Admin'])
+        {{-- @canany(['Customer_Create_Admin', 'Customer_List_Admin']) --}}
             <li class="menu-item">
                 <a href="#" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-group"></i>
@@ -386,27 +386,27 @@
                 </a>
 
                 <ul class="menu-sub">
-                    @can('Customer_List_Admin')
+                    {{-- @can('Customer_List_Admin') --}}
 
                         <li class="menu-item">
                             <a href="{{ route('customer.index') }}" class="menu-link">
                                 <div>لیست مشتری</div>
                             </a>
                         </li>
-                    @endcan
+                    {{-- @endcan --}}
 
-                    @can('Customer_Create_Admin')
+                    {{-- @can('Customer_Create_Admin') --}}
 
                         <li class="menu-item">
                             <a href="{{ route('customer.create') }}" class="menu-link">
                                 <div>اضافه کردن مشتری</div>
                             </a>
                         </li>
-                    @endcan
+                    {{-- @endcan --}}
 
                 </ul>
             </li>
-        @endcan
+        {{-- @endcan --}}
         {{-- permission  --}}
         @canany(['Permission_Create_Admin', 'Permission_List_Admin'])
             <li class="menu-item">
