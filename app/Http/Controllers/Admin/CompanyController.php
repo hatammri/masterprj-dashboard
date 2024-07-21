@@ -16,7 +16,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('company.index');
+        $companys =Company::all();
+        return view('company.index',compact('companys'));
     }
 
     /**
@@ -40,7 +41,7 @@ class CompanyController extends Controller
 
         ], $messages = [
             'name.required' => 'نام شرکت نباید خالی باشد',
-           
+
 
         ]);
         try {
