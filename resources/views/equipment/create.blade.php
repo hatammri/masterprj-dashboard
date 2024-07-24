@@ -131,29 +131,6 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-brand">برند تجهیز</label>
-                            <select form="dropzone-multi" name="brand_id" id="collapsible-brand" class="select2 form-select"
-                                data-allow-clear="true">
-                                @foreach ($brand as $itembrand)
-                                    <option value="{{ $itembrand->id }}">
-                                        {{ $itembrand->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-typeEquipment">تیپ و نوع تجهیز</label>
-                            <select form="dropzone-multi" name="type_equipment_id" id="collapsible-typeEquipment" class="select2 form-select"
-                                data-allow-clear="true">
-                                @foreach ($typeEquipment as $itemtypeEquipment)
-                                    <option value="{{ $itemtypeEquipment->id }}">
-                                        {{ $itemtypeEquipment->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                 </div>
                 <!-- Multi  -->

@@ -10,6 +10,8 @@ use App\Models\Customer;
 use App\Models\Equipment;
 use App\Models\UnitMeasurement;
 use App\Models\RequestWork;
+use App\Models\TypeEquipment;
+use App\Models\Brand;
 
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -17,7 +19,7 @@ class RequestworkController extends Controller
 {
     public function index()
     {
-        $requestworks = RequestWork::with(['customers.userID','equipments:id,name'])->get();
+        $requestworks = RequestWork::with(['customers.userID','equipments:id,name','barnds:id,name','typeEqupments:id,name'])->get();
         return view('requestwork.index',compact('requestworks'));
     }
 
@@ -28,15 +30,16 @@ class RequestworkController extends Controller
     {
         $Customer = Customer::all();
         $Equipment = Equipment::all();
-
-        return view('requestwork.create', compact('Customer','Equipment'));
+        $brand = Brand::all();
+        $typeEquipment = TypeEquipment::all();
+        return view('requestwork.create', compact('Customer','Equipment','brand','typeEquipment'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {// dd($request);
+    {
         $request->validate([
             'request_number'=> 'required',
             'customer' => 'required',
@@ -47,7 +50,6 @@ class RequestworkController extends Controller
             'customer.required' => 'نام مشتری نباید خالی باشد',
             'equipment.required' => 'تجهیز نباید خالی باشد',
 
-
         ]);
 
         try {
@@ -55,6 +57,8 @@ class RequestworkController extends Controller
                 'request_number' =>  $request->request_number,
                 'customer' => $request->customer,
                 'equipment' => $request->equipment,
+                'brand_id' => $request->brand_id,
+                'type_equipment_id' => $request->type_equipment_id,
                 'equipment_number'=> $request->equipment_number,
                 'creator' => "1",
                 'request_status' => "IS",
@@ -102,8 +106,10 @@ class RequestworkController extends Controller
         $equipment= Equipment::where('id', $requestwork->equipment)->get()->first();
         $customerall = customer::all();
         $equipmentall = Equipment::all();
+        $brand = Brand::all();
+        $typeEquipment = TypeEquipment::all();
 
-        return view('requestwork.edit', compact('requestwork', 'customer','customerall', 'equipment','equipmentall'));
+        return view('requestwork.edit', compact('requestwork', 'customer','customerall', 'equipment','equipmentall','brand','typeEquipment'));
     }
     public function editstatus(string $id)
     {
@@ -112,7 +118,6 @@ class RequestworkController extends Controller
         $equipment= Equipment::where('id', $requestwork->equipment)->get()->first();
         $customerall = customer::all();
         $equipmentall = Equipment::all();
-
 
         return view('requestwork.editstatus', compact('requestwork', 'customer','customerall', 'equipment','equipmentall'));
     }
@@ -140,6 +145,8 @@ class RequestworkController extends Controller
                 'request_number'=> $request->request_number,
                 'customer' => $request->customer,
                 'equipment' => $request->equipment,
+                'brand_id' => $request->brand_id,
+                'type_equipment_id' => $request->type_equipment_id,
                 'equipment_number' => $request->equipment_number,
                 'serviceplace' => $request->serviceplace,
                 'description' => $request->description,
