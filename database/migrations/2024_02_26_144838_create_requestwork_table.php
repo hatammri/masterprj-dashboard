@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('customer');
             $table->foreign('equipment')->references('id')->on('equipment');
             $table->string('equipment');
+            $table->foreignId('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brand_id');
+            $table->foreignId('type_equipment_id');
+            $table->foreign('type_equipment_id')->references('id')->on('type_equipment_id');
             $table->foreign('creator')->references('id')->on('operator');
             $table->string('creator')->nullable();
             $table->string('request_status')->default("IS");

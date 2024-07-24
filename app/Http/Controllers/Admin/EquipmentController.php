@@ -42,8 +42,6 @@ class EquipmentController extends Controller
             'weight' => 'required',
             'dimensions' => 'required',
             'description' => 'required',
-            'brand_id' => 'required',
-            'type_equipment_id' => 'required'
         ], $messages = [
             'name.required' => 'نام تجهیز نباید خالی باشد',
             'price.required' => 'قیمت تجهیز نباید خالی باشد',
@@ -52,8 +50,6 @@ class EquipmentController extends Controller
             'weight.required' =>  'وزن نباید خالی باشد',
             'dimensions.required' =>  'ابعاد نباید خالی باشد',
             'description.required' =>  'توضیحات نباید خالی باشد',
-            'brand_id.required' =>  'برند تجهیز مشخص نشده',
-            'type_equipment_id.required' =>  'نوع تجهیز مشخص نشده',
 
         ]);
         try {
@@ -65,8 +61,6 @@ class EquipmentController extends Controller
                 'weight' => $request->weight,
                 'dimensions' => $request->dimensions,
                 'description' => $request->description,
-                'brand_id' => $request->brand_id,
-                'type_equipment_id' => $request->type_equipment_id
             ]);
             Alert::success('تجهیز ایجاد گردید', 'باتشکر');
             return redirect()->route('equipment.index');
@@ -113,8 +107,6 @@ class EquipmentController extends Controller
             'weight' => 'required',
             'dimensions' => 'required',
             'description' => 'required',
-            'brand_id' => 'required',
-            'type_equipment_id' => 'required'
         ], $messages = [
             'name.required' => 'نام تجهیز نباید خالی باشد',
             'price.required' => 'قیمت تجهیز نباید خالی باشد',
@@ -123,8 +115,6 @@ class EquipmentController extends Controller
             'weight.required' =>  'وزن نباید خالی باشد',
             'dimensions.required' =>  'ابعاد نباید خالی باشد',
             'description.required' =>  'توضیحات نباید خالی باشد',
-            'brand_id.required' =>  'برند تجهیز مشخص نشده',
-            'type_equipment_id.required' =>  'نوع تجهیز مشخص نشده'
         ]);
         try {
             $equipment->update([
@@ -135,8 +125,6 @@ class EquipmentController extends Controller
                 'weight' => $request->weight,
                 'dimensions' => $request->dimensions,
                 'description' => $request->description,
-                'brand_id' => $request->brand_id,
-                'type_equipment_id' => $request->type_equipment_id
             ]);
 
 

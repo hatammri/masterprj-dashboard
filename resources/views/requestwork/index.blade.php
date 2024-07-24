@@ -34,6 +34,12 @@
                                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
                                             colspan="1" aria-label="نام تجهیز: فعال سازی نمایش به صورت صعودی"
                                             style="width: 204.36px;">نام تجهیز</th>
+                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                            colspan="1" aria-label="نام تجهیز: فعال سازی نمایش به صورت صعودی"
+                                            style="width: 204.36px;">برند تجهیز</th>
+                                            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                            colspan="1" aria-label="تیپ تجهیز: فعال سازی نمایش به صورت صعودی"
+                                            style="width: 204.36px;">تیپ تجهیز</th>
                                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
                                             colspan="1" aria-label="شماره سریال تجهیز: فعال سازی نمایش به صورت صعودی"
                                             style="width: 93.36px;">شماره سریال تجهیز</th>
@@ -88,6 +94,8 @@
                                         <td class="">{{ $requestwork->request_number }}</td>
                                         <td class="">{{ $requestwork->customers->userID->name}}</td>
                                         <td>{{ $requestwork->equipments->name }}</td>
+                                        <td>{{ $requestwork->barnds->name }}</td>
+                                        <td>{{ $requestwork->typeEqupments->name }}</td>
                                         <td class="">{{ $requestwork->equipment_number }}</td>
                                         <td class="">{{ $requestwork->request_status }}</td>
                                         <td class="">{{ $requestwork->date_enter }}</td>
@@ -120,6 +128,8 @@
                                         <th rowspan="1" colspan="1">شماره درخواست‌کار</th>
                                         <th rowspan="1" colspan="1">نام مشتری</th>
                                         <th rowspan="1" colspan="1">نام تجهیز</th>
+                                        <th rowspan="1" colspan="1">برند تجهیز</th>
+                                        <th rowspan="1" colspan="1">تیپ تجهیز</th>
                                         <th rowspan="1" colspan="1">شماره سریال تجهیز</th>
                                         <th rowspan="1" colspan="1">وضعیت درخواست‌کار</th>
                                         <th rowspan="1" colspan="1">تاریخ ورود</th>

@@ -82,6 +82,30 @@
                             </select>
                         </div>
                         <div class="col-md-6">
+                            <label class="form-label" for="collapsible-equipment">برند تجهیز</label>
+                            <select name="brand_id" id="collapsible-equipment" class="select2 form-select"
+                                data-allow-clear="true">
+                                @foreach ($brand as $itembrand)
+                                <option value="{{ $itembrand->id }}"  {{ $itembrand->id == $requestwork->brand_id ? 'selected' : '' }}>
+                                    {{ $itembrand->name }}
+                                </option>
+                            @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="collapsible-equipment">تیپ و نوع تجهیز</label>
+                            <select name="type_equipment_id" id="collapsible-equipment" class="select2 form-select"
+                                data-allow-clear="true">
+                                @foreach ($typeEquipment as $itemtypeEquipment)
+                                <option value="{{ $itemtypeEquipment->id }}"  {{ $requestwork->type_equipment_id == $itemtypeEquipment->id ? 'selected' : '' }}>
+
+                                    {{ $itemtypeEquipment->name }}
+                                </option>
+                            @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
                             <label class="form-label" for="basic-icon-default-company">شماره سریال تجهیز</label>
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i

@@ -79,6 +79,8 @@ $(function () {
                 { data: "request_number" },
                 { data: "customers.userID.name" },
                 { data: "equipments.name" },
+                { data: "barnds.name" },
+                { data: "typeEqupments.name" },
                 { data: "equipment_number" },
                 { data: "request_status" },
                 { data: "date_enter" },
@@ -154,7 +156,7 @@ $(function () {
                 },
                 {
                     // Label
-                    targets: 10,
+                    targets: 12,
                     render: function (data, type, full, meta) {
                         var $status_number = full["Urgency_Work"];
                         var $status = {
@@ -186,7 +188,7 @@ $(function () {
                 },
                 {
                     // Label
-                    targets: 4,
+                    targets: 6,
                     render: function (data, type, full, meta) {
                         var $status_number = full["request_status"];
                         var $status = {

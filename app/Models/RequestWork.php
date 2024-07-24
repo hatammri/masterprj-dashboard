@@ -25,5 +25,13 @@ class RequestWork extends Model
     {
         return $this->belongsTo(operator::class,'creator');
     }
+    public function barnds(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class,'brand_id');
+    }
+    public function typeEqupments(): BelongsTo
+    {
+        return $this->belongsTo(TypeEquipment::class,'type_equipment_id');
+    }
 
 }
