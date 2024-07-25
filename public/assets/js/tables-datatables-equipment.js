@@ -130,10 +130,7 @@ $(function () {
                                 class: " bg-label-warning",
                             },
                             1: { title: "فعال", class: "bg-label-success" },
-                            null: {
-                                title: "نامشخص",
-                                class: " bg-label-warning",
-                            },
+                     
                         };
                         if (typeof $status[$status_number] === "undefined") {
                             return data;
