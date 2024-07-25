@@ -18,7 +18,9 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        return view('equipment.index');
+        $equipments = Equipment::all();
+
+        return view('equipment.index',compact('equipments'));
     }
 
     /**
@@ -36,20 +38,9 @@ class EquipmentController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'required',
-            'color' => 'required',
-            'equipment_security' => 'required',
-            'weight' => 'required',
-            'dimensions' => 'required',
-            'description' => 'required',
+
         ], $messages = [
             'name.required' => 'نام تجهیز نباید خالی باشد',
-            'price.required' => 'قیمت تجهیز نباید خالی باشد',
-            'color.required' => 'رنگ تجهیز نباید خالی باشد',
-            'equipment_security.required' => 'امنیت تجهیز را مشخص کنید',
-            'weight.required' =>  'وزن نباید خالی باشد',
-            'dimensions.required' =>  'ابعاد نباید خالی باشد',
-            'description.required' =>  'توضیحات نباید خالی باشد',
 
         ]);
         try {
@@ -101,20 +92,9 @@ class EquipmentController extends Controller
     {  //dd($request,$equipment);
         $request->validate([
             'name' => 'required',
-            'price' => 'required',
-            'color' => 'required',
-            'equipment_security' => 'required',
-            'weight' => 'required',
-            'dimensions' => 'required',
-            'description' => 'required',
+
         ], $messages = [
             'name.required' => 'نام تجهیز نباید خالی باشد',
-            'price.required' => 'قیمت تجهیز نباید خالی باشد',
-            'color.required' => 'رنگ تجهیز نباید خالی باشد',
-            'equipment_security.required' => 'امنیت تجهیز را مشخص کنید',
-            'weight.required' =>  'وزن نباید خالی باشد',
-            'dimensions.required' =>  'ابعاد نباید خالی باشد',
-            'description.required' =>  'توضیحات نباید خالی باشد',
         ]);
         try {
             $equipment->update([

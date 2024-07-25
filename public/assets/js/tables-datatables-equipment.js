@@ -107,14 +107,9 @@ $(function () {
     if (dt_filter_table.length) {
 
         var dt_filter = dt_filter_table.DataTable({
-            ajax: {
-                url: "http://localhost:8000/equipment/datatable",
-                type: "GET",
-            },
+
             columns: [
                 { data: "name" },
-                { data: "brands.name" },
-                { data: "type_equipments.name" },
                 { data: "price" },
                 { data: "color" },
                 { data: "equipment_security" },
@@ -126,7 +121,7 @@ $(function () {
             columnDefs: [
                 {
                     // Label
-                    targets: -5,
+                    targets:3,
                     render: function (data, type, full, meta) {
                         var $status_number = full["equipment_security"];
                         var $status = {
@@ -135,7 +130,10 @@ $(function () {
                                 class: " bg-label-warning",
                             },
                             1: { title: "فعال", class: "bg-label-success" },
-
+                            null: {
+                                title: "نامشخص",
+                                class: " bg-label-warning",
+                            },
                         };
                         if (typeof $status[$status_number] === "undefined") {
                             return data;
@@ -149,34 +147,7 @@ $(function () {
                         );
                     },
                 },
-                {
-                    // Actions
-                    targets: -1,
-                    title: "نمایش جزئیات",
-                    orderable: false,
-                    searchable: false,
-                    render: function (data, type, full, meta) {
-                        // console.log(meta.row);
-                        // console.log(meta);
-                        console.log(full.id);
 
-                        return (
-                            '<div class="d-inline-block">' +
-                            '<a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></a>' +
-                            '<div class="dropdown-menu dropdown-menu-end m-0">' +
-                            '<a href="/equipment/edit/' +
-                            full.id +
-                            '"' +
-                            'class="dropdown-item">ویرایش اطلاعات تجهیز' +
-                            "</div>" +
-                            "</div>" +
-                            '<a  href="/equipment/edit/' +
-                            full.id +
-                            '"' +
-                            'class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>'
-                        );
-                    },
-                },
             ],
             orderCellsTop: true,
             dom:

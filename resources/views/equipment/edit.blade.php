@@ -35,13 +35,13 @@
 
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="py-3 breadcrumb-wrapper mb-4">
-                <span class="text-muted fw-light">مشتری /</span> ویرایش مشتری جدید
+                <span class="text-muted fw-light">تجهیز /</span> ویرایش تجهیز جدید
             </h4>
 
 
             <!-- Multi Column with Form Separator -->
             <div class="card mb-4">
-                <h5 class="card-header heading-color">ویرایش مشتری جدید</h5>
+                <h5 class="card-header heading-color">ویرایش تجهیز جدید</h5>
                 <form action="{{ route('equipment.update' , ['equipment' => $equipment->id]) }}"  method="POST" class="card-body">
                     @csrf
                     @method('put')
@@ -134,32 +134,6 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-brand">برند تجهیز</label>
-                            <select  name="brand_id" id="collapsible-brand"
-                                class="select2 form-select" data-allow-clear="true">
-                                @foreach ($brand as $itembrand)
-                                    <option value="{{ $itembrand->id }}"
-                                        {{ $equipment->brand_id == $itembrand->id ? 'selected' : '' }}>
-                                        {{ $itembrand->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="col-md-6">
-                            <label class="form-label" for="collapsible-typeEquipment">تیپ و نوع تجهیز</label>
-                            <select  name="type_equipment_id" id="collapsible-typeEquipment"
-                                class="select2 form-select" data-allow-clear="true">
-                                @foreach ($typeEquipment as $itemtypeEquipment)
-                                    <option value="{{ $itemtypeEquipment->id }}"
-                                        {{ $equipment->type_equipment_id == $itemtypeEquipment->id ? 'selected' : '' }}>
-                                        {{ $itemtypeEquipment->name }}
-                                    </option>
-                                @endforeach
-
-                            </select>
-                        </div>
 
                     </div>
 

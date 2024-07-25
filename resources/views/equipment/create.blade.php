@@ -16,10 +16,12 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css">
-    <link rel="stylesheet" href="../../assets/vendor/libs/dropzone/dropzone.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/flatpickr/flatpickr.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.css">
+    <link rel="stylesheet" href="../../assets/vendor/libs/pickr/pickr-themes.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/select2/select2.css">
-
     <!-- Page CSS -->
     <!-- Helpers -->
     <script src="../../assets/vendor/js/helpers.js"></script>
@@ -45,62 +47,60 @@
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ثبت تجهیز جدید</h5>
 
-                {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
-                <div class="card-body">
+                <form action="{{ route('equipment.store') }}" method="POST" class="card-body">
+                    @csrf
+                    {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-brand">نام تجهیز</label>
+                            <label class="form-label" for="basic-icon-default-company">نام تجهیز</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-brand2" class="input-group-text"><i
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-cube"></i></span>
-                                <input form="dropzone-multi" name="name" type="text" id="basic-icon-default-brand" class="form-control"
+                                <input name="name" type="text" id="basic-icon-default-company" class="form-control"
                                     placeholder="مثال: گیربکس" aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-brand2">
+                                    aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-price">قیمت تجهیز (تومان)</label>
+                            <label class="form-label" for="basic-icon-default-company">قیمت تجهیز (تومان)</label>
                             <div class="input-group input-group-merge">
-                                <span class="input-group-text"><i class="bx bx-dollar"></i></span>
-
-                                <input form="dropzone-multi" name="price" type="text" id="basic-icon-default-price"
-                                    class="form-control text-start" placeholder="10,000,000" aria-label="john.doe"
-                                    aria-describedby="basic-icon-default-price2" dir="ltr">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-dollar"></i></span>
+                                <input name="price" type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="10,000,000" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
                             </div>
-                            <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label" for="basic-icon-default-brand">رنگ</label>
+                            <label class="form-label" for="basic-icon-default-company">رنگ</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-brand2" class="input-group-text"><i
-                                        class="bx bx-palette"></i></span>
-                                <input form="dropzone-multi" name="color" type="text" id="basic-icon-default-brand" class="form-control"
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx  bx-palette"></i></span>
+                                <input name="color" type="text" id="basic-icon-default-company" class="form-control"
                                     placeholder="مثال: سفید" aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-brand2">
+                                    aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
-
-                       <div class="col-md-6">
+                        <div class="col-md-6">
                             <label class="d-block form-label">امنیت تجهیز</label>
                             <div class="form-check form-check-inline">
-                                <input form="dropzone-multi" type="radio" id="basic-default-radio-male" name="equipment_security"
-                                    class="form-check-input" value="1" required>
+                                <input type="radio" id="basic-default-radio-male" name="equipment_security"
+                                    class="form-check-input" value="1" >
                                 <label class="form-check-label" for="basic-default-radio-male">فعال</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input form="dropzone-multi" type="radio" id="basic-default-radio-female" name="equipment_security"
-                                    class="form-check-input" value="0" required>
+                                <input  type="radio" id="basic-default-radio-female" name="equipment_security"
+                                    class="form-check-input" value="0" >
                                 <label class="form-check-label" for="basic-default-radio-female">غیرفعال</label>
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label" for="basic-icon-default-phone">وزن تجهیز (کیلوگرم)</label>
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-phone2" class="input-group-text"><i
                                         class="bx bx-calculator"></i></span>
-                                <input form="dropzone-multi" name="weight" type="text" id="basic-icon-default-phone"
+                                <input  name="weight" type="text" id="basic-icon-default-phone"
                                     class="form-control phone-mask text-start" placeholder="1000" aria-label="1000"
                                     aria-describedby="basic-icon-default-phone2" dir="ltr">
 
@@ -114,7 +114,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-brand2" class="input-group-text"><i
                                         class="bx bx-palette"></i></span>
-                                <input form="dropzone-multi" name="dimensions" type="text" id="basic-icon-default-brand" class="form-control"
+                                <input  name="dimensions" type="text" id="basic-icon-default-brand" class="form-control"
                                     placeholder="مثال: 10*20*30" aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-brand2">
                             </div>
@@ -125,39 +125,21 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
-                                <textarea form="dropzone-multi" name="description" id="basic-icon-default-message" class="form-control"
+                                <textarea  name="description" id="basic-icon-default-message" class="form-control"
                                     placeholder="توضیحات را اینجا بنویسید" aria-label="Hi, Do you have a moment to talk Joe?"
                                     aria-describedby="basic-icon-default-message2"></textarea>
                             </div>
                         </div>
 
                     </div>
-                </div>
-                <!-- Multi  -->
-                <div class="col-12">
-                    <h5 class="card-header heading-color">بارگذاری تصاویر و مدارک تجهیز</h5>
-                    <div class="card-body">
-                        <form  action="{{ route('equipment.store') }}" method="POST" class="dropzone needsclick" id="dropzone-multi">
-                           @csrf
-                            <div class="dz-message needsclick">
-                                فایل‌ها را اینجا رها کنید و یا کلیک کنید
-                                <span class="note needsclick">لطفا منتظر بمانید تا
-                                    انتخاب شده واقعا ارسال <strong>نمی‌شوند</strong>.)</span>
-                            </div>
-                            <div class="fallback">
-                                <input  name="file" type="file">
-                            </div>
 
-                        </form>
-                        <div class="pt-4">
-                            <button form="dropzone-multi" type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
-                            <button type="reset" class="btn btn-label-secondary">انصراف</button>
-                        </div>
+                    <div class="pt-4">
+                        <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
+                        <button type="reset" class="btn btn-label-secondary">انصراف</button>
                     </div>
-                </div>
-                <!-- Multi  -->
-            </div>
+                </form>
 
+            </div>
 
         </div>
         <!-- / Content -->
@@ -181,8 +163,6 @@
 
     <script src="../../assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
-    <script src="../../assets/vendor/libs/dropzone/dropzone.js"></script>
-    <script src="../../assets/js/forms-file-upload.js"></script>
 
     <!-- Vendors JS -->
     <script src="../../assets/vendor/libs/cleavejs/cleave.js"></script>
@@ -193,12 +173,16 @@
     <script src="../../assets/vendor/libs/flatpickr/l10n/fa-jdate.js"></script>
     <script src="../../assets/vendor/libs/select2/select2.js"></script>
     <script src="../../assets/vendor/libs/select2/i18n/fa.js"></script>
-
+    <script src="../../assets/vendor/libs/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="../../assets/vendor/libs/bootstrap-daterangepicker/bootstrap-daterangepicker.js"></script>
+    <script src="../../assets/vendor/libs/jquery-timepicker/jquery-timepicker.js"></script>
+    <script src="../../assets/vendor/libs/pickr/pickr.js"></script>
     <!-- Main JS -->
     <script src="../../assets/js/main.js"></script>
 
     <!-- Page JS -->
     <script src="../../assets/js/form-layouts.js"></script>
+    <script src="../../assets/js/forms-pickers.js"></script>
 
     <script>
         console.log('script');
