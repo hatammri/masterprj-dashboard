@@ -77,29 +77,29 @@ $(function () {
 
             columns: [
                 { data: "request_number" },
-                { data: "customers.userID.name" },
                 { data: "equipments.name" },
-                { data: "barnds.name" },
-                { data: "typeEqupments.name" },
-                { data: "equipment_number" },
                 { data: "request_status" },
-                { data: "date_enter" },
-                { data: "date_delivery" },
-                { data: "date_out" },
+                { data: "" },
+                { data: "description" },
                 { data: "estimated_cost" },
                 { data: "real_cost" },
                 { data: "Urgency_Work" },
-                { data: "description" },
+                { data: "customers.userID.name" },
+                { data: "barnds.name" },
+                { data: "typeEqupments.name" },
+                { data: "equipment_number" },
+                { data: "date_enter" },
+                { data: "date_delivery" },
+                { data: "date_out" },
                 { data: "creators.name" },
                 { data: "is_active" },
                 { data: "serviceplace" },
-                { data: "" },
 
             ],
             columnDefs: [
                 {
                     // Label
-                    targets: -3,
+                    targets: -2,
                     render: function (data, type, full, meta) {
                         var $status_number = full["is_active"];
                         var $status = {
@@ -128,7 +128,7 @@ $(function () {
                 },
                 {
                     // Label
-                    targets: -2,
+                    targets: -1,
                     render: function (data, type, full, meta) {
                         var $status_number = full["serviceplace"];
                         var $status = {
@@ -156,7 +156,7 @@ $(function () {
                 },
                 {
                     // Label
-                    targets: 12,
+                    targets: 7,
                     render: function (data, type, full, meta) {
                         var $status_number = full["Urgency_Work"];
                         var $status = {
@@ -188,7 +188,7 @@ $(function () {
                 },
                 {
                     // Label
-                    targets: 6,
+                    targets: 2,
                     render: function (data, type, full, meta) {
                         var $status_number = full["request_status"];
                         var $status = {
