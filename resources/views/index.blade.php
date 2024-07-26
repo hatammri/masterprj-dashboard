@@ -7,7 +7,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 
-    <title>داشبورد - مدیریت شرکت صاایران</title>
+    <title>داشبورد -مدیریت گروه صنعتی رادیس</title>
 
     <meta name="description" content="">
 
@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css">
     <link rel="stylesheet" href="../../assets/vendor/libs/apex-charts/apex-charts.css">
+    <link href="../../assets/dist/mds.bs.datetimepicker.style.css" rel="stylesheet"/>
+
     @yield('csslink')
     <!-- Page CSS -->
 
@@ -99,7 +101,7 @@
     <!-- Page JS -->
     <script src="../../assets/js/dashboards-analytics.js"></script>
     <script src="../../assets/js/jquery.czMore-latest.js"></script>
-
+    <script src="../../assets/dist/mds.bs.datetimepicker.js"></script>
     @yield('scripts')
 
 </body>

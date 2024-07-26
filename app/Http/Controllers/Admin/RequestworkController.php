@@ -12,6 +12,7 @@ use App\Models\UnitMeasurement;
 use App\Models\RequestWork;
 use App\Models\TypeEquipment;
 use App\Models\Brand;
+use Hekmatinasser\Verta\Verta;
 
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -65,11 +66,11 @@ class RequestworkController extends Controller
                 'serviceplace' => $request->serviceplace,
                 'description' => $request->description,
                 'estimated_cost' => $request->estimated_cost,
-                'date_enter' => $request->date_enter,
+                'date_enter' =>  Verta::parse($request->date_enter)->datetime()->format('Y-m-d'),
                 'real_cost' => "null",
-                'date_delivery' => $request->date_delivery,
+                'date_delivery' => Verta::parse($request->date_delivery)->datetime()->format('Y-m-d'),
                 'Urgency_Work' => $request->Urgency_Work,
-                'date_out' => "null",
+                'date_out' =>  Verta::parse($request->date_enter)->datetime()->format('Y-m-d'),
                 'is_active' => "1",
             ]);
             Alert::success('درخواست‌کار مورد نظر ایجاد شد', 'باتشکر');
@@ -152,9 +153,9 @@ class RequestworkController extends Controller
                 'description' => $request->description,
                 'estimated_cost' => $request->estimated_cost,
                 'real_cost' => $request->real_cost,
-                'date_enter' => $request->date_enter,
-                'date_delivery' => $request->date_delivery,
-                'date_out' => $request->date_out,
+                'date_enter' =>Verta::parse($request->date_enter)->datetime()->format('Y-m-d'),
+                'date_delivery' => Verta::parse($request->date_delivery)->datetime()->format('Y-m-d'),
+                'date_out' => Verta::parse($request->date_out)->datetime()->format('Y-m-d'),
                 'Urgency_Work' => $request->Urgency_Work,
                 "request_status" => $request->request_status
 
@@ -214,4 +215,6 @@ class RequestworkController extends Controller
         return ['requestwork' => $requestwork , 'requestworkwithunique' => $requestworkwithunique];
 
     }
+
+   
 }

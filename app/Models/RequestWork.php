@@ -33,5 +33,13 @@ class RequestWork extends Model
     {
         return $this->belongsTo(TypeEquipment::class,'type_equipment_id');
     }
+    public static function GregoriantoJalali($date)
+
+    {
+        return verta($date)->format('Y-m-d');
+
+
+    }
+
 
 }

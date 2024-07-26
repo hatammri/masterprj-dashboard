@@ -56,8 +56,8 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-crosshair"></i></span>
-                                <input name="request_number" type="text" id="basic-icon-default-company" class="form-control"
-                                    placeholder="مثال:c0203011" aria-label="ACME Inc."
+                                <input name="request_number" type="text" id="basic-icon-default-company"
+                                    class="form-control" placeholder="مثال:c0203011" aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
@@ -89,10 +89,10 @@
                             <select name="brand_id" id="collapsible-equipment" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($brand as $itembrand)
-                                <option value="{{ $itembrand->id }}">
-                                    {{ $itembrand->name }}
-                                </option>
-                            @endforeach
+                                    <option value="{{ $itembrand->id }}">
+                                        {{ $itembrand->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-6">
@@ -100,10 +100,10 @@
                             <select name="type_equipment_id" id="collapsible-equipment" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($typeEquipment as $itemtypeEquipment)
-                                <option value="{{ $itemtypeEquipment->id }}">
-                                    {{ $itemtypeEquipment->name }}
-                                </option>
-                            @endforeach
+                                    <option value="{{ $itemtypeEquipment->id }}">
+                                        {{ $itemtypeEquipment->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-6">
@@ -111,8 +111,8 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-crosshair"></i></span>
-                                <input name="equipment_number" type="text" id="basic-icon-default-company" class="form-control"
-                                    placeholder="مثال:620c124 " aria-label="ACME Inc."
+                                <input name="equipment_number" type="text" id="basic-icon-default-company"
+                                    class="form-control" placeholder="مثال:620c124 " aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
@@ -155,21 +155,40 @@
                             <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
                         </div>
                         <!-- Datetime Picker-->
-                        <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
-                            <input type="text" name="date_enter" class="form-control"
-                                placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime1">
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">تاریخ ورود</label>
+                            <div class="input-group input-group-merge">
+                                <span id="span_date_enter" class="input-group-text"><i
+                                        class="fas fa-clock"></i></span>
+                                <input id="input_date_enter" name="date_enter" type="text"
+                                    class="form-control" placeholder="مثال:1403/02/03"
+                                  >
+                            </div>
                         </div>
-                        <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime" class="form-label"> تاریخ پایان کار</label>
-                            <input type="text" name="date_delivery" class="form-control"
-                                placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime2">
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">تاریخ پایان کار</label>
+                            <div class="input-group input-group-merge">
+                                <span id="span_date_delivery" class="input-group-text"><i
+                                        class="fas fa-clock"></i></span>
+                                <input id="input_date_delivery" name="date_delivery" type="text" id="basic-icon-default-company"
+                                    class="form-control" placeholder="مثال:1403/02/03" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
+                            </div>
                         </div>
-                        <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime"  class="form-label"> تاریخ تحویل</label>
-                            <input type="text" name="date_out" class="form-control"
-                                placeholder="YYYY/MM/DD - HH:MM" id="flatpickr-datetime3">
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">تاریخ تحویل</label>
+                            <div class="input-group input-group-merge">
+                                <span id="span_date_out" class="input-group-text"><i
+                                        class="fas fa-clock"></i></span>
+                                <input id="input_date_out" name="date_out" type="text" id="basic-icon-default-company"
+                                    class="form-control" placeholder="مثال:1403/02/03" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
+                            </div>
                         </div>
+
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-rule">فوریت انجام کار (عدد کمتر اهمیت بیشتری
                                 دارد)</label>
@@ -208,7 +227,6 @@
                                 </option> --}}
                             </select>
                         </div>
-
 
 
                     </div>
@@ -295,5 +313,24 @@
             }
 
         });
+    </script>
+
+      <script>
+        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_enter'), {
+           targetTextSelector: '#input_date_enter',
+           persianNumber:false
+
+                 });
+         new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_delivery'), {
+           targetTextSelector: '#input_date_delivery',
+           persianNumber:false
+
+         });
+         new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_out'), {
+           targetTextSelector: '#input_date_out',
+           persianNumber:false
+
+         });
+
     </script>
 @endsection

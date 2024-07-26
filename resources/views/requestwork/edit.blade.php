@@ -53,9 +53,10 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-crosshair"></i></span>
-                                <input name="request_number" type="text" id="basic-icon-default-company" class="form-control"
-                                    placeholder="مثال:c0203011" aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-company2" value="{{ $requestwork->request_number }}">
+                                <input name="request_number" type="text" id="basic-icon-default-company"
+                                    class="form-control" placeholder="مثال:c0203011" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2"
+                                    value="{{ $requestwork->request_number }}">
                             </div>
                         </div>
 
@@ -64,7 +65,8 @@
                             <select name="customer" id="collapsible-Customer" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($customerall as $itemCustomer)
-                                <option value="{{ $itemCustomer->id }}" {{ $itemCustomer->id == $customer->id ? 'selected' : '' }}>
+                                    <option value="{{ $itemCustomer->id }}"
+                                        {{ $itemCustomer->id == $customer->id ? 'selected' : '' }}>
                                         {{ $itemCustomer->userID->name }}
                                     </option>
                                 @endforeach
@@ -75,7 +77,8 @@
                             <select name="equipment" id="collapsible-equipment" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($equipmentall as $itemEquipment)
-                                <option value="{{ $itemEquipment->id }}" {{ $itemEquipment->id == $equipment->id ? 'selected' : '' }}>
+                                    <option value="{{ $itemEquipment->id }}"
+                                        {{ $itemEquipment->id == $equipment->id ? 'selected' : '' }}>
                                         {{ $itemEquipment->name }}
                                     </option>
                                 @endforeach
@@ -86,10 +89,11 @@
                             <select name="brand_id" id="collapsible-equipment" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($brand as $itembrand)
-                                <option value="{{ $itembrand->id }}"  {{ $itembrand->id == $requestwork->brand_id ? 'selected' : '' }}>
-                                    {{ $itembrand->name }}
-                                </option>
-                            @endforeach
+                                    <option value="{{ $itembrand->id }}"
+                                        {{ $itembrand->id == $requestwork->brand_id ? 'selected' : '' }}>
+                                        {{ $itembrand->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-6">
@@ -97,11 +101,12 @@
                             <select name="type_equipment_id" id="collapsible-equipment" class="select2 form-select"
                                 data-allow-clear="true">
                                 @foreach ($typeEquipment as $itemtypeEquipment)
-                                <option value="{{ $itemtypeEquipment->id }}"  {{ $requestwork->type_equipment_id == $itemtypeEquipment->id ? 'selected' : '' }}>
+                                    <option value="{{ $itemtypeEquipment->id }}"
+                                        {{ $requestwork->type_equipment_id == $itemtypeEquipment->id ? 'selected' : '' }}>
 
-                                    {{ $itemtypeEquipment->name }}
-                                </option>
-                            @endforeach
+                                        {{ $itemtypeEquipment->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
 
@@ -110,19 +115,20 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-crosshair"></i></span>
-                                <input name="equipment_number" type="text" id="basic-icon-default-company" class="form-control"
-                                    placeholder="مثال:620c124 " aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-company2" value="{{ $requestwork->equipment_number }}">
+                                <input name="equipment_number" type="text" id="basic-icon-default-company"
+                                    class="form-control" placeholder="مثال:620c124 " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2"
+                                    value="{{ $requestwork->equipment_number }}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-serviceplace">سرویس در مکان</label>
                             <select name="serviceplace" id="collapsible-serviceplace" class="select2 form-select"
                                 data-allow-clear="true">
-                                <option value="0" {{ "0"== $requestwork->serviceplace ? 'selected' : '' }}>
+                                <option value="0" {{ '0' == $requestwork->serviceplace ? 'selected' : '' }}>
                                     نیاز ندارد
                                 </option>
-                                <option value="1" {{ "1"== $requestwork->serviceplace ? 'selected' : '' }}>
+                                <option value="1" {{ '1' == $requestwork->serviceplace ? 'selected' : '' }}>
                                     نیاز دارد
                                 </option>
 
@@ -133,8 +139,9 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-message2" class="input-group-text"><i
                                         class="bx bx-comment"></i></span>
-                                <textarea name="description" id="basic-icon-default-message" class="form-control" placeholder="توضیحات را اینجا بنویسید"
-                                    aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{ $requestwork->description }}</textarea>
+                                <textarea name="description" id="basic-icon-default-message" class="form-control"
+                                    placeholder="توضیحات را اینجا بنویسید" aria-label="Hi, Do you have a moment to talk Joe?"
+                                    aria-describedby="basic-icon-default-message2">{{ $requestwork->description }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -144,7 +151,8 @@
 
                                 <input name="estimated_cost" type="text" id="basic-icon-default-email"
                                     class="form-control text-start" placeholder="10,000,000" aria-label="john.doe"
-                                    aria-describedby="basic-icon-default-email2" dir="ltr" value="{{ $requestwork->estimated_cost}}">
+                                    aria-describedby="basic-icon-default-email2" dir="ltr"
+                                    value="{{ $requestwork->estimated_cost }}">
                             </div>
                             <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
                         </div>
@@ -155,42 +163,58 @@
 
                                 <input name="real_cost" type="text" id="basic-icon-default-email"
                                     class="form-control text-start" placeholder="10,000,000" aria-label="john.doe"
-                                    aria-describedby="basic-icon-default-email2" dir="ltr" value="{{ $requestwork->real_cost}}">
+                                    aria-describedby="basic-icon-default-email2" dir="ltr"
+                                    value="{{ $requestwork->real_cost }}">
                             </div>
                             <div class="form-text">قیمت تجهیز مورد نظر خود را به تومان وارد کنید</div>
                         </div>
-                        <!-- Datetime Picker-->
-                        <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime" class="form-label"> تاریخ ورود</label>
-                            <input type="text"  name="date_enter" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime1" value="{{ $requestwork->date_enter }}">
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">تاریخ ورود</label>
+                            <div class="input-group input-group-merge">
+                                <span id="span_date_enter" class="input-group-text"><i class="fas fa-clock"></i></span>
+                                <input id="input_date_enter"  value="{{$requestwork->date_enter}}" name="date_enter" type="text"
+                                    id="basic-icon-default-company" class="form-control" placeholder="مثال:1403/02/03"
+                                    aria-label="ACME Inc." aria-describedby="basic-icon-default-company2">
+                            </div>
                         </div>
-                        <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime"  class="form-label"> تاریخ  پایان کار</label>
-                            <input type="text" name="date_delivery" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime2" value="{{ $requestwork->date_delivery }}">
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">تاریخ پایان کار</label>
+                            <div class="input-group input-group-merge">
+                                <span id="span_date_delivery" class="input-group-text"><i
+                                        class="fas fa-clock"></i></span>
+                                <input id="input_date_delivery" value="{{$requestwork->date_delivery}}" name="date_delivery" type="text"
+                                    id="basic-icon-default-company" class="form-control" placeholder="مثال:1403/02/03"
+                                    aria-label="ACME Inc." aria-describedby="basic-icon-default-company2">
+                            </div>
                         </div>
-                        <div class="col-md-6 col-12 mb-4">
-                            <label for="flatpickr-datetime"  class="form-label"> تاریخ تحویل</label>
-                            <input type="text" name="date_out" class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                id="flatpickr-datetime3" value="{{ $requestwork->date_out }}">
+
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-company">تاریخ تحویل</label>
+                            <div class="input-group input-group-merge">
+                                <span id="span_date_out" value="{{$requestwork->date_out}}" class="input-group-text"><i class="fas fa-clock"></i></span>
+                                <input id="input_date_out" name="date_out" type="text"
+                                    id="basic-icon-default-company" class="form-control" placeholder="مثال:1403/02/03"
+                                    aria-label="ACME Inc." aria-describedby="basic-icon-default-company2">
+                            </div>
                         </div>
+
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-rule">فوریت انجام کار (عدد کمتر اهمیت بیشتری
                                 دارد)</label>
                             <select name="Urgency_Work" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
-                                <option value="1" {{ "1"== $requestwork->Urgency_Work ? 'selected' : '' }}>
+                                <option value="1" {{ '1' == $requestwork->Urgency_Work ? 'selected' : '' }}>
                                     (اضطراری) 1
                                 </option>
-                                <option value="2" {{ "2"== $requestwork->Urgency_Work ? 'selected' : '' }}>
+                                <option value="2" {{ '2' == $requestwork->Urgency_Work ? 'selected' : '' }}>
 
                                     (خیلی مهم) 2
                                 </option>
-                                <option value="3" {{ "3"== $requestwork->Urgency_Work ? 'selected' : '' }}>
+                                <option value="3" {{ '3' == $requestwork->Urgency_Work ? 'selected' : '' }}>
                                     (مهم) 3
                                 </option>
-                                <option value="4" {{ "4"== $requestwork->Urgency_Work ? 'selected' : '' }}>
+                                <option value="4" {{ '4' == $requestwork->Urgency_Work ? 'selected' : '' }}>
                                     (عادی) 4
                                 </option>
                                 {{-- <option value="5">
@@ -217,44 +241,44 @@
                             <label class="form-label" for="collapsible-rule">تغییر وضعیت درخواستکار</label>
                             <select name="request_status" id="collapsible-rule" class="select2 form-select"
                                 data-allow-clear="true">
-                                <option value="IS" {{ "IS"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="IS" {{ 'IS' == $requestwork->request_status ? 'selected' : '' }}>
                                     (صدور) IS
                                 </option>
-                                <option value="RE"  {{ "RE"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="RE" {{ 'RE' == $requestwork->request_status ? 'selected' : '' }}>
                                     (دریافت تجهیز) RE
                                 </option>
-                                <option value="AC"  {{ "AC"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="AC" {{ 'AC' == $requestwork->request_status ? 'selected' : '' }}>
                                     (پذیرش ) AC
                                 </option>
-                                <option value="AN"  {{ "AN"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="AN" {{ 'AN' == $requestwork->request_status ? 'selected' : '' }}>
                                     (درحال برنامه‌ریزی) AN
                                 </option>
-                                <option value="PR"  {{ "PR"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="PR" {{ 'PR' == $requestwork->request_status ? 'selected' : '' }}>
                                     (دربرنامه قرار گرفته) PR
                                 </option>
-                                <option value="FS"  {{ "FS"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="FS" {{ 'FS' == $requestwork->request_status ? 'selected' : '' }}>
                                     (برنامه ریزی‌ادامه‌کار) FS
                                 </option>
-                                <option value="UP" {{ "UP"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="UP" {{ 'UP' == $requestwork->request_status ? 'selected' : '' }}>
                                     (در حال بروزرسانی) UP
                                 </option>
-                                <option value="FF" {{ "FF"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="FF" {{ 'FF' == $requestwork->request_status ? 'selected' : '' }}>
                                     (پایان کار) FF
                                 </option>
-                                <option value="SS" {{ "SS"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="SS" {{ 'SS' == $requestwork->request_status ? 'selected' : '' }}>
                                     (معلق) SS
                                 </option>
-                                <option value="DD" {{ "DD"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="DD" {{ 'DD' == $requestwork->request_status ? 'selected' : '' }}>
                                     (تجهیز تحویل مشتری شده) DD
                                 </option>
-                                <option value="AA" {{ "AA"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="AA" {{ 'AA' == $requestwork->request_status ? 'selected' : '' }}>
                                     (قطعه اسقاط) AA
                                 </option>
-                                <option value="SS" {{ "SS"== $requestwork->request_status ? 'selected' : '' }}>
+                                <option value="SS" {{ 'SS' == $requestwork->request_status ? 'selected' : '' }}>
                                     (معلق) SS
                                 </option>
-                                <option value="FF" {{ "FF"== $requestwork->request_status ? 'selected' : '' }}>
-                                   (اتمام) FF
+                                <option value="FF" {{ 'FF' == $requestwork->request_status ? 'selected' : '' }}>
+                                    (اتمام) FF
                                 </option>
                             </select>
                         </div>
@@ -280,6 +304,7 @@
 @section('scripts')
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
+
     <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
     <script src="../../assets/vendor/libs/popper/popper.js"></script>
     <script src="../../assets/vendor/js/bootstrap.js"></script>
@@ -308,5 +333,27 @@
 
     <!-- Page JS -->
     <script src="../../assets/js/form-layouts.js"></script>
+
+    <script>
+        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_enter'), {
+            targetTextSelector: '#input_date_enter',
+            selectedDate: new Date(@json( $requestwork->date_enter)),
+            selectedDateToShow: new Date(@json( $requestwork->date_enter)),
+        });
+        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_delivery'), {
+            targetTextSelector: '#input_date_delivery',
+            selectedDate: new Date(@json( $requestwork->date_delivery)),
+            selectedDateToShow: new Date(@json( $requestwork->date_delivery)),
+        });
+        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_out'), {
+            targetTextSelector: '#input_date_out',
+            selectedDate: new Date(@json( $requestwork->date_out)),
+            selectedDateToShow: new Date(@json( $requestwork->date_out)),
+        });
+
+
+
+
+    </script>
 
 @endsection

@@ -98,9 +98,9 @@
                                         <td>{{ $requestwork->typeEqupments->name }}</td>
                                         <td class="">{{ $requestwork->equipment_number }}</td>
                                         <td class="">{{ $requestwork->request_status }}</td>
-                                        <td class="">{{ $requestwork->date_enter }}</td>
-                                        <td>{{  $requestwork->date_delivery }}</td>
-                                        <td>{{  $requestwork->date_out }}</td>
+                                        <td class="">{{ App\Models\RequestWork::GregoriantoJalali($requestwork->date_enter) }}</td>
+                                        <td>{{  App\Models\RequestWork::GregoriantoJalali($requestwork->date_delivery) }}</td>
+                                        <td>{{ App\Models\RequestWork::GregoriantoJalali($requestwork->date_out) }}</td>
                                         <td>{{ $requestwork->estimated_cost}}</td>
                                         <td>{{  $requestwork->real_cost }}</td>
                                         <td>{{  $requestwork->Urgency_Work }}</td>
