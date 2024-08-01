@@ -78,12 +78,12 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="py-3 breadcrumb-wrapper mb-4"><span class="text-muted fw-light">تعریف قطعات زیر مجموعه تجهیز /</span>
-                pm شماره: {{ $pm->id }} </h4>
+            <h4 class="py-3 breadcrumb-wrapper mb-4"><span class="text-muted fw-light">ویرایش قطعه زیر مجموعه تجهیز / </span>
+                pm شماره: {{  $PmPart->pms->id }} </h4>
 
             <div class="card mb-4">
-                <h5 class="card-header heading-color">ثبت قطعه جدید</h5>
-                <form action="{{ route('partdef.store', ['pm' => $pm->id]) }}" method="POST" class="card-body">
+                <h5 class="card-header heading-color">ویرایش قطعه زیر مجموعه تجهیز</h5>
+                <form action="{{ route('partdef.update', ['partdef' => $PmPart->id]) }}" method="POST" class="card-body">
                     @csrf
                     @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
@@ -93,7 +93,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-brand2" class="input-group-text"><i
                                         class="bx bx-award"></i></span>
-                                <input name="name" value="{{ $pm->equipment_number }}" type="text"
+                                <input name="name" value="{{ $PmPart->pms->equipment_number }}" type="text"
                                     id="basic-icon-default-brand" class="form-control" placeholder="نامشخص"
                                     aria-label="ACME Inc." aria-describedby="basic-icon-default-brand2" disabled>
                             </div>
@@ -103,7 +103,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-brand2" class="input-group-text"><i
                                         class="bx bx-award"></i></span>
-                                <input name="name" value="{{ $pm->requestworks->request_number }}" type="text"
+                                <input name="name" value="{{  $PmPart->pms->requestworks->request_number }}" type="text"
                                     id="basic-icon-default-brand" class="form-control" placeholder="نامشخص"
                                     aria-label="ACME Inc." aria-describedby="basic-icon-default-brand2" disabled>
                             </div>
@@ -144,7 +144,7 @@
                         <div class="col-md-6">
                             <label class="form-label" for="form-repeater-1-3">تعداد
                                 استفاده شده</label>
-                            <input name="num_parts_used" type="text" id="form-repeater-1-2"
+                            <input  value="{{ $PmPart->num_parts_used}}" name="num_parts_used" type="text" id="form-repeater-1-2"
                                 class="form-control text-start" placeholder="مثال :3" dir="ltr">
                         </div>
 
@@ -173,7 +173,7 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-brand2" class="input-group-text"><i
                                         class="bx bx-clock"></i></span>
-                                <input name="Allowed_working_hours" type="text" id="basic-icon-default-brand"
+                                <input   value="{{ $PmPart->Allowed_working_hours}}" name="Allowed_working_hours" type="text" id="basic-icon-default-brand"
                                     class="form-control" placeholder=" مثال:20" aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-brand2">
                             </div>
@@ -187,8 +187,6 @@
                     </div>
                 </form>
             </div>
-            <hr class="my-5">
-
 
         </div>
 
@@ -241,17 +239,15 @@
         new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_Replacement_next'), {
             targetTextSelector: '#input_date_Replacement_next',
             persianNumber: false
-
+            selectedDate: new Date(@json( $PmPart->date_Replacement_next)),
+            selectedDateToShow: new Date(@json( $PmPart->date_Replacement_next)),
         });
         new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_Replacement'), {
             targetTextSelector: '#input_date_Replacement',
             persianNumber: false
-
+            selectedDate: new Date(@json( $PmPart->date_Replacement)),
+            selectedDateToShow: new Date(@json( $PmPart->date_Replacement)),
         });
-        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_out'), {
-            targetTextSelector: '#input_date_out',
-            persianNumber: false
 
-        });
     </script>
 @endsection

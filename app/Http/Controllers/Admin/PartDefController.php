@@ -97,7 +97,7 @@ class PartDefController extends Controller
      */
     public function edit(string $id)
     {
-        $pm = Pm::where('id', $id)->get()->first();
+        $PmPart = PmPart::where('id', $id)->with('pms')->get()->first();
         // $requestWork= RequestWork::where('id', $pm->requestwork_id)->get()->first();
         // $equipment= Equipment::where('id', $pm->equipment_id)->get()->first();
         // $company= Company::where('id', $pm->company_id)->get()->first();
@@ -111,8 +111,7 @@ class PartDefController extends Controller
         $company = Company::all();
         $Part = Part::all();
         $Brand = Brand::all();
-        $pm_request_number = RequestWork::where('id', $pm->requestwork_id)->get()->first();
-        return view('pm.edit', compact('pm', 'requestwork', 'equipment', 'company', 'Part', 'Brand', 'requestworkwithoutunique', 'pm_request_number'));
+        return view('partdef.edit', compact( 'PmPart','requestwork', 'equipment', 'company', 'Part', 'Brand', 'requestworkwithoutunique'));
     }
 
     /**
