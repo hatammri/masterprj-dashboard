@@ -57,20 +57,27 @@
 
                                     <tr class="odd">
                                         <td class="sorting_1">{{ $item_pm->equipment_number}}</td>
-                                        <td>R1</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>گیریس</td>
-                                        <td>نصاب</td>
+                                        <td>{{ $item_pm->requestworks->request_number }}</td>
+                                        <td>{{ $item_pm->requestworks->equipments->name }}</td>
+                                        <td>{{ $item_pm->requestworks->customers->companies->name }}</td>
+                                        <td>{{$item_pm->equipment_name_Alias}}</td>
+                                        <td>{{$item_pm->installation_location }}</td>
                                         <td>
                                             <div class="d-inline-block"><a href="javascript:;"
                                                     class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                                     data-bs-toggle="dropdown"><i
                                                         class="bx bx-dots-vertical-rounded"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-end m-0"><a
-                                                        href="/partdef/create/" class="dropdown-item"> تعریف قطعات زیر
-                                                        مجموعه تجهیز</a></div>
-                                            </div><a href="/pm/edit/1" class="btn btn-sm btn-icon item-edit"><i
+                                                        href="/partdef/create/{{$item_pm->id}}" class="dropdown-item"> تعریف قطعات زیر
+                                                        مجموعه تجهیز</a>
+                                                        <a
+                                                        href="/partdef/index/{{$item_pm->id}}" class="dropdown-item"> مشاهده قطعات زیر مجموعه</a>
+                                                        <a
+                                                        href="/partdef/create/{{$item_pm->id}}" class="dropdown-item"> ویرایش قطعات زیر
+                                                        مجموعه تجهیز</a>
+
+                                                    </div>
+                                            </div><a href="/pm/edit/{{$item_pm->id}}" class="btn btn-sm btn-icon item-edit"><i
                                                     class="bx bxs-edit"></i></a>
                                         </td>
                                     </tr>

@@ -99,7 +99,7 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     Route::prefix('partdef')->name('partdef.')->group(function () {
         Route::get('/create/{id}', [PartDefController::class, 'create'])->name('create');
         Route::put('/store/{pm}', [PartDefController::class, 'store'])->name('store');
-        Route::get('/index', [PartDefController::class, 'index'])->name('index');
+        Route::get('/index/{id}', [PartDefController::class, 'index'])->name('index');
         Route::get('/edit/{id}', [PartDefController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [PartDefController::class, 'show'])->name('show');
         Route::put('/update/{pm}', [PartDefController::class, 'update'])->name('update');

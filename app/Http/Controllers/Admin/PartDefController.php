@@ -21,9 +21,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PartDefController extends Controller
 {
-    public function index()
+    public function index(string $id)
     {
-        return view('pm.index');
+        $PmPart = PmPart::where('pm_id', $id)->get();
+        return view('partdef.index',compact('PmPart'));
     }
 
     /**
