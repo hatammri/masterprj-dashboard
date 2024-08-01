@@ -104,37 +104,46 @@ $(function () {
     // Column Search
     // --------------------------------------------------------------------
 
-
     if (dt_filter_table.length) {
 
         var dt_filter = dt_filter_table.DataTable({
 
             columns: [
                 { data: "id" },
+                { data: "" },
                 { data: "parts.name" },
                 { data: "brands.name" },
                 { data: "pms.requestworks.request_number" },
+                { data: "pms.equipment_number" },
                 { data: "num_parts_used" },
                 { data: "date_Replacement" },
                 { data: "date_Replacement_next" },
                 { data: "Allowed_working_hours" },
-                { data: "" },
 
             ],
-            columnDefs: [
+
+
+             columnDefs: [
                 {
                     // Label
-                    targets: -3,
+                    targets: -2,
                     render: function (data, type, full, meta) {
-                        var $status_number = full["available"];
+                        var $status_number = full["status"];
                         var $status = {
-                            1: { title: "سالم", class: "bg-label-success" },
-                            0: {
-                                title: "خراب",
+                            1: { title: "فعال", class: "bg-label-success" },
+                            2: {
+                                title: "غیرفعال",
                                 class: " bg-label-warning",
                             },
-                            2: { title: "غیرفعال", class: " bg-label-danger" },
-
+                            3: { title: "خراب", class: " bg-label-danger" },
+                            4: {
+                                title: "درحال‌تعمیر",
+                                class: " bg-label-primary",
+                            },
+                            5: {
+                                title: "نامشخص",
+                                class: " bg-label-secondary",
+                            },
                         };
                         if (typeof $status[$status_number] === "undefined") {
                             return data;
@@ -162,13 +171,7 @@ $(function () {
                 ">",
 
             buttons: [
-                {
-                    text: '<i class="bx bx-plus me-md-2"></i><span class="d-md-inline-block d-none">ایجاد pm</span>',
-                    className: "btn btn-primary",
-                    action: function (e, dt, button, config) {
-                        window.location = "create";
-                    },
-                },
+               
             ],
         });
     }

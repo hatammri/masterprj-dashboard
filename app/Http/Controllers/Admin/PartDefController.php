@@ -24,7 +24,7 @@ class PartDefController extends Controller
     public function index(string $id)
     {
         $PmPart = PmPart::where('pm_id', $id)->get();
-        return view('partdef.index',compact('PmPart'));
+        return view('partdef.index',compact('PmPart','id'));
     }
 
     /**
@@ -161,7 +161,7 @@ class PartDefController extends Controller
     }
     public function datatable()
     {
-        $data_pm = Pm::with(['requestworks:id,request_number', 'equipments:id,name', 'companies:id,name'])->paginate();
+        $data_pm = PmPart::with(['parts', 'brands', 'pms.requestworks'])->paginate();
         $code = 200;
         return response()->json(
             $data_pm,
@@ -171,10 +171,5 @@ class PartDefController extends Controller
         );
     }
 
-
-    public function getShahrestanList(Request $request)
-    {
-        $shahrestan = Shahrestan::where('ostan', $request->ostan)->get();
-        return $shahrestan;
-    }
 }
+
