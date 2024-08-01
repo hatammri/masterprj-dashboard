@@ -23,7 +23,8 @@ class PmController extends Controller
 {
     public function index()
     {
-        return view('pm.index');
+        $pm=Pm::with('requestworks','equipments','companies')->get();
+        return view('pm.index',compact('pm'));
     }
 
     /**
@@ -39,75 +40,42 @@ class PmController extends Controller
         $Brand = Brand::all();
 
 
-        return view('pm.create', compact('requestwork','equipment','company','Part','Brand','requestworkwithoutunique'));
+        return view('pm.create', compact('requestwork', 'equipment', 'company', 'Part', 'Brand', 'requestworkwithoutunique'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {//dd($request);
-   try{
+    {
         $request->validate([
-            'equipment_number' => 'required',
             'requestwork_id' => 'required',
-            'equipment_id' => 'required',
-            'company_id' => 'required',
-            'equipment_name_Alias' => 'required',
-            'installation_location' => 'required',
-            'FormData' => 'required',
-            'FormData.*.*' => 'required',
-            'FormData.part_id.*' => 'required',
-            'FormData.brand_id.*' => 'required',
-            'FormData.num_parts_used.*' => 'required',
-            'FormData.date_Replacement.*' => 'required',
-            'FormData.date_Replacement_next.*' => 'required',
-            'FormData.Allowed_working_hours.*' => 'required',
 
         ], $messages = [
-            'equipment_number.required' => 'شماره سریال تجهیز  نباید خالی باشد',
-            'requestwork_id.required' => '  شماره درخواست‌‌‌‌‌‌‌‌‌کار  نباید خالی باشد',
-            'equipment_id.required' => ' نام تجهیز نباید خالی باشد',
-            'company_id.required' => '  نام شرکت  نباید خالی باشد',
-            'equipment_name_Alias.required' => ' نام مستعار تجهیز  نباید خالی باشد',
-            'installation_location.required' => ' محل نصب  نباید خالی باشد',
+                'requestwork_id.required' => '  شماره درخواست‌‌‌‌‌‌‌‌‌کار  نباید خالی باشد',
 
 
-        ]);
+            ]);
 
-            DB::beginTransaction();
+        if (Pm::where('requestwork_id', $request->requestwork_id)->where('equipment_number', $request->equipment_number)->exists()) {
+            Alert::error('اطلاعات pm تکراری و یا اشتباه است', 'خطا');
+            return redirect()->back();
+        } else {
+            // The record does not exist
+
 
             $Pm = Pm::create([
                 'equipment_number' => $request->equipment_number,
                 'requestwork_id' => $request->requestwork_id,
-                'equipment_id' => $request->equipment_id,
-                'company_id' => $request->company_id,
                 'equipment_name_Alias' => $request->equipment_name_Alias,
                 'installation_location' => $request->installation_location,
 
             ]);
 
-            $PartDefController= new PartDefController();
-            $PartDefController->store($request->FormData,$Pm->id);
-
-
-            DB::commit();
             Alert::success('pm مورد نظر ایجاد شد', 'باتشکر');
             return redirect()->route('pm.index');
-
         }
-        catch (\Illuminate\Database\QueryException $e) {
-            // You need to handle the error here.
-            // Either send the user back to the screen or redirect them somewhere else
-            DB::rollBack();
-            Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
-            return back();
 
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
-            return redirect()->back();
-        }
     }
 
 
@@ -139,7 +107,7 @@ class PmController extends Controller
         $Part = Part::all();
         $Brand = Brand::all();
         $pm_request_number = RequestWork::where('id', $pm->requestwork_id)->get()->first();
-        return view('pm.edit', compact('pm','requestwork','equipment','company','Part','Brand','requestworkwithoutunique','pm_request_number'));
+        return view('pm.edit', compact('pm', 'requestwork', 'equipment', 'company', 'Part', 'Brand', 'requestworkwithoutunique', 'pm_request_number'));
     }
 
     /**
@@ -152,12 +120,12 @@ class PmController extends Controller
             'unitmeasurement' => 'required',
             'numberofoperator' => 'required',
         ], $messages = [
-            'name.required' => 'نام تخصص نباید خالی باشد',
-            'unitmeasurement.required' => 'واحد اندازه گیری نباید خالی باشد',
-            'numberofoperator.required' => 'تعداد اپراتور نباید خالی باشد',
+                'name.required' => 'نام تخصص نباید خالی باشد',
+                'unitmeasurement.required' => 'واحد اندازه گیری نباید خالی باشد',
+                'numberofoperator.required' => 'تعداد اپراتور نباید خالی باشد',
 
 
-        ]);
+            ]);
         try {
             $specialty->update([
                 'name' => $request->name,
@@ -188,7 +156,7 @@ class PmController extends Controller
     }
     public function datatable()
     {
-        $data_pm = Pm::with(['requestworks:id,request_number','equipments:id,name','companies:id,name'])->paginate();
+        $data_pm = Pm::with(['requestworks:id,request_number', 'equipments:id,name', 'companies:id,name'])->paginate();
         $code = 200;
         return response()->json(
             $data_pm,
@@ -198,10 +166,4 @@ class PmController extends Controller
         );
     }
 
-
-    public function getShahrestanList(Request $request)
-    {
-        $shahrestan = Shahrestan::where('ostan', $request->ostan)->get();
-        return $shahrestan;
-    }
 }

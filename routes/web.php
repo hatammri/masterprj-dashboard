@@ -98,11 +98,11 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
     });
     Route::prefix('partdef')->name('partdef.')->group(function () {
         Route::get('/create/{id}', [PartDefController::class, 'create'])->name('create');
-        Route::post('/store', [PartDefController::class, 'store'])->name('store');
+        Route::put('/store/{pm}', [PartDefController::class, 'store'])->name('store');
         Route::get('/index', [PartDefController::class, 'index'])->name('index');
         Route::get('/edit/{id}', [PartDefController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [PartDefController::class, 'show'])->name('show');
-        Route::put('/update/{partdef}', [PartDefController::class, 'update'])->name('update');
+        Route::put('/update/{pm}', [PartDefController::class, 'update'])->name('update');
     });
     Route::prefix('requestwork')->name('requestwork.')->group(function () {
         Route::get('/create', [RequestworkController::class, 'create'])->name('create');

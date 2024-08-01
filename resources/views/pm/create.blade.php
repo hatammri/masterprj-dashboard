@@ -85,20 +85,27 @@
                                 @endforeach
                             </select>
                         </div>
+
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment"> نام تجهیز</label>
-                            <input name="equipment_name" type="text" id="equipment_name"
-                                    class="form-control"  aria-label="ACME Inc."
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-hard-hat"></i></span>
+                                <input name="equipment_name" type="text" id="equipment_name"
+                                    class="form-control" placeholder="مثال:گیربکس  " aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2" disabled>
+                            </div>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-equipment"> نام شرکت</label>
-                            <input name="company_name" type="text" id="company_name"
-                            class="form-control" aria-label="ACME Inc."
-                            aria-describedby="basic-icon-default-company2" disabled>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-company2" class="input-group-text"><i
+                                        class="bx bx-hard-hat"></i></span>
+                                <input name="company_name" type="text" id="company_name"
+                                    class="form-control" placeholder="مثال:گیربکس  " aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2" disabled>
+                            </div>
                         </div>
-
                         <div class="col-md-6">
                             <label class="form-label" for="basic-icon-default-company">نام مستعار تجهیز</label>
                             <div class="input-group input-group-merge">
@@ -119,88 +126,7 @@
                                     aria-describedby="basic-icon-default-message2"></textarea>
                             </div>
                         </div>
-                        <div class="card mb-4">
-                            <h5 class="card-header heading-color">تعریف قطعات اجزا تجهیز</h5>
-                            <div class="card-body">
-                                <div id="czContainer">
-                                    <div id="first">
-                                        <div class="recordset">
-                                            <br />
 
-                                            <div class="row">
-
-                                                <div class="col-md-6">
-                                                    <label class="form-label" for="form-repeater-1-1">نام
-                                                        قطعه</label>
-                                                    <select name="FormData[part_id][]" id="collapsible-UnitMeasurement"
-                                                        class="select2 form-select" data-allow-clear="true">
-                                                        <option value="">
-                                                            انتخاب کنید
-                                                        </option>
-                                                        @foreach ($Part as $itemPart)
-                                                            <option value="{{ $itemPart->id }}">
-                                                                {{ $itemPart->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="form-label" for="form-repeater-1-2">برند</label>
-                                                    <select name="FormData[brand_id][]" id="collapsible-UnitMeasurement"
-                                                        class="select2 form-select" data-allow-clear="true">
-                                                        <option value="">
-                                                            انتخاب کنید
-                                                        </option>
-                                                        @foreach ($Brand as $itemBrand)
-                                                            <option value="{{ $itemBrand->id }}">
-                                                                {{ $itemBrand->name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <label class="form-label" for="form-repeater-1-3">تعداد
-                                                        استفاده شده</label>
-                                                    <input name="FormData[num_parts_used][]" type="text"
-                                                        id="form-repeater-1-2" class="form-control text-start"
-                                                        placeholder="مثال :3" dir="ltr">
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <label class="form-label" for="form-repeater-1-4">تاریخ
-                                                        تعویض</label>
-                                                    <input type="text" name="FormData[date_Replacement][]"
-                                                        class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                                        id="form-repeater-1-3">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="form-label" for="form-repeater-1-4">تاریخ
-                                                        تعویض بعدی</label>
-
-                                                    <input type="text" name="FormData[date_Replacement_next][]"
-                                                        class="form-control" placeholder="YYYY/MM/DD - HH:MM"
-                                                        id="form-repeater-1-4">
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label class="form-label" for="form-repeater-1-4">ساعت کار
-                                                        مجاز</label>
-                                                    <input name="FormData[Allowed_working_hours][]" type="text"
-                                                        id="form-repeater-1-5" placeholder="HH:MM:SS"
-                                                        class="form-control">
-
-                                                </div>
-
-                                            </div>
-                                            <br />
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
                         <div class="pt-4">
                             <button type="submit" class="btn btn-primary me-sm-3 me-1">ثبت</button>
                             <button type="reset" class="btn btn-label-secondary">انصراف</button>

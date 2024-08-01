@@ -18,31 +18,79 @@
             <div class="card">
                 <h5 class="card-header heading-color">لیست pm ها</h5>
                 <div class="card-datatable text-nowrap">
-                    <table class="dt-column-search table table-bordered">
+                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5">
 
-                        <thead>
-                            <tr>
-                                <th>شماره سریال تجهیز</th>
-                                <th> شماره درخواست‌‌‌‌‌‌‌‌‌کار </th>
-                                <th> نام تجهیز </th>
-                                <th> نام شرکت </th>
-                                <th> نام مستعار تجهیز </th>
-                                <th> محل نصب </th>
-                                <th>نمایش جزئیات</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>شماره سریال تجهیز</th>
-                                <th> شماره درخواست‌‌‌‌‌‌‌‌‌کار </th>
-                                <th> نام تجهیز </th>
-                                <th> نام شرکت </th>
-                                <th> نام مستعار تجهیز </th>
-                                <th> محل نصب </th>
-                                <th>نمایش جزئیات</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                            <div class="invoice_status mb-3 mb-md-0"></div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="dt-column-search table table-bordered dataTable" id="DataTables_Table_0"
+                                aria-describedby="DataTables_Table_0_info" style="width: 1383px;">
+
+                                <thead>
+                                    <tr>
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0"
+                                            rowspan="1" colspan="1"
+                                            aria-label="شماره سریال تجهیز: فعال سازی نمایش به صورت نزولی"
+                                            aria-sort="ascending" style="width: 181.2px;">شماره سریال تجهیز</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                            colspan="1"
+                                            aria-label=" شماره درخواست‌‌‌‌‌‌‌‌‌کار : فعال سازی نمایش به صورت صعودی"
+                                            style="width: 180.2px;"> شماره درخواست‌‌‌‌‌‌‌‌‌کار </th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                            colspan="1" aria-label=" نام تجهیز : فعال سازی نمایش به صورت صعودی"
+                                            style="width: 108.2px;"> نام تجهیز </th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                            colspan="1" aria-label=" نام شرکت : فعال سازی نمایش به صورت صعودی"
+                                            style="width: 111.2px;"> نام شرکت </th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                            colspan="1" aria-label=" نام مستعار تجهیز : فعال سازی نمایش به صورت صعودی"
+                                            style="width: 170.2px;"> نام مستعار تجهیز </th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                            colspan="1" aria-label=" محل نصب : فعال سازی نمایش به صورت صعودی"
+                                            style="width: 114.2px;"> محل نصب </th>
+                                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="نمایش جزئیات"
+                                            style="width: 144px;">نمایش جزئیات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                             @foreach ($pm as $item_pm)
+
+                                    <tr class="odd">
+                                        <td class="sorting_1">{{ $item_pm->equipment_number}}</td>
+                                        <td>R1</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>گیریس</td>
+                                        <td>نصاب</td>
+                                        <td>
+                                            <div class="d-inline-block"><a href="javascript:;"
+                                                    class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
+                                                    data-bs-toggle="dropdown"><i
+                                                        class="bx bx-dots-vertical-rounded"></i></a>
+                                                <div class="dropdown-menu dropdown-menu-end m-0"><a
+                                                        href="/partdef/create/" class="dropdown-item"> تعریف قطعات زیر
+                                                        مجموعه تجهیز</a></div>
+                                            </div><a href="/pm/edit/1" class="btn btn-sm btn-icon item-edit"><i
+                                                    class="bx bxs-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th rowspan="1" colspan="1">شماره سریال تجهیز</th>
+                                        <th rowspan="1" colspan="1"> شماره درخواست‌‌‌‌‌‌‌‌‌کار </th>
+                                        <th rowspan="1" colspan="1"> نام تجهیز </th>
+                                        <th rowspan="1" colspan="1"> نام شرکت </th>
+                                        <th rowspan="1" colspan="1"> نام مستعار تجهیز </th>
+                                        <th rowspan="1" colspan="1"> محل نصب </th>
+                                        <th rowspan="1" colspan="1">نمایش جزئیات</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!--/ Column Search -->
