@@ -246,15 +246,31 @@
     <script src="../../assets/js/forms-extras.js"></script>
     <script src="../../assets/js/jquery.czMore-latest.js"></script>
     <script>
+          if (@json($PmPart->date_Replacement) == null) {
+        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_Replacement_edit'), {
+            targetTextSelector: '#input_date_Replacement_edit',
+        });
+    }else{
         new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_Replacement_edit'), {
             targetTextSelector: '#input_date_Replacement_edit',
             selectedDate: new Date(@json( $PmPart->date_Replacement)),
             selectedDateToShow: new Date(@json( $PmPart->date_Replacement)),
         });
+    }
+    if (@json($PmPart->date_Replacement_next) == null) {
+
+        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_Replacement_next_edit'), {
+            targetTextSelector: '#input_date_Replacement_next_edit',
+        });
+    }
+    else
+    {
         new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_Replacement_next_edit'), {
             targetTextSelector: '#input_date_Replacement_next_edit',
             selectedDate: new Date(@json( $PmPart->date_Replacement_next)),
             selectedDateToShow: new Date(@json( $PmPart->date_Replacement_next)),
         });
+
+    }
     </script>
 @endsection

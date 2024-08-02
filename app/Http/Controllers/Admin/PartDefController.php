@@ -13,6 +13,7 @@ use App\Models\Pm;
 use App\Models\Part;
 use App\Models\Brand;
 use App\Models\PmPart;
+use Hekmatinasser\Verta\Verta;
 
 
 use Illuminate\Support\Facades\DB;
@@ -51,11 +52,14 @@ class PartDefController extends Controller
         $request->validate([
             'part_id' => 'required',
             'brand_id' => 'required',
+            'date_Replacement'=>'nullable|date',
+            'date_Replacement_next'=>'nullable|date',
 
         ], $messages = [
                 'part_id.required' => '  شماره درخواست‌‌‌‌‌‌‌‌‌کار  نباید خالی باشد',
-                'brand_id.required' => '  شماره درخواست‌‌‌‌‌‌‌‌‌کار  نباید خالی باشد'
-
+                'brand_id.required' => '  شماره درخواست‌‌‌‌‌‌‌‌‌کار  نباید خالی باشد',
+                'date_Replacement.required'=>'فرمت تاریخ ورود رعایت نشده',
+                'date_Replacement_next.required'=>'فرمت تاریخ پایان کار رعایت نشده',
             ]);
 
         // if (PmPart::where('pm_id', $pm->id)->where('part_id', $request->part_id )->where('brand_id', $request->brand_id)->exists()) {
@@ -70,14 +74,14 @@ class PartDefController extends Controller
                 'part_id' => $request->part_id ,
                 'brand_id' => $request->brand_id ,
                 'num_parts_used' => $request->num_parts_used,
-                'date_Replacement' => $request->date_Replacement,
-                'date_Replacement_next' => $request->date_Replacement_next,
+                'date_Replacement' => $request->date_Replacement==null?null: Verta::parse($request->date_Replacement)->datetime()->format('Y-m-d'),
+                'date_Replacement_next' => $request->date_Replacement_next==null?null: Verta::parse($request->date_Replacement_next)->datetime()->format('Y-m-d'),
                 'Allowed_working_hours' => $request->Allowed_working_hours,
 
 
             ]);
 
-            Alert::success('pm مورد نظر ایجاد شد', 'باتشکر');
+            Alert::success('قطعه مورد نظر ایجاد شد', 'باتشکر');
             return redirect()->back();
         // }
 
@@ -118,35 +122,39 @@ class PartDefController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, PmPart $pmpart)
-    { dd($request,$pmpart);
+    {
         $request->validate([
-            'name' => 'required',
-            'unitmeasurement' => 'required',
-            'numberofoperator' => 'required',
+            'part_id' => 'required',
+            'brand_id' => 'required',
+            'date_Replacement'=>'nullable|date',
+            'date_Replacement_next'=>'nullable|date',
+
         ], $messages = [
-                'name.required' => 'نام تخصص نباید خالی باشد',
-                'unitmeasurement.required' => 'واحد اندازه گیری نباید خالی باشد',
-                'numberofoperator.required' => 'تعداد اپراتور نباید خالی باشد',
-
-
+            'part_id.required' => '  شماره درخواست‌‌‌‌‌‌‌‌‌کار  نباید خالی باشد',
+            'brand_id.required' => '  شماره درخواست‌‌‌‌‌‌‌‌‌کار  نباید خالی باشد',
+            'date_Replacement.required'=>'فرمت تاریخ ورود رعایت نشده',
+            'date_Replacement_next.required'=>'فرمت تاریخ پایان کار رعایت نشده'
             ]);
         try {
-            $specialty->update([
-                'name' => $request->name,
-                'unitmeasurement' => $request->unitmeasurement,
-                'numberofoperator' => $request->numberofoperator,
+            $pmpart->update([
+                'part_id' => $request->part_id ,
+                'brand_id' => $request->brand_id ,
+                'num_parts_used' => $request->num_parts_used,
+                'date_Replacement' => $request->date_Replacement==null?null: Verta::parse($request->date_Replacement)->datetime()->format('Y-m-d'),
+                'date_Replacement_next' => $request->date_Replacement_next==null?null: Verta::parse($request->date_Replacement_next)->datetime()->format('Y-m-d'),
+                'Allowed_working_hours' => $request->Allowed_working_hours,
 
             ]);
-            Alert::success('pm مورد نظر ویرایش شد', 'باتشکر');
+            Alert::success('قطعه مورد نظر ویرایش شد', 'باتشکر');
             return redirect()->route('specialty.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات pm تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات قطعه تکراری و یا اشتباه است', 'خطا');
             return back();
             //     // Just some example
             //     //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات pm تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات قطعه تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }

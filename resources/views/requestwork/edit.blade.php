@@ -172,9 +172,10 @@
                             <label class="form-label" for="basic-icon-default-company">تاریخ ورود</label>
                             <div class="input-group input-group-merge">
                                 <span id="span_date_enter" class="input-group-text"><i class="fas fa-clock"></i></span>
-                                <input id="input_date_enter"  value="{{$requestwork->date_enter}}" name="date_enter" type="text"
-                                    id="basic-icon-default-company" class="form-control" placeholder="مثال:1403/02/03"
-                                    aria-label="ACME Inc." aria-describedby="basic-icon-default-company2">
+                                <input id="input_date_enter" value="{{ $requestwork->date_enter }}" name="date_enter"
+                                    type="text" id="basic-icon-default-company" class="form-control"
+                                    placeholder="مثال:1403/02/03" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
 
@@ -183,16 +184,18 @@
                             <div class="input-group input-group-merge">
                                 <span id="span_date_delivery" class="input-group-text"><i
                                         class="fas fa-clock"></i></span>
-                                <input id="input_date_delivery" value="{{$requestwork->date_delivery}}" name="date_delivery" type="text"
-                                    id="basic-icon-default-company" class="form-control" placeholder="مثال:1403/02/03"
-                                    aria-label="ACME Inc." aria-describedby="basic-icon-default-company2">
+                                <input id="input_date_delivery" value="{{ $requestwork->date_delivery }}"
+                                    name="date_delivery" type="text" id="basic-icon-default-company"
+                                    class="form-control" placeholder="مثال:1403/02/03" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label" for="basic-icon-default-company">تاریخ تحویل</label>
                             <div class="input-group input-group-merge">
-                                <span id="span_date_out" value="{{$requestwork->date_out}}" class="input-group-text"><i class="fas fa-clock"></i></span>
+                                <span id="span_date_out" value="{{ $requestwork->date_out }}"
+                                    class="input-group-text"><i class="fas fa-clock"></i></span>
                                 <input id="input_date_out" name="date_out" type="text"
                                     id="basic-icon-default-company" class="form-control" placeholder="مثال:1403/02/03"
                                     aria-label="ACME Inc." aria-describedby="basic-icon-default-company2">
@@ -335,25 +338,41 @@
     <script src="../../assets/js/form-layouts.js"></script>
 
     <script>
-        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_enter'), {
-            targetTextSelector: '#input_date_enter',
-            selectedDate: new Date(@json( $requestwork->date_enter)),
-            selectedDateToShow: new Date(@json( $requestwork->date_enter)),
-        });
-        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_delivery'), {
-            targetTextSelector: '#input_date_delivery',
-            selectedDate: new Date(@json( $requestwork->date_delivery)),
-            selectedDateToShow: new Date(@json( $requestwork->date_delivery)),
-        });
-        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_out'), {
-            targetTextSelector: '#input_date_out',
-            selectedDate: new Date(@json( $requestwork->date_out)),
-            selectedDateToShow: new Date(@json( $requestwork->date_out)),
-        });
+        if (@json($requestwork->date_enter) == null) {
+            new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_enter'), {
+                targetTextSelector: '#input_date_enter',
+            });
+        } else {
+            new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_enter'), {
+                targetTextSelector: '#input_date_enter',
+                selectedDate: new Date(@json($requestwork->date_enter)),
+                selectedDateToShow: new Date(@json($requestwork->date_enter)),
 
+            });
+        }
+        if (@json($requestwork->date_delivery) == null) {
 
+            new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_delivery'), {
+                targetTextSelector: '#input_date_delivery',
+            });
+        } else {
+            new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_delivery'), {
+                targetTextSelector: '#input_date_delivery',
+                selectedDate: new Date(@json($requestwork->date_delivery)),
+                selectedDateToShow: new Date(@json($requestwork->date_delivery)),
+            });
+        }
+        if (@json($requestwork->date_out) == null) {
+            new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_out'), {
+                targetTextSelector: '#input_date_out',
+            });
+        } else {
+            new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_out'), {
+                targetTextSelector: '#input_date_out',
+                selectedDate: new Date(@json($requestwork->date_out)),
+                selectedDateToShow: new Date(@json($requestwork->date_out)),
+            });
 
-
+        }
     </script>
-
 @endsection

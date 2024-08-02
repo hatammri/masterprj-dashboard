@@ -52,7 +52,7 @@
                                             rowspan="1" colspan="1"
                                             aria-label="فوریت درخواست‌کار: فعال سازی نمایش به صورت صعودی"
                                             style="width: 96.36px;">فوریت درخواست‌کار</th>
-                                            
+
                                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
                                             colspan="1" aria-label="نام مشتری: فعال سازی نمایش به صورت صعودی"
                                             style="width: 53.36px;">نام مشتری</th>
@@ -120,9 +120,9 @@
                                         <td>{{ $requestwork->barnds->name }}</td>
                                         <td>{{ $requestwork->typeEqupments->name }}</td>
                                         <td class="">{{ $requestwork->equipment_number }}</td>
-                                        <td class="">{{ App\Models\RequestWork::GregoriantoJalali($requestwork->date_enter) }}</td>
-                                        <td>{{  App\Models\RequestWork::GregoriantoJalali($requestwork->date_delivery) }}</td>
-                                        <td>{{ App\Models\RequestWork::GregoriantoJalali($requestwork->date_out) }}</td>
+                                        <td class="">{{ $requestwork->date_enter== null ? "نامشخص":App\Models\RequestWork::GregoriantoJalali($requestwork->date_enter) }}</td>
+                                        <td>{{ $requestwork->date_delivery== null ? "نامشخص": App\Models\RequestWork::GregoriantoJalali($requestwork->date_delivery) }}</td>
+                                        <td>{{ $requestwork->date_out== null ? "نامشخص": App\Models\RequestWork::GregoriantoJalali($requestwork->date_out) }}</td>
                                         <td class="sorting_1"></td>
                                         <td class="">{{$requestwork->is_active }}</td>
                                         <td class="">{{ $requestwork->serviceplace }}</td>

@@ -45,15 +45,23 @@ class RequestworkController extends Controller
             'request_number'=> 'required',
             'customer' => 'required',
             'equipment' => 'required',
+            'date_enter'=>'nullable|date',
+            'date_delivery'=>'nullable|date',
+            'date_out'=>'nullable|date',
 
         ], $messages = [
             'request_number.required'=> 'شماره درخواست‌کار نباید خالی باشد',
             'customer.required' => 'نام مشتری نباید خالی باشد',
             'equipment.required' => 'تجهیز نباید خالی باشد',
+            'date_enter.required'=>'فرمت تاریخ ورود رعایت نشده',
+            'date_delivery.required'=>'فرمت تاریخ پایان کار رعایت نشده',
+            'date_out.required'=>'فرمت تاریخ تحویل رعایت نشده',
 
         ]);
 
+
         try {
+
             RequestWork::create([
                 'request_number' =>  $request->request_number,
                 'customer' => $request->customer,
@@ -66,11 +74,11 @@ class RequestworkController extends Controller
                 'serviceplace' => $request->serviceplace,
                 'description' => $request->description,
                 'estimated_cost' => $request->estimated_cost,
-                'date_enter' =>  Verta::parse($request->date_enter)->datetime()->format('Y-m-d'),
-                'real_cost' => "null",
-                'date_delivery' => Verta::parse($request->date_delivery)->datetime()->format('Y-m-d'),
+                'date_enter' => $request->date_enter==null?null: Verta::parse($request->date_enter)->datetime()->format('Y-m-d'),
+                'real_cost' => "0",
+                'date_delivery' =>$request->date_delivery==null?null: Verta::parse($request->date_delivery)->datetime()->format('Y-m-d'),
                 'Urgency_Work' => $request->Urgency_Work,
-                'date_out' =>  Verta::parse($request->date_enter)->datetime()->format('Y-m-d'),
+                'date_out' => $request->date_out==null?null: Verta::parse($request->date_out)->datetime()->format('Y-m-d'),
                 'is_active' => "1",
             ]);
             Alert::success('درخواست‌کار مورد نظر ایجاد شد', 'باتشکر');
@@ -109,7 +117,6 @@ class RequestworkController extends Controller
         $equipmentall = Equipment::all();
         $brand = Brand::all();
         $typeEquipment = TypeEquipment::all();
-
         return view('requestwork.edit', compact('requestwork', 'customer','customerall', 'equipment','equipmentall','brand','typeEquipment'));
     }
     public function editstatus(string $id)
@@ -132,14 +139,16 @@ class RequestworkController extends Controller
             'request_number'=> 'required',
             'customer' => 'required',
             'equipment' => 'required',
-
+            'date_enter'=>'nullable|date',
+            'date_delivery'=>'nullable|date',
+            'date_out'=>'nullable|date',
         ], $messages = [
             'request_number.required'=> 'شماره درخواست‌کار نباید خالی باشد',
-
             'customer.required' => 'نام مشتری نباید خالی باشد',
             'equipment.required' => 'تجهیز نباید خالی باشد',
-
-
+            'date_enter.required'=>'فرمت تاریخ ورود رعایت نشده',
+            'date_delivery.required'=>'فرمت تاریخ پایان کار رعایت نشده',
+            'date_out.required'=>'فرمت تاریخ تحویل رعایت نشده',
         ]);
         try {
             $requestwork->update([
@@ -153,9 +162,9 @@ class RequestworkController extends Controller
                 'description' => $request->description,
                 'estimated_cost' => $request->estimated_cost,
                 'real_cost' => $request->real_cost,
-                'date_enter' =>Verta::parse($request->date_enter)->datetime()->format('Y-m-d'),
-                'date_delivery' => Verta::parse($request->date_delivery)->datetime()->format('Y-m-d'),
-                'date_out' => Verta::parse($request->date_out)->datetime()->format('Y-m-d'),
+                'date_enter' => $request->date_enter==null?null: Verta::parse($request->date_enter)->datetime()->format('Y-m-d'),
+                'date_delivery' =>$request->date_delivery==null?null: Verta::parse($request->date_delivery)->datetime()->format('Y-m-d'),
+                'date_out' => $request->date_out==null?null: Verta::parse($request->date_out)->datetime()->format('Y-m-d'),
                 'Urgency_Work' => $request->Urgency_Work,
                 "request_status" => $request->request_status
 
@@ -216,5 +225,5 @@ class RequestworkController extends Controller
 
     }
 
-   
+
 }

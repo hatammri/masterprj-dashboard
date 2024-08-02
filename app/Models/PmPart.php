@@ -25,4 +25,11 @@ class PmPart extends Model
     {
         return $this->belongsTo(Brand::class,'brand_id');
     }
+    public static function GregoriantoJalali($date)
+
+    {
+        return verta($date)->format('Y-m-d');
+
+
+    }
 }

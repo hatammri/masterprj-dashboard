@@ -220,8 +220,8 @@
                                             class="badge bg-label-primary me-1">{{ $itemPmPart->pms->requestworks->request_number }}</span>
                                     </td>
                                     <td>{{ $itemPmPart->num_parts_used }}</td>
-                                    <td>{{ $itemPmPart->date_Replacement }}</td>
-                                    <td>{{ $itemPmPart->date_Replacement_next }}</td>
+                                    <td>{{ $itemPmPart->date_Replacement== null ? "نامشخص":App\Models\PmPart::GregoriantoJalali($itemPmPart->date_Replacement) }} </td>
+                                     <td>{{ $itemPmPart->date_Replacement_next== null ? "نامشخص":App\Models\PmPart::GregoriantoJalali($itemPmPart->date_Replacement_next ) }} </td>
                                     <td>{{ $itemPmPart->Allowed_working_hours }}</td>
 
                                     <td>

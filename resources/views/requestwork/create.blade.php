@@ -318,8 +318,7 @@
       <script>
         new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_enter'), {
            targetTextSelector: '#input_date_enter',
-           persianNumber:false
-
+           persianNumber:false,
                  });
          new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_delivery'), {
            targetTextSelector: '#input_date_delivery',
