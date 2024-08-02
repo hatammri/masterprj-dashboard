@@ -82,7 +82,7 @@
                                                 <div class="d-inline-block"><a href="javascript:;"
                                                         class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                                         data-bs-toggle="dropdown">
-                                                </div><a href="/part/edit/1" class="btn btn-sm btn-icon item-edit"><i
+                                                </div><a href="/partdef/edit/{{ $itemPmPart->id }}" class="btn btn-sm btn-icon item-edit"><i
                                                         class="bx bxs-edit"></i></a>
                                             </td>
                                             <td>{{ $itemPmPart->parts->name }}</td>

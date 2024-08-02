@@ -135,7 +135,7 @@ class PartDefController extends Controller
             'date_Replacement.required'=>'فرمت تاریخ ورود رعایت نشده',
             'date_Replacement_next.required'=>'فرمت تاریخ پایان کار رعایت نشده'
             ]);
-        try {
+
             $pmpart->update([
                 'part_id' => $request->part_id ,
                 'brand_id' => $request->brand_id ,
@@ -146,17 +146,10 @@ class PartDefController extends Controller
 
             ]);
             Alert::success('قطعه مورد نظر ویرایش شد', 'باتشکر');
-            return redirect()->route('specialty.index');
-        } catch (\Illuminate\Database\QueryException $e) {
-            //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات قطعه تکراری و یا اشتباه است', 'خطا');
-            return back();
-            //     // Just some example
-            //     //dd($e->getMessage(), $e->errorInfo);
-        } catch (\Exception $e) {
-            Alert::error('اطلاعات قطعه تکراری و یا اشتباه است', 'خطا');
-            return redirect()->back();
-        }
+            $PmPart=$pmpart;
+            $id=$pmpart->pm_id;
+            return redirect()->route('partdef.index', ['id' => $id])->with('PmPart', 'id');
+
     }
 
     /**
