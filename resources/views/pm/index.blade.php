@@ -72,9 +72,7 @@
                                                         مجموعه تجهیز</a>
                                                         <a
                                                         href="/partdef/index/{{$item_pm->id}}" class="dropdown-item"> مشاهده قطعات زیر مجموعه</a>
-                                                        <a
-                                                        href="/partdef/create/{{$item_pm->id}}" class="dropdown-item"> ویرایش قطعات زیر
-                                                        مجموعه تجهیز</a>
+                                                       
 
                                                     </div>
                                             </div><a href="/pm/edit/{{$item_pm->id}}" class="btn btn-sm btn-icon item-edit"><i
