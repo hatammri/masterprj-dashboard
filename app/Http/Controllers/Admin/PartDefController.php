@@ -117,8 +117,8 @@ class PartDefController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pm $pm)
-    { dd($request,$pm);
+    public function update(Request $request, PmPart $pmpart)
+    { dd($request,$pmpart);
         $request->validate([
             'name' => 'required',
             'unitmeasurement' => 'required',

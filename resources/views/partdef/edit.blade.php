@@ -83,7 +83,7 @@
 
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ویرایش قطعه زیر مجموعه تجهیز</h5>
-                <form action="{{ route('partdef.update', ['partdef' => $PmPart->id]) }}" method="POST" class="card-body">
+                <form action="{{ route('partdef.update' , ['pmpart' => $PmPart->id]) }}" method="POST" class="card-body">
                     @csrf
                     @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
@@ -119,10 +119,13 @@
                                     انتخاب کنید
                                 </option>
                                 @foreach ($Part as $itemPart)
-                                    <option value="{{ $itemPart->id }}">
+                                    <option value="{{ $itemPart->id }}"
+                                        {{ $itemPart->id == $PmPart->part_id ? 'selected' : '' }}>
                                         {{ $itemPart->name }}
                                     </option>
                                 @endforeach
+
+
                             </select>
                         </div>
 
@@ -134,10 +137,14 @@
                                     انتخاب کنید
                                 </option>
                                 @foreach ($Brand as $itemBrand)
-                                    <option value="{{ $itemBrand->id }}">
+                                    <option value="{{ $itemBrand->id }}"
+                                        {{ $itemBrand->id == $PmPart->brand_id ? 'selected' : '' }}>
                                         {{ $itemBrand->name }}
                                     </option>
                                 @endforeach
+
+
+
                             </select>
                         </div>
 
@@ -150,24 +157,26 @@
 
                         <div class="col-md-6">
                             <label class="form-label" for="form-repeater-1-4">تاریخ
-                                تعویض</label>
-                            <div class="input-group input-group-merge">
-                                <span id="span_date_Replacement" class="input-group-text"><i
+                                تعویض</label>                            <div class="input-group input-group-merge">
+                                    <span id="span_date_Replacement_edit" class="input-group-text"><i
                                         class="fas fa-clock"></i></span>
-                                <input id="input_date_Replacement" name="date_Replacement" type="text"
-                                    class="form-control" placeholder="مثال:1403/02/03">
+                                <input name="date_Replacement" type="text" id="input_date_Replacement_edit"
+                                    class="form-control" placeholder="مثال:1403/02/03" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2" >
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <label class="form-label" for="form-repeater-1-4">تاریخ
-                                تعویض بعدی</label>
-                            <div class="input-group input-group-merge">
-                                <span id="span_date_Replacement_next" class="input-group-text"><i
+                                تعویض بعدی</label>                            <div class="input-group input-group-merge">
+                                    <span id="span_date_Replacement_next_edit" class="input-group-text"><i
                                         class="fas fa-clock"></i></span>
-                                <input id="input_date_Replacement_next" name="date_Replacement_next" type="text"
-                                    class="form-control" placeholder="مثال:1403/02/03">
+                                <input name="date_Replacement_next" type="text" id="input_date_Replacement_next_edit"
+                                    class="form-control" placeholder="مثال:1403/02/03" aria-label="ACME Inc."
+                                    aria-describedby="basic-icon-default-company2" >
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <label class="form-label" for="basic-icon-default-brand">ساعت کار مجاز</label>
                             <div class="input-group input-group-merge">
@@ -178,6 +187,7 @@
                                     aria-describedby="basic-icon-default-brand2">
                             </div>
                         </div>
+
 
                     </div>
 
@@ -236,18 +246,15 @@
     <script src="../../assets/js/forms-extras.js"></script>
     <script src="../../assets/js/jquery.czMore-latest.js"></script>
     <script>
-        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_Replacement_next'), {
-            targetTextSelector: '#input_date_Replacement_next',
-            persianNumber: false
-            selectedDate: new Date(@json( $PmPart->date_Replacement_next)),
-            selectedDateToShow: new Date(@json( $PmPart->date_Replacement_next)),
-        });
-        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_Replacement'), {
-            targetTextSelector: '#input_date_Replacement',
-            persianNumber: false
+        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_Replacement_edit'), {
+            targetTextSelector: '#input_date_Replacement_edit',
             selectedDate: new Date(@json( $PmPart->date_Replacement)),
             selectedDateToShow: new Date(@json( $PmPart->date_Replacement)),
         });
-
+        new mds.MdsPersianDateTimePicker(document.querySelector('#span_date_Replacement_next_edit'), {
+            targetTextSelector: '#input_date_Replacement_next_edit',
+            selectedDate: new Date(@json( $PmPart->date_Replacement_next)),
+            selectedDateToShow: new Date(@json( $PmPart->date_Replacement_next)),
+        });
     </script>
 @endsection
