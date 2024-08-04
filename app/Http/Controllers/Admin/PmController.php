@@ -92,7 +92,7 @@ class PmController extends Controller
      */
     public function edit(string $id)
     {
-        $pm = Pm::where('id', $id)->get()->first();
+        $pm = Pm::where('id', $id)->with('requestworks.equipments','requestworks.customers.companies')->get()->first();
         // $requestWork= RequestWork::where('id', $pm->requestwork_id)->get()->first();
         // $equipment= Equipment::where('id', $pm->equipment_id)->get()->first();
         // $company= Company::where('id', $pm->company_id)->get()->first();

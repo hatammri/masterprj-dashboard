@@ -15,8 +15,8 @@ class PartController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        return view('part.index');
+    {    $parts = part::all();
+        return view('part.index',compact('parts'));
     }
 
     /**
