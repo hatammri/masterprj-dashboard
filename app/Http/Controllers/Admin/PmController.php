@@ -113,28 +113,16 @@ class PmController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Specialty $specialty)
-    { //dd($request,$specialty);
-        $request->validate([
-            'name' => 'required',
-            'unitmeasurement' => 'required',
-            'numberofoperator' => 'required',
-        ], $messages = [
-                'name.required' => 'نام تخصص نباید خالی باشد',
-                'unitmeasurement.required' => 'واحد اندازه گیری نباید خالی باشد',
-                'numberofoperator.required' => 'تعداد اپراتور نباید خالی باشد',
-
-
-            ]);
-        try {
-            $specialty->update([
-                'name' => $request->name,
-                'unitmeasurement' => $request->unitmeasurement,
-                'numberofoperator' => $request->numberofoperator,
+    public function update(Request $request, Pm $pm)
+    {
+        try{
+            $pm->update([
+                'equipment_name_Alias' => $request->equipment_name_Alias,
+                'installation_location' => $request->installation_location,
 
             ]);
             Alert::success('pm مورد نظر ویرایش شد', 'باتشکر');
-            return redirect()->route('specialty.index');
+            return redirect()->route('pm.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
             Alert::error('اطلاعات pm تکراری و یا اشتباه است', 'خطا');

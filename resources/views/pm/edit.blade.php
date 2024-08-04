@@ -47,8 +47,10 @@
             <div class="card mb-4">
                 <h5 class="card-header heading-color">ویرایش PM </h5>
 
-                <form action="{{ route('pm.store') }}" method="POST" class="card-body">
+                <form action="{{ route('pm.update', ['pm' => $pm->id]) }}" method="POST"
+                    class="card-body">
                     @csrf
+                    @method('put')
                     {{-- <h6 class="fw-normal">1. جزئیات حساب</h6> --}}
                     <div class="row g-3">
 
@@ -59,31 +61,16 @@
                             <span onclick="RefreshEquipmentNumber()">
                                 <i class="bx bx-refresh" id="refresh-equipment_number"></i>
                             </span>
-                            <select name="equipment_number" id="collapsible-equipment_number" class="select2 form-select"
-                                data-allow-clear="true">
-                                <option value="">
-                                    انتخاب کنید
-                                </option>
-                                @foreach ($requestwork as $itemRequestwork)
-                                    <option value="{{ $itemRequestwork->equipment_number }}" {{ $itemRequestwork->equipment_number  == $pm->equipment_number ? 'selected' : '' }}>
-                                        {{ $itemRequestwork->equipment_number }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <input name="equipment_name" type="text" id="equipment_name" value="{{$pm->equipment_number}}"
+                            class="form-control" placeholder="ندارد" aria-label="ACME Inc."
+                            aria-describedby="basic-icon-default-company2" disabled>
+
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="collapsible-request_number">شماره درخواست‌‌‌‌‌‌‌‌‌کار </label>
-                            <select name="requestwork_id" id="collapsible-request_number" class="select2 form-select"
-                                data-allow-clear="true">
-                                <option value="">
-                                    انتخاب کنید
-                                </option>
-                                @foreach ($requestworkwithoutunique as $itemRequestwork)
-                                    <option value="{{ $itemRequestwork->id }}"  {{ $itemRequestwork->id  == $pm->requestwork_id ? 'selected' : '' }}  >
-                                        {{ $itemRequestwork->request_number }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <input name="equipment_name" type="text" id="equipment_name" value="{{$pm->requestworks->request_number}}"
+                            class="form-control" placeholder="ندارد" aria-label="ACME Inc."
+                            aria-describedby="basic-icon-default-company2" disabled>
                         </div>
 
                         <div class="col-md-6">
