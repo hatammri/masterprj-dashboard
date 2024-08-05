@@ -78,7 +78,7 @@
                                             </div><a href="/pm/edit/{{ $item_pm->id }}"
                                                 class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>
                                                 <a  data-bs-toggle="modal" data-bs-target="#modalCenter-{{$item_pm->id}}"
-                                                    class="btn btn-sm btn-icon item-edit"><i class="bx bxs-trash"></i></a>
+                                                    class="btn btn-sm btn-icon item-edit"><i class="bx bxs-trash" style="color:red"></i></a>
                                         </td>
                                     </tr>
 
