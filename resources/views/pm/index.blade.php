@@ -20,88 +20,125 @@
                 <div class="card-datatable text-nowrap">
                     <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap5">
 
-                            <div class="invoice_status mb-3 mb-md-0"></div>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="dt-column-search table table-bordered dataTable" id="DataTables_Table_0"
-                                aria-describedby="DataTables_Table_0_info" style="width: 1383px;">
+                        <div class="invoice_status mb-3 mb-md-0"></div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="dt-column-search table table-bordered dataTable" id="DataTables_Table_0"
+                            aria-describedby="DataTables_Table_0_info" style="width: 1383px;">
 
-                                <thead>
-                                    <tr>
-                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0"
-                                            rowspan="1" colspan="1"
-                                            aria-label="شماره سریال تجهیز: فعال سازی نمایش به صورت نزولی"
-                                            aria-sort="ascending" style="width: 181.2px;">شماره سریال تجهیز</th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
-                                            colspan="1"
-                                            aria-label=" شماره درخواست‌‌‌‌‌‌‌‌‌کار : فعال سازی نمایش به صورت صعودی"
-                                            style="width: 180.2px;"> شماره درخواست‌‌‌‌‌‌‌‌‌کار </th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
-                                            colspan="1" aria-label=" نام تجهیز : فعال سازی نمایش به صورت صعودی"
-                                            style="width: 108.2px;"> نام تجهیز </th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
-                                            colspan="1" aria-label=" نام شرکت : فعال سازی نمایش به صورت صعودی"
-                                            style="width: 111.2px;"> نام شرکت </th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
-                                            colspan="1" aria-label=" نام مستعار تجهیز : فعال سازی نمایش به صورت صعودی"
-                                            style="width: 170.2px;"> نام مستعار تجهیز </th>
-                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
-                                            colspan="1" aria-label=" محل نصب : فعال سازی نمایش به صورت صعودی"
-                                            style="width: 114.2px;"> محل نصب </th>
-                                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="نمایش جزئیات"
-                                            style="width: 144px;">نمایش جزئیات</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                             @foreach ($pm as $item_pm)
-
+                            <thead>
+                                <tr>
+                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="DataTables_Table_0"
+                                        rowspan="1" colspan="1"
+                                        aria-label="شماره سریال تجهیز: فعال سازی نمایش به صورت نزولی" aria-sort="ascending"
+                                        style="width: 181.2px;">شماره سریال تجهیز</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                        colspan="1"
+                                        aria-label=" شماره درخواست‌‌‌‌‌‌‌‌‌کار : فعال سازی نمایش به صورت صعودی"
+                                        style="width: 180.2px;"> شماره درخواست‌‌‌‌‌‌‌‌‌کار </th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                        colspan="1" aria-label=" نام تجهیز : فعال سازی نمایش به صورت صعودی"
+                                        style="width: 108.2px;"> نام تجهیز </th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                        colspan="1" aria-label=" نام شرکت : فعال سازی نمایش به صورت صعودی"
+                                        style="width: 111.2px;"> نام شرکت </th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                        colspan="1" aria-label=" نام مستعار تجهیز : فعال سازی نمایش به صورت صعودی"
+                                        style="width: 170.2px;"> نام مستعار تجهیز </th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
+                                        colspan="1" aria-label=" محل نصب : فعال سازی نمایش به صورت صعودی"
+                                        style="width: 114.2px;"> محل نصب </th>
+                                    <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="نمایش جزئیات"
+                                        style="width: 144px;">نمایش جزئیات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($pm as $item_pm)
                                     <tr class="odd">
-                                        <td class="sorting_1">{{ $item_pm->equipment_number}}</td>
+                                        <td class="sorting_1">{{ $item_pm->equipment_number }}</td>
                                         <td>{{ $item_pm->requestworks->request_number }}</td>
                                         <td>{{ $item_pm->requestworks->equipments->name }}</td>
                                         <td>{{ $item_pm->requestworks->customers->companies->name }}</td>
-                                        <td>{{$item_pm->equipment_name_Alias}}</td>
-                                        <td>{{$item_pm->installation_location }}</td>
+                                        <td>{{ $item_pm->equipment_name_Alias }}</td>
+                                        <td>{{ $item_pm->installation_location }}</td>
                                         <td>
                                             <div class="d-inline-block"><a href="javascript:;"
                                                     class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                                     data-bs-toggle="dropdown"><i
                                                         class="bx bx-dots-vertical-rounded"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-end m-0"><a
-                                                        href="/partdef/create/{{$item_pm->id}}" class="dropdown-item"> تعریف قطعات زیر
+                                                        href="/partdef/create/{{ $item_pm->id }}" class="dropdown-item">
+                                                        تعریف قطعات زیر
                                                         مجموعه تجهیز</a>
-                                                        <a
-                                                        href="/partdef/index/{{$item_pm->id}}" class="dropdown-item"> مشاهده قطعات زیر مجموعه</a>
-                                                       
+                                                    <a href="/partdef/index/{{ $item_pm->id }}" class="dropdown-item">
+                                                        مشاهده قطعات زیر مجموعه</a>
 
-                                                    </div>
-                                            </div><a href="/pm/edit/{{$item_pm->id}}" class="btn btn-sm btn-icon item-edit"><i
-                                                    class="bx bxs-edit"></i></a>
+
+                                                </div>
+                                            </div><a href="/pm/edit/{{ $item_pm->id }}"
+                                                class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>
+                                                <a  data-bs-toggle="modal" data-bs-target="#modalCenter-{{$item_pm->id}}"
+                                                    class="btn btn-sm btn-icon item-edit"><i class="bx bxs-trash"></i></a>
                                         </td>
                                     </tr>
-                                    @endforeach
 
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th rowspan="1" colspan="1">شماره سریال تجهیز</th>
-                                        <th rowspan="1" colspan="1"> شماره درخواست‌‌‌‌‌‌‌‌‌کار </th>
-                                        <th rowspan="1" colspan="1"> نام تجهیز </th>
-                                        <th rowspan="1" colspan="1"> نام شرکت </th>
-                                        <th rowspan="1" colspan="1"> نام مستعار تجهیز </th>
-                                        <th rowspan="1" colspan="1"> محل نصب </th>
-                                        <th rowspan="1" colspan="1">نمایش جزئیات</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
+                                    <!-- Vertically Centered Modal -->
+
+                                            <div class="modal fade" id="modalCenter-{{$item_pm->id}}" tabindex="-1" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h3 class="modal-title secondary-font text-danger"
+                                                                id="modalCenterTitle">حذف pm شناسه {{$item_pm->id }} </h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col mb-3">
+                                                                    <h5 class="modal-title secondary-font "
+                                                                        id="modalCenterTitle">آیا برای حذف این {{$item_pm->id }} pm اطمینان
+                                                                        دارید؟</h5>
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-label-secondary"
+                                                                data-bs-dismiss="modal">
+                                                                خیر
+                                                            </button>
+                                                            <a href="/pm/destroy/{{ $item_pm->id }}" target="_parent"><button  type="button" class="btn btn-danger">بله</button></a>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                @endforeach
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th rowspan="1" colspan="1">شماره سریال تجهیز</th>
+                                    <th rowspan="1" colspan="1"> شماره درخواست‌‌‌‌‌‌‌‌‌کار </th>
+                                    <th rowspan="1" colspan="1"> نام تجهیز </th>
+                                    <th rowspan="1" colspan="1"> نام شرکت </th>
+                                    <th rowspan="1" colspan="1"> نام مستعار تجهیز </th>
+                                    <th rowspan="1" colspan="1"> محل نصب </th>
+                                    <th rowspan="1" colspan="1">نمایش جزئیات</th>
+                                </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </div>
             </div>
-            <!--/ Column Search -->
         </div>
+        <!--/ Column Search -->
+    </div>
 
-        <div class="content-backdrop fade"></div>
+    <div class="content-backdrop fade"></div>
     </div>
     <!-- Content wrapper -->
 @endsection

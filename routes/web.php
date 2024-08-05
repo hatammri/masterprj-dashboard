@@ -87,6 +87,9 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/edit/{id}', [PmController::class, 'edit'])->name('edit');
         Route::get('/show/{data}', [PmController::class, 'show'])->name('show');
         Route::put('/update/{pm}', [PmController::class, 'update'])->name('update');
+        Route::get('/destroy/{id}', [PmController::class, 'destroy'])->name('destroy');
+
+
     });
     Route::prefix('part')->name('part.')->group(function () {
         Route::get('/create', [PartController::class, 'create'])->name('create');

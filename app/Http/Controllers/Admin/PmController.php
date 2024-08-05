@@ -139,8 +139,12 @@ class PmController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
+    {    $pm = Pm::where('id', $id)->get()->first();
+         $pm->delete($id);
+         $pmpart_items=PmPart::where('pm_id', $id)->get();
+         PmPart::destroy($pmpart_items->pluck('id')->toArray());
+        alert()->success('pm مورد نظر حذف شد', 'باتشکر');
+        return redirect()->route('pm.index');
     }
     public function datatable()
     {
