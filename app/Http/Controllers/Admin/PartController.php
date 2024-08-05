@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\part;
+use App\Models\Part;
 use App\Models\Ostan;
 use App\Models\Shahrestan;
 use RealRashid\SweetAlert\Facades\Alert;
