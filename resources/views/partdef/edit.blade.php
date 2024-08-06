@@ -187,7 +187,16 @@
                                     aria-describedby="basic-icon-default-brand2">
                             </div>
                         </div>
-
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-message">شرح زیر قطعه</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-message2" class="input-group-text"><i
+                                        class="bx bx-comment"></i></span>
+                                <textarea name="description" id="basic-icon-default-message" class="form-control"
+                                    placeholder="شرح زیر قطعه را اینجا بنویسید" aria-label="Hi, Do you have a moment to talk Joe?"
+                                    aria-describedby="basic-icon-default-message2">{{ $PmPart->description}}</textarea>
+                            </div>
+                        </div>
 
                     </div>
 

@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('date_Replacement');
             $table->string('date_Replacement_next');
             $table->string('Allowed_working_hours');
+            $table->string('description')->nullable();
+
             $table->timestamps();
         });
     }

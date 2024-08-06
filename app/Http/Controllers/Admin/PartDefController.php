@@ -77,8 +77,7 @@ class PartDefController extends Controller
                 'date_Replacement' => $request->date_Replacement==null?null: Verta::parse($request->date_Replacement)->datetime()->format('Y-m-d'),
                 'date_Replacement_next' => $request->date_Replacement_next==null?null: Verta::parse($request->date_Replacement_next)->datetime()->format('Y-m-d'),
                 'Allowed_working_hours' => $request->Allowed_working_hours,
-
-
+                'description'=> $request->description
             ]);
 
             Alert::success('قطعه مورد نظر ایجاد شد', 'باتشکر');
@@ -143,6 +142,7 @@ class PartDefController extends Controller
                 'date_Replacement' => $request->date_Replacement==null?null: Verta::parse($request->date_Replacement)->datetime()->format('Y-m-d'),
                 'date_Replacement_next' => $request->date_Replacement_next==null?null: Verta::parse($request->date_Replacement_next)->datetime()->format('Y-m-d'),
                 'Allowed_working_hours' => $request->Allowed_working_hours,
+                'description'=> $request->description
 
             ]);
             Alert::success('قطعه مورد نظر ویرایش شد', 'باتشکر');

@@ -37,25 +37,25 @@ class PartController extends Controller
             'name' => 'required',
 
         ], $messages = [
-            'name.required' => 'نام نقش نباید خالی باشد'
+            'name.required' => 'نام قطعه نباید خالی باشد'
         ]);
         try {
             // Your query here
             part::create([
                 'name' => $request->name,
             ]);
-            Alert::success('نقش مورد نظر ایجاد شد', 'باتشکر');
+            Alert::success('قطعه مورد نظر ایجاد شد', 'باتشکر');
             return redirect()->route('part.index');
         } catch (\Illuminate\Database\QueryException $e) {
             // You need to handle the error here.
             // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات قطعه تکراری و یا اشتباه است', 'خطا');
             return back();
 
             // Just some example
             //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات قطعه تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }
@@ -87,22 +87,22 @@ class PartController extends Controller
             'name' => 'required',
 
         ], $messages = [
-            'name.required' => 'نام نقش نباید خالی باشد'
+            'name.required' => 'نام قطعه نباید خالی باشد'
         ]);
         try {
             $part->update([
                 'name' => $request->name,
             ]);
-            Alert::success('نقش مورد نظر ویرایش شد', 'باتشکر');
+            Alert::success('قطعه مورد نظر ویرایش شد', 'باتشکر');
             return redirect()->route('part.index');
         } catch (\Illuminate\Database\QueryException $e) {
             //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات قطعه تکراری و یا اشتباه است', 'خطا');
             return back();
             //     // Just some example
             //     //dd($e->getMessage(), $e->errorInfo);
         } catch (\Exception $e) {
-            Alert::error('اطلاعات نقش تکراری و یا اشتباه است', 'خطا');
+            Alert::error('اطلاعات قطعه تکراری و یا اشتباه است', 'خطا');
             return redirect()->back();
         }
     }

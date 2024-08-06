@@ -26,13 +26,14 @@
 
                                 <div
                                     class="dt-action-buttons text-xl-end text-lg-start text-md-end text-start mt-md-0 mt-3">
-                                    <div class="dt-buttons btn-group flex-wrap"><a href="/partdef/create/{{$id }}"><button
-                                            class="btn btn-secondary btn-primary" tabindex="0"
-                                            aria-controls="DataTables_Table_0" type="button"><span ><i
-                                                    class="bx bx-plus me-md-2"></i><span
-                                                    class="d-md-inline-block d-none">
-                                                    ایجاد قطعه مربوط به زیر مجموعه این
-                                                    تجهیز</span></span></button></a> </div>
+                                    <div class="dt-buttons btn-group flex-wrap"><a
+                                            href="/partdef/create/{{ $id }}"><button
+                                                class="btn btn-secondary btn-primary" tabindex="0"
+                                                aria-controls="DataTables_Table_0" type="button"><span><i
+                                                        class="bx bx-plus me-md-2"></i><span
+                                                        class="d-md-inline-block d-none">
+                                                        ایجاد قطعه مربوط به زیر مجموعه این
+                                                        تجهیز</span></span></button></a> </div>
                                 </div>
                             </div>
                             <div class="invoice_status mb-3 mb-md-0"></div>
@@ -72,6 +73,9 @@
                                         <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1"
                                             colspan="1" aria-label="ساعت کار مجاز: فعال سازی نمایش به صورت صعودی"
                                             style="width: 87px;">ساعت کار مجاز</th>
+                                        <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                            rowspan="1" colspan="1" aria-label="شرح: فعال سازی نمایش به صورت صعودی"
+                                            style="width: 87px;">شرح</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -82,17 +86,21 @@
                                                 <div class="d-inline-block"><a href="javascript:;"
                                                         class="btn btn-sm btn-icon dropdown-toggle hide-arrow"
                                                         data-bs-toggle="dropdown">
-                                                </div><a href="/partdef/edit/{{ $itemPmPart->id }}" class="btn btn-sm btn-icon item-edit"><i
-                                                        class="bx bxs-edit"></i></a>
+                                                </div><a href="/partdef/edit/{{ $itemPmPart->id }}"
+                                                    class="btn btn-sm btn-icon item-edit"><i class="bx bxs-edit"></i></a>
                                             </td>
                                             <td>{{ $itemPmPart->parts->name }}</td>
                                             <td>{{ $itemPmPart->brands->name }}</td>
                                             <td>{{ $itemPmPart->pms->requestworks->request_number }}</td>
                                             <td>{{ $itemPmPart->pms->equipment_number }}</td>
                                             <td>{{ $itemPmPart->num_parts_used }}</td>
-                                            <td>{{ $itemPmPart->date_Replacement== null ? "نامشخص":App\Models\PmPart::GregoriantoJalali($itemPmPart->date_Replacement) }} </td>
-                                            <td>{{ $itemPmPart->date_Replacement_next== null ? "نامشخص":App\Models\PmPart::GregoriantoJalali($itemPmPart->date_Replacement_next ) }} </td>
+                                            <td>{{ $itemPmPart->date_Replacement == null ? 'نامشخص' : App\Models\PmPart::GregoriantoJalali($itemPmPart->date_Replacement) }}
+                                            </td>
+                                            <td>{{ $itemPmPart->date_Replacement_next == null ? 'نامشخص' : App\Models\PmPart::GregoriantoJalali($itemPmPart->date_Replacement_next) }}
+                                            </td>
                                             <td>{{ $itemPmPart->Allowed_working_hours }}</td>
+                                            <td>{{ $itemPmPart->description }}</td>
+
                                         </tr>
                                     @endforeach
 
@@ -109,6 +117,8 @@
                                         <th rowspan="1" colspan="1">تاریخ تعویض</th>
                                         <th rowspan="1" colspan="1">تاریخ تعویض بعدی</th>
                                         <th rowspan="1" colspan="1">ساعت کار مجاز</th>
+                                        <th rowspan="1" colspan="1">شرح</th>
+
                                     </tr>
                                 </tfoot>
                             </table>

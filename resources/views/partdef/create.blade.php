@@ -108,8 +108,6 @@
                                     aria-label="ACME Inc." aria-describedby="basic-icon-default-brand2" disabled>
                             </div>
                         </div>
-
-
                         <div class="col-md-6">
                             <label class="form-label" for="form-repeater-1-1">نام
                                 قطعه</label>
@@ -178,7 +176,16 @@
                                     aria-describedby="basic-icon-default-brand2">
                             </div>
                         </div>
-
+                        <div class="col-md-6">
+                            <label class="form-label" for="basic-icon-default-message">شرح زیر قطعه</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-message2" class="input-group-text"><i
+                                        class="bx bx-comment"></i></span>
+                                <textarea name="description" id="basic-icon-default-message" class="form-control"
+                                    placeholder="شرح زیر قطعه را اینجا بنویسید" aria-label="Hi, Do you have a moment to talk Joe?"
+                                    aria-describedby="basic-icon-default-message2"></textarea>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="pt-4">
@@ -203,15 +210,16 @@
                                 <th>شماره درخواست‌کار</th>
                                 <th>تعداد استفاده شده</th>
                                 <th>تاریخ تعویض</th>
-                                <th>تاریخ تعویض بعدی  </th>
-                                <th>ساعت کار مجاز   </th>
+                                <th>تاریخ تعویض بعدی </th>
+                                <th>ساعت کار مجاز </th>
+                                <td>شرح</td>
                                 <th>عمل‌ها</th>
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @foreach ($PmPart as $itemPmPart)
                                 <tr>
-                                    <td>{{ $itemPmPart->id}}</td>
+                                    <td>{{ $itemPmPart->id }}</td>
 
                                     <td>{{ $itemPmPart->parts->name }}</td>
                                     <td>{{ $itemPmPart->brands->name }}</td>
@@ -220,9 +228,12 @@
                                             class="badge bg-label-primary me-1">{{ $itemPmPart->pms->requestworks->request_number }}</span>
                                     </td>
                                     <td>{{ $itemPmPart->num_parts_used }}</td>
-                                    <td>{{ $itemPmPart->date_Replacement== null ? "نامشخص":App\Models\PmPart::GregoriantoJalali($itemPmPart->date_Replacement) }} </td>
-                                     <td>{{ $itemPmPart->date_Replacement_next== null ? "نامشخص":App\Models\PmPart::GregoriantoJalali($itemPmPart->date_Replacement_next ) }} </td>
+                                    <td>{{ $itemPmPart->date_Replacement == null ? 'نامشخص' : App\Models\PmPart::GregoriantoJalali($itemPmPart->date_Replacement) }}
+                                    </td>
+                                    <td>{{ $itemPmPart->date_Replacement_next == null ? 'نامشخص' : App\Models\PmPart::GregoriantoJalali($itemPmPart->date_Replacement_next) }}
+                                    </td>
                                     <td>{{ $itemPmPart->Allowed_working_hours }}</td>
+                                    <td>{{ $itemPmPart->description }}</td>
 
                                     <td>
                                         <div class="dropdown">

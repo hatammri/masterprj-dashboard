@@ -119,6 +119,7 @@ $(function () {
                 { data: "date_Replacement" },
                 { data: "date_Replacement_next" },
                 { data: "Allowed_working_hours" },
+                { data: "description" },
 
             ],
 
@@ -171,7 +172,7 @@ $(function () {
                 ">",
 
             buttons: [
-               
+
             ],
         });
     }
