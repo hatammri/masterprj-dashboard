@@ -133,7 +133,7 @@ class RequestworkController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, requestwork $requestwork)
-    {
+    { 
 
         $request->validate([
             'request_number'=> 'required',
