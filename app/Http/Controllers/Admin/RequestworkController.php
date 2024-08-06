@@ -133,24 +133,9 @@ class RequestworkController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, requestwork $requestwork)
-    { 
+    {
 
-        $request->validate([
-            'request_number'=> 'required',
-            'customer' => 'required',
-            'equipment' => 'required',
-            'date_enter'=>'nullable|date',
-            'date_delivery'=>'nullable|date',
-            'date_out'=>'nullable|date',
-        ], $messages = [
-            'request_number.required'=> 'شماره درخواست‌کار نباید خالی باشد',
-            'customer.required' => 'نام مشتری نباید خالی باشد',
-            'equipment.required' => 'تجهیز نباید خالی باشد',
-            'date_enter.required'=>'فرمت تاریخ ورود رعایت نشده',
-            'date_delivery.required'=>'فرمت تاریخ پایان کار رعایت نشده',
-            'date_out.required'=>'فرمت تاریخ تحویل رعایت نشده',
-        ]);
-        try {
+
             $requestwork->update([
                 'request_number'=> $request->request_number,
                 'customer' => $request->customer,
@@ -171,16 +156,7 @@ class RequestworkController extends Controller
             ]);
             Alert::success('درخواست‌کار مورد نظر ویرایش شد', 'باتشکر');
             return redirect()->route('requestwork.index');
-        } catch (\Illuminate\Database\QueryException $e) {
-            //     // You need to handle the error here.     //     // Either send the user back to the screen or redirect them somewhere else
-            Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
-            return back();
-            //     // Just some example
-            //     //dd($e->getMessage(), $e->errorInfo);
-        } catch (\Exception $e) {
-            Alert::error('اطلاعات درخواست‌کار تکراری و یا اشتباه است', 'خطا');
-            return redirect()->back();
-        }
+
     }
 
     /**
