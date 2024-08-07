@@ -45,17 +45,15 @@ class RequestworkController extends Controller
             'request_number'=> 'required',
             'customer' => 'required',
             'equipment' => 'required',
-            'date_enter'=>'nullable|date',
-            'date_delivery'=>'nullable|date',
-            'date_out'=>'nullable|date',
+            'date_enter'=>'nullable',
+            'date_delivery'=>'nullable',
+            'date_out'=>'nullable',
 
         ], $messages = [
             'request_number.required'=> 'شماره درخواست‌کار نباید خالی باشد',
             'customer.required' => 'نام مشتری نباید خالی باشد',
             'equipment.required' => 'تجهیز نباید خالی باشد',
-            'date_enter.required'=>'فرمت تاریخ ورود رعایت نشده',
-            'date_delivery.required'=>'فرمت تاریخ پایان کار رعایت نشده',
-            'date_out.required'=>'فرمت تاریخ تحویل رعایت نشده',
+        
 
         ]);
 
