@@ -53,7 +53,7 @@ class RequestworkController extends Controller
             'request_number.required'=> 'شماره درخواست‌کار نباید خالی باشد',
             'customer.required' => 'نام مشتری نباید خالی باشد',
             'equipment.required' => 'تجهیز نباید خالی باشد',
-        
+
 
         ]);
 
@@ -218,6 +218,10 @@ class RequestworkController extends Controller
         return ['requestwork' => $requestwork , 'requestworkwithunique' => $requestworkwithunique];
 
     }
+
+
+
+
 
 
 }

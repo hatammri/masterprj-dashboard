@@ -91,8 +91,8 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-hard-hat"></i></span>
-                                <input name="equipment_name" type="text" id="equipment_name"
-                                    class="form-control" placeholder="مثال:گیربکس  " aria-label="ACME Inc."
+                                <input name="equipment_name" type="text" id="equipment_name" class="form-control"
+                                    placeholder="مثال:گیربکس  " aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2" disabled>
                             </div>
                         </div>
@@ -101,8 +101,8 @@
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-hard-hat"></i></span>
-                                <input name="company_name" type="text" id="company_name"
-                                    class="form-control" placeholder="مثال:گیربکس  " aria-label="ACME Inc."
+                                <input name="company_name" type="text" id="company_name" class="form-control"
+                                    placeholder="مثال:گیربکس  " aria-label="ACME Inc."
                                     aria-describedby="basic-icon-default-company2" disabled>
                             </div>
                         </div>
@@ -217,19 +217,19 @@
 
                         $("#collapsible-request_number").append('<option value="' +
                             requestwork.id + '">' + requestwork.request_number + '</option>');
-                            equipment_name.value = requestwork.equipments.name
-                            company_name.value=requestwork.customers.companies.name
+                        equipment_name.value = requestwork.equipments.name
+                        company_name.value = requestwork.customers.companies.name
                     });
                 } else {
                     $('#collapsible-request_number').empty();
-                    equipment_name.value ="";
-                    company_name.value="";
+                    equipment_name.value = "";
+                    company_name.value = "";
                 }
             }).fail(function() {
                 $('#collapsible-request_number').empty();
-                equipment_name.value ="";
-                company_name.value="";
-                     console.log("errorlist");
+                equipment_name.value = "";
+                company_name.value = "";
+                console.log("errorlist");
             })
 
         });
@@ -255,20 +255,20 @@
                         $("#collapsible-equipment_number").append('<option value="' +
                             requestwork.equipment_number + '">' + requestwork.equipment_number +
                             '</option>');
-                            equipment_name.value = requestwork.equipments.name
-                            company_name.value=requestwork.customers.companies.name
+                        equipment_name.value = requestwork.equipments.name
+                        company_name.value = requestwork.customers.companies.name
                     });
                 } else {
                     $('#collapsible-equipment_number').empty();
                     console.log("error");
-                    equipment_name.value ="";
-                    company_name.value="";
+                    equipment_name.value = "";
+                    company_name.value = "";
                 }
             }).fail(function() {
                 $('#collapsible-equipment_number').empty();
                 console.log("errorlist");
-                equipment_name.value ="";
-                company_name.value="";
+                equipment_name.value = "";
+                company_name.value = "";
             })
 
         });
@@ -276,8 +276,8 @@
 
     <script>
         function RefreshEquipmentNumber() {
-            equipment_name.value ="";
-            company_name.value="";
+            equipment_name.value = "";
+            company_name.value = "";
             i = "null";
             info = "انتخاب ";
             console.log("refresh");

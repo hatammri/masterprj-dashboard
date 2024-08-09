@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\PartController;
 use App\Http\Controllers\Admin\PartDefController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\RequestworkFilesController;
 use App\Models\Role;
 
 //require __DIR__ . '/auth.php';
@@ -120,6 +121,16 @@ Route::group(['prefix' => '/', 'middleware' => 'auth'], function () {
         Route::get('/getallrequestwork' ,[RequestworkController::class , 'getAllRequestwork']);
 
     });
+
+    Route::prefix('requestworkfileupload')->name('requestworkfileupload.')->group(function () {
+        Route::get('/uploadfiles/{id}', [RequestworkFilesController::class, 'uploadfiles'])->name('uploadfiles');
+        Route::put('/upload/{requestwork}', [RequestworkFilesController::class, 'upload'])->name('upload');
+        Route::get('/destroy/{id}', [RequestworkFilesController::class, 'destroy'])->name('destroy');
+        Route::get('/index/{id}', [RequestworkFilesController::class, 'index'])->name('index');
+        Route::get('/downloadFile/{id}', [RequestworkFilesController::class, 'downloadFile'])->name('downloadFile');
+
+    });
+
     Route::prefix('operator')->name('operator.')->group(function () {
         Route::get('/create', [OperatorController::class, 'create'])->name('create');
         Route::post('/store', [OperatorController::class, 'store'])->name('store');

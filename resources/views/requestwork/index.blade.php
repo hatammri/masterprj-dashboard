@@ -108,7 +108,15 @@
                                                         class="bx bx-dots-vertical-rounded"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-end m-0"><a
                                                         href="/requestwork/edit/{{ $requestwork->id }}" class="dropdown-item">ویرایش اطلاعات
-                                                        درخواست‌کار</a></div>
+                                                        درخواست‌کار</a>
+                                                        <a
+                                                        href="/requestworkfileupload/uploadfiles/{{ $requestwork->id }}" class="dropdown-item">بارگذاری مدارک درخواست‌کار
+                                                        </a>
+                                                        <a
+                                                        href="/requestworkfileupload/index/{{ $requestwork->id }}" class="dropdown-item">لیست مدارک درخواست‌کار
+
+                                                    </a>
+                                                    </div>
                                             </div><a href="/requestwork/edit/{{ $requestwork->id }}" class="btn btn-sm btn-icon item-edit"><i
                                                     class="bx bxs-edit"></i></a>
                                         </td>
